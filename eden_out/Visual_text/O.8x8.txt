@@ -1,0 +1,12 @@
+SHAKTI_WRITTEN_TEXT_8X8_V1
+TEXT=O
+CHARACTERS=1
+CHARACTER=0 ASCII=79 TEXT=O
+..###...
+.#...#..
+.#...#..
+.#...#..
+.#...#..
+.#...#..
+..###...
+........

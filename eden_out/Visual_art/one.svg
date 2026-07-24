@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" role="img">
+  <rect width="640" height="240" fill="white"/>
+  <text x="40" y="85" font-size="72" font-family="monospace">1</text>
+  <text x="40" y="165" font-size="48" font-family="monospace">one</text>
+  <circle cx="330" cy="65" r="20" fill="black"/>
+</svg>

@@ -1,0 +1,62 @@
+SHAKTI RUNNABLE MVP C99 — DRILL CONTROL FIX
+===========================================
+
+Scope
+-----
+- Single-process C99 runtime.
+- No subprocess, shell, Python, JavaScript, PowerShell, or hidden model.
+- No malloc, realloc, calloc, or free.
+- Eden remains OPEN.
+- Curriculum data was not expanded or promoted in this patch.
+
+Fixed
+-----
+1. Drill-time control commands are recognized before answer scoring:
+   /status/, /help/, /interrupt/, /resume/, /stop/, /quit/.
+2. /stop remains a compatibility alias for /stop/.
+3. /interrupt/ stops the active drill and MCP tools while Shakti remains awake.
+4. Control commands produce no handwriting draft and no RIGHT/WRONG trial.
+5. MVP tests run in a fresh temporary house with clean mutable state.
+6. build_seed_curriculum and temporary MVP/seed directories are ignored.
+
+Compiler
+--------
+cc -std=c99 -Wall -Wextra -Wpedantic -Werror -O2
+
+Verification
+------------
+Command:
+    make clean && make test
+
+Result:
+    PASS
+
+Suites:
+- All Shakti C99 unit tests passed.
+- Manifest, ledger, builder, and runtime integration passed.
+- Loop, reflection, interrupt, and resume integration passed.
+- Foundation, counting, and alphabet seed generation passed.
+- Runnable startup, isolated state, drill controls, and mastery passed.
+
+Live-state idempotence check
+----------------------------
+A real Pass 4 '+' drill was run against the working copy:
+- 10/10 mastery reached.
+- 10 correct, 0 errors, 10 attempts persisted.
+
+Without resetting that live School state, `make test` was run again.
+
+Result:
+    PASS
+
+The test harness no longer inherits or changes live School progress.
+
+Current validated beginning
+---------------------------
+Implemented checks: 1033/1033 = 100%
+Verified stones: 282/282
+Complete tablets: 7
+Required channel gaps: 0
+Optional Foundation sounds deferred: 33
+Eden lock ready: NO
+Runnable beginning: YES

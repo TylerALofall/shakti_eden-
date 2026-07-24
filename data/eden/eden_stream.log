@@ -1,0 +1,2 @@
+# EDN4 readable Eden stream.
+# Pass 1 ingest owns this file. The runtime in this package does not mutate it.

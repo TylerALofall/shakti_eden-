@@ -1,0 +1,23 @@
+[Memory]
+Recall exact readable long-term chunks and inspect resident memory status.
+
+[School]
+Run the four Eden passes, exact-text drills, mastery scoring, and 8x8 handwriting snapshots.
+
+[Senses]
+Record one grounded channel event from text, written_text, visual_art, or sound_art.
+
+[Reasoning]
+Ask exact questions, record grounded evidence, separate creative proposals from logic, and say I do not know when logic stops.
+
+[Tablet]
+Load a strict four-channel XML tablet and verify its exact artifact paths.
+
+[Messages]
+Use message_tyler, note_tyler, message_shakti, and note_shakti while memory streaming remains active.
+
+[Reflection]
+Complete the thirteen reflection questions every ten turns, with as many as three deferrals.
+
+[Control]
+Change the goal, set the heartbeat from zero through thirty minutes, interrupt MCP tools, resume tools, and inspect status.

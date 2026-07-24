@@ -1,0 +1,12 @@
+SHAKTI_WRITTEN_TEXT_8X8_V1
+TEXT=Q
+CHARACTERS=1
+CHARACTER=0 ASCII=81 TEXT=Q
+..###...
+.#...#..
+.#...#..
+.#...#..
+.#.#.#..
+.#..#...
+..##.#..
+........

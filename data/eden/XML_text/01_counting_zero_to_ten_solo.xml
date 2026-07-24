@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tablet schema="SHAKTI_TABLET_4S_V2">
+  <level>counting</level>
+  <lesson>counting_zero_to_ten_solo</lesson>
+  <stone_count>11</stone_count>
+  <stone order="1">
+    <text>zero</text>
+    <written_text>zero.8x8.txt</written_text>
+    <sound_art>zero.wav</sound_art>
+    <visual_art>zero.svg</visual_art>
+    <numeral>0</numeral>
+    <quantity>0</quantity>
+    <duration_ms>0</duration_ms>
+  </stone>
+  <stone order="2">
+    <text>one</text>
+    <written_text>one.8x8.txt</written_text>
+    <sound_art>one.wav</sound_art>
+    <visual_art>one.svg</visual_art>
+    <numeral>1</numeral>
+    <quantity>1</quantity>
+    <duration_ms>1000</duration_ms>
+  </stone>
+  <stone order="3">
+    <text>two</text>
+    <written_text>two.8x8.txt</written_text>
+    <sound_art>two.wav</sound_art>
+    <visual_art>two.svg</visual_art>
+    <numeral>2</numeral>
+    <quantity>2</quantity>
+    <duration_ms>2000</duration_ms>
+  </stone>
+  <stone order="4">
+    <text>three</text>
+    <written_text>three.8x8.txt</written_text>
+    <sound_art>three.wav</sound_art>
+    <visual_art>three.svg</visual_art>
+    <numeral>3</numeral>
+    <quantity>3</quantity>
+    <duration_ms>3000</duration_ms>
+  </stone>
+  <stone order="5">
+    <text>four</text>
+    <written_text>four.8x8.txt</written_text>
+    <sound_art>four.wav</sound_art>
+    <visual_art>four.svg</visual_art>
+    <numeral>4</numeral>
+    <quantity>4</quantity>
+    <duration_ms>4000</duration_ms>
+  </stone>
+  <stone order="6">
+    <text>five</text>
+    <written_text>five.8x8.txt</written_text>
+    <sound_art>five.wav</sound_art>
+    <visual_art>five.svg</visual_art>
+    <numeral>5</numeral>
+    <quantity>5</quantity>
+    <duration_ms>5000</duration_ms>
+  </stone>
+  <stone order="7">
+    <text>six</text>
+    <written_text>six.8x8.txt</written_text>
+    <sound_art>six.wav</sound_art>
+    <visual_art>six.svg</visual_art>
+    <numeral>6</numeral>
+    <quantity>6</quantity>
+    <duration_ms>6000</duration_ms>
+  </stone>
+  <stone order="8">
+    <text>seven</text>
+    <written_text>seven.8x8.txt</written_text>
+    <sound_art>seven.wav</sound_art>
+    <visual_art>seven.svg</visual_art>
+    <numeral>7</numeral>
+    <quantity>7</quantity>
+    <duration_ms>7000</duration_ms>
+  </stone>
+  <stone order="9">
+    <text>eight</text>
+    <written_text>eight.8x8.txt</written_text>
+    <sound_art>eight.wav</sound_art>
+    <visual_art>eight.svg</visual_art>
+    <numeral>8</numeral>
+    <quantity>8</quantity>
+    <duration_ms>8000</duration_ms>
+  </stone>
+  <stone order="10">
+    <text>nine</text>
+    <written_text>nine.8x8.txt</written_text>
+    <sound_art>nine.wav</sound_art>
+    <visual_art>nine.svg</visual_art>
+    <numeral>9</numeral>
+    <quantity>9</quantity>
+    <duration_ms>9000</duration_ms>
+  </stone>
+  <stone order="11">
+    <text>ten</text>
+    <written_text>ten.8x8.txt</written_text>
+    <sound_art>ten.wav</sound_art>
+    <visual_art>ten.svg</visual_art>
+    <numeral>10</numeral>
+    <quantity>10</quantity>
+    <duration_ms>10000</duration_ms>
+  </stone>
+</tablet>
