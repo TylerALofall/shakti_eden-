@@ -1,0 +1,6 @@
+# SHAKTI_EDEN_THESAURUS_V1
+# variant|canonical
+#
+# This is an approved deterministic language bridge.
+# Creative may use it to rewrite a question.
+# Logic must still find an exact grounded fact after the rewrite.

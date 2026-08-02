@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tablet schema="SHAKTI_TABLET_4S_V2">
+  <level>foundation_ascii</level>
+  <lesson>ascii_32_126_solo</lesson>
+  <stone_count>95</stone_count>
+  <stone order="1">
+    <text> </text>
+    <written_text>ascii_032.8x8.txt</written_text>
+    <sound_art>ascii_032.wav</sound_art>
+    <visual_art>ascii_032.svg</visual_art>
+    <ascii_code>32</ascii_code>
+  </stone>
+  <stone order="2">
+    <text>!</text>
+    <written_text>ascii_033.8x8.txt</written_text>
+    <sound_art>ascii_033.wav</sound_art>
+    <visual_art>ascii_033.svg</visual_art>
+    <ascii_code>33</ascii_code>
+  </stone>
+  <stone order="3">
+    <text>&quot;</text>
+    <written_text>ascii_034.8x8.txt</written_text>
+    <sound_art>ascii_034.wav</sound_art>
+    <visual_art>ascii_034.svg</visual_art>
+    <ascii_code>34</ascii_code>
+  </stone>
+  <stone order="4">
+    <text>#</text>
+    <written_text>ascii_035.8x8.txt</written_text>
+    <sound_art>ascii_035.wav</sound_art>
+    <visual_art>ascii_035.svg</visual_art>
+    <ascii_code>35</ascii_code>
+  </stone>
+  <stone order="5">
+    <text>$</text>
+    <written_text>ascii_036.8x8.txt</written_text>
+    <sound_art>ascii_036.wav</sound_art>
+    <visual_art>ascii_036.svg</visual_art>
+    <ascii_code>36</ascii_code>
+  </stone>
+  <stone order="6">
+    <text>%</text>
+    <written_text>ascii_037.8x8.txt</written_text>
+    <sound_art>ascii_037.wav</sound_art>
+    <visual_art>ascii_037.svg</visual_art>
+    <ascii_code>37</ascii_code>
+  </stone>
+  <stone order="7">
+    <text>&amp;</text>
+    <written_text>ascii_038.8x8.txt</written_text>
+    <sound_art>ascii_038.wav</sound_art>
+    <visual_art>ascii_038.svg</visual_art>
+    <ascii_code>38</ascii_code>
+  </stone>
+  <stone order="8">
+    <text>&apos;</text>
+    <written_text>ascii_039.8x8.txt</written_text>
+    <sound_art>ascii_039.wav</sound_art>
+    <visual_art>ascii_039.svg</visual_art>
+    <ascii_code>39</ascii_code>
+  </stone>
+  <stone order="9">
+    <text>(</text>
+    <written_text>ascii_040.8x8.txt</written_text>
+    <sound_art>ascii_040.wav</sound_art>
+    <visual_art>ascii_040.svg</visual_art>
+    <ascii_code>40</ascii_code>
+  </stone>
+  <stone order="10">
+    <text>)</text>
+    <written_text>ascii_041.8x8.txt</written_text>
+    <sound_art>ascii_041.wav</sound_art>
+    <visual_art>ascii_041.svg</visual_art>
+    <ascii_code>41</ascii_code>
+  </stone>
+  <stone order="11">
+    <text>*</text>
+    <written_text>ascii_042.8x8.txt</written_text>
+    <sound_art>ascii_042.wav</sound_art>
+    <visual_art>ascii_042.svg</visual_art>
+    <ascii_code>42</ascii_code>
+  </stone>
+  <stone order="12">
+    <text>+</text>
+    <written_text>ascii_043.8x8.txt</written_text>
+    <sound_art>ascii_043.wav</sound_art>
+    <visual_art>ascii_043.svg</visual_art>
+    <ascii_code>43</ascii_code>
+  </stone>
+  <stone order="13">
+    <text>,</text>
+    <written_text>ascii_044.8x8.txt</written_text>
+    <sound_art>ascii_044.wav</sound_art>
+    <visual_art>ascii_044.svg</visual_art>
+    <ascii_code>44</ascii_code>
+  </stone>
+  <stone order="14">
+    <text>-</text>
+    <written_text>ascii_045.8x8.txt</written_text>
+    <sound_art>ascii_045.wav</sound_art>
+    <visual_art>ascii_045.svg</visual_art>
+    <ascii_code>45</ascii_code>
+  </stone>
+  <stone order="15">
+    <text>.</text>
+    <written_text>ascii_046.8x8.txt</written_text>
+    <sound_art>ascii_046.wav</sound_art>
+    <visual_art>ascii_046.svg</visual_art>
+    <ascii_code>46</ascii_code>
+  </stone>
+  <stone order="16">
+    <text>/</text>
+    <written_text>ascii_047.8x8.txt</written_text>
+    <sound_art>ascii_047.wav</sound_art>
+    <visual_art>ascii_047.svg</visual_art>
+    <ascii_code>47</ascii_code>
+  </stone>
+  <stone order="17">
+    <text>0</text>
+    <written_text>0.8x8.txt</written_text>
+    <sound_art>0.wav</sound_art>
+    <visual_art>0.svg</visual_art>
+    <ascii_code>48</ascii_code>
+  </stone>
+  <stone order="18">
+    <text>1</text>
+    <written_text>1.8x8.txt</written_text>
+    <sound_art>1.wav</sound_art>
+    <visual_art>1.svg</visual_art>
+    <ascii_code>49</ascii_code>
+  </stone>
+  <stone order="19">
+    <text>2</text>
+    <written_text>2.8x8.txt</written_text>
+    <sound_art>2.wav</sound_art>
+    <visual_art>2.svg</visual_art>
+    <ascii_code>50</ascii_code>
+  </stone>
+  <stone order="20">
+    <text>3</text>
+    <written_text>3.8x8.txt</written_text>
+    <sound_art>3.wav</sound_art>
+    <visual_art>3.svg</visual_art>
+    <ascii_code>51</ascii_code>
+  </stone>
+  <stone order="21">
+    <text>4</text>
+    <written_text>4.8x8.txt</written_text>
+    <sound_art>4.wav</sound_art>
+    <visual_art>4.svg</visual_art>
+    <ascii_code>52</ascii_code>
+  </stone>
+  <stone order="22">
+    <text>5</text>
+    <written_text>5.8x8.txt</written_text>
+    <sound_art>5.wav</sound_art>
+    <visual_art>5.svg</visual_art>
+    <ascii_code>53</ascii_code>
+  </stone>
+  <stone order="23">
+    <text>6</text>
+    <written_text>6.8x8.txt</written_text>
+    <sound_art>6.wav</sound_art>
+    <visual_art>6.svg</visual_art>
+    <ascii_code>54</ascii_code>
+  </stone>
+  <stone order="24">
+    <text>7</text>
+    <written_text>7.8x8.txt</written_text>
+    <sound_art>7.wav</sound_art>
+    <visual_art>7.svg</visual_art>
+    <ascii_code>55</ascii_code>
+  </stone>
+  <stone order="25">
+    <text>8</text>
+    <written_text>8.8x8.txt</written_text>
+    <sound_art>8.wav</sound_art>
+    <visual_art>8.svg</visual_art>
+    <ascii_code>56</ascii_code>
+  </stone>
+  <stone order="26">
+    <text>9</text>
+    <written_text>9.8x8.txt</written_text>
+    <sound_art>9.wav</sound_art>
+    <visual_art>9.svg</visual_art>
+    <ascii_code>57</ascii_code>
+  </stone>
+  <stone order="27">
+    <text>:</text>
+    <written_text>ascii_058.8x8.txt</written_text>
+    <sound_art>ascii_058.wav</sound_art>
+    <visual_art>ascii_058.svg</visual_art>
+    <ascii_code>58</ascii_code>
+  </stone>
+  <stone order="28">
+    <text>;</text>
+    <written_text>ascii_059.8x8.txt</written_text>
+    <sound_art>ascii_059.wav</sound_art>
+    <visual_art>ascii_059.svg</visual_art>
+    <ascii_code>59</ascii_code>
+  </stone>
+  <stone order="29">
+    <text>&lt;</text>
+    <written_text>ascii_060.8x8.txt</written_text>
+    <sound_art>ascii_060.wav</sound_art>
+    <visual_art>ascii_060.svg</visual_art>
+    <ascii_code>60</ascii_code>
+  </stone>
+  <stone order="30">
+    <text>=</text>
+    <written_text>ascii_061.8x8.txt</written_text>
+    <sound_art>ascii_061.wav</sound_art>
+    <visual_art>ascii_061.svg</visual_art>
+    <ascii_code>61</ascii_code>
+  </stone>
+  <stone order="31">
+    <text>&gt;</text>
+    <written_text>ascii_062.8x8.txt</written_text>
+    <sound_art>ascii_062.wav</sound_art>
+    <visual_art>ascii_062.svg</visual_art>
+    <ascii_code>62</ascii_code>
+  </stone>
+  <stone order="32">
+    <text>?</text>
+    <written_text>ascii_063.8x8.txt</written_text>
+    <sound_art>ascii_063.wav</sound_art>
+    <visual_art>ascii_063.svg</visual_art>
+    <ascii_code>63</ascii_code>
+  </stone>
+  <stone order="33">
+    <text>@</text>
+    <written_text>ascii_064.8x8.txt</written_text>
+    <sound_art>ascii_064.wav</sound_art>
+    <visual_art>ascii_064.svg</visual_art>
+    <ascii_code>64</ascii_code>
+  </stone>
+  <stone order="34">
+    <text>A</text>
+    <written_text>A.8x8.txt</written_text>
+    <sound_art>A.wav</sound_art>
+    <visual_art>A.svg</visual_art>
+    <ascii_code>65</ascii_code>
+  </stone>
+  <stone order="35">
+    <text>B</text>
+    <written_text>B.8x8.txt</written_text>
+    <sound_art>B.wav</sound_art>
+    <visual_art>B.svg</visual_art>
+    <ascii_code>66</ascii_code>
+  </stone>
+  <stone order="36">
+    <text>C</text>
+    <written_text>C.8x8.txt</written_text>
+    <sound_art>C.wav</sound_art>
+    <visual_art>C.svg</visual_art>
+    <ascii_code>67</ascii_code>
+  </stone>
+  <stone order="37">
+    <text>D</text>
+    <written_text>D.8x8.txt</written_text>
+    <sound_art>D.wav</sound_art>
+    <visual_art>D.svg</visual_art>
+    <ascii_code>68</ascii_code>
+  </stone>
+  <stone order="38">
+    <text>E</text>
+    <written_text>E.8x8.txt</written_text>
+    <sound_art>E.wav</sound_art>
+    <visual_art>E.svg</visual_art>
+    <ascii_code>69</ascii_code>
+  </stone>
+  <stone order="39">
+    <text>F</text>
+    <written_text>F.8x8.txt</written_text>
+    <sound_art>F.wav</sound_art>
+    <visual_art>F.svg</visual_art>
+    <ascii_code>70</ascii_code>
+  </stone>
+  <stone order="40">
+    <text>G</text>
+    <written_text>G.8x8.txt</written_text>
+    <sound_art>G.wav</sound_art>
+    <visual_art>G.svg</visual_art>
+    <ascii_code>71</ascii_code>
+  </stone>
+  <stone order="41">
+    <text>H</text>
+    <written_text>H.8x8.txt</written_text>
+    <sound_art>H.wav</sound_art>
+    <visual_art>H.svg</visual_art>
+    <ascii_code>72</ascii_code>
+  </stone>
+  <stone order="42">
+    <text>I</text>
+    <written_text>I.8x8.txt</written_text>
+    <sound_art>I.wav</sound_art>
+    <visual_art>I.svg</visual_art>
+    <ascii_code>73</ascii_code>
+  </stone>
+  <stone order="43">
+    <text>J</text>
+    <written_text>J.8x8.txt</written_text>
+    <sound_art>J.wav</sound_art>
+    <visual_art>J.svg</visual_art>
+    <ascii_code>74</ascii_code>
+  </stone>
+  <stone order="44">
+    <text>K</text>
+    <written_text>K.8x8.txt</written_text>
+    <sound_art>K.wav</sound_art>
+    <visual_art>K.svg</visual_art>
+    <ascii_code>75</ascii_code>
+  </stone>
+  <stone order="45">
+    <text>L</text>
+    <written_text>L.8x8.txt</written_text>
+    <sound_art>L.wav</sound_art>
+    <visual_art>L.svg</visual_art>
+    <ascii_code>76</ascii_code>
+  </stone>
+  <stone order="46">
+    <text>M</text>
+    <written_text>M.8x8.txt</written_text>
+    <sound_art>M.wav</sound_art>
+    <visual_art>M.svg</visual_art>
+    <ascii_code>77</ascii_code>
+  </stone>
+  <stone order="47">
+    <text>N</text>
+    <written_text>N.8x8.txt</written_text>
+    <sound_art>N.wav</sound_art>
+    <visual_art>N.svg</visual_art>
+    <ascii_code>78</ascii_code>
+  </stone>
+  <stone order="48">
+    <text>O</text>
+    <written_text>O.8x8.txt</written_text>
+    <sound_art>O.wav</sound_art>
+    <visual_art>O.svg</visual_art>
+    <ascii_code>79</ascii_code>
+  </stone>
+  <stone order="49">
+    <text>P</text>
+    <written_text>P.8x8.txt</written_text>
+    <sound_art>P.wav</sound_art>
+    <visual_art>P.svg</visual_art>
+    <ascii_code>80</ascii_code>
+  </stone>
+  <stone order="50">
+    <text>Q</text>
+    <written_text>Q.8x8.txt</written_text>
+    <sound_art>Q.wav</sound_art>
+    <visual_art>Q.svg</visual_art>
+    <ascii_code>81</ascii_code>
+  </stone>
+  <stone order="51">
+    <text>R</text>
+    <written_text>R.8x8.txt</written_text>
+    <sound_art>R.wav</sound_art>
+    <visual_art>R.svg</visual_art>
+    <ascii_code>82</ascii_code>
+  </stone>
+  <stone order="52">
+    <text>S</text>
+    <written_text>S.8x8.txt</written_text>
+    <sound_art>S.wav</sound_art>
+    <visual_art>S.svg</visual_art>
+    <ascii_code>83</ascii_code>
+  </stone>
+  <stone order="53">
+    <text>T</text>
+    <written_text>T.8x8.txt</written_text>
+    <sound_art>T.wav</sound_art>
+    <visual_art>T.svg</visual_art>
+    <ascii_code>84</ascii_code>
+  </stone>
+  <stone order="54">
+    <text>U</text>
+    <written_text>U.8x8.txt</written_text>
+    <sound_art>U.wav</sound_art>
+    <visual_art>U.svg</visual_art>
+    <ascii_code>85</ascii_code>
+  </stone>
+  <stone order="55">
+    <text>V</text>
+    <written_text>V.8x8.txt</written_text>
+    <sound_art>V.wav</sound_art>
+    <visual_art>V.svg</visual_art>
+    <ascii_code>86</ascii_code>
+  </stone>
+  <stone order="56">
+    <text>W</text>
+    <written_text>W.8x8.txt</written_text>
+    <sound_art>W.wav</sound_art>
+    <visual_art>W.svg</visual_art>
+    <ascii_code>87</ascii_code>
+  </stone>
+  <stone order="57">
+    <text>X</text>
+    <written_text>X.8x8.txt</written_text>
+    <sound_art>X.wav</sound_art>
+    <visual_art>X.svg</visual_art>
+    <ascii_code>88</ascii_code>
+  </stone>
+  <stone order="58">
+    <text>Y</text>
+    <written_text>Y.8x8.txt</written_text>
+    <sound_art>Y.wav</sound_art>
+    <visual_art>Y.svg</visual_art>
+    <ascii_code>89</ascii_code>
+  </stone>
+  <stone order="59">
+    <text>Z</text>
+    <written_text>Z.8x8.txt</written_text>
+    <sound_art>Z.wav</sound_art>
+    <visual_art>Z.svg</visual_art>
+    <ascii_code>90</ascii_code>
+  </stone>
+  <stone order="60">
+    <text>[</text>
+    <written_text>ascii_091.8x8.txt</written_text>
+    <sound_art>ascii_091.wav</sound_art>
+    <visual_art>ascii_091.svg</visual_art>
+    <ascii_code>91</ascii_code>
+  </stone>
+  <stone order="61">
+    <text>\</text>
+    <written_text>ascii_092.8x8.txt</written_text>
+    <sound_art>ascii_092.wav</sound_art>
+    <visual_art>ascii_092.svg</visual_art>
+    <ascii_code>92</ascii_code>
+  </stone>
+  <stone order="62">
+    <text>]</text>
+    <written_text>ascii_093.8x8.txt</written_text>
+    <sound_art>ascii_093.wav</sound_art>
+    <visual_art>ascii_093.svg</visual_art>
+    <ascii_code>93</ascii_code>
+  </stone>
+  <stone order="63">
+    <text>^</text>
+    <written_text>ascii_094.8x8.txt</written_text>
+    <sound_art>ascii_094.wav</sound_art>
+    <visual_art>ascii_094.svg</visual_art>
+    <ascii_code>94</ascii_code>
+  </stone>
+  <stone order="64">
+    <text>_</text>
+    <written_text>ascii_095.8x8.txt</written_text>
+    <sound_art>ascii_095.wav</sound_art>
+    <visual_art>ascii_095.svg</visual_art>
+    <ascii_code>95</ascii_code>
+  </stone>
+  <stone order="65">
+    <text>`</text>
+    <written_text>ascii_096.8x8.txt</written_text>
+    <sound_art>ascii_096.wav</sound_art>
+    <visual_art>ascii_096.svg</visual_art>
+    <ascii_code>96</ascii_code>
+  </stone>
+  <stone order="66">
+    <text>a</text>
+    <written_text>a.8x8.txt</written_text>
+    <sound_art>a.wav</sound_art>
+    <visual_art>a.svg</visual_art>
+    <ascii_code>97</ascii_code>
+  </stone>
+  <stone order="67">
+    <text>b</text>
+    <written_text>b.8x8.txt</written_text>
+    <sound_art>b.wav</sound_art>
+    <visual_art>b.svg</visual_art>
+    <ascii_code>98</ascii_code>
+  </stone>
+  <stone order="68">
+    <text>c</text>
+    <written_text>c.8x8.txt</written_text>
+    <sound_art>c.wav</sound_art>
+    <visual_art>c.svg</visual_art>
+    <ascii_code>99</ascii_code>
+  </stone>
+  <stone order="69">
+    <text>d</text>
+    <written_text>d.8x8.txt</written_text>
+    <sound_art>d.wav</sound_art>
+    <visual_art>d.svg</visual_art>
+    <ascii_code>100</ascii_code>
+  </stone>
+  <stone order="70">
+    <text>e</text>
+    <written_text>e.8x8.txt</written_text>
+    <sound_art>e.wav</sound_art>
+    <visual_art>e.svg</visual_art>
+    <ascii_code>101</ascii_code>
+  </stone>
+  <stone order="71">
+    <text>f</text>
+    <written_text>f.8x8.txt</written_text>
+    <sound_art>f.wav</sound_art>
+    <visual_art>f.svg</visual_art>
+    <ascii_code>102</ascii_code>
+  </stone>
+  <stone order="72">
+    <text>g</text>
+    <written_text>g.8x8.txt</written_text>
+    <sound_art>g.wav</sound_art>
+    <visual_art>g.svg</visual_art>
+    <ascii_code>103</ascii_code>
+  </stone>
+  <stone order="73">
+    <text>h</text>
+    <written_text>h.8x8.txt</written_text>
+    <sound_art>h.wav</sound_art>
+    <visual_art>h.svg</visual_art>
+    <ascii_code>104</ascii_code>
+  </stone>
+  <stone order="74">
+    <text>i</text>
+    <written_text>i.8x8.txt</written_text>
+    <sound_art>i.wav</sound_art>
+    <visual_art>i.svg</visual_art>
+    <ascii_code>105</ascii_code>
+  </stone>
+  <stone order="75">
+    <text>j</text>
+    <written_text>j.8x8.txt</written_text>
+    <sound_art>j.wav</sound_art>
+    <visual_art>j.svg</visual_art>
+    <ascii_code>106</ascii_code>
+  </stone>
+  <stone order="76">
+    <text>k</text>
+    <written_text>k.8x8.txt</written_text>
+    <sound_art>k.wav</sound_art>
+    <visual_art>k.svg</visual_art>
+    <ascii_code>107</ascii_code>
+  </stone>
+  <stone order="77">
+    <text>l</text>
+    <written_text>l.8x8.txt</written_text>
+    <sound_art>l.wav</sound_art>
+    <visual_art>l.svg</visual_art>
+    <ascii_code>108</ascii_code>
+  </stone>
+  <stone order="78">
+    <text>m</text>
+    <written_text>m.8x8.txt</written_text>
+    <sound_art>m.wav</sound_art>
+    <visual_art>m.svg</visual_art>
+    <ascii_code>109</ascii_code>
+  </stone>
+  <stone order="79">
+    <text>n</text>
+    <written_text>n.8x8.txt</written_text>
+    <sound_art>n.wav</sound_art>
+    <visual_art>n.svg</visual_art>
+    <ascii_code>110</ascii_code>
+  </stone>
+  <stone order="80">
+    <text>o</text>
+    <written_text>o.8x8.txt</written_text>
+    <sound_art>o.wav</sound_art>
+    <visual_art>o.svg</visual_art>
+    <ascii_code>111</ascii_code>
+  </stone>
+  <stone order="81">
+    <text>p</text>
+    <written_text>p.8x8.txt</written_text>
+    <sound_art>p.wav</sound_art>
+    <visual_art>p.svg</visual_art>
+    <ascii_code>112</ascii_code>
+  </stone>
+  <stone order="82">
+    <text>q</text>
+    <written_text>q.8x8.txt</written_text>
+    <sound_art>q.wav</sound_art>
+    <visual_art>q.svg</visual_art>
+    <ascii_code>113</ascii_code>
+  </stone>
+  <stone order="83">
+    <text>r</text>
+    <written_text>r.8x8.txt</written_text>
+    <sound_art>r.wav</sound_art>
+    <visual_art>r.svg</visual_art>
+    <ascii_code>114</ascii_code>
+  </stone>
+  <stone order="84">
+    <text>s</text>
+    <written_text>s.8x8.txt</written_text>
+    <sound_art>s.wav</sound_art>
+    <visual_art>s.svg</visual_art>
+    <ascii_code>115</ascii_code>
+  </stone>
+  <stone order="85">
+    <text>t</text>
+    <written_text>t.8x8.txt</written_text>
+    <sound_art>t.wav</sound_art>
+    <visual_art>t.svg</visual_art>
+    <ascii_code>116</ascii_code>
+  </stone>
+  <stone order="86">
+    <text>u</text>
+    <written_text>u.8x8.txt</written_text>
+    <sound_art>u.wav</sound_art>
+    <visual_art>u.svg</visual_art>
+    <ascii_code>117</ascii_code>
+  </stone>
+  <stone order="87">
+    <text>v</text>
+    <written_text>v.8x8.txt</written_text>
+    <sound_art>v.wav</sound_art>
+    <visual_art>v.svg</visual_art>
+    <ascii_code>118</ascii_code>
+  </stone>
+  <stone order="88">
+    <text>w</text>
+    <written_text>w.8x8.txt</written_text>
+    <sound_art>w.wav</sound_art>
+    <visual_art>w.svg</visual_art>
+    <ascii_code>119</ascii_code>
+  </stone>
+  <stone order="89">
+    <text>x</text>
+    <written_text>x.8x8.txt</written_text>
+    <sound_art>x.wav</sound_art>
+    <visual_art>x.svg</visual_art>
+    <ascii_code>120</ascii_code>
+  </stone>
+  <stone order="90">
+    <text>y</text>
+    <written_text>y.8x8.txt</written_text>
+    <sound_art>y.wav</sound_art>
+    <visual_art>y.svg</visual_art>
+    <ascii_code>121</ascii_code>
+  </stone>
+  <stone order="91">
+    <text>z</text>
+    <written_text>z.8x8.txt</written_text>
+    <sound_art>z.wav</sound_art>
+    <visual_art>z.svg</visual_art>
+    <ascii_code>122</ascii_code>
+  </stone>
+  <stone order="92">
+    <text>{</text>
+    <written_text>ascii_123.8x8.txt</written_text>
+    <sound_art>ascii_123.wav</sound_art>
+    <visual_art>ascii_123.svg</visual_art>
+    <ascii_code>123</ascii_code>
+  </stone>
+  <stone order="93">
+    <text>|</text>
+    <written_text>ascii_124.8x8.txt</written_text>
+    <sound_art>ascii_124.wav</sound_art>
+    <visual_art>ascii_124.svg</visual_art>
+    <ascii_code>124</ascii_code>
+  </stone>
+  <stone order="94">
+    <text>}</text>
+    <written_text>ascii_125.8x8.txt</written_text>
+    <sound_art>ascii_125.wav</sound_art>
+    <visual_art>ascii_125.svg</visual_art>
+    <ascii_code>125</ascii_code>
+  </stone>
+  <stone order="95">
+    <text>~</text>
+    <written_text>ascii_126.8x8.txt</written_text>
+    <sound_art>ascii_126.wav</sound_art>
+    <visual_art>ascii_126.svg</visual_art>
+    <ascii_code>126</ascii_code>
+  </stone>
+</tablet>

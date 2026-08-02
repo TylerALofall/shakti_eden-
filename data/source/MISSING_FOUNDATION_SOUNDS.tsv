@@ -1,0 +1,38 @@
+# Remaining Foundation sound recordings
+
+Record only the spoken phrase in the second column.
+
+filename	spoken_phrase
+ascii_032.wav	space
+ascii_033.wav	exclamation mark
+ascii_034.wav	quotation mark
+ascii_035.wav	number sign
+ascii_036.wav	dollar sign
+ascii_037.wav	percent sign
+ascii_038.wav	ampersand
+ascii_039.wav	apostrophe
+ascii_040.wav	left parenthesis
+ascii_041.wav	right parenthesis
+ascii_042.wav	asterisk
+ascii_043.wav	plus sign
+ascii_044.wav	comma
+ascii_045.wav	hyphen minus
+ascii_046.wav	period
+ascii_047.wav	slash
+ascii_058.wav	colon
+ascii_059.wav	semicolon
+ascii_060.wav	less than sign
+ascii_061.wav	equals sign
+ascii_062.wav	greater than sign
+ascii_063.wav	question mark
+ascii_064.wav	at sign
+ascii_091.wav	left square bracket
+ascii_092.wav	backslash
+ascii_093.wav	right square bracket
+ascii_094.wav	caret
+ascii_095.wav	underscore
+ascii_096.wav	grave accent
+ascii_123.wav	left curly brace
+ascii_124.wav	vertical bar
+ascii_125.wav	right curly brace
+ascii_126.wav	tilde

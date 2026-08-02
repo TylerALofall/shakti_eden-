@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest schema="SHAKTI_EDEN_MANIFEST_V1">
+  <status>OPEN</status>
+  <artifact_root>../../eden_out</artifact_root>
+
+  <level order="0">
+    <id>foundation_ascii</id>
+    <title>ASCII 32 through 126 and 8x8 handwriting</title>
+    <requires>none</requires>
+  </level>
+
+  <level order="1">
+    <id>counting</id>
+    <title>Counting zero through one hundred</title>
+    <requires>foundation_ascii</requires>
+  </level>
+
+  <level order="2">
+    <id>alphabet</id>
+    <title>Alphabet identity, case, sequence, and elasticity</title>
+    <requires>foundation_ascii,counting</requires>
+  </level>
+
+  <level order="3">
+    <id>colors</id>
+    <title>Color identity, selection, separation, and counting</title>
+    <requires>foundation_ascii,counting,alphabet</requires>
+  </level>
+
+  <level order="4">
+    <id>shapes</id>
+    <title>Two-dimensional shape identity and construction</title>
+    <requires>foundation_ascii,counting,alphabet,colors</requires>
+  </level>
+
+  <level order="5">
+    <id>math</id>
+    <title>Exact addition, subtraction, multiplication, and division</title>
+    <requires>foundation_ascii,counting,alphabet,colors,shapes</requires>
+  </level>
+
+  <tablet order="1">
+    <level>foundation_ascii</level>
+    <lesson>ascii_32_126_solo</lesson>
+    <mode>solo</mode>
+    <requires>none</requires>
+    <state>staged</state>
+    <path>XML_text/00_ascii_32_126_solo.xml</path>
+  </tablet>
+
+  <tablet order="2">
+    <level>counting</level>
+    <lesson>counting_zero_to_ten_solo</lesson>
+    <mode>solo</mode>
+    <requires>foundation_ascii</requires>
+    <state>staged</state>
+    <path>XML_text/01_counting_zero_to_ten_solo.xml</path>
+  </tablet>
+
+  <tablet order="3">
+    <level>counting</level>
+    <lesson>counting_zero_to_ten_timed_light</lesson>
+    <mode>bridge</mode>
+    <requires>foundation_ascii</requires>
+    <state>staged</state>
+    <path>XML_text/01_counting_zero_to_ten_timed_light.xml</path>
+  </tablet>
+
+  <tablet order="4">
+    <level>counting</level>
+    <lesson>counting_one_to_one_hundred_grouped</lesson>
+    <mode>elastic</mode>
+    <requires>foundation_ascii</requires>
+    <state>planned</state>
+    <path>XML_text/01_counting_one_to_one_hundred_grouped.xml</path>
+  </tablet>
+
+  <tablet order="5">
+    <level>alphabet</level>
+    <lesson>alphabet_uppercase_solo</lesson>
+    <mode>solo</mode>
+    <requires>foundation_ascii,counting</requires>
+    <state>staged</state>
+    <path>XML_text/02_alphabet_uppercase_solo.xml</path>
+  </tablet>
+
+  <tablet order="6">
+    <level>alphabet</level>
+    <lesson>alphabet_lowercase_solo</lesson>
+    <mode>solo</mode>
+    <requires>foundation_ascii,counting</requires>
+    <state>staged</state>
+    <path>XML_text/02_alphabet_lowercase_solo.xml</path>
+  </tablet>
+
+  <tablet order="7">
+    <level>alphabet</level>
+    <lesson>alphabet_case_pairs_and_counting</lesson>
+    <mode>bridge</mode>
+    <requires>foundation_ascii,counting</requires>
+    <state>staged</state>
+    <path>XML_text/02_alphabet_case_pairs_and_counting.xml</path>
+  </tablet>
+
+  <tablet order="8">
+    <level>alphabet</level>
+    <lesson>alphabet_growing_sequences</lesson>
+    <mode>elastic</mode>
+    <requires>foundation_ascii,counting</requires>
+    <state>staged</state>
+    <path>XML_text/02_alphabet_growing_sequences.xml</path>
+  </tablet>
+
+  <tablet order="9">
+    <level>colors</level>
+    <lesson>colors_solo_words</lesson>
+    <mode>solo</mode>
+    <requires>foundation_ascii,counting,alphabet</requires>
+    <state>planned</state>
+    <path>XML_text/03_colors_solo_words.xml</path>
+  </tablet>
+
+  <tablet order="10">
+    <level>colors</level>
+    <lesson>colors_count_select_separate</lesson>
+    <mode>bridge</mode>
+    <requires>foundation_ascii,counting,alphabet</requires>
+    <state>planned</state>
+    <path>XML_text/03_colors_count_select_separate.xml</path>
+  </tablet>
+
+  <tablet order="11">
+    <level>colors</level>
+    <lesson>colors_elastic</lesson>
+    <mode>elastic</mode>
+    <requires>foundation_ascii,counting,alphabet</requires>
+    <state>planned</state>
+    <path>XML_text/03_colors_elastic.xml</path>
+  </tablet>
+
+  <tablet order="12">
+    <level>shapes</level>
+    <lesson>shapes_2d_solo</lesson>
+    <mode>solo</mode>
+    <requires>foundation_ascii,counting,alphabet,colors</requires>
+    <state>planned</state>
+    <path>XML_text/04_shapes_2d_solo.xml</path>
+  </tablet>
+
+  <tablet order="13">
+    <level>shapes</level>
+    <lesson>shapes_color_count_bridges</lesson>
+    <mode>bridge</mode>
+    <requires>foundation_ascii,counting,alphabet,colors</requires>
+    <state>planned</state>
+    <path>XML_text/04_shapes_color_count_bridges.xml</path>
+  </tablet>
+
+  <tablet order="14">
+    <level>shapes</level>
+    <lesson>shapes_dot_construction_and_elasticity</lesson>
+    <mode>elastic</mode>
+    <requires>foundation_ascii,counting,alphabet,colors</requires>
+    <state>planned</state>
+    <path>XML_text/04_shapes_dot_construction_and_elasticity.xml</path>
+  </tablet>
+
+  <tablet order="15">
+    <level>math</level>
+    <lesson>addition_subtraction_exact_families</lesson>
+    <mode>bridge</mode>
+    <requires>foundation_ascii,counting,alphabet,colors,shapes</requires>
+    <state>planned</state>
+    <path>XML_text/05_addition_subtraction_exact_families.xml</path>
+  </tablet>
+
+  <tablet order="16">
+    <level>math</level>
+    <lesson>multiplication_division_exact_families</lesson>
+    <mode>bridge</mode>
+    <requires>foundation_ascii,counting,alphabet,colors,shapes</requires>
+    <state>planned</state>
+    <path>XML_text/05_multiplication_division_exact_families.xml</path>
+  </tablet>
+
+  <tablet order="17">
+    <level>math</level>
+    <lesson>math_elastic_transfer</lesson>
+    <mode>elastic</mode>
+    <requires>foundation_ascii,counting,alphabet,colors,shapes</requires>
+    <state>planned</state>
+    <path>XML_text/05_math_elastic_transfer.xml</path>
+  </tablet>
+</manifest>

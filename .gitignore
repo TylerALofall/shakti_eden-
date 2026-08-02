@@ -1,0 +1,13 @@
+shakti
+build_xml
+build_ledger
+src/*.o
+tests/test_shakti
+tests/test_*.txt
+tests/test_*.log
+tests/tmp_builder/
+tests/tmp_loop/
+tests/make_wav_fixture
+build_seed_curriculum
+tests/tmp_seed/
+tests/tmp_mvp/

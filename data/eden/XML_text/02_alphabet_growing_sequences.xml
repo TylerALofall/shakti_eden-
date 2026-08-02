@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tablet schema="SHAKTI_TABLET_4S_V2">
+  <level>alphabet</level>
+  <lesson>alphabet_growing_sequences</lesson>
+  <stone_count>77</stone_count>
+  <stone order="1">
+    <text>A</text>
+    <written_text>A.8x8.txt</written_text>
+    <sound_art>A.wav</sound_art>
+    <visual_art>A.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>1</sequence_length>
+  </stone>
+  <stone order="2">
+    <text>AB</text>
+    <written_text>AB.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav</sound_art>
+    <visual_art>AB.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>2</sequence_length>
+  </stone>
+  <stone order="3">
+    <text>ABC</text>
+    <written_text>ABC.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav</sound_art>
+    <visual_art>ABC.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>3</sequence_length>
+  </stone>
+  <stone order="4">
+    <text>ABCD</text>
+    <written_text>ABCD.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav</sound_art>
+    <visual_art>ABCD.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>4</sequence_length>
+  </stone>
+  <stone order="5">
+    <text>ABCDE</text>
+    <written_text>ABCDE.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav</sound_art>
+    <visual_art>ABCDE.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>5</sequence_length>
+  </stone>
+  <stone order="6">
+    <text>ABCDEF</text>
+    <written_text>ABCDEF.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav</sound_art>
+    <visual_art>ABCDEF.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>6</sequence_length>
+  </stone>
+  <stone order="7">
+    <text>ABCDEFG</text>
+    <written_text>ABCDEFG.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav</sound_art>
+    <visual_art>ABCDEFG.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>7</sequence_length>
+  </stone>
+  <stone order="8">
+    <text>ABCDEFGH</text>
+    <written_text>ABCDEFGH.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav</sound_art>
+    <visual_art>ABCDEFGH.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>8</sequence_length>
+  </stone>
+  <stone order="9">
+    <text>ABCDEFGHI</text>
+    <written_text>ABCDEFGHI.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav</sound_art>
+    <visual_art>ABCDEFGHI.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>9</sequence_length>
+  </stone>
+  <stone order="10">
+    <text>ABCDEFGHIJ</text>
+    <written_text>ABCDEFGHIJ.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav</sound_art>
+    <visual_art>ABCDEFGHIJ.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>10</sequence_length>
+  </stone>
+  <stone order="11">
+    <text>ABCDEFGHIJK</text>
+    <written_text>ABCDEFGHIJK.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav</sound_art>
+    <visual_art>ABCDEFGHIJK.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>11</sequence_length>
+  </stone>
+  <stone order="12">
+    <text>ABCDEFGHIJKL</text>
+    <written_text>ABCDEFGHIJKL.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav</sound_art>
+    <visual_art>ABCDEFGHIJKL.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>12</sequence_length>
+  </stone>
+  <stone order="13">
+    <text>ABCDEFGHIJKLM</text>
+    <written_text>ABCDEFGHIJKLM.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLM.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>13</sequence_length>
+  </stone>
+  <stone order="14">
+    <text>ABCDEFGHIJKLMN</text>
+    <written_text>ABCDEFGHIJKLMN.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMN.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>14</sequence_length>
+  </stone>
+  <stone order="15">
+    <text>ABCDEFGHIJKLMNO</text>
+    <written_text>ABCDEFGHIJKLMNO.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNO.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>15</sequence_length>
+  </stone>
+  <stone order="16">
+    <text>ABCDEFGHIJKLMNOP</text>
+    <written_text>ABCDEFGHIJKLMNOP.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOP.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>16</sequence_length>
+  </stone>
+  <stone order="17">
+    <text>ABCDEFGHIJKLMNOPQ</text>
+    <written_text>ABCDEFGHIJKLMNOPQ.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQ.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>17</sequence_length>
+  </stone>
+  <stone order="18">
+    <text>ABCDEFGHIJKLMNOPQR</text>
+    <written_text>ABCDEFGHIJKLMNOPQR.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav|R.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQR.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>18</sequence_length>
+  </stone>
+  <stone order="19">
+    <text>ABCDEFGHIJKLMNOPQRS</text>
+    <written_text>ABCDEFGHIJKLMNOPQRS.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav|R.wav|S.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQRS.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>19</sequence_length>
+  </stone>
+  <stone order="20">
+    <text>ABCDEFGHIJKLMNOPQRST</text>
+    <written_text>ABCDEFGHIJKLMNOPQRST.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav|R.wav|S.wav|T.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQRST.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>20</sequence_length>
+  </stone>
+  <stone order="21">
+    <text>ABCDEFGHIJKLMNOPQRSTU</text>
+    <written_text>ABCDEFGHIJKLMNOPQRSTU.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav|R.wav|S.wav|T.wav|U.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQRSTU.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>21</sequence_length>
+  </stone>
+  <stone order="22">
+    <text>ABCDEFGHIJKLMNOPQRSTUV</text>
+    <written_text>ABCDEFGHIJKLMNOPQRSTUV.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav|R.wav|S.wav|T.wav|U.wav|V.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQRSTUV.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>22</sequence_length>
+  </stone>
+  <stone order="23">
+    <text>ABCDEFGHIJKLMNOPQRSTUVW</text>
+    <written_text>ABCDEFGHIJKLMNOPQRSTUVW.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav|R.wav|S.wav|T.wav|U.wav|V.wav|W.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQRSTUVW.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>23</sequence_length>
+  </stone>
+  <stone order="24">
+    <text>ABCDEFGHIJKLMNOPQRSTUVWX</text>
+    <written_text>ABCDEFGHIJKLMNOPQRSTUVWX.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav|R.wav|S.wav|T.wav|U.wav|V.wav|W.wav|X.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQRSTUVWX.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>24</sequence_length>
+  </stone>
+  <stone order="25">
+    <text>ABCDEFGHIJKLMNOPQRSTUVWXY</text>
+    <written_text>ABCDEFGHIJKLMNOPQRSTUVWXY.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav|R.wav|S.wav|T.wav|U.wav|V.wav|W.wav|X.wav|Y.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQRSTUVWXY.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>25</sequence_length>
+  </stone>
+  <stone order="26">
+    <text>ABCDEFGHIJKLMNOPQRSTUVWXYZ</text>
+    <written_text>ABCDEFGHIJKLMNOPQRSTUVWXYZ.8x8.txt</written_text>
+    <sound_art>A.wav|B.wav|C.wav|D.wav|E.wav|F.wav|G.wav|H.wav|I.wav|J.wav|K.wav|L.wav|M.wav|N.wav|O.wav|P.wav|Q.wav|R.wav|S.wav|T.wav|U.wav|V.wav|W.wav|X.wav|Y.wav|Z.wav</sound_art>
+    <visual_art>ABCDEFGHIJKLMNOPQRSTUVWXYZ.svg</visual_art>
+    <sequence_kind>uppercase_prefix</sequence_kind>
+    <sequence_length>26</sequence_length>
+  </stone>
+  <stone order="27">
+    <text>Ab</text>
+    <written_text>Ab.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav</sound_art>
+    <visual_art>Ab.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>2</sequence_length>
+  </stone>
+  <stone order="28">
+    <text>Abc</text>
+    <written_text>Abc.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav</sound_art>
+    <visual_art>Abc.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>3</sequence_length>
+  </stone>
+  <stone order="29">
+    <text>Abcd</text>
+    <written_text>Abcd.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav</sound_art>
+    <visual_art>Abcd.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>4</sequence_length>
+  </stone>
+  <stone order="30">
+    <text>Abcde</text>
+    <written_text>Abcde.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav</sound_art>
+    <visual_art>Abcde.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>5</sequence_length>
+  </stone>
+  <stone order="31">
+    <text>Abcdef</text>
+    <written_text>Abcdef.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav</sound_art>
+    <visual_art>Abcdef.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>6</sequence_length>
+  </stone>
+  <stone order="32">
+    <text>Abcdefg</text>
+    <written_text>Abcdefg.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav</sound_art>
+    <visual_art>Abcdefg.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>7</sequence_length>
+  </stone>
+  <stone order="33">
+    <text>Abcdefgh</text>
+    <written_text>Abcdefgh.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav</sound_art>
+    <visual_art>Abcdefgh.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>8</sequence_length>
+  </stone>
+  <stone order="34">
+    <text>Abcdefghi</text>
+    <written_text>Abcdefghi.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav</sound_art>
+    <visual_art>Abcdefghi.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>9</sequence_length>
+  </stone>
+  <stone order="35">
+    <text>Abcdefghij</text>
+    <written_text>Abcdefghij.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav</sound_art>
+    <visual_art>Abcdefghij.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>10</sequence_length>
+  </stone>
+  <stone order="36">
+    <text>Abcdefghijk</text>
+    <written_text>Abcdefghijk.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav</sound_art>
+    <visual_art>Abcdefghijk.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>11</sequence_length>
+  </stone>
+  <stone order="37">
+    <text>Abcdefghijkl</text>
+    <written_text>Abcdefghijkl.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav</sound_art>
+    <visual_art>Abcdefghijkl.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>12</sequence_length>
+  </stone>
+  <stone order="38">
+    <text>Abcdefghijklm</text>
+    <written_text>Abcdefghijklm.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav</sound_art>
+    <visual_art>Abcdefghijklm.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>13</sequence_length>
+  </stone>
+  <stone order="39">
+    <text>Abcdefghijklmn</text>
+    <written_text>Abcdefghijklmn.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav</sound_art>
+    <visual_art>Abcdefghijklmn.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>14</sequence_length>
+  </stone>
+  <stone order="40">
+    <text>Abcdefghijklmno</text>
+    <written_text>Abcdefghijklmno.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav</sound_art>
+    <visual_art>Abcdefghijklmno.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>15</sequence_length>
+  </stone>
+  <stone order="41">
+    <text>Abcdefghijklmnop</text>
+    <written_text>Abcdefghijklmnop.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav</sound_art>
+    <visual_art>Abcdefghijklmnop.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>16</sequence_length>
+  </stone>
+  <stone order="42">
+    <text>Abcdefghijklmnopq</text>
+    <written_text>Abcdefghijklmnopq.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav</sound_art>
+    <visual_art>Abcdefghijklmnopq.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>17</sequence_length>
+  </stone>
+  <stone order="43">
+    <text>Abcdefghijklmnopqr</text>
+    <written_text>Abcdefghijklmnopqr.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav|r.wav</sound_art>
+    <visual_art>Abcdefghijklmnopqr.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>18</sequence_length>
+  </stone>
+  <stone order="44">
+    <text>Abcdefghijklmnopqrs</text>
+    <written_text>Abcdefghijklmnopqrs.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav|r.wav|s.wav</sound_art>
+    <visual_art>Abcdefghijklmnopqrs.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>19</sequence_length>
+  </stone>
+  <stone order="45">
+    <text>Abcdefghijklmnopqrst</text>
+    <written_text>Abcdefghijklmnopqrst.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav|r.wav|s.wav|t.wav</sound_art>
+    <visual_art>Abcdefghijklmnopqrst.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>20</sequence_length>
+  </stone>
+  <stone order="46">
+    <text>Abcdefghijklmnopqrstu</text>
+    <written_text>Abcdefghijklmnopqrstu.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav|r.wav|s.wav|t.wav|u.wav</sound_art>
+    <visual_art>Abcdefghijklmnopqrstu.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>21</sequence_length>
+  </stone>
+  <stone order="47">
+    <text>Abcdefghijklmnopqrstuv</text>
+    <written_text>Abcdefghijklmnopqrstuv.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav|r.wav|s.wav|t.wav|u.wav|v.wav</sound_art>
+    <visual_art>Abcdefghijklmnopqrstuv.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>22</sequence_length>
+  </stone>
+  <stone order="48">
+    <text>Abcdefghijklmnopqrstuvw</text>
+    <written_text>Abcdefghijklmnopqrstuvw.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav|r.wav|s.wav|t.wav|u.wav|v.wav|w.wav</sound_art>
+    <visual_art>Abcdefghijklmnopqrstuvw.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>23</sequence_length>
+  </stone>
+  <stone order="49">
+    <text>Abcdefghijklmnopqrstuvwx</text>
+    <written_text>Abcdefghijklmnopqrstuvwx.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav|r.wav|s.wav|t.wav|u.wav|v.wav|w.wav|x.wav</sound_art>
+    <visual_art>Abcdefghijklmnopqrstuvwx.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>24</sequence_length>
+  </stone>
+  <stone order="50">
+    <text>Abcdefghijklmnopqrstuvwxy</text>
+    <written_text>Abcdefghijklmnopqrstuvwxy.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav|r.wav|s.wav|t.wav|u.wav|v.wav|w.wav|x.wav|y.wav</sound_art>
+    <visual_art>Abcdefghijklmnopqrstuvwxy.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>25</sequence_length>
+  </stone>
+  <stone order="51">
+    <text>Abcdefghijklmnopqrstuvwxyz</text>
+    <written_text>Abcdefghijklmnopqrstuvwxyz.8x8.txt</written_text>
+    <sound_art>A.wav|b.wav|c.wav|d.wav|e.wav|f.wav|g.wav|h.wav|i.wav|j.wav|k.wav|l.wav|m.wav|n.wav|o.wav|p.wav|q.wav|r.wav|s.wav|t.wav|u.wav|v.wav|w.wav|x.wav|y.wav|z.wav</sound_art>
+    <visual_art>Abcdefghijklmnopqrstuvwxyz.svg</visual_art>
+    <sequence_kind>capitalized_prefix</sequence_kind>
+    <sequence_length>26</sequence_length>
+  </stone>
+  <stone order="52">
+    <text>Aa</text>
+    <written_text>Aa.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav</sound_art>
+    <visual_art>Aa.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>1</sequence_length>
+  </stone>
+  <stone order="53">
+    <text>AaBb</text>
+    <written_text>AaBb.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav</sound_art>
+    <visual_art>AaBb.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>2</sequence_length>
+  </stone>
+  <stone order="54">
+    <text>AaBbCc</text>
+    <written_text>AaBbCc.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav</sound_art>
+    <visual_art>AaBbCc.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>3</sequence_length>
+  </stone>
+  <stone order="55">
+    <text>AaBbCcDd</text>
+    <written_text>AaBbCcDd.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav</sound_art>
+    <visual_art>AaBbCcDd.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>4</sequence_length>
+  </stone>
+  <stone order="56">
+    <text>AaBbCcDdEe</text>
+    <written_text>AaBbCcDdEe.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav</sound_art>
+    <visual_art>AaBbCcDdEe.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>5</sequence_length>
+  </stone>
+  <stone order="57">
+    <text>AaBbCcDdEeFf</text>
+    <written_text>AaBbCcDdEeFf.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav</sound_art>
+    <visual_art>AaBbCcDdEeFf.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>6</sequence_length>
+  </stone>
+  <stone order="58">
+    <text>AaBbCcDdEeFfGg</text>
+    <written_text>AaBbCcDdEeFfGg.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGg.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>7</sequence_length>
+  </stone>
+  <stone order="59">
+    <text>AaBbCcDdEeFfGgHh</text>
+    <written_text>AaBbCcDdEeFfGgHh.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHh.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>8</sequence_length>
+  </stone>
+  <stone order="60">
+    <text>AaBbCcDdEeFfGgHhIi</text>
+    <written_text>AaBbCcDdEeFfGgHhIi.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIi.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>9</sequence_length>
+  </stone>
+  <stone order="61">
+    <text>AaBbCcDdEeFfGgHhIiJj</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJj.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJj.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>10</sequence_length>
+  </stone>
+  <stone order="62">
+    <text>AaBbCcDdEeFfGgHhIiJjKk</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKk.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKk.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>11</sequence_length>
+  </stone>
+  <stone order="63">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLl</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLl.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLl.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>12</sequence_length>
+  </stone>
+  <stone order="64">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMm</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMm.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMm.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>13</sequence_length>
+  </stone>
+  <stone order="65">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNn</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNn.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNn.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>14</sequence_length>
+  </stone>
+  <stone order="66">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOo</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOo.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOo.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>15</sequence_length>
+  </stone>
+  <stone order="67">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPp</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPp.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPp.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>16</sequence_length>
+  </stone>
+  <stone order="68">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQq</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQq.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQq.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>17</sequence_length>
+  </stone>
+  <stone order="69">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRr</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRr.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav|R.wav|r.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRr.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>18</sequence_length>
+  </stone>
+  <stone order="70">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSs</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSs.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav|R.wav|r.wav|S.wav|s.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSs.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>19</sequence_length>
+  </stone>
+  <stone order="71">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTt</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTt.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav|R.wav|r.wav|S.wav|s.wav|T.wav|t.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTt.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>20</sequence_length>
+  </stone>
+  <stone order="72">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUu</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUu.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav|R.wav|r.wav|S.wav|s.wav|T.wav|t.wav|U.wav|u.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUu.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>21</sequence_length>
+  </stone>
+  <stone order="73">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVv</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVv.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav|R.wav|r.wav|S.wav|s.wav|T.wav|t.wav|U.wav|u.wav|V.wav|v.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVv.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>22</sequence_length>
+  </stone>
+  <stone order="74">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWw</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWw.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav|R.wav|r.wav|S.wav|s.wav|T.wav|t.wav|U.wav|u.wav|V.wav|v.wav|W.wav|w.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWw.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>23</sequence_length>
+  </stone>
+  <stone order="75">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXx</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXx.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav|R.wav|r.wav|S.wav|s.wav|T.wav|t.wav|U.wav|u.wav|V.wav|v.wav|W.wav|w.wav|X.wav|x.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXx.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>24</sequence_length>
+  </stone>
+  <stone order="76">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYy</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYy.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav|R.wav|r.wav|S.wav|s.wav|T.wav|t.wav|U.wav|u.wav|V.wav|v.wav|W.wav|w.wav|X.wav|x.wav|Y.wav|y.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYy.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>25</sequence_length>
+  </stone>
+  <stone order="77">
+    <text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz</text>
+    <written_text>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz.8x8.txt</written_text>
+    <sound_art>A.wav|a.wav|B.wav|b.wav|C.wav|c.wav|D.wav|d.wav|E.wav|e.wav|F.wav|f.wav|G.wav|g.wav|H.wav|h.wav|I.wav|i.wav|J.wav|j.wav|K.wav|k.wav|L.wav|l.wav|M.wav|m.wav|N.wav|n.wav|O.wav|o.wav|P.wav|p.wav|Q.wav|q.wav|R.wav|r.wav|S.wav|s.wav|T.wav|t.wav|U.wav|u.wav|V.wav|v.wav|W.wav|w.wav|X.wav|x.wav|Y.wav|y.wav|Z.wav|z.wav</sound_art>
+    <visual_art>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz.svg</visual_art>
+    <sequence_kind>case_pair_prefix</sequence_kind>
+    <sequence_length>26</sequence_length>
+  </stone>
+</tablet>

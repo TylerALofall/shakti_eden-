@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tablet schema="SHAKTI_TABLET_4S_V2">
+  <level>alphabet</level>
+  <lesson>alphabet_lowercase_solo</lesson>
+  <stone_count>26</stone_count>
+  <stone order="1">
+    <text>a</text>
+    <written_text>a.8x8.txt</written_text>
+    <sound_art>a.wav</sound_art>
+    <visual_art>a.svg</visual_art>
+    <alphabet_position>1</alphabet_position>
+  </stone>
+  <stone order="2">
+    <text>b</text>
+    <written_text>b.8x8.txt</written_text>
+    <sound_art>b.wav</sound_art>
+    <visual_art>b.svg</visual_art>
+    <alphabet_position>2</alphabet_position>
+  </stone>
+  <stone order="3">
+    <text>c</text>
+    <written_text>c.8x8.txt</written_text>
+    <sound_art>c.wav</sound_art>
+    <visual_art>c.svg</visual_art>
+    <alphabet_position>3</alphabet_position>
+  </stone>
+  <stone order="4">
+    <text>d</text>
+    <written_text>d.8x8.txt</written_text>
+    <sound_art>d.wav</sound_art>
+    <visual_art>d.svg</visual_art>
+    <alphabet_position>4</alphabet_position>
+  </stone>
+  <stone order="5">
+    <text>e</text>
+    <written_text>e.8x8.txt</written_text>
+    <sound_art>e.wav</sound_art>
+    <visual_art>e.svg</visual_art>
+    <alphabet_position>5</alphabet_position>
+  </stone>
+  <stone order="6">
+    <text>f</text>
+    <written_text>f.8x8.txt</written_text>
+    <sound_art>f.wav</sound_art>
+    <visual_art>f.svg</visual_art>
+    <alphabet_position>6</alphabet_position>
+  </stone>
+  <stone order="7">
+    <text>g</text>
+    <written_text>g.8x8.txt</written_text>
+    <sound_art>g.wav</sound_art>
+    <visual_art>g.svg</visual_art>
+    <alphabet_position>7</alphabet_position>
+  </stone>
+  <stone order="8">
+    <text>h</text>
+    <written_text>h.8x8.txt</written_text>
+    <sound_art>h.wav</sound_art>
+    <visual_art>h.svg</visual_art>
+    <alphabet_position>8</alphabet_position>
+  </stone>
+  <stone order="9">
+    <text>i</text>
+    <written_text>i.8x8.txt</written_text>
+    <sound_art>i.wav</sound_art>
+    <visual_art>i.svg</visual_art>
+    <alphabet_position>9</alphabet_position>
+  </stone>
+  <stone order="10">
+    <text>j</text>
+    <written_text>j.8x8.txt</written_text>
+    <sound_art>j.wav</sound_art>
+    <visual_art>j.svg</visual_art>
+    <alphabet_position>10</alphabet_position>
+  </stone>
+  <stone order="11">
+    <text>k</text>
+    <written_text>k.8x8.txt</written_text>
+    <sound_art>k.wav</sound_art>
+    <visual_art>k.svg</visual_art>
+    <alphabet_position>11</alphabet_position>
+  </stone>
+  <stone order="12">
+    <text>l</text>
+    <written_text>l.8x8.txt</written_text>
+    <sound_art>l.wav</sound_art>
+    <visual_art>l.svg</visual_art>
+    <alphabet_position>12</alphabet_position>
+  </stone>
+  <stone order="13">
+    <text>m</text>
+    <written_text>m.8x8.txt</written_text>
+    <sound_art>m.wav</sound_art>
+    <visual_art>m.svg</visual_art>
+    <alphabet_position>13</alphabet_position>
+  </stone>
+  <stone order="14">
+    <text>n</text>
+    <written_text>n.8x8.txt</written_text>
+    <sound_art>n.wav</sound_art>
+    <visual_art>n.svg</visual_art>
+    <alphabet_position>14</alphabet_position>
+  </stone>
+  <stone order="15">
+    <text>o</text>
+    <written_text>o.8x8.txt</written_text>
+    <sound_art>o.wav</sound_art>
+    <visual_art>o.svg</visual_art>
+    <alphabet_position>15</alphabet_position>
+  </stone>
+  <stone order="16">
+    <text>p</text>
+    <written_text>p.8x8.txt</written_text>
+    <sound_art>p.wav</sound_art>
+    <visual_art>p.svg</visual_art>
+    <alphabet_position>16</alphabet_position>
+  </stone>
+  <stone order="17">
+    <text>q</text>
+    <written_text>q.8x8.txt</written_text>
+    <sound_art>q.wav</sound_art>
+    <visual_art>q.svg</visual_art>
+    <alphabet_position>17</alphabet_position>
+  </stone>
+  <stone order="18">
+    <text>r</text>
+    <written_text>r.8x8.txt</written_text>
+    <sound_art>r.wav</sound_art>
+    <visual_art>r.svg</visual_art>
+    <alphabet_position>18</alphabet_position>
+  </stone>
+  <stone order="19">
+    <text>s</text>
+    <written_text>s.8x8.txt</written_text>
+    <sound_art>s.wav</sound_art>
+    <visual_art>s.svg</visual_art>
+    <alphabet_position>19</alphabet_position>
+  </stone>
+  <stone order="20">
+    <text>t</text>
+    <written_text>t.8x8.txt</written_text>
+    <sound_art>t.wav</sound_art>
+    <visual_art>t.svg</visual_art>
+    <alphabet_position>20</alphabet_position>
+  </stone>
+  <stone order="21">
+    <text>u</text>
+    <written_text>u.8x8.txt</written_text>
+    <sound_art>u.wav</sound_art>
+    <visual_art>u.svg</visual_art>
+    <alphabet_position>21</alphabet_position>
+  </stone>
+  <stone order="22">
+    <text>v</text>
+    <written_text>v.8x8.txt</written_text>
+    <sound_art>v.wav</sound_art>
+    <visual_art>v.svg</visual_art>
+    <alphabet_position>22</alphabet_position>
+  </stone>
+  <stone order="23">
+    <text>w</text>
+    <written_text>w.8x8.txt</written_text>
+    <sound_art>w.wav</sound_art>
+    <visual_art>w.svg</visual_art>
+    <alphabet_position>23</alphabet_position>
+  </stone>
+  <stone order="24">
+    <text>x</text>
+    <written_text>x.8x8.txt</written_text>
+    <sound_art>x.wav</sound_art>
+    <visual_art>x.svg</visual_art>
+    <alphabet_position>24</alphabet_position>
+  </stone>
+  <stone order="25">
+    <text>y</text>
+    <written_text>y.8x8.txt</written_text>
+    <sound_art>y.wav</sound_art>
+    <visual_art>y.svg</visual_art>
+    <alphabet_position>25</alphabet_position>
+  </stone>
+  <stone order="26">
+    <text>z</text>
+    <written_text>z.8x8.txt</written_text>
+    <sound_art>z.wav</sound_art>
+    <visual_art>z.svg</visual_art>
+    <alphabet_position>26</alphabet_position>
+  </stone>
+</tablet>

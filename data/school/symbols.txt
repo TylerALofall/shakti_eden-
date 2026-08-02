@@ -1,0 +1,2 @@
+# One approved drill symbol per line.
+# The runtime accepts an exact symbol through: school <symbol>

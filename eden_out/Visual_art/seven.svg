@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" role="img">
+  <rect width="640" height="240" fill="white"/>
+  <text x="40" y="85" font-size="72" font-family="monospace">7</text>
+  <text x="40" y="165" font-size="48" font-family="monospace">seven</text>
+  <circle cx="330" cy="65" r="20" fill="black"/>
+  <circle cx="385" cy="65" r="20" fill="black"/>
+  <circle cx="440" cy="65" r="20" fill="black"/>
+  <circle cx="495" cy="65" r="20" fill="black"/>
+  <circle cx="550" cy="65" r="20" fill="black"/>
+  <circle cx="330" cy="135" r="20" fill="black"/>
+  <circle cx="385" cy="135" r="20" fill="black"/>
+</svg>

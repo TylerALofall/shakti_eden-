@@ -1,0 +1,6 @@
+# SHAKTI_EDEN_FACTS_V1
+# question|answer|relation|source_id
+#
+# Add only Tyler-approved facts.
+# Example format only; do not uncomment until approved:
+# what follows a|B|sequence|tablet_001_stone_002
