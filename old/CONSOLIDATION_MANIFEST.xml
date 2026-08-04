@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConsolidationManifest>
+
+  <Repository>TylerALofall/shakti_eden-</Repository>
+  <PRBaseBranch>main</PRBaseBranch>
+  <PRBaseCommit>54b7ee5b567e055f42fd73e7887486db0b6185f4</PRBaseCommit>
+  <AuthoritativeBranch>copilot/add-copilot-instructions-file</AuthoritativeBranch>
+  <AuthoritativeCommit>86690220e552587f37cb290c4d81bad880ceec52</AuthoritativeCommit>
+  <ManifestDate>2026-08-04</ManifestDate>
+
+  <InspectedBranches>
+    <Branch>
+      <Name>main</Name>
+      <Commit>54b7ee5b567e055f42fd73e7887486db0b6185f4</Commit>
+      <Note>Same commit as copilot/welcome-to-eden. No unique content vs authoritative branch beyond files already present in authoritative tree.</Note>
+      <ArchiveDirectory>none — no unique content to archive</ArchiveDirectory>
+    </Branch>
+    <Branch>
+      <Name>copilot/welcome-to-eden</Name>
+      <Commit>54b7ee5b567e055f42fd73e7887486db0b6185f4</Commit>
+      <Note>Identical commit to main. No unique content.</Note>
+      <ArchiveDirectory>none — identical to main</ArchiveDirectory>
+    </Branch>
+    <Branch>
+      <Name>copilot/organize-project-structure</Name>
+      <Commit>90abc6b5ef6b3827e7108f75ab845c0f2e84de2a</Commit>
+      <Note>Same commit as shakti_welcome_2_Eden. git diff vs main produces zero changed files; all blobs identical to main and authoritative tree.</Note>
+      <ArchiveDirectory>none — no unique content vs main or authoritative tree</ArchiveDirectory>
+    </Branch>
+    <Branch>
+      <Name>shakti_welcome_2_Eden</Name>
+      <Commit>90abc6b5ef6b3827e7108f75ab845c0f2e84de2a</Commit>
+      <Note>Identical commit to copilot/organize-project-structure. No unique content.</Note>
+      <ArchiveDirectory>none — identical to copilot/organize-project-structure</ArchiveDirectory>
+    </Branch>
+    <Branch>
+      <Name>copilot/branch-name-8</Name>
+      <Commit>5d05de37265f3e0d3126bb2fca433359ea74cf17</Commit>
+      <ArchiveDirectory>old/branches/copilot__branch-name-8</ArchiveDirectory>
+    </Branch>
+  </InspectedBranches>
+
+  <ProcessingOrder>
+    <Step order="1">Inspected main (commit 54b7ee5b) — no unique content to archive</Step>
+    <Step order="2">Inspected copilot/welcome-to-eden (same commit as main) — no unique content to archive</Step>
+    <Step order="3">Inspected copilot/organize-project-structure (commit 90abc6b5) — no unique content vs main or authoritative tree</Step>
+    <Step order="4">Inspected shakti_welcome_2_Eden (same commit as copilot/organize-project-structure) — no unique content to archive</Step>
+    <Step order="5">Archived unique files from copilot/branch-name-8 into old/branches/copilot__branch-name-8/</Step>
+    <Step order="6">Applied authoritative branch copilot/add-copilot-instructions-file (commit 86690220) as active tree — all four known additions added byte-for-byte</Step>
+    <Step order="7">Moved authoritative backup/** into old/backup/** — root backup/ removed</Step>
+  </ProcessingOrder>
+
+  <ArchivedFiles>
+    <!-- copilot/branch-name-8 unique files (3 unique blobs not present in authoritative tree) -->
+    <ArchivedFile>
+      <SourceBranch>copilot/branch-name-8</SourceBranch>
+      <SourcePath>README.md</SourcePath>
+      <DestinationPath>old/branches/copilot__branch-name-8/README.md</DestinationPath>
+      <BlobSHA>a6c2733c05c2a420ff0ca0ce441ab546e7ae2855</BlobSHA>
+    </ArchivedFile>
+    <ArchivedFile>
+      <SourceBranch>copilot/branch-name-8</SourceBranch>
+      <SourcePath>SHAKTI_RUNNABLE_MVP_C99_FIX_1_SOURCE 2.zip</SourcePath>
+      <DestinationPath>old/branches/copilot__branch-name-8/SHAKTI_RUNNABLE_MVP_C99_FIX_1_SOURCE 2.zip</DestinationPath>
+      <BlobSHA>e4f38a8938c41b704e33589633c0cb0ae0c7211d</BlobSHA>
+    </ArchivedFile>
+    <ArchivedFile>
+      <SourceBranch>copilot/branch-name-8</SourceBranch>
+      <SourcePath>shakti_eden-three-branches.bundle</SourcePath>
+      <DestinationPath>old/branches/copilot__branch-name-8/shakti_eden-three-branches.bundle</DestinationPath>
+      <BlobSHA>fb3ec4b2194b73d29acd62294ad81008fcf85680</BlobSHA>
+    </ArchivedFile>
+  </ArchivedFiles>
+
+  <OmittedDuplicates>
+    <!-- copilot/branch-name-8 files whose blobs already exist in authoritative active tree -->
+    <OmittedDuplicate>
+      <SourceBranch>copilot/branch-name-8</SourceBranch>
+      <SourcePath>MASTER_ARCHITECTURE.md</SourcePath>
+      <RetainedMatchingPath>MASTER_ARCHITECTURE.md (in authoritative active tree)</RetainedMatchingPath>
+      <BlobSHA>1c66a586ce11f44618a2e2375149ff03841dcb9e</BlobSHA>
+      <Reason>Exact blob already present in authoritative tree</Reason>
+    </OmittedDuplicate>
+    <OmittedDuplicate>
+      <SourceBranch>copilot/branch-name-8</SourceBranch>
+      <SourcePath>SHAKTI_GITHUB_READY_C99.zip</SourcePath>
+      <RetainedMatchingPath>old/backup/SHAKTI_GITHUB_READY_C99.zip (moved from authoritative backup/)</RetainedMatchingPath>
+      <BlobSHA>2be1704be99e06e0bf494f60f280fd1658fe17d6</BlobSHA>
+      <Reason>Exact blob already retained in old/backup/ from authoritative branch move</Reason>
+    </OmittedDuplicate>
+    <OmittedDuplicate>
+      <SourceBranch>copilot/branch-name-8</SourceBranch>
+      <SourcePath>SHAKTI_MCP_REVIEW_AND_BLUEPRINT.md</SourcePath>
+      <RetainedMatchingPath>SHAKTI_MCP_REVIEW_AND_BLUEPRINT.md (in authoritative active tree)</RetainedMatchingPath>
+      <BlobSHA>78b871da04674c296e66a78abd52d762931fc4c2</BlobSHA>
+      <Reason>Exact blob already present in authoritative tree</Reason>
+    </OmittedDuplicate>
+    <OmittedDuplicate>
+      <SourceBranch>copilot/branch-name-8</SourceBranch>
+      <SourcePath>SHAKTI_RUNNABLE_MVP_C99_SOURCE 3.zip</SourcePath>
+      <RetainedMatchingPath>old/backup/SHAKTI_RUNNABLE_MVP_C99_SOURCE 3.zip (moved from authoritative backup/)</RetainedMatchingPath>
+      <BlobSHA>932b9442b05d82f8bcd7124180a4dedee8777058</BlobSHA>
+      <Reason>Exact blob already retained in old/backup/ from authoritative branch move</Reason>
+    </OmittedDuplicate>
+  </OmittedDuplicates>
+
+  <MovedBackupFiles>
+    <MovedFile>
+      <SourcePath>backup/SHAKTI_GITHUB_READY_C99.zip</SourcePath>
+      <DestinationPath>old/backup/SHAKTI_GITHUB_READY_C99.zip</DestinationPath>
+      <BlobSHA>2be1704be99e06e0bf494f60f280fd1658fe17d6</BlobSHA>
+    </MovedFile>
+    <MovedFile>
+      <SourcePath>backup/SHAKTI_RUNNABLE_MVP_C99_SOURCE 3.zip</SourcePath>
+      <DestinationPath>old/backup/SHAKTI_RUNNABLE_MVP_C99_SOURCE 3.zip</DestinationPath>
+      <BlobSHA>932b9442b05d82f8bcd7124180a4dedee8777058</BlobSHA>
+    </MovedFile>
+  </MovedBackupFiles>
+
+  <PathCollisions>
+    <!-- No path collisions encountered. All archived files had unique destination paths. -->
+  </PathCollisions>
+
+  <Counts>
+    <ArchivedUniqueFiles>3</ArchivedUniqueFiles>
+    <OmittedDuplicates>4</OmittedDuplicates>
+    <MovedBackupFiles>2</MovedBackupFiles>
+    <ActiveTreeFiles>597</ActiveTreeFiles>
+    <PathCollisions>0</PathCollisions>
+  </Counts>
+
+  <ValidationResults>
+    <Check id="1">
+      <Description>Every non-old/ final path and blob SHA matches commit 86690220e552587f37cb290c4d81bad880ceec52, except backup/** paths removed from active root</Description>
+      <Result>PASS — authoritative branch has 597 files; main + 4 additions confirmed; backup/ removed from root; old/ directory is new and not part of authoritative tree check</Result>
+    </Check>
+    <Check id="2">
+      <Description>Four known authoritative additions remain byte-identical to authoritative commit</Description>
+      <Result>PASS — blob SHAs verified: .github/copilot-instructions.md=0050264d, .github/instructions/training-docs.instructions.md=0b20edd7, 2026_08_03_Shakti_Constitution_Pass_1_Master_Plan.md=f2017a18, SHAKTI_LOCK_V1_1.md=e161c275</Result>
+    </Check>
+    <Check id="3">
+      <Description>Each retained archive destination has the same blob SHA as its source branch/path</Description>
+      <Result>PASS — all 3 archived files verified by git hash-object after extraction via git cat-file -p</Result>
+    </Check>
+    <Check id="4">
+      <Description>Every omitted file from non-authoritative branches is accounted for by an identical blob in either active tree or retained archive</Description>
+      <Result>PASS — 4 omitted duplicates each have matching blob in authoritative active tree or old/backup/</Result>
+    </Check>
+    <Check id="5">
+      <Description>No duplicate blob SHA among retained archived files unless documented exception</Description>
+      <Result>PASS — 3 archived files have 3 distinct blob SHAs: a6c2733c, e4f38a89, fb3ec4b2</Result>
+    </Check>
+    <Check id="6">
+      <Description>Every authoritative backup/** source blob exists under old/backup/; no root backup/** path remains</Description>
+      <Result>PASS — backup/SHAKTI_GITHUB_READY_C99.zip (2be1704b) and backup/SHAKTI_RUNNABLE_MVP_C99_SOURCE 3.zip (932b9442) moved to old/backup/; root backup/ removed via git rm</Result>
+    </Check>
+    <Check id="7">
+      <Description>No content changed during any move or copy</Description>
+      <Result>PASS — all files extracted via git cat-file -p (exact blob bytes) and verified by git hash-object comparison</Result>
+    </Check>
+  </ValidationResults>
+
+  <UnresolvedItems>
+    <!-- None -->
+  </UnresolvedItems>
+
+</ConsolidationManifest>
