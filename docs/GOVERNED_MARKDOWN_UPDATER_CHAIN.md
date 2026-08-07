@@ -742,4 +742,28 @@ Its controlling instruction is:
 
 ---
 
+**Tyler (master source — the actual current document):**
+
+> Above is the actual current document that isn't bad but it's not great amd I keep getting as way in the work
+
+The full text Tyler pasted is the current constitution document, already in this
+repository at `2026_08_03_Shakti_Constitution_Pass_1_Master_Plan.md`. The skill's
+`inventory` operation reads section names, numbers, and identities from that
+document — it does not rewrite them. Per Tyler's instruction "You have pre born
+and pre stateless they are the same you need to look for the sections inside the
+current constitution," the constitution is the lookup source for existing
+sections.
+
+---
+
+**Tyler:**
+
+> My complaints here is every model tries to rewrite everything not enough thinking. Stop much doing
+
+Recorded as a controlling working-style rule for this skill: think first, make
+the smallest change, preserve existing wording and structure, and never rewrite
+Tyler's documents.
+
+---
+
 End of chain.
