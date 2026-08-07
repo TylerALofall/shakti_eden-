@@ -1,0 +1,98 @@
+# shakti-session-handoff
+
+Continuity card for the next session working on Shakti (`TylerALofall/shakti_eden-`).
+Read this first, then `SHAKTI_LOCK_V1_1.md` (the governing contract), then
+`.github/copilot-instructions.md` (the safety gate). Tyler's latest direct
+instruction always overrides everything below.
+
+## Current state (as of 2026-08-07)
+
+- **Branch of record:** `copilot/patch-1`. Never touch `main`. Stop and report
+  if the working branch is `main`.
+- **Purity:** The tree is **100% C99**. No `.sh`, no Python, no JS, no other
+  languages. This is a hard, non-negotiable requirement (see the `NOTICE` in
+  `.github/copilot-instructions.md`).
+- **Build:** `make` (CFLAGS `-std=c99 -Wall -Wextra -Wpedantic -Werror -O2`).
+- **Test:** `make test` → runs `tests/test_shakti` (unit) and
+  `tests/test_integration` (in-process integration runner). Both green.
+- **Boundary (verified):** `src/`, `include/`, `tools/` contain **no**
+  `system`/`popen`/`fork`/`exec`/`spawn`, no threads, no daemon, **no runner**.
+  Shakti is one self-contained C99 process holding one `shakti_runtime_t`.
+
+## Tyler's architecture (do not violate)
+
+1. **Shakti lives in her own shell (her house).** Her code, Eden, memory,
+   lessons, and state stay inside. Everything inside is hers and stays together.
+2. **No runner, no subprocess, no daemon, no second core.** If a change would
+   introduce one, the change is wrong by definition.
+3. **The MCP is the only gated route out** — the gate and the fingers to the
+   outside. It is a router / dispatcher / receipt-recorder / memory-call route.
+   It does not think, iterate, or run a second core.
+4. **Every message goes through the MCP.** The MCP records chats and contacts to
+   the outside and connects Shakti to long-term memory. She uses it for
+   everything that crosses the shell boundary.
+5. **If she ever needs a CORE/ML to train her, that training happens outside her
+   house** and its artifacts wait elsewhere until deliberately admitted.
+6. **Inside Eden is 100% deterministic.** Fixed order; no probability, no
+   options, no randomness. Anything optional/probabilistic lives outside Eden.
+7. **Child-learning order:** solo lesson first → then crossing (two/three/four
+   way) only after every included lesson was learned solo. Mastery = a 10-correct
+   consecutive streak (100% or not mastered).
+
+## Lock requirements still `UNKNOWN` (candidates for build-out)
+
+From `SHAKTI_LOCK_V1_1.md` §16 — resolve only with Tyler's approval, one module
+at a time, each with named paths + validation before editing:
+
+- Exact scheduler behavior for the nine loop routes (Ga–Gi).
+- Exact C99 in-memory structures for the XML dictionary.
+- Final approved token set beyond ASCII 32–126 + named math/control symbols.
+- Final dynamic-math transition after resident foundational tables.
+- Memory-game self-practice / twin-view behavior.
+- Exact future Swift APIs and entitlements.
+- Background music outside the Level-2 victory event.
+- Exact controlled repository deletion list after validation.
+
+## Approved build-out order (from Tyler, child-learning order)
+
+1. **Nine-route loop scheduler** — deterministic fixed-order route selection
+   (resolves the lock `UNKNOWN`). Allowed: `src/shakti_loop.c`,
+   `include/shakti_loop.h`, `tests/` + `make`/`make test`.
+2. **Tri-sense convergence** — the four-panel lesson unit (visual_art /
+   voice_text / written_text / text) with `sound_art` timing (Lock §8).
+3. **Three-stage memory hardening** — append-only capsules + exact replay
+   (Lock §13, addendum §5).
+4. **Deterministic senses / pre-born tables** — extend hard-coded validation
+   tables level by level (Glyphs → Counting → ABC → Colors → Shapes → Basic
+   math), compositional crossing rather than flat mass example generation.
+
+## What was done in the session that created this card
+
+- Inventoried the `TylerALofall-patch-1` zips (read-only, extracted to
+  `/tmp/patch1_inventory/`). Conclusion: the current repo tree is **newer and
+  better**; the zips are older snapshots. Do **not** overwrite the tree from
+  them. The only Python (`migrate_curriculum.py`) existed only inside a zip and
+  was **not** imported (Python is forbidden).
+- Ported the four POSIX shell integration tests to a single pure-C99
+  in-process runner `tests/test_integration.c` (no shell, no subprocess).
+- Refactored tools to C-callable entry points with `main` kept for standalone
+  builds: `shakti_build_xml_file`, `shakti_build_ledger_file`,
+  `shakti_build_seed_curriculum`, `shakti_write_test_wav`.
+- `src/main.c` exposes `shakti_app_main` when compiled with
+  `-DSHAKTI_APP_NO_MAIN`; standalone `shakti` still builds with `main`.
+- Deleted `tests/test_builder.sh`, `test_loop.sh`, `test_seed.sh`,
+  `test_mvp.sh`. `make` + `make test` green.
+
+## How to work here (hard rules)
+
+- **C99 only.** No Python/JS/shell/subprocess/daemon — and no wording that could
+  be read as adding them.
+- **Never edit files with Python.** Use transparent direct editing tools.
+- **No agents unless Tyler directly commands them.**
+- **Think first; smallest change; never rewrite Tyler's documents or structure.**
+- Read-only for inventory/status unless Tyler approves a plan naming every
+  allowed path and its validation. State allowed paths + validation before any
+  edit.
+- One approved section/module at a time. Never bulk delete/overwrite/rename.
+- Keep Eden status OPEN. Preserve every correct and incorrect School attempt in
+  append-only readable logs.
