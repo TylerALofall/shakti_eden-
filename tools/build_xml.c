@@ -1,3 +1,5 @@
+#include "shakti_build_xml.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -217,7 +219,13 @@ static int write_stone(
     return 1;
 }
 
-int main(int argc, char **argv)
+int shakti_build_xml_file(
+    const char *list_path,
+    const char *output_path,
+    const char *level,
+    const char *lesson,
+    const char *artifact_root
+)
 {
     FILE *list;
     FILE *output;
@@ -226,20 +234,19 @@ int main(int argc, char **argv)
     size_t order;
     int success;
 
-    if (argc != 6) {
-        fprintf(
-            stderr,
-            "Usage: %s LIST.txt OUTPUT.xml LEVEL LESSON ARTIFACT_ROOT\n",
-            argv[0]
-        );
-        return EXIT_FAILURE;
+    if (list_path == NULL ||
+        output_path == NULL ||
+        level == NULL ||
+        lesson == NULL ||
+        artifact_root == NULL) {
+        return 0;
     }
 
-    list = fopen(argv[1], "r");
+    list = fopen(list_path, "r");
 
     if (list == NULL) {
         perror("Could not open list");
-        return EXIT_FAILURE;
+        return 0;
     }
 
     if (!count_stones(list, &stone_count) ||
@@ -250,15 +257,15 @@ int main(int argc, char **argv)
             "or too many stones.\n",
             stderr
         );
-        return EXIT_FAILURE;
+        return 0;
     }
 
-    output = fopen(argv[2], "w");
+    output = fopen(output_path, "w");
 
     if (output == NULL) {
         fclose(list);
         perror("Could not create XML");
-        return EXIT_FAILURE;
+        return 0;
     }
 
     success =
@@ -267,8 +274,8 @@ int main(int argc, char **argv)
             "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
             "<tablet schema=\"SHAKTI_TABLET_4S_V2\">\n"
         ) > 0 &&
-        write_tag(output, "  ", "level", argv[3]) &&
-        write_tag(output, "  ", "lesson", argv[4]) &&
+        write_tag(output, "  ", "level", level) &&
+        write_tag(output, "  ", "lesson", lesson) &&
         fprintf(
             output,
             "  <stone_count>%lu</stone_count>\n",
@@ -289,7 +296,7 @@ int main(int argc, char **argv)
 
         if (!write_stone(
                 output,
-                argv[5],
+                artifact_root,
                 text,
                 order)) {
             fprintf(
@@ -322,15 +329,40 @@ int main(int argc, char **argv)
     }
 
     if (!success) {
-        remove(argv[2]);
-        return EXIT_FAILURE;
+        remove(output_path);
+        return 0;
     }
 
     printf(
         "Built %s with %lu manifest-ready stones.\n",
-        argv[2],
+        output_path,
         (unsigned long)stone_count
     );
 
+    return 1;
+}
+
+#ifndef SHAKTI_TOOL_NO_MAIN
+int main(int argc, char **argv)
+{
+    if (argc != 6) {
+        fprintf(
+            stderr,
+            "Usage: %s LIST.txt OUTPUT.xml LEVEL LESSON ARTIFACT_ROOT\n",
+            argv[0]
+        );
+        return EXIT_FAILURE;
+    }
+
+    if (!shakti_build_xml_file(
+            argv[1],
+            argv[2],
+            argv[3],
+            argv[4],
+            argv[5])) {
+        return EXIT_FAILURE;
+    }
+
     return EXIT_SUCCESS;
 }
+#endif

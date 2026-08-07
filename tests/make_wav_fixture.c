@@ -1,3 +1,5 @@
+#include "shakti_test_wav.h"
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +26,7 @@ static int write_u32(FILE *file, uint32_t value)
     return fwrite(bytes, 1U, sizeof(bytes), file) == sizeof(bytes);
 }
 
-int main(int argc, char **argv)
+int shakti_write_test_wav(const char *path)
 {
     FILE *file;
     uint32_t sample_count;
@@ -32,18 +34,17 @@ int main(int argc, char **argv)
     uint32_t index;
     int success;
 
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s OUTPUT.wav\n", argv[0]);
-        return EXIT_FAILURE;
+    if (path == NULL) {
+        return 0;
     }
 
     sample_count = UINT32_C(160);
     data_size = sample_count * UINT32_C(2);
-    file = fopen(argv[1], "wb");
+    file = fopen(path, "wb");
 
     if (file == NULL) {
         perror("Could not create WAV");
-        return EXIT_FAILURE;
+        return 0;
     }
 
     success =
@@ -73,5 +74,21 @@ int main(int argc, char **argv)
         success = 0;
     }
 
-    return success ? EXIT_SUCCESS : EXIT_FAILURE;
+    return success;
 }
+
+#ifndef SHAKTI_TOOL_NO_MAIN
+int main(int argc, char **argv)
+{
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s OUTPUT.wav\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    if (!shakti_write_test_wav(argv[1])) {
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
+}
+#endif

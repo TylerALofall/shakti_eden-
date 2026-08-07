@@ -1235,7 +1235,13 @@ static void print_usage(const char *program_name)
     puts("  no flag  Start the interactive nine-stage loop.");
 }
 
-int main(int argc, char **argv)
+#ifdef SHAKTI_APP_NO_MAIN
+#define SHAKTI_APP_MAIN shakti_app_main
+#else
+#define SHAKTI_APP_MAIN main
+#endif
+
+int SHAKTI_APP_MAIN(int argc, char **argv)
 {
     static shakti_runtime_t runtime;
     shakti_report_t startup_report;
