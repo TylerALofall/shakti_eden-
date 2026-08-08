@@ -1,8 +1,8 @@
 /*
- * Pure-C99 integration runner.
+ * In-process integration runner (C99; uses POSIX filesystem APIs for sandboxing).
  *
- * Faithful in-process replacement for the former POSIX shell integration
- * tests (test_builder.sh, test_loop.sh, test_seed.sh, test_mvp.sh). It calls
+ * Faithful replacement for the former shell integration tests
+ * (test_builder.sh, test_loop.sh, test_seed.sh, test_mvp.sh). It calls
  * Shakti's runtime (src/main.c, exposed as shakti_app_main) and the three
  * builder tools as direct C functions. There is no shell, no subprocess, and
  * no runner: every check executes inside this one process, in Shakti's house.
