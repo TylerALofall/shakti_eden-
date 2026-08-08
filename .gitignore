@@ -4,6 +4,7 @@ build_ledger
 src/*.o
 tests/test_shakti
 tests/test_integration
+tests/test_roundtrip
 tests/test_*.txt
 tests/test_*.log
 tests/tmp_builder/
