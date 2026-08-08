@@ -198,10 +198,10 @@ int shakti_receptor_write_frame_artifact(
 
             for (column = 0U; column < 8U; ++column) {
                 success = fputc(
-                    row == (unsigned int)cell_index % 8U &&
-                            column ==
-                                (unsigned int)receptor->frame_text[
-                                    cell_index] - (unsigned int)'0'
+                    (row * 8U + column) %
+                            ((unsigned int)receptor->frame_text[
+                                cell_index] - (unsigned int)'0' + 1U) ==
+                        0U
                         ? '#'
                         : '.',
                     file
