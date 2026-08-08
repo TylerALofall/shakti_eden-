@@ -1,5 +1,7 @@
 /* File: tools/build_seed_curriculum.c */
 
+#include "shakti_build_seed_curriculum.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1023,7 +1025,10 @@ static int join_xml_path(
            (size_t)written < destination_size;
 }
 
-int main(int argc, char **argv)
+int shakti_build_seed_curriculum(
+    const char *eden_data_root,
+    const char *artifact_root
+)
 {
     char ascii_xml[SHAKTI_PATH_CAPACITY];
     char counting_xml[SHAKTI_PATH_CAPACITY];
@@ -1033,6 +1038,87 @@ int main(int argc, char **argv)
     char pairs_xml[SHAKTI_PATH_CAPACITY];
     char sequences_xml[SHAKTI_PATH_CAPACITY];
 
+    if (eden_data_root == NULL || artifact_root == NULL) {
+        return 0;
+    }
+
+    if (!join_xml_path(
+            ascii_xml,
+            sizeof(ascii_xml),
+            eden_data_root,
+            "00_ascii_32_126_solo.xml") ||
+        !join_xml_path(
+            counting_xml,
+            sizeof(counting_xml),
+            eden_data_root,
+            "01_counting_zero_to_ten_solo.xml") ||
+        !join_xml_path(
+            timed_xml,
+            sizeof(timed_xml),
+            eden_data_root,
+            "01_counting_zero_to_ten_timed_light.xml") ||
+        !join_xml_path(
+            uppercase_xml,
+            sizeof(uppercase_xml),
+            eden_data_root,
+            "02_alphabet_uppercase_solo.xml") ||
+        !join_xml_path(
+            lowercase_xml,
+            sizeof(lowercase_xml),
+            eden_data_root,
+            "02_alphabet_lowercase_solo.xml") ||
+        !join_xml_path(
+            pairs_xml,
+            sizeof(pairs_xml),
+            eden_data_root,
+            "02_alphabet_case_pairs_and_counting.xml") ||
+        !join_xml_path(
+            sequences_xml,
+            sizeof(sequences_xml),
+            eden_data_root,
+            "02_alphabet_growing_sequences.xml")) {
+        return 0;
+    }
+
+    if (!build_ascii(ascii_xml, artifact_root) ||
+        !build_counting(
+            counting_xml,
+            "counting_zero_to_ten_solo",
+            artifact_root) ||
+        !build_counting(
+            timed_xml,
+            "counting_zero_to_ten_timed_light",
+            artifact_root) ||
+        !build_alphabet_solo(
+            uppercase_xml,
+            "alphabet_uppercase_solo",
+            artifact_root,
+            (unsigned char)'A') ||
+        !build_alphabet_solo(
+            lowercase_xml,
+            "alphabet_lowercase_solo",
+            artifact_root,
+            (unsigned char)'a') ||
+        !build_case_pairs_and_counting(
+            pairs_xml,
+            artifact_root) ||
+        !build_growing_sequences(
+            sequences_xml,
+            artifact_root)) {
+        fputs("Could not build the seed curriculum.\n", stderr);
+        return 0;
+    }
+
+    puts(
+        "Foundation, counting, and alphabet curriculum generated."
+    );
+
+    return 1;
+}
+
+#ifndef SHAKTI_TOOL_NO_MAIN
+int main(int argc, char **argv)
+{
     if (argc != 3) {
         fprintf(
             stderr,
@@ -1042,76 +1128,10 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    if (!join_xml_path(
-            ascii_xml,
-            sizeof(ascii_xml),
-            argv[1],
-            "00_ascii_32_126_solo.xml") ||
-        !join_xml_path(
-            counting_xml,
-            sizeof(counting_xml),
-            argv[1],
-            "01_counting_zero_to_ten_solo.xml") ||
-        !join_xml_path(
-            timed_xml,
-            sizeof(timed_xml),
-            argv[1],
-            "01_counting_zero_to_ten_timed_light.xml") ||
-        !join_xml_path(
-            uppercase_xml,
-            sizeof(uppercase_xml),
-            argv[1],
-            "02_alphabet_uppercase_solo.xml") ||
-        !join_xml_path(
-            lowercase_xml,
-            sizeof(lowercase_xml),
-            argv[1],
-            "02_alphabet_lowercase_solo.xml") ||
-        !join_xml_path(
-            pairs_xml,
-            sizeof(pairs_xml),
-            argv[1],
-            "02_alphabet_case_pairs_and_counting.xml") ||
-        !join_xml_path(
-            sequences_xml,
-            sizeof(sequences_xml),
-            argv[1],
-            "02_alphabet_growing_sequences.xml")) {
+    if (!shakti_build_seed_curriculum(argv[1], argv[2])) {
         return EXIT_FAILURE;
     }
-
-    if (!build_ascii(ascii_xml, argv[2]) ||
-        !build_counting(
-            counting_xml,
-            "counting_zero_to_ten_solo",
-            argv[2]) ||
-        !build_counting(
-            timed_xml,
-            "counting_zero_to_ten_timed_light",
-            argv[2]) ||
-        !build_alphabet_solo(
-            uppercase_xml,
-            "alphabet_uppercase_solo",
-            argv[2],
-            (unsigned char)'A') ||
-        !build_alphabet_solo(
-            lowercase_xml,
-            "alphabet_lowercase_solo",
-            argv[2],
-            (unsigned char)'a') ||
-        !build_case_pairs_and_counting(
-            pairs_xml,
-            argv[2]) ||
-        !build_growing_sequences(
-            sequences_xml,
-            argv[2])) {
-        fputs("Could not build the seed curriculum.\n", stderr);
-        return EXIT_FAILURE;
-    }
-
-    puts(
-        "Foundation, counting, and alphabet curriculum generated."
-    );
 
     return EXIT_SUCCESS;
 }
+#endif

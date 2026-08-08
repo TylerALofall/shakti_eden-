@@ -3,6 +3,8 @@ build_xml
 build_ledger
 src/*.o
 tests/test_shakti
+tests/test_integration
+tests/test_roundtrip
 tests/test_*.txt
 tests/test_*.log
 tests/tmp_builder/
@@ -11,3 +13,5 @@ tests/make_wav_fixture
 build_seed_curriculum
 tests/tmp_seed/
 tests/tmp_mvp/
+eyes/eyes_map
+eyes/output/

@@ -4,10 +4,13 @@
 
 #include "shakti_handwriting.h"
 #include "shakti_asset.h"
+#include "shakti_artifact.h"
+#include "shakti_loader.h"
 #include "shakti_log.h"
 #include "shakti_loop.h"
 #include "shakti_memory.h"
 #include "shakti_reason.h"
+#include "shakti_receptor.h"
 #include "shakti_school.h"
 #include "shakti_score.h"
 #include "shakti_time.h"
@@ -23,6 +26,8 @@
 #define TEST_MENU "tests/test_menu.txt"
 #define TEST_LONG_TERM "tests/test_long_term.log"
 #define TEST_WRITTEN "tests/test_written_text.txt"
+#define TEST_FRAME "tests/test_frame_artifact.txt"
+#define TEST_LOADER "tests/test_loader_fixture.txt"
 
 static void write_text_file(const char *path, const char *text)
 {
@@ -311,6 +316,118 @@ static void test_reason_gate(void)
     assert(strcmp(decision.answer, "answer") == 0);
 }
 
+static void test_receptor_capture(void)
+{
+    shakti_receptor_t receptor;
+    shakti_receptor_t repeat;
+    shakti_tick_clock_t clock_state;
+    shakti_memory_state_t memory;
+    shakti_tick_t tick;
+    unsigned long valid;
+    unsigned long invalid;
+
+    write_text_file(TEST_LOG, "");
+
+    shakti_receptor_init(&receptor);
+    shakti_tick_clock_init(&clock_state);
+
+    assert(!shakti_receptor_configure(
+        &receptor,
+        0U,
+        8U,
+        2U,
+        1U,
+        1U
+    ));
+    assert(!shakti_receptor_configure(
+        &receptor,
+        8U,
+        8U,
+        2U,
+        5U,
+        1U
+    ));
+    assert(!shakti_receptor_configure(
+        &receptor,
+        9U,
+        8U,
+        2U,
+        1U,
+        1U
+    ));
+    assert(!shakti_receptor_configure(
+        &receptor,
+        8U,
+        8U,
+        2U,
+        1U,
+        3U
+    ));
+    assert(shakti_receptor_configure(
+        &receptor,
+        8U,
+        8U,
+        2U,
+        1U,
+        1U
+    ));
+
+    assert(!shakti_receptor_poll(&receptor));
+    assert(!shakti_receptor_readout(&receptor));
+    assert(shakti_receptor_open_shutter(&receptor, &clock_state));
+    assert(!shakti_receptor_open_shutter(&receptor, &clock_state));
+    assert(!shakti_receptor_readout(&receptor));
+    assert(!shakti_receptor_poll(&receptor));
+    assert(!shakti_receptor_readout(&receptor));
+    assert(shakti_receptor_poll(&receptor));
+    assert(shakti_receptor_readout(&receptor));
+    assert(strlen(receptor.frame_text) == 64U);
+
+    shakti_receptor_init(&repeat);
+    assert(shakti_receptor_configure(
+        &repeat,
+        8U,
+        8U,
+        2U,
+        1U,
+        1U
+    ));
+    repeat.exposure_start = receptor.exposure_start;
+    repeat.poll_count = receptor.exposure_ticks;
+    repeat.shutter_open = 1U;
+    assert(shakti_receptor_readout(&repeat));
+    assert(strcmp(receptor.frame_text, repeat.frame_text) == 0);
+
+    assert(shakti_receptor_write_frame_artifact(&receptor, TEST_FRAME));
+    assert(shakti_artifact_validate_written_text(
+        TEST_FRAME,
+        receptor.frame_text
+    ));
+
+    assert(shakti_tick_next(&clock_state, &tick));
+    assert(shakti_log_append(
+        TEST_LOG,
+        "LRN1",
+        &tick,
+        "Ca",
+        1U,
+        "AWAKE",
+        shakti_channel_name(SHAKTI_CHANNEL_VISUAL_ART),
+        "receptor_frame",
+        "capture",
+        receptor.frame_text
+    ));
+    assert(shakti_log_validate_file(TEST_LOG, &valid, &invalid));
+    assert(valid == 1UL);
+    assert(invalid == 0UL);
+
+    shakti_memory_init(&memory);
+    shakti_memory_remember(&memory, &tick, receptor.frame_text);
+    assert(memory.working_count == 1U);
+    assert(strcmp(memory.working[0].text, receptor.frame_text) == 0);
+    assert(memory.working[0].tick.frame == tick.frame);
+}
+
 static void test_school_penalty(void)
 {
     shakti_school_state_t state;
@@ -359,6 +476,47 @@ static void test_school_penalty(void)
     }
 }
 
+static void test_loader(void)
+{
+    shakti_loader_result_t result;
+    shakti_loader_kind_t kind;
+
+    write_text_file(TEST_LOADER, "two");
+
+    assert(shakti_loader_kind_from_text("text", &kind));
+    assert(kind == SHAKTI_LOADER_KIND_TEXT);
+    assert(!shakti_loader_kind_from_text("unknown", &kind));
+
+    assert(shakti_loader_load(
+        TEST_LOADER,
+        SHAKTI_LOADER_KIND_TEXT,
+        &result
+    ));
+    assert(result.kind == SHAKTI_LOADER_KIND_TEXT);
+    assert(result.size == 3U);
+    assert(memcmp(result.data, "two", 3U) == 0);
+    assert(strcmp(result.path, TEST_LOADER) == 0);
+
+    assert(shakti_loader_load(
+        TEST_LOADER,
+        SHAKTI_LOADER_KIND_SOUND_ART,
+        &result
+    ));
+    assert(result.kind == SHAKTI_LOADER_KIND_SOUND_ART);
+    assert(result.size == 3U);
+
+    assert(!shakti_loader_load(
+        "../etc/passwd",
+        SHAKTI_LOADER_KIND_TEXT,
+        &result
+    ));
+    assert(!shakti_loader_load(
+        "tests/does_not_exist.txt",
+        SHAKTI_LOADER_KIND_TEXT,
+        &result
+    ));
+}
+
 int main(void)
 {
     test_exact_validation_score();
@@ -368,7 +526,9 @@ int main(void)
     test_asset_keys();
     test_memory_and_loop();
     test_reason_gate();
+    test_receptor_capture();
     test_school_penalty();
+    test_loader();
 
     remove(TEST_FACTS);
     remove(TEST_THESAURUS);
@@ -380,6 +540,8 @@ int main(void)
     remove(TEST_MENU);
     remove(TEST_LONG_TERM);
     remove(TEST_WRITTEN);
+    remove(TEST_FRAME);
+    remove(TEST_LOADER);
 
     puts("All Shakti C99 tests passed.");
 
