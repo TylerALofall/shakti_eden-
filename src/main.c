@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "shakti_config.h"
+#include "shakti_loader.h"
 #include "shakti_log.h"
 #include "shakti_loop.h"
 #include "shakti_memory.h"
@@ -270,6 +271,40 @@ static int log_tool_call(
         "mcp_tool_call",
         arguments
     );
+}
+
+static int handle_load(
+    shakti_runtime_t *runtime,
+    char *arguments
+)
+{
+    char *fields[2];
+    shakti_loader_kind_t kind;
+    shakti_loader_result_t result;
+    shakti_tick_t tick;
+
+    if (!split_pipe_fields(arguments, fields, 2U) ||
+        !shakti_loader_kind_from_text(fields[1], &kind)) {
+        puts(
+            "Use: load path | text, written_text, visual_art, or sound_art"
+        );
+        return 1;
+    }
+
+    if (!shakti_tick_next(&runtime->clock, &tick) ||
+        !shakti_loader_load(fields[0], kind, &result)) {
+        puts("Load failed.");
+        return 1;
+    }
+
+    printf(
+        "Loaded %s (%s): %lu bytes.\n",
+        result.path,
+        shakti_loader_kind_name(result.kind),
+        (unsigned long)result.size
+    );
+
+    return 1;
 }
 
 static int handle_ask(
@@ -676,6 +711,7 @@ static void print_help(void)
     puts("draft exact-text");
     puts("tablet XML_PATH ARTIFACT_ROOT");
     puts("manifest MANIFEST_XML LEDGER_TSV");
+    puts("load path | text|written_text|visual_art|sound_art");
     puts("recall exact-text-fragment");
     puts("validate");
     puts("status");
@@ -760,6 +796,10 @@ static int process_tool(
 
     if (strcmp(command, "manifest") == 0) {
         return handle_manifest(runtime, arguments);
+    }
+
+    if (strcmp(command, "load") == 0) {
+        return handle_load(runtime, arguments);
     }
 
     if (strcmp(command, "recall") == 0) {
