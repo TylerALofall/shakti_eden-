@@ -125,7 +125,8 @@ int eyes_reconstruct_mono(
 /*
  * Diff a reconstruction against the original.
  * Mode 0 (mono): both sides are reduced to ink/paper and compared.
- * Mode 1 (color): exact RGBA byte compare per pixel.
+ * Mode 1 (color): exact RGBA byte compare per pixel. A drifted pixel is
+ * one that did not come back; drift 0 means every pixel came back.
  * Returns the number of drifted pixels, or (unsigned long)-1 on rejection.
  */
 unsigned long eyes_diff(

@@ -85,6 +85,47 @@ static int check_support(void)
 }
 
 /*
+ * Diff probe: a copy must come back with 0 errors, garbage must not.
+ * Uses the 8x8 doc buffers, which are static at this point in main.
+ */
+static int check_diff(void)
+{
+    unsigned long pixel;
+    unsigned long pixel_count;
+    unsigned long drift;
+
+    if (!eyes_load_document(1U, 8U, 8U, NULL, 3UL, g_original,
+                            EYES_DOC_CAPACITY)) {
+        printf("FAIL: diff probe load\n");
+        return 0;
+    }
+
+    drift = eyes_diff(g_original, g_original, 8U, 8U, 1);
+
+    if (drift != 0UL) {
+        printf("FAIL: color diff of a perfect copy is %lu, want 0\n",
+               drift);
+        return 0;
+    }
+
+    pixel_count = 8UL * 8UL;
+
+    for (pixel = 0UL; pixel < pixel_count; ++pixel) {
+        g_recon[pixel * 4UL] = (unsigned char)(g_original[pixel * 4UL] ^ 255U);
+    }
+
+    drift = eyes_diff(g_original, g_recon, 8U, 8U, 1);
+
+    if (drift == 0UL || drift == (unsigned long)-1) {
+        printf("FAIL: color diff of garbage is %lu, want nonzero\n",
+               drift);
+        return 0;
+    }
+
+    return 1;
+}
+
+/*
  * Recognize text on the current contents of g_recon and redraw it clean.
  * Builds the line-ordered text ('|' between lines, ' ' for skipped cells).
  * Returns character count, or (unsigned long)-1 on rejection.
@@ -457,7 +498,7 @@ int main(void)
 
     print_section_map();
 
-    if (!check_support()) {
+    if (!check_support() || !check_diff()) {
         return 1;
     }
 
