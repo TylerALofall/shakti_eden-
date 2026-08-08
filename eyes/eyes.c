@@ -576,33 +576,9 @@ unsigned long eyes_diff(
 
     for (index = 0UL; index < pixel_count; ++index) {
         if (color) {
-            /*
-             * A pixel survives the color pull when it is paper or one
-             * full-strength primary. Everything else -- half-tones and
-             * the 3-color mix black alike -- pulls to paper. Only those
-             * unreadable pixels count as loss; a primary that reads back
-             * clean is not loss.
-             */
-            unsigned long base;
-            unsigned int r;
-            unsigned int g;
-            unsigned int b;
-            unsigned int paper;
-            unsigned int primary;
-            unsigned int survives;
-
-            base = index * 4UL;
-            r = (unsigned int)original[base];
-            g = (unsigned int)original[base + 1UL];
-            b = (unsigned int)original[base + 2UL];
-            paper = r >= 128U && g >= 128U && b >= 128U;
-            primary =
-                (r >= 128U && g < 128U && b < 128U) ||
-                (r < 128U && g >= 128U && b < 128U) ||
-                (r < 128U && g < 128U && b >= 128U);
-            survives = paper || primary;
-
-            if (!survives) {
+            /* Per-pixel: count every pixel that did not come back. */
+            if (memcmp(original + index * 4UL,
+                       reconstructed + index * 4UL, 4UL) != 0) {
                 ++drift;
             }
         } else {
