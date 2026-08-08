@@ -146,6 +146,42 @@ int shakti_receptor_readout(shakti_receptor_t *receptor)
     return 1;
 }
 
+int shakti_receptor_binarize_frame(
+    const char *frame_text,
+    unsigned int cell_count,
+    char *output,
+    unsigned long output_capacity
+)
+{
+    unsigned int index;
+
+    if (frame_text == NULL ||
+        output == NULL ||
+        cell_count == 0U ||
+        cell_count > SHAKTI_RECEPTOR_MAX_PIXELS ||
+        output_capacity < (unsigned long)cell_count + 1UL) {
+        return 0;
+    }
+
+    for (index = 0U; index < cell_count; ++index) {
+        if (frame_text[index] < '0' || frame_text[index] > '9') {
+            output[0] = '\0';
+            return 0;
+        }
+
+        /* Idempotent: an already-binary cell ('0'/'1') is a fixed point, so
+         * a reconstructed frame survives re-binarization unchanged. */
+        output[index] =
+            frame_text[index] == '1' ||
+            (unsigned int)(frame_text[index] - '0') >=
+                SHAKTI_RECEPTOR_BINARIZE_THRESHOLD ? '1' : '0';
+    }
+
+    output[cell_count] = '\0';
+
+    return 1;
+}
+
 int shakti_receptor_write_frame_artifact(
     const shakti_receptor_t *receptor,
     const char *path

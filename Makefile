@@ -70,9 +70,16 @@ $(SEED_BUILDER): tools/build_seed_curriculum.c \
 src/%.o: src/%.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-test: $(TARGET) tests/test_shakti tests/test_integration
+test: $(TARGET) tests/test_shakti tests/test_integration tests/test_roundtrip
 	./tests/test_shakti
 	./tests/test_integration
+	./tests/test_roundtrip
+
+tests/test_roundtrip: tests/test_roundtrip.c src/shakti_receptor.c src/shakti_time.c \
+		src/shakti_artifact.c src/shakti_asset.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) tests/test_roundtrip.c \
+		src/shakti_receptor.c src/shakti_time.c src/shakti_artifact.c \
+		src/shakti_asset.c -o tests/test_roundtrip
 
 tests/test_shakti: $(TEST_SOURCES)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(TEST_SOURCES) -o tests/test_shakti
@@ -101,7 +108,8 @@ builder: $(BUILDER)
 
 clean:
 	rm -f $(OBJECTS) $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) \
-	tests/test_shakti tests/test_integration tests/make_wav_fixture
+	tests/test_shakti tests/test_integration tests/make_wav_fixture \
+	tests/test_roundtrip
 	rm -rf tests/tmp_builder tests/tmp_loop tests/tmp_seed tests/tmp_mvp
 	rm -f tests/test_facts.txt tests/test_thesaurus.txt
 	rm -f tests/test_evidence.log tests/test_stream.log tests/test_school.log
