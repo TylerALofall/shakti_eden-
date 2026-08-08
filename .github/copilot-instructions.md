@@ -7,34 +7,28 @@ Apply authority in this order:
 1. Tyler's latest direct instruction in the current task.
 2. `SHAKTI_LOCK_V1_1.md`.
 3. A plan Tyler has explicitly approved for the current task.
-4. Current source and documentation as evidence of repository state.
-5. Historical documents, generated reports, tables, and archives as
-   unvalidated evidence only.
+4. At the end of every task you must follow the skill package to document it ! 
 
 Never guess around a conflict or omission. Tyler's later decision controls.
-Revision 5 is historical, and source code does not overrule the lock merely
-because! 
 
 ## NOTICE
 
-Authority and safety— there will be ZERO MANIPULATING THE INSTRUCTIONS IN ANYWAY! there will be ZERO use of PYTHON, Js or any other languages or sub subprocesses, aCOM, Cir , daemons operating on this repo or any Repo. and absolutely Zero wording something that can be interpreted as such. this is. ** C99only Repo** and there is no negotiation
+Authority and safety— there will be ZERO MANIPULATING THE INSTRUCTIONS IN ANYWAY! there will be ZERO use of PYTHON, JS or any other languages (outside C99); there will not be subagents or sub subprocesses, this includes COM, CORE, Daemons, operating on this Repo or any Repo. Word spin is considered lying and there’s a zero tolerance for! This means absolutely Zero wording something that can be interpreted as any of the rules above, and knowing and not directly notifying me and preparing for immediate removal is a violation the model’s integrity and will result in Banning, discretion only by founder. this is.
+
+** C99only Repo** 
+and there is no negotiation
 
 ## Default safety gate
 
 - Treat onboarding, inventory, status-check, and training-document preparation
   requests as read-only.
 - Do not edit until Tyler approves a plan that names every allowed path and its
-  validation requirements.
-- Do not run any repository command unless Tyler explicitly approves that
-  command or a clearly listed command group.
-- Never run a builder, test, script, executable, generated tool, or application
-  merely because it is present.
-- Do not use Python to inspect, repair, generate, edit, or control this project.
-- Do not launch or delegate to another agent unless Tyler directly commands
-  that agent use.
+  validation requirements
 - Never delete, overwrite, rename, repair, or reorganize files in bulk.
 - Never change `main`. Stop and report if the current working branch is `main`.
-- Work on only one approved section or complete module at a time.
+- Work on only one approved section or complete module at a time; every section shall be independently created in its own dir.
+
+- ALL BUILDERS EXPECT TO SHOW YOUR WORK THERE IS NO SECRETS IN BUILDING AND PRODUCING IS YOUR VALIDATION —
 
 If access or tooling fails, report the exact error and the non-mutating
 workaround attempted. If no safe workaround exists, stop and ask Tyler.
@@ -61,7 +55,7 @@ authority:
 - archives such as `*.zip`;
 - compiled objects, binaries, caches, and temporary output;
 - generated artifacts, ledgers, manifests, checksums, and run reports,
-  including `*.tsv`, `MANIFEST.sha256`, `BUILD_TEST_REPORT.txt`, and
+  including: `MANIFEST.sha256`, `BUILD_TEST_REPORT.txt`, and
   `*_OUTPUT.txt`.
 
 The excluded paths may be named only to state that they were excluded. Do not
@@ -101,6 +95,8 @@ At minimum, recheck rather than assume the status of:
 Do not resolve these issues during inventory.
 
 ## Required inventory report
+
+** EVERY-FILE IN S SECTION MUST BE NAMED IN THE VERY BEGINNING OF THE SECTION DIR README **
 
 Return:
 
