@@ -13,3 +13,5 @@ tests/make_wav_fixture
 build_seed_curriculum
 tests/tmp_seed/
 tests/tmp_mvp/
+eyes/eyes_map
+eyes/output/

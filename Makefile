@@ -42,7 +42,7 @@ TEST_SOURCES = \
 	src/shakti_score.c \
 	src/shakti_report.c
 
-.PHONY: all clean test run builder
+.PHONY: all clean test run builder eyes
 
 all: $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER)
 $(TARGET): $(OBJECTS)
@@ -105,6 +105,14 @@ run: $(TARGET)
 	./$(TARGET)
 
 builder: $(BUILDER)
+
+# eyes: self-contained document collector + reconstruction harness.
+# Runs from the repository root; writes artifacts into eyes/output/.
+eyes/eyes_map: eyes/eyes_map.c eyes/eyes.c eyes/eyes.h
+	$(CC) $(CFLAGS) -Ieyes eyes/eyes_map.c eyes/eyes.c -o eyes/eyes_map
+
+eyes: eyes/eyes_map
+	./eyes/eyes_map
 
 clean:
 	rm -f $(OBJECTS) $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) \
