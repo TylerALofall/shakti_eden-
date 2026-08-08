@@ -281,7 +281,8 @@ static int handle_load(
     char *fields[2];
     shakti_loader_kind_t kind;
     shakti_loader_result_t result;
-    shakti_tick_t tick;
+
+    (void)runtime;
 
     if (!split_pipe_fields(arguments, fields, 2U) ||
         !shakti_loader_kind_from_text(fields[1], &kind)) {
@@ -291,8 +292,7 @@ static int handle_load(
         return 1;
     }
 
-    if (!shakti_tick_next(&runtime->clock, &tick) ||
-        !shakti_loader_load(fields[0], kind, &result)) {
+    if (!shakti_loader_load(fields[0], kind, &result)) {
         puts("Load failed.");
         return 1;
     }
