@@ -5,6 +5,7 @@ CPPFLAGS ?= -Iinclude
 SOURCES = \
 	src/main.c \
 	src/shakti_time.c \
+	src/shakti_receptor.c \
 	src/shakti_log.c \
 	src/shakti_memory.c \
 	src/shakti_reason.c \
@@ -27,6 +28,7 @@ SEED_BUILDER = build_seed_curriculum
 TEST_SOURCES = \
 	tests/test_shakti.c \
 	src/shakti_time.c \
+	src/shakti_receptor.c \
 	src/shakti_log.c \
 	src/shakti_memory.c \
 	src/shakti_reason.c \
