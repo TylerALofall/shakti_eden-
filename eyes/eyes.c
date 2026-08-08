@@ -126,32 +126,6 @@ static unsigned int luma_of(
             29U * (unsigned int)rgba[base + 2UL] + 128U) / 256U;
 }
 
-static unsigned int dominant_channel(
-    const unsigned char *rgba,
-    unsigned long pixel_index
-)
-{
-    unsigned long base;
-    unsigned int r;
-    unsigned int g;
-    unsigned int b;
-
-    base = pixel_index * 4UL;
-    r = (unsigned int)rgba[base];
-    g = (unsigned int)rgba[base + 1UL];
-    b = (unsigned int)rgba[base + 2UL];
-
-    if (r >= g && r >= b) {
-        return 0U;
-    }
-
-    if (g >= r && g >= b) {
-        return 1U;
-    }
-
-    return 2U;
-}
-
 unsigned int eyes_cells_x(unsigned int width)
 {
     return width / 8U;
@@ -387,49 +361,37 @@ int eyes_load_document(
     return 1;
 }
 
-static void collect_color(
+/*
+ * A pull bit is 1 only when the pixel is a full-strength primary on this
+ * channel (this channel saturated, the other two zero). A real black is
+ * three channels mixed, so no channel reads saturated and the color pull
+ * does not see black text -- the old 3-color-printer fact.
+ */
+static unsigned int channel_saturated(
     const unsigned char *rgba,
     unsigned long pixel_index,
-    unsigned int channel,
-    unsigned char *saturated,
-    unsigned char *out
+    unsigned int channel
 )
 {
     unsigned long base;
     unsigned int r;
     unsigned int g;
     unsigned int b;
-    unsigned int luma;
-    unsigned int dominant;
 
     base = pixel_index * 4UL;
     r = (unsigned int)rgba[base];
     g = (unsigned int)rgba[base + 1UL];
     b = (unsigned int)rgba[base + 2UL];
-    luma = luma_of(rgba, pixel_index);
 
-    *saturated = 0U;
-    *out = 255U;
-
-    if (luma < 128U) {
-        dominant = dominant_channel(rgba, pixel_index);
-
-        if (channel == dominant && dominant == 0U) {
-            *out = 255U;
-        } else if (channel == dominant && dominant == 1U) {
-            *out = 255U;
-        } else if (channel == dominant && dominant == 2U) {
-            *out = 255U;
-        } else {
-            *out = 0U;
-        }
-
-        if ((channel == 0U && r == 255U && g == 0U && b == 0U) ||
-            (channel == 1U && r == 0U && g == 255U && b == 0U) ||
-            (channel == 2U && r == 0U && g == 0U && b == 255U)) {
-            *saturated = 1U;
-        }
+    if (channel == 0U) {
+        return r == 255U && g == 0U && b == 0U;
     }
+
+    if (channel == 1U) {
+        return r == 0U && g == 255U && b == 0U;
+    }
+
+    return r == 0U && g == 0U && b == 255U;
 }
 
 int eyes_pull_color(
@@ -458,12 +420,8 @@ int eyes_pull_color(
         unsigned int channel;
 
         for (channel = 0U; channel < 3U; ++channel) {
-            unsigned char saturated;
-            unsigned char out;
-
-            collect_color(rgba, index, channel, &saturated, &out);
             bits[index * 3UL + (unsigned long)channel] =
-                saturated ? '1' : '0';
+                channel_saturated(rgba, index, channel) ? '1' : '0';
         }
     }
 
