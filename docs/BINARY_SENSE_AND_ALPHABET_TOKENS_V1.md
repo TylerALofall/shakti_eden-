@@ -23,16 +23,13 @@ but does not invoke them unless the situation demands it.
 ## Camera path
 
 The camera remains a future Swift-hosted capability reached only through the
-gated MCP route (`SHAKTI_LOCK_V1_1.md`). The current receptor is a simulated
-collector. `SHAKTI_RECEPTOR_DEFAULT_LEVEL 5` is a neutral placeholder on the
-simulated 0-9 scale, not a camera brightness decision; digital collection is
-binary at the pixel (ink or no ink).
+gated MCP route (`SHAKTI_LOCK_V1_1.md`). The current receptor collects binary
+pixel state only: paper `0`, ink `1`.
 
 ## Round-trip fidelity harness
 
-`tests/test_roundtrip.c` rehearses the document path: collect a frame,
-binarize each cell to 0/1 (`SHAKTI_RECEPTOR_BINARIZE_THRESHOLD`), reconstruct
-the bitmap from the bits, feed it back as the next input, and repeat for 20
-passes while counting drifted pixels. It runs under `make test` and reports
-per-pass and cumulative loss so we can see what 1-bit collection keeps and
-what it loses.
+`tests/test_roundtrip.c` now rehearses the document path the way Tyler asked
+for: collect the mono pull, rebuild the bitmap on the other side, recognize
+the text, redraw the clean page, run the lenses again, and repeat that full
+loop 20 times while counting drifted pixels. It runs under `make test` and
+reports per-pass and cumulative loss.

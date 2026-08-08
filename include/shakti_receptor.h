@@ -8,12 +8,7 @@
 #define SHAKTI_RECEPTOR_TEXT_CAPACITY \
     (SHAKTI_RECEPTOR_MAX_PIXELS * SHAKTI_RECEPTOR_PIXEL_CAPACITY + 1U)
 
-/* Neutral placeholder level for the simulated 0-9 scale, pending real
- * camera input. Digital collection is binary at the pixel; the graded
- * scale only rehearses the shape of a future sensor. */
-#define SHAKTI_RECEPTOR_DEFAULT_LEVEL 5U
-/* Cells at or above this level binarize to 1; below it to 0. */
-#define SHAKTI_RECEPTOR_BINARIZE_THRESHOLD 5U
+/* Digital collection is binary at the pixel: paper 0, ink 1. */
 
 typedef struct {
     unsigned int width;

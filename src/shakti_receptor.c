@@ -86,7 +86,7 @@ int shakti_receptor_poll(shakti_receptor_t *receptor)
     return receptor->poll_count >= receptor->exposure_ticks;
 }
 
-static unsigned int quantize_cell(
+static unsigned int collect_cell(
     const shakti_receptor_t *receptor,
     unsigned int row,
     unsigned int column
@@ -105,7 +105,7 @@ static unsigned int quantize_cell(
     amplified = photons * (unsigned long)receptor->gain;
     binned = amplified / (unsigned long)receptor->binning;
 
-    return (unsigned int)(binned % 10UL);
+    return (unsigned int)(binned & 1UL);
 }
 
 int shakti_receptor_readout(shakti_receptor_t *receptor)
@@ -129,7 +129,7 @@ int shakti_receptor_readout(shakti_receptor_t *receptor)
                 receptor->frame_text + used,
                 sizeof(receptor->frame_text) - used,
                 "%u",
-                quantize_cell(receptor, row, column)
+                collect_cell(receptor, row, column)
             );
 
             if (written < 0 ||
@@ -164,17 +164,12 @@ int shakti_receptor_binarize_frame(
     }
 
     for (index = 0U; index < cell_count; ++index) {
-        if (frame_text[index] < '0' || frame_text[index] > '9') {
+        if (frame_text[index] != '0' && frame_text[index] != '1') {
             output[0] = '\0';
             return 0;
         }
 
-        /* Idempotent: an already-binary cell ('0'/'1') is a fixed point, so
-         * a reconstructed frame survives re-binarization unchanged. */
-        output[index] =
-            frame_text[index] == '1' ||
-            (unsigned int)(frame_text[index] - '0') >=
-                SHAKTI_RECEPTOR_BINARIZE_THRESHOLD ? '1' : '0';
+        output[index] = frame_text[index];
     }
 
     output[cell_count] = '\0';

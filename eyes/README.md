@@ -81,3 +81,23 @@ the Swift host) raw RGBA bytes plus a width and height, and get back bits
 (`eyes_pull_color` / `eyes_pull_mono`) and text (`eyes_recognize_text`).
 The collector owns no file handles, no threads, no state between calls, so a
 Swift host can attach at that seam without the module knowing Swift exists.
+
+## Recommended ingestor path
+
+The last receptor PR was useful as a first prompt, but the honest rebuild
+comparison belongs here in `eyes/`, not in a simulated `0..9` brightness
+collector. The convergence check that matters is:
+
+1. ingest pixels,
+2. pull mono bits,
+3. rebuild the bitmap on the other side,
+4. recognize text,
+5. redraw the clean page,
+6. run the lenses again,
+7. compare that rebuilt page back to the original per pixel for 20 loops.
+
+For a future video ingestor, keep this same seam and normalize frames before
+the pull: accept raw host frames, optionally resize them to a small approved
+set of standard page sizes, then sample at low FPS so the deterministic core
+only sees stable document frames instead of camera noise. That keeps the
+comparison point fixed while making a later video processor easy to swap in.
