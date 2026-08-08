@@ -17,7 +17,8 @@ SOURCES = \
 	src/shakti_tablet.c \
 	src/shakti_manifest.c \
 	src/shakti_score.c \
-	src/shakti_report.c
+	src/shakti_report.c \
+	src/shakti_loader.c
 
 OBJECTS = $(SOURCES:.c=.o)
 TARGET = shakti
@@ -40,7 +41,8 @@ TEST_SOURCES = \
 	src/shakti_tablet.c \
 	src/shakti_manifest.c \
 	src/shakti_score.c \
-	src/shakti_report.c
+	src/shakti_report.c \
+	src/shakti_loader.c
 
 .PHONY: all clean test run builder eyes
 
@@ -94,7 +96,7 @@ tests/test_integration: tests/test_integration.c src/main.c $(TEST_SOURCES) \
 		src/shakti_reason.c src/shakti_school.c src/shakti_loop.c \
 		src/shakti_handwriting.c src/shakti_asset.c src/shakti_artifact.c \
 		src/shakti_tablet.c src/shakti_manifest.c src/shakti_score.c \
-		src/shakti_report.c \
+		src/shakti_report.c src/shakti_loader.c \
 		tools/build_xml.c tools/build_ledger.c tools/build_seed_curriculum.c \
 		tests/make_wav_fixture.c -o tests/test_integration
 
@@ -122,4 +124,4 @@ clean:
 	rm -f tests/test_facts.txt tests/test_thesaurus.txt
 	rm -f tests/test_evidence.log tests/test_stream.log tests/test_school.log
 	rm -f tests/test_goal.txt tests/test_notebook.log tests/test_menu.txt
-	rm -f tests/test_long_term.log
+	rm -f tests/test_long_term.log tests/test_loader_fixture.txt
