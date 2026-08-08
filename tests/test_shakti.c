@@ -382,6 +382,26 @@ static void test_receptor_capture(void)
     assert(shakti_receptor_poll(&receptor));
     assert(shakti_receptor_readout(&receptor));
     assert(strlen(receptor.frame_text) == 64U);
+    {
+        unsigned int index;
+        char copied[SHAKTI_RECEPTOR_TEXT_CAPACITY];
+
+        for (index = 0U; index < 64U; ++index) {
+            assert(receptor.frame_text[index] == '0' ||
+                   receptor.frame_text[index] == '1');
+        }
+
+        assert(shakti_receptor_binarize_frame(
+            receptor.frame_text,
+            64U,
+            copied,
+            sizeof(copied)
+        ));
+        assert(strcmp(copied, receptor.frame_text) == 0);
+        copied[0] = '2';
+        assert(!shakti_receptor_binarize_frame(copied, 64U, copied,
+            sizeof(copied)));
+    }
 
     shakti_receptor_init(&repeat);
     assert(shakti_receptor_configure(

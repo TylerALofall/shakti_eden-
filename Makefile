@@ -77,11 +77,9 @@ test: $(TARGET) tests/test_shakti tests/test_integration tests/test_roundtrip
 	./tests/test_integration
 	./tests/test_roundtrip
 
-tests/test_roundtrip: tests/test_roundtrip.c src/shakti_receptor.c src/shakti_time.c \
-		src/shakti_artifact.c src/shakti_asset.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) tests/test_roundtrip.c \
-		src/shakti_receptor.c src/shakti_time.c src/shakti_artifact.c \
-		src/shakti_asset.c -o tests/test_roundtrip
+tests/test_roundtrip: tests/test_roundtrip.c eyes/eyes.c eyes/eyes.h
+	$(CC) $(CFLAGS) -Ieyes tests/test_roundtrip.c \
+		eyes/eyes.c -o tests/test_roundtrip
 
 tests/test_shakti: $(TEST_SOURCES)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(TEST_SOURCES) -o tests/test_shakti
