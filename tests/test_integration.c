@@ -573,6 +573,7 @@ static void test_loop(const char *root)
         "[Memory]\nRecall exact chunks.\n"
         "[School]\nRun exact drills.\n"
         "[Reflection]\nComplete all thirteen questions.\n"
+        "[Control]\nInterrupt MCP tools, resume tools, and inspect status.\n"
     );
 
     snprintf(path, sizeof(path), "%s/input.txt", tmp);

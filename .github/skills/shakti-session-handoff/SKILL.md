@@ -7,17 +7,22 @@ instruction always overrides everything below.
 
 ## Current state (as of 2026-08-09)
 
-- **Branch of record:** `copilot/binary-sound-implementation-scout`. Never
-  touch `main` / do not treat default `Shakti-main` uploads as auto-merge.
-  Stop and report if the working branch is `main`.
+- **Branch of record:** `copilot/binary-sound-implementation-scout` (hearing +
+  MCP phase 1). Never touch `main` / do not treat default `Shakti-main` uploads
+  as auto-merge. Stop and report if the working branch is `main`.
 - **Purity:** The tree is **100% C99**. No `.sh`, no Python, no JS, no other
   languages. This is a hard, non-negotiable requirement (see the `NOTICE` in
   `.github/copilot-instructions.md`).
 - **Build:** `make` (CFLAGS `-std=c99 -Wall -Wextra -Wpedantic -Werror -O2`).
   Includes `hearing/hearing` and `pad_wav` (Lock §10 lead/tail tool).
-- **Test:** `make test` → runs `tests/test_shakti` (unit),
-  `tests/test_integration`, and `tests/test_roundtrip`.
-- **Boundary (verified):** `src/`, `include/`, `tools/` contain **no**
+- **Test:** `make test` → `tests/test_shakti`, `tests/test_mcp`,
+  `tests/test_integration`, `tests/test_roundtrip`. Green.
+- **MCP phase 1 (landed):** `mcp/mcp.c` + `mcp/mcp.h` + `mcp/README.md`.
+  `/shakti_run/` admits only when registered ∧ menu section present ∧
+  Tyler-enabled ∧ permitted; else `DENIED` (no handler side effect). Receipt
+  count on approve. Interrupt/resume unchanged. Handlers remain in `src/main.c`.
+  Host HTML stays reference-only.
+- **Boundary (verified):** `src/`, `include/`, `tools/`, `mcp/` contain **no**
   `system`/`popen`/`fork`/`exec`/`spawn`, no threads, no daemon, **no runner**.
   Shakti is one self-contained C99 process holding one `shakti_runtime_t`.
 
@@ -98,6 +103,7 @@ at a time, each with named paths + validation before editing:
 
 ## What was done in the session that created this card
 
+<<<<<<< HEAD
 - PR #7 review fix (`discussion_r3743595332`): prenatal flash channel now
   enforces absolute dark for stream elapsed time
   `[0, SHAKTI_HEARING_DARK_PHASE_SECONDS)` (20 s), then ambient+pulse
@@ -112,6 +118,35 @@ at a time, each with named paths + validation before editing:
   is newer; do not overwrite from zips. Python inside zips was not imported.
 - Prior: POSIX shell integration tests → pure-C99 `tests/test_integration.c`.
 - Prior: C-callable tool entry points; `SHAKTI_APP_NO_MAIN` for `shakti_app_main`.
+=======
+- **MCP gate phase 1:** isolated `mcp/` module; static tool table for the
+  current hardcoded set; `shakti_mcp_admit` four-check; thin wire from
+  `/shakti_run/` in `src/main.c`; `tests/test_mcp` for unknown/disabled/
+  missing-menu/interrupt/allow+receipt/reflection-block; integration loop menu
+  includes `[Control]` so `status` can admit under the lock rule.
+- Added the `binary/` pixel-deposit section (2026-08-09, Tyler-directed):
+  two small real input files (`binary/page1_picture.txt`,
+  `binary/page2_text.txt`) are read from disk, every pixel location is
+  deposited as 5 binary marks (R G B A as 8 bits each + the mono ink bit)
+  into dated per-page files, the page is rebuilt only from the deposit file
+  read back from disk, and the true counts print as measured. Collected
+  output is a dated 2-page Letter PDF. `make binary-deposit`. Locked
+  `eyes/eyes.c` core linked unchanged.
+- Inventoried the `TylerALofall-patch-1` zips (read-only, extracted to
+  `/tmp/patch1_inventory/`). Conclusion: the current repo tree is **newer and
+  better**; the zips are older snapshots. Do **not** overwrite the tree from
+  them. The only Python (`migrate_curriculum.py`) existed only inside a zip and
+  was **not** imported (Python is forbidden).
+- Ported the four POSIX shell integration tests to a single pure-C99
+  in-process runner `tests/test_integration.c` (no shell, no subprocess).
+- Refactored tools to C-callable entry points with `main` kept for standalone
+  builds: `shakti_build_xml_file`, `shakti_build_ledger_file`,
+  `shakti_build_seed_curriculum`, `shakti_write_test_wav`.
+- `src/main.c` exposes `shakti_app_main` when compiled with
+  `-DSHAKTI_APP_NO_MAIN`; standalone `shakti` still builds with `main`.
+- Deleted `tests/test_builder.sh`, `test_loop.sh`, `test_seed.sh`,
+  `test_mvp.sh`. `make` + `make test` green.
+>>>>>>> d82de10 (Add MCP gate phase 1: admit DENIED path, tests, Makefile wire)
 
 ## How to work here (hard rules)
 

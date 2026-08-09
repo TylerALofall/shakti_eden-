@@ -1,6 +1,6 @@
 CC ?= cc
 CFLAGS ?= -std=c99 -Wall -Wextra -Wpedantic -Werror -O2
-CPPFLAGS ?= -Iinclude
+CPPFLAGS ?= -Iinclude -Imcp
 
 SOURCES = \
 	src/main.c \
@@ -18,7 +18,8 @@ SOURCES = \
 	src/shakti_manifest.c \
 	src/shakti_score.c \
 	src/shakti_report.c \
-	src/shakti_loader.c
+	src/shakti_loader.c \
+	mcp/mcp.c
 
 OBJECTS = $(SOURCES:.c=.o)
 TARGET = shakti
@@ -44,7 +45,8 @@ TEST_SOURCES = \
 	src/shakti_manifest.c \
 	src/shakti_score.c \
 	src/shakti_report.c \
-	src/shakti_loader.c
+	src/shakti_loader.c \
+	mcp/mcp.c
 
 .PHONY: all clean test run builder eyes hearing pad-wav
 
@@ -86,8 +88,12 @@ pad-wav: $(PAD_WAV)
 src/%.o: src/%.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-test: $(TARGET) tests/test_shakti tests/test_integration tests/test_roundtrip
+mcp/%.o: mcp/%.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+test: $(TARGET) tests/test_shakti tests/test_mcp tests/test_integration tests/test_roundtrip
 	./tests/test_shakti
+	./tests/test_mcp
 	./tests/test_integration
 	./tests/test_roundtrip
 
@@ -97,6 +103,12 @@ tests/test_roundtrip: tests/test_roundtrip.c eyes/eyes.c eyes/eyes.h
 
 tests/test_shakti: $(TEST_SOURCES)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(TEST_SOURCES) -o tests/test_shakti
+
+tests/test_mcp: tests/test_mcp.c mcp/mcp.c src/shakti_loop.c src/shakti_time.c \
+		src/shakti_log.c src/shakti_memory.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) tests/test_mcp.c mcp/mcp.c \
+		src/shakti_loop.c src/shakti_time.c src/shakti_log.c \
+		src/shakti_memory.c -o tests/test_mcp
 
 tests/test_integration: tests/test_integration.c src/main.c $(TEST_SOURCES) \
 		tools/build_xml.c tools/build_ledger.c tools/build_seed_curriculum.c \
@@ -108,7 +120,7 @@ tests/test_integration: tests/test_integration.c src/main.c $(TEST_SOURCES) \
 		src/shakti_reason.c src/shakti_school.c src/shakti_loop.c \
 		src/shakti_handwriting.c src/shakti_asset.c src/shakti_artifact.c \
 		src/shakti_tablet.c src/shakti_manifest.c src/shakti_score.c \
-		src/shakti_report.c src/shakti_loader.c \
+		src/shakti_report.c src/shakti_loader.c mcp/mcp.c \
 		tools/build_xml.c tools/build_ledger.c tools/build_seed_curriculum.c \
 		tests/make_wav_fixture.c -o tests/test_integration
 
@@ -130,8 +142,8 @@ eyes: eyes/eyes_map
 
 clean:
 	rm -f $(OBJECTS) $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(PAD_WAV) $(HEARING) \
-	tests/test_shakti tests/test_integration tests/make_wav_fixture \
-	tests/test_roundtrip
+	tests/test_shakti tests/test_mcp tests/test_integration \
+	tests/make_wav_fixture tests/test_roundtrip
 	rm -rf tests/tmp_builder tests/tmp_loop tests/tmp_seed tests/tmp_mvp
 	rm -f tests/test_facts.txt tests/test_thesaurus.txt
 	rm -f tests/test_evidence.log tests/test_stream.log tests/test_school.log
