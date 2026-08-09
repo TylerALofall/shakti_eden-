@@ -48,7 +48,7 @@ TEST_SOURCES = \
 	src/shakti_loader.c \
 	mcp/mcp.c
 
-.PHONY: all clean test run builder eyes hearing pad-wav screen
+.PHONY: all clean test run builder eyes hearing pad-wav screen sense
 
 all: $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(PAD_WAV) $(HEARING)
 $(TARGET): $(OBJECTS)
@@ -91,15 +91,24 @@ src/%.o: src/%.c
 mcp/%.o: mcp/%.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-test: $(TARGET) tests/test_shakti tests/test_mcp tests/test_integration tests/test_roundtrip
+test: $(TARGET) tests/test_shakti tests/test_mcp tests/test_integration tests/test_roundtrip tests/test_sense
 	./tests/test_shakti
 	./tests/test_mcp
 	./tests/test_integration
 	./tests/test_roundtrip
+	./tests/test_sense
 
 tests/test_roundtrip: tests/test_roundtrip.c eyes/eyes.c eyes/eyes.h
 	$(CC) $(CFLAGS) -Ieyes tests/test_roundtrip.c \
 		eyes/eyes.c -o tests/test_roundtrip
+
+# sense: dual-path binder tests (eyes + screen + hearing_synth only — no GRU).
+tests/test_sense: tests/test_sense.c sense/sense.c sense/sense.h \
+		eyes/eyes.c eyes/eyes.h screen/screen.c screen/screen.h \
+		hearing/hearing_synth.c hearing/hearing.h
+	$(CC) $(CFLAGS) -Isense -Ieyes -Iscreen -Ihearing \
+		tests/test_sense.c sense/sense.c eyes/eyes.c screen/screen.c \
+		hearing/hearing_synth.c -o tests/test_sense -lm
 
 tests/test_shakti: $(TEST_SOURCES)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(TEST_SOURCES) -o tests/test_shakti
@@ -150,10 +159,23 @@ screen/screen_map: screen/screen_map.c screen/screen.c screen/screen.h \
 screen: screen/screen_map
 	./screen/screen_map
 
+# sense: always-on dual-path binder (binary + rendered, fixed RAM ring).
+# Links hearing_synth only — no hearing_model / no embeddings.
+sense/sense_map: sense/sense_map.c sense/sense.c sense/sense.h \
+		eyes/eyes.c eyes/eyes.h screen/screen.c screen/screen.h \
+		hearing/hearing_synth.c hearing/hearing.h
+	$(CC) $(CFLAGS) -Isense -Ieyes -Iscreen -Ihearing \
+		sense/sense_map.c sense/sense.c eyes/eyes.c screen/screen.c \
+		hearing/hearing_synth.c -o sense/sense_map -lm
+
+sense: sense/sense_map
+	./sense/sense_map
+
 clean:
 	rm -f $(OBJECTS) $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(PAD_WAV) $(HEARING) \
 	tests/test_shakti tests/test_mcp tests/test_integration \
-	tests/make_wav_fixture tests/test_roundtrip screen/screen_map
+	tests/make_wav_fixture tests/test_roundtrip tests/test_sense \
+	screen/screen_map sense/sense_map eyes/eyes_map
 	rm -rf tests/tmp_builder tests/tmp_loop tests/tmp_seed tests/tmp_mvp
 	rm -f tests/test_facts.txt tests/test_thesaurus.txt
 	rm -f tests/test_evidence.log tests/test_stream.log tests/test_school.log

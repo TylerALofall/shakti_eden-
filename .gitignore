@@ -22,3 +22,6 @@ eyes/eyes_map
 eyes/output/
 screen/screen_map
 screen/output/
+sense/sense_map
+sense/output/
+tests/test_sense

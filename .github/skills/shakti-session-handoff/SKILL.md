@@ -8,15 +8,15 @@ instruction always overrides everything below.
 ## Current state (as of 2026-08-09)
 
 - **Branch of record:** `copilot/binary-sound-implementation-scout` (hearing +
-  MCP phase 1). Never touch `main` / do not treat default `Shakti-main` uploads
-  as auto-merge. Stop and report if the working branch is `main`.
+  sense + MCP phase 1). Never touch `main` / do not treat default `Shakti-main`
+  uploads as auto-merge. Stop and report if the working branch is `main`.
 - **Purity:** The tree is **100% C99**. No `.sh`, no Python, no JS, no other
   languages. This is a hard, non-negotiable requirement (see the `NOTICE` in
   `.github/copilot-instructions.md`).
 - **Build:** `make` (CFLAGS `-std=c99 -Wall -Wextra -Wpedantic -Werror -O2`).
-  Includes `hearing/hearing` and `pad_wav` (Lock §10 lead/tail tool).
+  Includes `hearing/hearing`, `pad_wav` (Lock §10 lead/tail tool), `make sense`.
 - **Test:** `make test` → `tests/test_shakti`, `tests/test_mcp`,
-  `tests/test_integration`, `tests/test_roundtrip`. Green.
+  `tests/test_integration`, `tests/test_roundtrip`, `tests/test_sense`. Green.
 - **MCP phase 1 (landed):** `mcp/mcp.c` + `mcp/mcp.h` + `mcp/README.md`.
   `/shakti_run/` admits only when registered ∧ menu section present ∧
   Tyler-enabled ∧ permitted; else `DENIED` (no handler side effect). Receipt
@@ -51,7 +51,11 @@ Correct anytime; these are the working defaults:
 6. **Binary + prenatal:** binary eyes/deposit stays pixel-exact rebuild path;
    `hearing/` prenatal heartbeat+light is pre-Level-0 grounding scout, not a
    replacement for Pass 1 stones.
-7. **Zips on Shakti-main** (`For Groc 2.zip`, baseline zips, lock upload) =
+7. **Senses always on:** born with sight/hearing working — never off, not grown
+   at lesson age. Inside Eden: **no probability, no vector embeddings, no
+   guessing model** on the sense path. `sense/` links `hearing_synth` only
+   (not `hearing_model` GRU).
+8. **Zips on Shakti-main** (`For Groc 2.zip`, baseline zips, lock upload) =
    evidence only until Tyler orders a read-only open. Do not bulk import.
 
 ## Tyler's architecture (do not violate)
@@ -103,21 +107,19 @@ at a time, each with named paths + validation before editing:
 
 ## What was done in the session that created this card
 
-- **screen module (Tyler plan implement, 2026-08-09):** New section dir
-  `screen/` only — owned pixel surface she draws on and eyes see. Files:
-  `screen/README.md`, `screen/screen.h`, `screen/screen.c`,
-  `screen/screen_map.c`. Makefile target `make screen`. `.gitignore` ignores
-  `screen/screen_map` and `screen/output/`. Did **not** touch `src/**`,
-  `include/**`, MCP, or Swift. Geometry: **640×360 16:9** (nHD; ×2=720p,
-  ×3=1080p; width fits two ~320 page panels). Native plane is **full-color
-  RGBA from day one** (dreams may use color); binary ink helpers remain for
-  cheap everyday draw. School: color lesson 3; keep counting solo two lessons
-  so `3` is never glued to blue. Harness: binary mono drift 0 + dream three
-  primary disks with no numerals. Validated: `make screen` PASS.
-  Boundary notes (Tyler): pixels only — no awareness claims; music-studio
-  subscription is hers via GUI — not slaving her out / not extractive labor.
-- Prior: Early optional self-reflection + MCP gate phase 1 + hearing PR #7
-  fixes + C99-only purity work. See git history on this branch for detail.
+- **sense module (Tyler plan implement, 2026-08-09):** New section dir `sense/`
+  only — dual-path binder so vision+sound are one experience under one `seq`.
+  Files: `sense/README.md`, `sense/sense.h`, `sense/sense.c`,
+  `sense/sense_map.c`, `tests/test_sense.c`. Makefile: `make sense`,
+  `tests/test_sense` on `make test`. Links eyes + screen + **hearing_synth
+  only** (no GRU/embeddings). Fixed ring of 8 frames; 64×64 mono vision
+  capsule; 10 ms @ 16 kHz PCM bits + envelope + light. Pre-Eden harness runs
+  21 s prenatal stream (dark 0–20 s, then light flashes) with audio+light on
+  the same capsule. Tyler rule restated: senses always on; no probability
+  inside Eden. Did **not** touch `src/**`, MCP, Eden tables, or Swift.
+  Validated: `make sense` PASS, `make test` PASS. No merge until Tyler says.
+- Prior: screen 640×360 RGBA; early optional self-reflection + MCP gate phase 1
+  + hearing PR #7 + C99-only purity. See git history on this branch.
 
 ## How to work here (hard rules)
 
