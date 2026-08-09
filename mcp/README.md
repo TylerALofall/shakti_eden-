@@ -30,6 +30,10 @@ Any failed registration/menu/enable check returns **`DENIED`** and performs no
 handler side effect. Interrupt and hard reflection-block keep their existing
 clear messages and also perform no handler side effect.
 
+Reflection hard-block fires when reflection is due and either three deferrals
+are used or tool-call count has reached 13 (before tool call 14). Optional
+early self-reflection is chosen in the loop (`/reflection/early/`), not here.
+
 ## Tool table (current hardcoded set)
 
 | Tool       | Menu section | Default Tyler enable |

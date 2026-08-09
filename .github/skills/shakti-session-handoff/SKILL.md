@@ -103,6 +103,15 @@ at a time, each with named paths + validation before editing:
 
 ## What was done in the session that created this card
 
+- **Early optional self-reflection (Tyler 2026-08-09):** Lock § addendum tool-call
+  gate now states optional early choice below 10, go-early when work ends short
+  of 10, due at 10, defer 11–13, required before tool call 14. Counter advances
+  only on approved MCP tool calls (`shakti_loop_note_tool_call`). New choice
+  `/reflection/early/` → `shakti_loop_choose_early_reflection`. MCP hard-block
+  also at tool-call-14 wall. Paths: `SHAKTI_LOCK_V1_1.md`, `include/shakti_loop.h`,
+  `include/shakti_types.h`, `src/shakti_loop.c`, `src/main.c`, `mcp/mcp.c`,
+  `mcp/README.md`, `tests/test_shakti.c`, `tests/test_mcp.c`,
+  `tests/test_integration.c`, `CHANGELOG.md`. Validated: `make && make test`.
 - **MCP gate phase 1:** isolated `mcp/` module; static tool table for the
   current hardcoded set; `shakti_mcp_admit` four-check; thin wire from
   `/shakti_run/` in `src/main.c`; `tests/test_mcp` for unknown/disabled/

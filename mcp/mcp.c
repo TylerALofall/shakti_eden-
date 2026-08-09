@@ -168,11 +168,21 @@ shakti_mcp_admit_t shakti_mcp_admit(
     }
 
     if (loop->reflection_due &&
-        loop->reflection_deferrals >= SHAKTI_REFLECTION_MAX_DEFERRALS) {
+        (loop->reflection_deferrals >= SHAKTI_REFLECTION_MAX_DEFERRALS ||
+         loop->turns_since_reflection >=
+             (SHAKTI_REFLECTION_INTERVAL +
+              SHAKTI_REFLECTION_MAX_DEFERRALS))) {
         if (message != NULL) {
-            *message =
-                "Reflection reached three deferrals. Complete /reflection/ "
-                "before the next tool call.";
+            if (loop->reflection_deferrals >=
+                SHAKTI_REFLECTION_MAX_DEFERRALS) {
+                *message =
+                    "Reflection reached three deferrals. Complete "
+                    "/reflection/ before the next tool call.";
+            } else {
+                *message =
+                    "Reflection is required before tool call 14. Complete "
+                    "/reflection/ before the next tool call.";
+            }
         }
 
         return SHAKTI_MCP_ADMIT_REFLECTION_BLOCK;

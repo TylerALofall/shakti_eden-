@@ -53,6 +53,12 @@ void shakti_loop_interrupt_tools(shakti_loop_state_t *state);
 void shakti_loop_resume_tools(shakti_loop_state_t *state);
 int shakti_loop_tools_available(const shakti_loop_state_t *state);
 
+/* Count one approved MCP tool call toward the reflection gate. */
+int shakti_loop_note_tool_call(shakti_loop_state_t *state);
+
+/* Optional early self-reflection choice before the due gate. */
+int shakti_loop_choose_early_reflection(shakti_loop_state_t *state);
+
 int shakti_loop_defer_reflection(shakti_loop_state_t *state);
 
 int shakti_loop_run_reflection(

@@ -690,6 +690,7 @@ static void print_help(void)
     puts("/message_shakti/ message");
     puts("/note_shakti/ note");
     puts("/reflection/");
+    puts("/reflection/early/");
     puts("/reflection/defer/");
     puts("/reflection/questions/");
     puts("/interrupt/");
@@ -758,7 +759,24 @@ static int process_tool(
         return 0;
     }
 
+    if (!shakti_loop_note_tool_call(&runtime->loop)) {
+        return 0;
+    }
+
     shakti_mcp_record_receipt(&g_mcp);
+
+    if (runtime->loop.reflection_due &&
+        !runtime->loop.reflection_early_choice &&
+        runtime->loop.turns_since_reflection ==
+            SHAKTI_REFLECTION_INTERVAL) {
+        printf(
+            "Reflection is due after %u tool call(s). "
+            "Deferrals used: %u of %u.\n",
+            runtime->loop.turns_since_reflection,
+            runtime->loop.reflection_deferrals,
+            (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
+        );
+    }
 
     if (handler_id == SHAKTI_MCP_HANDLER_ASK) {
         return handle_ask(runtime, arguments);
@@ -975,6 +993,25 @@ static int process_control(
 
     if (strcmp(line, "/reflection/questions/") == 0) {
         shakti_loop_print_reflection_questions(stdout);
+        return 1;
+    }
+
+    if (strcmp(line, "/reflection/early/") == 0) {
+        if (shakti_loop_choose_early_reflection(&runtime->loop)) {
+            printf(
+                "Early self-reflection chosen after %u tool call(s). "
+                "Run /reflection/ when ready.\n",
+                runtime->loop.turns_since_reflection
+            );
+        } else if (runtime->loop.reflection_due) {
+            puts(
+                "Reflection is already due. Use /reflection/ "
+                "(or /reflection/defer/ while deferrals remain)."
+            );
+        } else {
+            puts("Early self-reflection choice failed.");
+        }
+
         return 1;
     }
 

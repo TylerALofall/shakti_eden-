@@ -1,3 +1,12 @@
+# Early optional self-reflection
+
+- Lock addendum gate: optional early self-reflection below 10 MCP tool calls;
+  go early when work ends short of 10; due at 10; defer on 11–13; required
+  before tool call 14.
+- Reflection counter advances only on approved MCP tool calls.
+- `/reflection/early/` is Shakti's optional early self-reflection choice.
+- MCP blocks the next tool after three deferrals or at the tool-call-14 wall.
+
 # Drill Control and Test-Isolation Fix
 
 - Recognizes `/status/`, `/help/`, `/interrupt/`, `/resume/`, `/stop/`, and

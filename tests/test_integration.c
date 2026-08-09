@@ -579,23 +579,47 @@ static void test_loop(const char *root)
     snprintf(path, sizeof(path), "%s/input.txt", tmp);
     write_file(
         path,
-        "/note_shakti/ cycle 1\n"
-        "/note_shakti/ cycle 2\n"
-        "/note_shakti/ cycle 3\n"
-        "/note_shakti/ cycle 4\n"
-        "/note_shakti/ cycle 5\n"
-        "/note_shakti/ cycle 6\n"
-        "/note_shakti/ cycle 7\n"
-        "/note_shakti/ cycle 8\n"
-        "/note_shakti/ cycle 9\n"
-        "/note_shakti/ cycle 10\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/reflection/early/\n"
+        "/reflection/\n"
+        "Seven tool calls early\n"
+        "Finished early and chose self-reflection\n"
+        "Yes\n"
+        "Yes\n"
+        "Keep going early when the job ends\n"
+        "status\n"
+        "A tablet viewer\n"
+        "Tyler supplied the exact goal\n"
+        "data/control/notebook.log\n"
+        "1790000000:0000\n"
+        "Keep the four channels exact\n"
+        "grounded, memory, reflection, loop, mcp, text, written_text, "
+        "visual_art, sound_art, school, eden, learned, tyler, heartbeat, "
+        "interrupt\n"
+        "batch-early-001\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
+        "/shakti_run/ status\n"
         "/reflection/defer/\n"
         "/reflection/defer/\n"
         "/reflection/defer/\n"
         "/shakti_run/ status\n"
         "/reflection/\n"
-        "Ten grounded cycles\n"
-        "Completed the planned ten-cycle batch\n"
+        "Ten grounded tool calls\n"
+        "Completed the planned ten-tool batch\n"
         "Yes\n"
         "Yes\n"
         "Use the same exact order\n"
@@ -622,7 +646,8 @@ static void test_loop(const char *root)
     assert(chdir(cwd) == 0);
 
     snprintf(path, sizeof(path), "%s/runtime_output.txt", tmp);
-    assert_contains(path, "Reflection is due.");
+    assert_contains(path, "Early self-reflection chosen after 7 tool call(s).");
+    assert_contains(path, "Reflection is due after 10 tool call(s).");
     assert_contains(path, "Reflection deferred. 3 of 3 deferrals used.");
     assert_contains(path, "Complete /reflection/ before the next tool call.");
     assert_contains(path, "Reflection appended to long-term memory.");

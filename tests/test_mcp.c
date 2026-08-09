@@ -192,6 +192,24 @@ static void test_reflection_hard_block(void)
     );
     assert(admit == SHAKTI_MCP_ADMIT_REFLECTION_BLOCK);
     assert(mcp.approved_receipts == 0UL);
+
+    shakti_mcp_init(&mcp);
+    load_menu(&loop);
+    loop.reflection_due = 1U;
+    loop.reflection_deferrals = 0U;
+    loop.turns_since_reflection =
+        SHAKTI_REFLECTION_INTERVAL + SHAKTI_REFLECTION_MAX_DEFERRALS;
+
+    admit = shakti_mcp_admit(
+        &mcp,
+        &loop,
+        "ask",
+        &handler,
+        &message
+    );
+    assert(admit == SHAKTI_MCP_ADMIT_REFLECTION_BLOCK);
+    assert(strstr(message, "tool call 14") != NULL);
+    assert(mcp.approved_receipts == 0UL);
 }
 
 int main(void)
