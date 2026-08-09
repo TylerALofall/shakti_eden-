@@ -25,13 +25,18 @@ int shakti_hearing_synthesize_prenatal(
     unsigned int sample_index;
     double heartbeat_period_samples;
 
-    if (stream == NULL || duration_seconds <= 0.0) {
+    if (stream == NULL || !isfinite(duration_seconds) || duration_seconds <= 0.0) {
         return 0;
     }
 
-    total_samples = (unsigned int)(duration_seconds * SHAKTI_HEARING_SAMPLE_RATE);
-    if (total_samples > SHAKTI_HEARING_MAX_SAMPLES) {
+    if (duration_seconds >=
+        (double)SHAKTI_HEARING_MAX_SAMPLES /
+            (double)SHAKTI_HEARING_SAMPLE_RATE) {
         total_samples = SHAKTI_HEARING_MAX_SAMPLES;
+    } else {
+        total_samples = (unsigned int)(
+            duration_seconds * (double)SHAKTI_HEARING_SAMPLE_RATE
+        );
     }
 
     stream->sample_count = total_samples;
