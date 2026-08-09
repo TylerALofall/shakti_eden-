@@ -1,7 +1,8 @@
 # eyes
 
-Files in this section: `README.md`, `eyes.c`, `eyes.h`, `eyes_map.c`,
-`eyes_xml.h`, `eyes_xml_collect.c`, `eyes_xml_rebuild.c`, `output/`
+Files in this section: `README.md`, `eyes.c`, `eyes.h`, `eyes_loop_rebuild.c`,
+`eyes_map.c`, `eyes_xml.h`, `eyes_xml_collect.c`, `eyes_xml_rebuild.c`,
+`output/`
 
 Shakti's document collector and the reconstruction side that did not exist
 before. Everything is plain C99, deterministic, no subprocess, no dynamic
@@ -219,9 +220,95 @@ That target builds `eyes/eyes_xml_collect` and `eyes/eyes_xml_rebuild`, runs
 the collector, then runs the rebuild and fails the make if the rebuild exits
 nonzero.
 
+## The 20-iteration rebuild loop (eyes_loop_rebuild)
+
+`eyes/eyes_loop_rebuild.c` is the standalone loop on top of the locked core:
+the exact rebuild runs 20 times, each iteration's rebuilt page feeds the next
+iteration, and the whole run is collected into one dated PDF document. The
+chain is the proven-exact path (mono pull -> mono reconstruct); the clock is
+read once, only for the dated output filename.
+
+Build and run from the repository root:
+
+```sh
+make eyes-loop        # builds eyes/eyes_loop_rebuild, then runs it
+./eyes/eyes_loop_rebuild [tag]   # optional tag, default eyes_loop
+```
+
+What one run produces under `eyes/output/loop/`:
+
+- `iter_01/` .. `iter_20/` -- one sub dir per iteration, each with its own:
+  - `page<N>_color.tan` -- the rebuilt page written in color mode
+    (`EYES_RECON_V1`, R/G/B/LUMA planes);
+  - `page<N>_bw.tan` -- the same rebuilt page written in black and white
+    (single INK plane);
+  - `hash.txt` -- FNV-1a 64 hash per page plus the iteration hash (FNV-1a is
+    the repository's existing hash family, see `src/shakti_log.c`);
+  - `log.txt` -- per-page size, `drift_vs_original` (exact RGBA compare via
+    `eyes_diff(..., color=1)`), page hash, iteration hash, and whether the
+    iteration hash matches iteration 1.
+- `YYYY-MM-DD-<tag>.pdf` -- the collected output document, dated with the run
+  day. It is a picture and text PDF written by a plain C99 writer (no
+  libraries, uncompressed): one picture page per document page showing the
+  original in color, the iteration-20 rebuild in color, and the iteration-20
+  rebuild in black and white, followed by the full run log as text pages,
+  ending in the `RESULT:` line.
+
+The 20th time is assured on point two ways, both hard checks: every page of
+every iteration must show `drift_vs_original=0` (exact RGBA identity with the
+original document), and the iteration-20 hash must equal the iteration-1
+hash. Any miss prints `FAIL` and exits nonzero; the pass line is only printed
+after both hold.
+
+Real output from a run in this repository state:
+
+```text
+$ make eyes-loop
+cc -std=c99 -Wall -Wextra -Wpedantic -Werror -O2 -Ieyes eyes/eyes_loop_rebuild.c eyes/eyes.c -o eyes/eyes_loop_rebuild
+./eyes/eyes_loop_rebuild
+iteration 01: hash=fnv1a64:3CCD53E81E3FDA8D match_iteration_1=YES
+...
+iteration 20: hash=fnv1a64:3CCD53E81E3FDA8D match_iteration_1=YES
+wrote eyes/output/loop/2026-08-09-eyes_loop.pdf
+PASS: iteration 20 exact, drift 0 on every page, hash matches iteration 1
+```
+
+All 20 iteration hashes are identical, and the produced PDF checks clean
+(`qpdf --check`: no syntax or stream errors; 7 pages: 4 picture pages + 3
+text pages).
+
 ## Session handoff
 
-### What was done
+### What was done (this session, 2026-08-09: the 20-iteration loop)
+
+- Added `eyes_loop_rebuild.c`: the 20-iteration exact rebuild loop with a sub
+  dir per iteration (`eyes/output/loop/iter_NN/`), each holding the rebuilt
+  pages in color and black and white `.tan`, its own FNV-1a 64 `hash.txt`,
+  and its own `log.txt`.
+- The loop assures the 20th iteration is still on point: `drift_vs_original=0`
+  on every page and iteration-20 hash equal to iteration-1 hash, else `FAIL`
+  and nonzero exit.
+- The collected output is one dated picture-and-text PDF,
+  `eyes/output/loop/YYYY-MM-DD-<tag>.pdf`, from a plain C99 uncompressed PDF
+  writer inside the same file (no libraries, no subprocess).
+- Added `Makefile` targets `eyes/eyes_loop_rebuild` and `eyes-loop`; added the
+  built eyes binaries to `.gitignore`.
+- Everything is additive; `eyes.c`, `eyes.h`, `eyes_map.c`, and the XML pair
+  were left untouched. Validation run: `make eyes-loop` (PASS, all 20 hashes
+  identical), `make`, `make test`, `qpdf --check` clean on the produced PDF,
+  and a re-run plus a custom-tag run both PASS.
+
+### What the next session should know (this session)
+
+- The chain feeds each iteration's mono rebuild into the next iteration; on
+  the kind-0 pages this is exact, so the color `.tan` and the color PDF image
+  are the true color rendering of the rebuilt page (black ink on white
+  paper). A color-preserving chain for kind-1 pages is still the separate
+  approved path noted below.
+- The clock is used only for the `YYYY-MM-DD` output filename; collection and
+  comparison stay deterministic.
+
+### What was done (previous session: the XML path)
 
 - Added `eyes_xml.h` with the fixed multi-page document table and XML API
   declarations.
@@ -232,7 +319,7 @@ nonzero.
 - Added `Makefile` targets `eyes-xml-collect`, `eyes-xml-rebuild`, and
   `eyes-xml`.
 
-### What the next session should know
+### What the next session should know (previous session)
 
 - The XML path is additive only; `eyes.c`, `eyes.h`, and `eyes_map.c` were left
   untouched.
