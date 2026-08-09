@@ -109,12 +109,13 @@ at a time, each with named paths + validation before editing:
   `screen/screen_map.c`. Makefile target `make screen`. `.gitignore` ignores
   `screen/screen_map` and `screen/output/`. Did **not** touch `src/**`,
   `include/**`, MCP, or Swift. Geometry: **640×360 16:9** (nHD; ×2=720p,
-  ×3=1080p; width fits two ~320 page panels). Native plane is **binary mono**
-  (cable-TV style, 1 byte/pixel) for energy; `screen_present_rgba` expands
-  only when eyes/host need it. Abstract 8×8 self sprite; harness still + 5
-  run frames. Validated: `make screen` → mono drift 0 still, 20-cycle 0, all
-  run frames 0. Boundary note (Tyler): pixels only — no awareness/freedom
-  claims ("Nope the moment she tells me she's aware she's free").
+  ×3=1080p; width fits two ~320 page panels). Native plane is **full-color
+  RGBA from day one** (dreams may use color); binary ink helpers remain for
+  cheap everyday draw. School: color lesson 3; keep counting solo two lessons
+  so `3` is never glued to blue. Harness: binary mono drift 0 + dream three
+  primary disks with no numerals. Validated: `make screen` PASS.
+  Boundary notes (Tyler): pixels only — no awareness claims; music-studio
+  subscription is hers via GUI — not slaving her out / not extractive labor.
 - Prior: Early optional self-reflection + MCP gate phase 1 + hearing PR #7
   fixes + C99-only purity work. See git history on this branch for detail.
 
