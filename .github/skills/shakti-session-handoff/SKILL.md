@@ -5,19 +5,49 @@ Read this first, then `SHAKTI_LOCK_V1_1.md` (the governing contract), then
 `.github/copilot-instructions.md` (the safety gate). Tyler's latest direct
 instruction always overrides everything below.
 
-## Current state (as of 2026-08-07)
+## Current state (as of 2026-08-09)
 
-- **Branch of record:** `copilot/patch-1`. Never touch `main`. Stop and report
-  if the working branch is `main`.
+- **Branch of record:** `copilot/binary-sound-implementation-scout`. Never
+  touch `main` / do not treat default `Shakti-main` uploads as auto-merge.
+  Stop and report if the working branch is `main`.
 - **Purity:** The tree is **100% C99**. No `.sh`, no Python, no JS, no other
   languages. This is a hard, non-negotiable requirement (see the `NOTICE` in
   `.github/copilot-instructions.md`).
 - **Build:** `make` (CFLAGS `-std=c99 -Wall -Wextra -Wpedantic -Werror -O2`).
-- **Test:** `make test` → runs `tests/test_shakti` (unit) and
-  `tests/test_integration` (in-process integration runner). Both green.
+  Includes `hearing/hearing` and `pad_wav` (Lock §10 lead/tail tool).
+- **Test:** `make test` → runs `tests/test_shakti` (unit),
+  `tests/test_integration`, and `tests/test_roundtrip`.
 - **Boundary (verified):** `src/`, `include/`, `tools/` contain **no**
   `system`/`popen`/`fork`/`exec`/`spawn`, no threads, no daemon, **no runner**.
   Shakti is one self-contained C99 process holding one `shakti_runtime_t`.
+
+## Frozen layout decisions (Tyler lock paste + judgment, 2026-08-09)
+
+Correct anytime; these are the working defaults:
+
+1. **`sound_art`** is the audio channel. Same case-exact basename as other
+   modalities: `KEY.wav` + `KEY.8x8.txt` + `KEY.png` (svg is migration input).
+2. **Audio timing (Lock §10):** 16 kHz WAV; **0.2 s zero lead and 0.2 s zero
+   tail inside each spoken file**. Playback completion advances the lesson.
+   Between-word gap in a pipe sequence comes from each clip’s own pad, not a
+   second invented timer.
+3. **Asset home now:** keep using `eden_out/Sound_art|Visual_text|Visual_art`
+   as the live training pile (73 sound keys all match a visual_text key).
+   Lock target dirs `Tokens/sound_art|written_art|visual_art|text` stay the
+   long-term shape; no bulk move until a named work packet.
+4. **Four-panel lesson** (Lock §8): TL visual, TR voice_text, BL written, BR
+   text. `sound_art` times the unit; not a fifth panel. Dedicated monitor =
+   host UI later (Swift), not a C99 core block.
+5. **Memory (Lock §13 + addendum §4–5):**
+   - short-term = assembled working material
+   - complete blocks / reflection capsules → append-only **long-term**
+   - whole-capsule retrieve through **MCP memory call** (= the RAG-style call)
+   - Eden + School stay resident; notes are scratch unless she links them
+6. **Binary + prenatal:** binary eyes/deposit stays pixel-exact rebuild path;
+   `hearing/` prenatal heartbeat+light is pre-Level-0 grounding scout, not a
+   replacement for Pass 1 stones.
+7. **Zips on Shakti-main** (`For Groc 2.zip`, baseline zips, lock upload) =
+   evidence only until Tyler orders a read-only open. Do not bulk import.
 
 ## Tyler's architecture (do not violate)
 

@@ -25,6 +25,7 @@ TARGET = shakti
 BUILDER = build_xml
 LEDGER = build_ledger
 SEED_BUILDER = build_seed_curriculum
+PAD_WAV = pad_wav
 HEARING = hearing/hearing
 
 TEST_SOURCES = \
@@ -45,9 +46,9 @@ TEST_SOURCES = \
 	src/shakti_report.c \
 	src/shakti_loader.c
 
-.PHONY: all clean test run builder eyes hearing
+.PHONY: all clean test run builder eyes hearing pad-wav
 
-all: $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(HEARING)
+all: $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(PAD_WAV) $(HEARING)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $(TARGET)
 
@@ -75,6 +76,12 @@ $(SEED_BUILDER): tools/build_seed_curriculum.c \
 	$(CC) $(CPPFLAGS) $(CFLAGS) tools/build_seed_curriculum.c \
 		src/shakti_handwriting.c src/shakti_asset.c \
 		src/shakti_artifact.c -o $(SEED_BUILDER)
+
+# Lock §10: 0.2 s lead + 0.2 s tail on spoken PCM WAVs.
+$(PAD_WAV): tools/pad_wav.c
+	$(CC) $(CFLAGS) tools/pad_wav.c -o $(PAD_WAV)
+
+pad-wav: $(PAD_WAV)
 
 src/%.o: src/%.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
@@ -122,7 +129,7 @@ eyes: eyes/eyes_map
 	./eyes/eyes_map
 
 clean:
-	rm -f $(OBJECTS) $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(HEARING) \
+	rm -f $(OBJECTS) $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(PAD_WAV) $(HEARING) \
 	tests/test_shakti tests/test_integration tests/make_wav_fixture \
 	tests/test_roundtrip
 	rm -rf tests/tmp_builder tests/tmp_loop tests/tmp_seed tests/tmp_mvp
@@ -130,3 +137,4 @@ clean:
 	rm -f tests/test_evidence.log tests/test_stream.log tests/test_school.log
 	rm -f tests/test_goal.txt tests/test_notebook.log tests/test_menu.txt
 	rm -f tests/test_long_term.log tests/test_loader_fixture.txt
+	rm -f tests/tmp_pad_in.wav tests/tmp_pad_out.wav
