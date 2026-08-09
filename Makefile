@@ -25,6 +25,7 @@ TARGET = shakti
 BUILDER = build_xml
 LEDGER = build_ledger
 SEED_BUILDER = build_seed_curriculum
+HEARING = hearing/hearing
 
 TEST_SOURCES = \
 	tests/test_shakti.c \
@@ -44,11 +45,17 @@ TEST_SOURCES = \
 	src/shakti_report.c \
 	src/shakti_loader.c
 
-.PHONY: all clean test run builder eyes
+.PHONY: all clean test run builder eyes hearing
 
-all: $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER)
+all: $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(HEARING)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $(TARGET)
+
+$(HEARING): hearing/hearing.c hearing/hearing_synth.c hearing/hearing_model.c hearing/hearing.h
+	$(CC) $(CFLAGS) -Ihearing hearing/hearing.c hearing/hearing_synth.c hearing/hearing_model.c -o $(HEARING) -lm
+
+hearing: $(HEARING)
+	./$(HEARING)
 
 $(BUILDER): tools/build_xml.c src/shakti_handwriting.c \
 		src/shakti_asset.c src/shakti_artifact.c
@@ -115,7 +122,7 @@ eyes: eyes/eyes_map
 	./eyes/eyes_map
 
 clean:
-	rm -f $(OBJECTS) $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) \
+	rm -f $(OBJECTS) $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(HEARING) \
 	tests/test_shakti tests/test_integration tests/make_wav_fixture \
 	tests/test_roundtrip
 	rm -rf tests/tmp_builder tests/tmp_loop tests/tmp_seed tests/tmp_mvp
