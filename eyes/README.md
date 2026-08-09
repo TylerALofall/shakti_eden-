@@ -1,5 +1,8 @@
 # eyes
 
+Files in this section: `README.md`, `eyes.c`, `eyes.h`, `eyes_map.c`,
+`eyes_xml.h`, `eyes_xml_collect.c`, `eyes_xml_rebuild.c`, `output/`
+
 Shakti's document collector and the reconstruction side that did not exist
 before. Everything is plain C99, deterministic, no subprocess, no dynamic
 allocation. Build and run from the repository root:
@@ -101,3 +104,153 @@ the pull: accept raw host frames, optionally resize them to a small approved
 set of standard page sizes, then sample at low FPS so the deterministic core
 only sees stable document frames instead of camera noise. That keeps the
 comparison point fixed while making a later video processor easy to swap in.
+
+## EYES_XML_V1 exact format
+
+The additive XML collector/rebuild pair in this section writes one XML file per
+document:
+
+```text
+<EYES_DOCUMENT version="1" pages="N">
+  <PAGE number="1" width="W" height="H" kind="mono">
+    <BITS>
+ROW_1_EXACTLY_W_BITS
+ROW_2_EXACTLY_W_BITS
+...
+ROW_H_EXACTLY_W_BITS
+    </BITS>
+  </PAGE>
+  ...
+</EYES_DOCUMENT>
+```
+
+Grammar rules:
+
+- `<EYES_DOCUMENT version="1" pages="N">` must match exactly.
+- Each `<PAGE ... kind="mono">` must match exactly.
+- `<BITS>` contains row-major `'0'` / `'1'` characters only.
+- There is one row per line, and every row length must equal the page width.
+- The parser is strict: malformed tags, malformed counts, unexpected trailing
+  content, short/long rows, or any non-bit character are rejected.
+
+## XML collect flow
+
+`eyes/eyes_xml_collect.c` is the collector-side standalone program. It uses the
+locked `eyes.h` core only:
+
+1. Load the fixed deterministic document table from `eyes_xml.h`.
+2. For each page, call `eyes_load_document`.
+3. Pull exact mono bits with `eyes_pull_mono`.
+4. Write the original page to `eyes/output/<tag>_page<N>_original.tan` with
+   `eyes_write_recon` so the starting pixels are inspectable without shared
+   memory.
+5. Write all pages into `eyes/output/<tag>_document.xml` as one `EYES_XML_V1`
+   document.
+
+## XML rebuild flow
+
+`eyes/eyes_xml_rebuild.c` is the other-side standalone program:
+
+1. Open `eyes/output/<tag>_document.xml` (or a direct `.xml` path).
+2. Parse `EYES_XML_V1` with an exact hand-written C99 parser.
+3. Rebuild each page with `eyes_reconstruct_mono`.
+4. Regenerate the original deterministic page with the same table in
+   `eyes_xml.h`.
+5. Run `eyes_diff(..., color=1)` so drift `0` means exact RGBA pixel identity,
+   not a text-only or binarized shortcut.
+6. Print `page N: WxH drift=D` and exit nonzero on any drift or parse failure.
+
+## Drift=0 proof from a real run
+
+Real build/run output from this repository state:
+
+```text
+$ make eyes-xml-collect eyes-xml-rebuild
+cc -std=c99 -Wall -Wextra -Wpedantic -Werror -O2 -Ieyes eyes/eyes_xml_collect.c eyes/eyes.c -o eyes/eyes_xml_collect
+./eyes/eyes_xml_collect
+collected page 1: 16x16 -> eyes/output/eyes_xml_page1_original.tan
+collected page 2: 32x16 -> eyes/output/eyes_xml_page2_original.tan
+collected page 3: 40x24 -> eyes/output/eyes_xml_page3_original.tan
+collected page 4: 64x24 -> eyes/output/eyes_xml_page4_original.tan
+wrote eyes/output/eyes_xml_document.xml
+cc -std=c99 -Wall -Wextra -Wpedantic -Werror -O2 -Ieyes eyes/eyes_xml_rebuild.c eyes/eyes.c -o eyes/eyes_xml_rebuild
+./eyes/eyes_xml_rebuild
+page 1: 16x16 drift=0
+page 2: 32x16 drift=0
+page 3: 40x24 drift=0
+page 4: 64x24 drift=0
+PASS: exact pixel rebuild on all 4 pages
+```
+
+Measured drift numbers from the real rebuild:
+
+- page 1: 16x16 drift=0
+- page 2: 32x16 drift=0
+- page 3: 40x24 drift=0
+- page 4: 64x24 drift=0
+
+Corrupt-input proof from a manual one-bit flip in a copied XML file:
+
+```text
+$ ./eyes/eyes_xml_rebuild /tmp/eyes_xml_document_bad.xml
+page 1: 16x16 drift=1
+FAIL page 1: drift=1
+page 2: 32x16 drift=0
+page 3: 40x24 drift=0
+page 4: 64x24 drift=0
+$ echo $?
+1
+```
+
+That is the no-theater check: one changed bit produced one changed pixel and a
+nonzero exit. This is the exact output shape: drift failures print every page
+then return `1` after the loop without adding a summary line, while parse/setup
+failures reject immediately at the point of the malformed input.
+
+## How to run the XML path
+
+Build and run from the repository root:
+
+```sh
+make eyes-xml
+```
+
+That target builds `eyes/eyes_xml_collect` and `eyes/eyes_xml_rebuild`, runs
+the collector, then runs the rebuild and fails the make if the rebuild exits
+nonzero.
+
+## Session handoff
+
+### What was done
+
+- Added `eyes_xml.h` with the fixed multi-page document table and XML API
+  declarations.
+- Added `eyes_xml_collect.c` to write per-page mono binaries into one XML file
+  plus per-page original `.tan` references.
+- Added `eyes_xml_rebuild.c` to parse that XML strictly, rebuild the pixels, and
+  prove exact RGBA drift `0` page by page.
+- Added `Makefile` targets `eyes-xml-collect`, `eyes-xml-rebuild`, and
+  `eyes-xml`.
+
+### What the next session should know
+
+- The XML path is additive only; `eyes.c`, `eyes.h`, and `eyes_map.c` were left
+  untouched.
+- The rebuild accepts either a tag (default `eyes_xml`) or a direct `.xml`
+  path, which is how the manual corruption check was run.
+- Validation already run on this state: `make eyes-xml-collect
+  eyes-xml-rebuild`, `make eyes-xml`, `make`, and `make test`.
+
+### What I would do differently next time
+
+- If Tyler later approves an additive color-preserving XML path, I would split
+  mono-XML and color-XML explicitly instead of trying to make one exact format
+  carry both fidelity guarantees.
+
+### What remains UNKNOWN
+
+- `eyes_load_document(kind=1)` generates saturated RGB pages, but the locked
+  exact-fidelity XML path here is mono pull + mono rebuild. Exact RGBA
+  drift=`0` for kind `1` pages would require a separate approved color-preserving
+  additive path; it cannot be made exact through mono bits alone without
+  changing the locked core.
