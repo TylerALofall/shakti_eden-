@@ -59,7 +59,10 @@ int main(void)
         return 1;
     }
 
-    /* 6. Evaluate trained prediction error sum */
+    /* 6. Evaluate trained prediction error sum from the same initial state. */
+    for (step = 0U; step < SHAKTI_HEARING_HIDDEN_DIM; ++step) {
+        model.h[step] = 0.0f;
+    }
     for (step = 0U; step < stream.flash_count - 1U; ++step) {
         float x[SHAKTI_HEARING_INPUT_DIM];
         float target[SHAKTI_HEARING_INPUT_DIM];
