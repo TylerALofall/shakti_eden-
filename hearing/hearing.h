@@ -3,7 +3,10 @@
 
 #define SHAKTI_HEARING_SAMPLE_RATE 16000U
 #define SHAKTI_HEARING_HEARTBEAT_BPM 72U
-#define SHAKTI_HEARING_MAX_SAMPLES 160000U /* 10 seconds of 16kHz audio */
+/* Capacity must cover Phase 1 dark (0–20 s) and enter Phase 2 entrainment. */
+#define SHAKTI_HEARING_MAX_DURATION_SECONDS 25.0
+#define SHAKTI_HEARING_MAX_SAMPLES 400000U /* 25 seconds of 16kHz audio */
+#define SHAKTI_HEARING_DARK_PHASE_SECONDS 20.0
 
 /* Colossal number: Human gestation in seconds (266 days * 86,400 seconds/day) */
 #define SHAKTI_PRENATAL_GESTATION_SECONDS (266UL * 86400UL)

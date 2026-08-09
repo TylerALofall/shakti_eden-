@@ -98,6 +98,11 @@ at a time, each with named paths + validation before editing:
 
 ## What was done in the session that created this card
 
+- PR #7 review fix (`discussion_r3743595332`): prenatal flash channel now
+  enforces absolute dark for stream elapsed time
+  `[0, SHAKTI_HEARING_DARK_PHASE_SECONDS)` (20 s), then ambient+pulse
+  entrainment; `SHAKTI_HEARING_MAX_SAMPLES` raised to 25 s so Phase 2 is
+  reachable (`hearing/hearing.h`, `hearing/hearing_synth.c`).
 - PR #7 review `discussion_r3743595347` only: hearing public stream is a
   **scalar light channel** (one intensity per 10 ms frame), not an 8×8 grid.
   Removed unused `SHAKTI_HEARING_FLASH_GRID_SIZE` / `SHAKTI_HEARING_FLASH_PIXELS`

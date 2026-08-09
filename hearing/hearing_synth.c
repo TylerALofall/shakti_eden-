@@ -67,20 +67,30 @@ int shakti_hearing_synthesize_prenatal(
         audio_val = lub + dub;
         stream->sample_buffer[sample_index] = (float)audio_val;
 
-        /* Synthesize visual warm red light flash peaking with the systolic peak (Lub) */
+        /* Synthesize visual warm red light flash peaking with the systolic peak (Lub).
+         * Phase 1 (0–DARK_PHASE_SECONDS): absolute visual darkness.
+         * Phase 2 (DARK_PHASE_SECONDS+): ambient womb light + systolic flashes.
+         * Elapsed time is global stream time, not heartbeat cycle phase. */
         if (sample_index % 160U == 0U) {
             unsigned int flash_index = sample_index / 160U;
             if (flash_index < stream->flash_count) {
-                /* Flash intensity tracks the cardiac cycle envelope */
-                flash_val = 0.1; /* ambient soft womb background light */
-                if (t < 0.25) {
-                    flash_val += 0.8 * exp(-t / 0.08);
-                }
-                if (t >= 0.18 && t < 0.30) {
-                    flash_val += 0.4 * exp(-(t - 0.18) / 0.06);
-                }
-                if (flash_val > 1.0) {
-                    flash_val = 1.0;
+                double elapsed_seconds =
+                    (double)sample_index / (double)SHAKTI_HEARING_SAMPLE_RATE;
+
+                if (elapsed_seconds < SHAKTI_HEARING_DARK_PHASE_SECONDS) {
+                    flash_val = 0.0;
+                } else {
+                    /* Flash intensity tracks the cardiac cycle envelope */
+                    flash_val = 0.1; /* ambient soft womb background light */
+                    if (t < 0.25) {
+                        flash_val += 0.8 * exp(-t / 0.08);
+                    }
+                    if (t >= 0.18 && t < 0.30) {
+                        flash_val += 0.4 * exp(-(t - 0.18) / 0.06);
+                    }
+                    if (flash_val > 1.0) {
+                        flash_val = 1.0;
+                    }
                 }
                 stream->flash_intensities[flash_index] = (float)flash_val;
             }
