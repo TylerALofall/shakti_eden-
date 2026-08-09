@@ -8,20 +8,16 @@
 /* Colossal number: Human gestation in seconds (266 days * 86,400 seconds/day) */
 #define SHAKTI_PRENATAL_GESTATION_SECONDS (266UL * 86400UL)
 
-/* 8x8 sensory grid for light flashes passing through translucent womb boundary */
-#define SHAKTI_HEARING_FLASH_GRID_SIZE 8U
-#define SHAKTI_HEARING_FLASH_PIXELS (SHAKTI_HEARING_FLASH_GRID_SIZE * SHAKTI_HEARING_FLASH_GRID_SIZE)
-
 /* Compact GRU parameters for deterministic prenatal learning */
-#define SHAKTI_HEARING_INPUT_DIM 2U  /* Input 1: audio pulse amplitude, Input 2: light flash intensity */
+#define SHAKTI_HEARING_INPUT_DIM 2U  /* Input 0: audio pulse amplitude, Input 1: scalar light intensity */
 #define SHAKTI_HEARING_HIDDEN_DIM 8U /* Hidden state size of the GRU cell */
 
 typedef struct {
     float sample_buffer[SHAKTI_HEARING_MAX_SAMPLES];
     unsigned int sample_count;
     
-    /* Synchronized visual flash grids corresponding to each audio window */
-    float flash_intensities[SHAKTI_HEARING_MAX_SAMPLES / 160U]; /* Sampled every 10ms (160 samples) */
+    /* One scalar light intensity per audio frame (10 ms / 160 samples at 16 kHz) */
+    float flash_intensities[SHAKTI_HEARING_MAX_SAMPLES / 160U];
     unsigned int flash_count;
 } shakti_prenatal_sensory_stream_t;
 

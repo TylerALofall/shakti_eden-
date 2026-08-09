@@ -98,20 +98,15 @@ at a time, each with named paths + validation before editing:
 
 ## What was done in the session that created this card
 
-- Inventoried the `TylerALofall-patch-1` zips (read-only, extracted to
-  `/tmp/patch1_inventory/`). Conclusion: the current repo tree is **newer and
-  better**; the zips are older snapshots. Do **not** overwrite the tree from
-  them. The only Python (`migrate_curriculum.py`) existed only inside a zip and
-  was **not** imported (Python is forbidden).
-- Ported the four POSIX shell integration tests to a single pure-C99
-  in-process runner `tests/test_integration.c` (no shell, no subprocess).
-- Refactored tools to C-callable entry points with `main` kept for standalone
-  builds: `shakti_build_xml_file`, `shakti_build_ledger_file`,
-  `shakti_build_seed_curriculum`, `shakti_write_test_wav`.
-- `src/main.c` exposes `shakti_app_main` when compiled with
-  `-DSHAKTI_APP_NO_MAIN`; standalone `shakti` still builds with `main`.
-- Deleted `tests/test_builder.sh`, `test_loop.sh`, `test_seed.sh`,
-  `test_mvp.sh`. `make` + `make test` green.
+- PR #7 review `discussion_r3743595347` only: hearing public stream is a
+  **scalar light channel** (one intensity per 10 ms frame), not an 8×8 grid.
+  Removed unused `SHAKTI_HEARING_FLASH_GRID_SIZE` / `SHAKTI_HEARING_FLASH_PIXELS`
+  and aligned `hearing/hearing.h` + `hearing/README.md` with the existing
+  `flash_intensities[]` + `INPUT_DIM=2` model. Validated with `make hearing`.
+- Prior: Inventoried the `TylerALofall-patch-1` zips (read-only). Current tree
+  is newer; do not overwrite from zips. Python inside zips was not imported.
+- Prior: POSIX shell integration tests → pure-C99 `tests/test_integration.c`.
+- Prior: C-callable tool entry points; `SHAKTI_APP_NO_MAIN` for `shakti_app_main`.
 
 ## How to work here (hard rules)
 
