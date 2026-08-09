@@ -5,8 +5,9 @@
 
 int main(void)
 {
-    shakti_prenatal_sensory_stream_t stream;
-    shakti_hearing_gru_t model;
+    /* Stream is ~1.6 MB at 25 s capacity; keep off the default stack. */
+    static shakti_prenatal_sensory_stream_t stream;
+    static shakti_hearing_gru_t model;
     float initial_err_sum = 0.0f;
     float trained_err_sum = 0.0f;
     unsigned int step;
