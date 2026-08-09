@@ -20,3 +20,5 @@ tests/tmp_pad_in.wav
 tests/tmp_pad_out.wav
 eyes/eyes_map
 eyes/output/
+screen/screen_map
+screen/output/

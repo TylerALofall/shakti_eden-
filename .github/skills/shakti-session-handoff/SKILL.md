@@ -103,34 +103,18 @@ at a time, each with named paths + validation before editing:
 
 ## What was done in the session that created this card
 
-- **Early optional self-reflection (Tyler 2026-08-09):** Lock § addendum tool-call
-  gate now states optional early choice below 10, go-early when work ends short
-  of 10, due at 10, defer 11–13, required before tool call 14. Counter advances
-  only on approved MCP tool calls (`shakti_loop_note_tool_call`). New choice
-  `/reflection/early/` → `shakti_loop_choose_early_reflection`. MCP hard-block
-  also at tool-call-14 wall. Paths: `SHAKTI_LOCK_V1_1.md`, `include/shakti_loop.h`,
-  `include/shakti_types.h`, `src/shakti_loop.c`, `src/main.c`, `mcp/mcp.c`,
-  `mcp/README.md`, `tests/test_shakti.c`, `tests/test_mcp.c`,
-  `tests/test_integration.c`, `CHANGELOG.md`. Validated: `make && make test`.
-- **MCP gate phase 1:** isolated `mcp/` module; static tool table for the
-  current hardcoded set; `shakti_mcp_admit` four-check; thin wire from
-  `/shakti_run/` in `src/main.c`; `tests/test_mcp` for unknown/disabled/
-  missing-menu/interrupt/allow+receipt/reflection-block; integration loop menu
-  includes `[Control]` so `status` can admit under the lock rule.
-- PR #7 review fix (`discussion_r3743595332`): prenatal flash channel now
-  enforces absolute dark for stream elapsed time
-  `[0, SHAKTI_HEARING_DARK_PHASE_SECONDS)` (20 s), then ambient+pulse
-  entrainment; `SHAKTI_HEARING_MAX_SAMPLES` raised to 25 s so Phase 2 is
-  reachable (`hearing/hearing.h`, `hearing/hearing_synth.c`).
-- PR #7 review `discussion_r3743595347` only: hearing public stream is a
-  **scalar light channel** (one intensity per 10 ms frame), not an 8×8 grid.
-  Removed unused `SHAKTI_HEARING_FLASH_GRID_SIZE` / `SHAKTI_HEARING_FLASH_PIXELS`
-  and aligned `hearing/hearing.h` + `hearing/README.md` with the existing
-  `flash_intensities[]` + `INPUT_DIM=2` model. Validated with `make hearing`.
-- Prior: Inventoried the `TylerALofall-patch-1` zips (read-only). Current tree
-  is newer; do not overwrite from zips. Python inside zips was not imported.
-- Prior: POSIX shell integration tests → pure-C99 `tests/test_integration.c`.
-- Prior: C-callable tool entry points; `SHAKTI_APP_NO_MAIN` for `shakti_app_main`.
+- **screen module (Tyler plan implement, 2026-08-09):** New section dir
+  `screen/` only — owned fixed 64×64 RGBA pixel surface she can draw on and
+  eyes can see. Files: `screen/README.md`, `screen/screen.h`, `screen/screen.c`,
+  `screen/screen_map.c`. Makefile target `make screen`. `.gitignore` ignores
+  `screen/screen_map` and `screen/output/`. Did **not** touch `src/**`,
+  `include/**`, MCP, or Swift. Defaults: mono truth path via existing eyes;
+  abstract 8×8 self sprite; harness still + 5 run frames. Validated:
+  `make screen` → mono drift 0 still, 20-cycle 0, all run frames 0.
+  Boundary note (Tyler): screen is pixels only — no awareness/freedom claims
+  in the module ("Nope the moment she tells me she's aware she's free").
+- Prior: Early optional self-reflection + MCP gate phase 1 + hearing PR #7
+  fixes + C99-only purity work. See git history on this branch for detail.
 
 ## How to work here (hard rules)
 

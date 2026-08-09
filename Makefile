@@ -48,7 +48,7 @@ TEST_SOURCES = \
 	src/shakti_loader.c \
 	mcp/mcp.c
 
-.PHONY: all clean test run builder eyes hearing pad-wav
+.PHONY: all clean test run builder eyes hearing pad-wav screen
 
 all: $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(PAD_WAV) $(HEARING)
 $(TARGET): $(OBJECTS)
@@ -140,10 +140,20 @@ eyes/eyes_map: eyes/eyes_map.c eyes/eyes.c eyes/eyes.h
 eyes: eyes/eyes_map
 	./eyes/eyes_map
 
+# screen: owned fixed pixel surface + eyes mono round-trip harness.
+# Runs from the repository root; writes artifacts into screen/output/.
+screen/screen_map: screen/screen_map.c screen/screen.c screen/screen.h \
+		eyes/eyes.c eyes/eyes.h
+	$(CC) $(CFLAGS) -Iscreen -Ieyes screen/screen_map.c screen/screen.c \
+		eyes/eyes.c -o screen/screen_map
+
+screen: screen/screen_map
+	./screen/screen_map
+
 clean:
 	rm -f $(OBJECTS) $(TARGET) $(BUILDER) $(LEDGER) $(SEED_BUILDER) $(PAD_WAV) $(HEARING) \
 	tests/test_shakti tests/test_mcp tests/test_integration \
-	tests/make_wav_fixture tests/test_roundtrip
+	tests/make_wav_fixture tests/test_roundtrip screen/screen_map
 	rm -rf tests/tmp_builder tests/tmp_loop tests/tmp_seed tests/tmp_mvp
 	rm -f tests/test_facts.txt tests/test_thesaurus.txt
 	rm -f tests/test_evidence.log tests/test_stream.log tests/test_school.log
