@@ -5,10 +5,10 @@ Read this first, then `SHAKTI_LOCK_V1_1.md` (the governing contract), then
 `.github/copilot-instructions.md` (the safety gate). Tyler's latest direct
 instruction always overrides everything below.
 
-## Current state (as of 2026-08-07)
+## Current state (as of 2026-08-09)
 
-- **Branch of record:** `copilot/patch-1`. Never touch `main`. Stop and report
-  if the working branch is `main`.
+- **Branch of record:** `copilot/shakti-main`. Never touch `main`. Stop and
+  report if the working branch is `main`.
 - **Purity:** The tree is **100% C99**. No `.sh`, no Python, no JS, no other
   languages. This is a hard, non-negotiable requirement (see the `NOTICE` in
   `.github/copilot-instructions.md`).
@@ -68,6 +68,14 @@ at a time, each with named paths + validation before editing:
 
 ## What was done in the session that created this card
 
+- Added the `binary/` pixel-deposit section (2026-08-09, Tyler-directed):
+  two small real input files (`binary/page1_picture.txt`,
+  `binary/page2_text.txt`) are read from disk, every pixel location is
+  deposited as 5 binary marks (R G B A as 8 bits each + the mono ink bit)
+  into dated per-page files, the page is rebuilt only from the deposit file
+  read back from disk, and the true counts print as measured. Collected
+  output is a dated 2-page Letter PDF. `make binary-deposit`. Locked
+  `eyes/eyes.c` core linked unchanged.
 - Inventoried the `TylerALofall-patch-1` zips (read-only, extracted to
   `/tmp/patch1_inventory/`). Conclusion: the current repo tree is **newer and
   better**; the zips are older snapshots. Do **not** overwrite the tree from
