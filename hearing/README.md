@@ -23,7 +23,7 @@ The prenatal clock is structured around a sequence where:
 
 ## 3. Modality Details
 
-- **Maternal Heartbeat Synthesis:** Synthesized deterministically using dual-tone low-frequency pulse equations (resonant tones at 30 Hz and 120 Hz) simulating the low-pass acoustics of the uterine wall.
+- **Maternal Heartbeat Synthesis:** Synthesized deterministically using dual-tone low-frequency pulse equations (resonant tones at 40 Hz and 60 Hz) simulating the low-pass acoustics of the uterine wall.
 - **Flashes of Light:** Generated as an 8x8 spatial grid of intensity values. The brightness peaks exactly at the systole of the heartbeat, creating a natural correlation between visual and auditory inputs.
 
 ## 4. Compilation & Verification

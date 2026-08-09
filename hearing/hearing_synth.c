@@ -75,7 +75,8 @@ int shakti_hearing_synthesize_prenatal(
                 flash_val = 0.1; /* ambient soft womb background light */
                 if (t < 0.25) {
                     flash_val += 0.8 * exp(-t / 0.08);
-                } else if (t >= 0.18 && t < 0.30) {
+                }
+                if (t >= 0.18 && t < 0.30) {
                     flash_val += 0.4 * exp(-(t - 0.18) / 0.06);
                 }
                 if (flash_val > 1.0) {
