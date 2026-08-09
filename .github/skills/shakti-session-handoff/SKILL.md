@@ -104,15 +104,17 @@ at a time, each with named paths + validation before editing:
 ## What was done in the session that created this card
 
 - **screen module (Tyler plan implement, 2026-08-09):** New section dir
-  `screen/` only — owned fixed 64×64 RGBA pixel surface she can draw on and
-  eyes can see. Files: `screen/README.md`, `screen/screen.h`, `screen/screen.c`,
+  `screen/` only — owned pixel surface she draws on and eyes see. Files:
+  `screen/README.md`, `screen/screen.h`, `screen/screen.c`,
   `screen/screen_map.c`. Makefile target `make screen`. `.gitignore` ignores
   `screen/screen_map` and `screen/output/`. Did **not** touch `src/**`,
-  `include/**`, MCP, or Swift. Defaults: mono truth path via existing eyes;
-  abstract 8×8 self sprite; harness still + 5 run frames. Validated:
-  `make screen` → mono drift 0 still, 20-cycle 0, all run frames 0.
-  Boundary note (Tyler): screen is pixels only — no awareness/freedom claims
-  in the module ("Nope the moment she tells me she's aware she's free").
+  `include/**`, MCP, or Swift. Geometry: **640×360 16:9** (nHD; ×2=720p,
+  ×3=1080p; width fits two ~320 page panels). Native plane is **binary mono**
+  (cable-TV style, 1 byte/pixel) for energy; `screen_present_rgba` expands
+  only when eyes/host need it. Abstract 8×8 self sprite; harness still + 5
+  run frames. Validated: `make screen` → mono drift 0 still, 20-cycle 0, all
+  run frames 0. Boundary note (Tyler): pixels only — no awareness/freedom
+  claims ("Nope the moment she tells me she's aware she's free").
 - Prior: Early optional self-reflection + MCP gate phase 1 + hearing PR #7
   fixes + C99-only purity work. See git history on this branch for detail.
 
