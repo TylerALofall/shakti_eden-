@@ -123,3 +123,21 @@ clean:
 	rm -f tests/test_evidence.log tests/test_stream.log tests/test_school.log
 	rm -f tests/test_goal.txt tests/test_notebook.log tests/test_menu.txt
 	rm -f tests/test_long_term.log tests/test_loader_fixture.txt
+
+.PHONY: eyes-xml-collect eyes-xml-rebuild eyes-xml
+
+eyes/eyes_xml_collect: eyes/eyes_xml_collect.c eyes/eyes_xml.h eyes/eyes.h eyes/eyes.c
+	$(CC) $(CFLAGS) -Ieyes eyes/eyes_xml_collect.c eyes/eyes.c -o eyes/eyes_xml_collect
+
+eyes/eyes_xml_rebuild: eyes/eyes_xml_rebuild.c eyes/eyes_xml.h eyes/eyes.h eyes/eyes.c
+	$(CC) $(CFLAGS) -Ieyes eyes/eyes_xml_rebuild.c eyes/eyes.c -o eyes/eyes_xml_rebuild
+
+eyes-xml-collect: eyes/eyes_xml_collect
+	./eyes/eyes_xml_collect
+
+eyes-xml-rebuild: eyes/eyes_xml_rebuild
+	./eyes/eyes_xml_rebuild
+
+eyes-xml: eyes/eyes_xml_collect eyes/eyes_xml_rebuild
+	./eyes/eyes_xml_collect
+	./eyes/eyes_xml_rebuild
