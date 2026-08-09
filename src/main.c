@@ -821,6 +821,7 @@ static int process_tool(
         return 1;
     }
 
+    /* Admitted id with no dispatch branch — treat as hard fail, no silent OK. */
     puts("DENIED");
 
     return 1;

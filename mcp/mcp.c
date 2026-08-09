@@ -247,11 +247,11 @@ void shakti_mcp_print_tools(const shakti_mcp_state_t *state)
 {
     size_t index;
 
-    puts("MCP tools:");
-
     if (state == NULL) {
         return;
     }
+
+    puts("MCP tools:");
 
     for (index = 0U; index < state->tool_count; ++index) {
         printf(

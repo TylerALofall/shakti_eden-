@@ -52,6 +52,16 @@ static void test_disabled_denied(void)
     shakti_mcp_init(&mcp);
     load_menu(&loop);
 
+    /* Prove menu would allow "ask" before disabling Tyler enable. */
+    admit = shakti_mcp_admit(
+        &mcp,
+        &loop,
+        "ask",
+        &handler,
+        &message
+    );
+    assert(admit == SHAKTI_MCP_ADMIT_OK);
+
     assert(shakti_mcp_set_tyler_enabled(&mcp, "ask", 0));
     admit = shakti_mcp_admit(
         &mcp,
