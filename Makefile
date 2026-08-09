@@ -141,3 +141,11 @@ eyes-xml-rebuild: eyes/eyes_xml_rebuild
 eyes-xml: eyes/eyes_xml_collect eyes/eyes_xml_rebuild
 	./eyes/eyes_xml_collect
 	./eyes/eyes_xml_rebuild
+
+.PHONY: eyes-loop
+
+eyes/eyes_loop_rebuild: eyes/eyes_loop_rebuild.c eyes/eyes_xml.h eyes/eyes.h eyes/eyes.c
+	$(CC) $(CFLAGS) -Ieyes eyes/eyes_loop_rebuild.c eyes/eyes.c -o eyes/eyes_loop_rebuild
+
+eyes-loop: eyes/eyes_loop_rebuild
+	./eyes/eyes_loop_rebuild

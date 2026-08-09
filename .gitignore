@@ -14,4 +14,7 @@ build_seed_curriculum
 tests/tmp_seed/
 tests/tmp_mvp/
 eyes/eyes_map
+eyes/eyes_xml_collect
+eyes/eyes_xml_rebuild
+eyes/eyes_loop_rebuild
 eyes/output/
