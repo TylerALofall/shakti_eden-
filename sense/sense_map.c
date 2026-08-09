@@ -305,12 +305,13 @@ static int run_prenatal(void)
         return 0;
     }
 
-    /* Sight, hearing, and light are the same convergence point. */
-    if (now->seq != bound->seq && now->light_flash <= 0.0f) {
-        /* latest may have overwritten bound in the ring; require light on now */
+    /* Live point must still carry light after Phase-2 (ring may have moved). */
+    if (now->light_flash <= 0.0f) {
+        printf("FAIL: sense_now has no light after Phase-2\n");
+        return 0;
     }
-    if (now->light_flash != now->light_flash) {
-        printf("FAIL: light NaN\n");
+    if (bound->light_flash <= 0.0f) {
+        printf("FAIL: bound Phase-2 point lost light\n");
         return 0;
     }
 

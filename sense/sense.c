@@ -171,12 +171,14 @@ int sense_converge(
     sense_point_t **out_point
 )
 {
-    sense_point_t *slot;
     float local_pcm[SENSE_PCM_FRAME_SAMPLES];
     float roundtrip[SENSE_PCM_FRAME_SAMPLES];
     unsigned char recon[SENSE_VISION_RGBA_BYTES];
     char bits[SENSE_VISION_BITS_CAPACITY];
+    char sound_bits[SENSE_SOUND_BITS_CAPACITY];
     unsigned long drift_v;
+    unsigned long drift_s;
+    sense_point_t *slot;
 
     if (ring == NULL || rgba == NULL) {
         return 0;
@@ -222,54 +224,49 @@ int sense_converge(
     }
 
     /* Sound binary + round-trip check before any ring commit. */
-    {
-        char sound_bits[SENSE_SOUND_BITS_CAPACITY];
-        unsigned long drift_s;
-
-        if (!sense_pcm_to_bits(
-                local_pcm,
-                SENSE_PCM_FRAME_SAMPLES,
-                sound_bits,
-                SENSE_SOUND_BITS_CAPACITY)) {
-            return 0;
-        }
-
-        if (!sense_bits_to_pcm(
-                sound_bits,
-                roundtrip,
-                SENSE_PCM_FRAME_SAMPLES)) {
-            return 0;
-        }
-
-        drift_s = sense_pcm_drift(
+    if (!sense_pcm_to_bits(
             local_pcm,
-            roundtrip,
-            SENSE_PCM_FRAME_SAMPLES
-        );
-        if (drift_s == (unsigned long)-1) {
-            return 0;
-        }
-
-        /* All channels ready — one atomic write to the convergence point. */
-        slot = &ring->slots[ring->write_index];
-        memset(slot, 0, sizeof(*slot));
-
-        slot->seq = ring->next_seq;
-        slot->epoch = ring->epoch;
-        slot->in_use = 1U;
-        slot->drift_v = drift_v;
-        slot->drift_s = drift_s;
-        slot->light_flash = light_flash;
-
-        memcpy(slot->vision_binary, bits, SENSE_VISION_BITS_CAPACITY);
-        memcpy(slot->vision_render, recon, SENSE_VISION_RGBA_BYTES);
-        memcpy(slot->sound_pcm, local_pcm, sizeof(slot->sound_pcm));
-        memcpy(slot->sound_binary, sound_bits, SENSE_SOUND_BITS_CAPACITY);
-        slot->sound_envelope = sense_pcm_envelope(
-            local_pcm,
-            SENSE_PCM_FRAME_SAMPLES
-        );
+            SENSE_PCM_FRAME_SAMPLES,
+            sound_bits,
+            SENSE_SOUND_BITS_CAPACITY)) {
+        return 0;
     }
+
+    if (!sense_bits_to_pcm(
+            sound_bits,
+            roundtrip,
+            SENSE_PCM_FRAME_SAMPLES)) {
+        return 0;
+    }
+
+    drift_s = sense_pcm_drift(
+        local_pcm,
+        roundtrip,
+        SENSE_PCM_FRAME_SAMPLES
+    );
+    if (drift_s == (unsigned long)-1) {
+        return 0;
+    }
+
+    /* All channels ready — one atomic write to the convergence point. */
+    slot = &ring->slots[ring->write_index];
+    memset(slot, 0, sizeof(*slot));
+
+    slot->seq = ring->next_seq;
+    slot->epoch = ring->epoch;
+    slot->in_use = 1U;
+    slot->drift_v = drift_v;
+    slot->drift_s = drift_s;
+    slot->light_flash = light_flash;
+
+    memcpy(slot->vision_binary, bits, SENSE_VISION_BITS_CAPACITY);
+    memcpy(slot->vision_render, recon, SENSE_VISION_RGBA_BYTES);
+    memcpy(slot->sound_pcm, local_pcm, sizeof(slot->sound_pcm));
+    memcpy(slot->sound_binary, sound_bits, SENSE_SOUND_BITS_CAPACITY);
+    slot->sound_envelope = sense_pcm_envelope(
+        local_pcm,
+        SENSE_PCM_FRAME_SAMPLES
+    );
 
     ring->next_seq++;
     ring->epoch++;
