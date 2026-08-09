@@ -149,3 +149,14 @@ eyes/eyes_loop_rebuild: eyes/eyes_loop_rebuild.c eyes/eyes_xml.h eyes/eyes.h eye
 
 eyes-loop: eyes/eyes_loop_rebuild
 	./eyes/eyes_loop_rebuild
+
+.PHONY: binary-deposit
+
+# binary: the pixel deposit. Reads binary/page1_picture.txt and
+# binary/page2_text.txt, deposits 5 binary marks per pixel location into
+# dated per-page files, rebuilds from the deposit, writes the dated PDF.
+binary/binary_deposit: binary/binary_deposit.c eyes/eyes.h eyes/eyes.c
+	$(CC) $(CFLAGS) -Ieyes binary/binary_deposit.c eyes/eyes.c -o binary/binary_deposit
+
+binary-deposit: binary/binary_deposit
+	./binary/binary_deposit
