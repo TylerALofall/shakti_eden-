@@ -44,6 +44,17 @@
 #define EYES_LOOP_PDF_SCALE 6U
 #define EYES_LOOP_PDF_TEXT_LINES 55U
 #define EYES_LOOP_PDF_MAX_OBJECTS 96U
+/* PDF object layout: catalog, pages, font; then per picture page 3 images
+ * + content + page; then per text page content + page. */
+#define EYES_LOOP_PDF_BASE_OBJECTS 3U
+#define EYES_LOOP_PDF_PICTURE_OBJECTS 5U
+#define EYES_LOOP_PDF_TEXT_OBJECTS 2U
+#define EYES_LOOP_PDF_PICTURE_FIRST(page_index) \
+    (EYES_LOOP_PDF_BASE_OBJECTS + 1U + \
+     (page_index) * EYES_LOOP_PDF_PICTURE_OBJECTS)
+#define EYES_LOOP_PDF_TEXT_FIRST(text_index) \
+    (EYES_LOOP_PDF_PICTURE_FIRST(EYES_XML_PAGE_COUNT) + \
+     (text_index) * EYES_LOOP_PDF_TEXT_OBJECTS)
 #define EYES_LOOP_IMAGE_CAPACITY \
     ((unsigned long)EYES_XML_WIDTH_MAX * (unsigned long)EYES_XML_HEIGHT_MAX * 3UL)
 
@@ -403,7 +414,9 @@ static int write_pdf(const char *path, const char *log_text)
         text_pages = 1U;
     }
 
-    total_objects = 3U + EYES_XML_PAGE_COUNT * 5U + text_pages * 2U;
+    total_objects = EYES_LOOP_PDF_BASE_OBJECTS +
+                    EYES_XML_PAGE_COUNT * EYES_LOOP_PDF_PICTURE_OBJECTS +
+                    text_pages * EYES_LOOP_PDF_TEXT_OBJECTS;
 
     if (total_objects > EYES_LOOP_PDF_MAX_OBJECTS) {
         return 0;
@@ -433,7 +446,11 @@ static int write_pdf(const char *path, const char *log_text)
         for (page_index = 0U;
              success && page_index < EYES_XML_PAGE_COUNT;
              ++page_index) {
-            success = fprintf(file, " %u 0 R", 8U + page_index * 5U) > 0;
+            success = fprintf(
+                file,
+                " %u 0 R",
+                EYES_LOOP_PDF_PICTURE_FIRST(page_index) + 4U
+            ) > 0;
         }
 
         for (text_index = 0U;
@@ -442,7 +459,7 @@ static int write_pdf(const char *path, const char *log_text)
             success = fprintf(
                 file,
                 " %u 0 R",
-                4U + EYES_XML_PAGE_COUNT * 5U + text_index * 2U + 1U
+                EYES_LOOP_PDF_TEXT_FIRST(text_index) + 1U
             ) > 0;
         }
 
@@ -457,7 +474,7 @@ static int write_pdf(const char *path, const char *log_text)
             "endobj\n"
         ) > 0;
 
-    /* Picture pages: objects 4 + p*5 .. 8 + p*5. */
+    /* Picture pages, then their content stream and page object. */
     for (page_index = 0U;
          success && page_index < EYES_XML_PAGE_COUNT;
          ++page_index) {
@@ -468,7 +485,7 @@ static int write_pdf(const char *path, const char *log_text)
         int bottom;
 
         page = &g_eyes_xml_document_pages[page_index];
-        base = 4U + page_index * 5U;
+        base = EYES_LOOP_PDF_PICTURE_FIRST(page_index);
 
         success =
             pdf_write_image_object(
@@ -547,7 +564,7 @@ static int write_pdf(const char *path, const char *log_text)
         unsigned int line_count;
         unsigned int base;
 
-        base = 4U + EYES_XML_PAGE_COUNT * 5U + text_index * 2U;
+        base = EYES_LOOP_PDF_TEXT_FIRST(text_index);
         used = 0UL;
         g_content[0] = '\0';
 
