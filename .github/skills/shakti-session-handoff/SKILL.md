@@ -55,7 +55,9 @@ Correct anytime; these are the working defaults:
    at lesson age. Inside Eden: **no probability, no vector embeddings, no
    guessing model** on the sense path. `sense/` links `hearing_synth` only
    (not `hearing_model` GRU).
-8. **Zips on Shakti-main** (`For Groc 2.zip`, baseline zips, lock upload) =
+8. **All senses converge at one point** — `sense_converge` writes one
+   `sense_point_t` (binary then render of the same event). No half-points.
+9. **Zips on Shakti-main** (`For Groc 2.zip`, baseline zips, lock upload) =
    evidence only until Tyler orders a read-only open. Do not bulk import.
 
 ## Tyler's architecture (do not violate)
@@ -108,16 +110,16 @@ at a time, each with named paths + validation before editing:
 ## What was done in the session that created this card
 
 - **sense module (Tyler plan implement, 2026-08-09):** New section dir `sense/`
-  only — dual-path binder so vision+sound are one experience under one `seq`.
-  Files: `sense/README.md`, `sense/sense.h`, `sense/sense.c`,
-  `sense/sense_map.c`, `tests/test_sense.c`. Makefile: `make sense`,
-  `tests/test_sense` on `make test`. Links eyes + screen + **hearing_synth
-  only** (no GRU/embeddings). Fixed ring of 8 frames; 64×64 mono vision
-  capsule; 10 ms @ 16 kHz PCM bits + envelope + light. Pre-Eden harness runs
-  21 s prenatal stream (dark 0–20 s, then light flashes) with audio+light on
-  the same capsule. Tyler rule restated: senses always on; no probability
-  inside Eden. Did **not** touch `src/**`, MCP, Eden tables, or Swift.
-  Validated: `make sense` PASS, `make test` PASS. No merge until Tyler says.
+  only — **all senses converge at one point** (`sense_point_t` / `sense_converge`
+  / `sense_now`). Not parallel tracks. Files: `sense/README.md`, `sense/sense.h`,
+  `sense/sense.c`, `sense/sense_map.c`, `tests/test_sense.c`. Makefile:
+  `make sense`, `tests/test_sense` on `make test`. Links eyes + screen +
+  **hearing_synth only** (no GRU/embeddings). Ring of 8 points; 64×64 mono
+  vision + 10 ms @ 16 kHz PCM bits + light on the same `seq`. Pre-Eden 21 s
+  prenatal (dark 0–20 s then flashes). Tyler: senses always on; no probability
+  inside Eden; all senses meet at 1 point. Did **not** touch `src/**`, MCP,
+  Eden tables, or Swift. Validated: `make sense` PASS, `make test` PASS.
+  No merge until Tyler says.
 - Prior: screen 640×360 RGBA; early optional self-reflection + MCP gate phase 1
   + hearing PR #7 + C99-only purity. See git history on this branch.
 

@@ -3,44 +3,32 @@
 Files in this section:
 
 - `sense/README.md` (this file)
-- `sense/sense.h` (C99 interface: frame capsule + RAM ring)
-- `sense/sense.c` (ingest binder, PCM bits, present-to-screen)
-- `sense/sense_map.c` (harness: fixture vision+sound + prenatal fallback)
+- `sense/sense.h` (C99 interface: one convergence point + RAM ring)
+- `sense/sense.c` (converge, PCM bits, present-to-screen)
+- `sense/sense_map.c` (harness: fixture + prenatal converge flow)
 
 ## What this is
 
-Thin binder so vision and sound are **one experience**, not two systems.
+**All senses converge at one point.** Not parallel systems. Sight, hearing,
+light (and later senses) meet in a single `sense_point_t` under one `seq`.
+There is no vision-only or sound-only commit.
 
-**Senses are always on.** She is born with them working; they are not grown
-later and not switched off. The ring keeps flowing every tick the harness (and
-later the awake loop) feeds — no “sense disabled” path in this module.
+**Senses are always on.** Born with them working — not grown at lesson age,
+not switched off.
 
-**No probability inside Eden.** This section is 100% deterministic: same RGBA +
-PCM bytes always yield the same binary, the same render, the same `seq` binding.
-There is **no** vector embedding, no guessing model, and no GRU/ML path here.
-Prenatal sound/light uses only `hearing/hearing_synth.c` (fixed equations).
+**No probability inside Eden.** Deterministic only: same RGBA + PCM → same
+binary → same render → same point. No vector embedding, no guessing model,
+no GRU on this path. Prenatal uses `hearing/hearing_synth.c` only.
 
-Each tick writes one `sense_frame_t` under one `seq`:
+At the one point, two stages of the **same** event:
 
-1. Vision binary — mono bits (`eyes_pull_mono`)
-2. Vision rendered — rebuild pixels (`eyes_reconstruct_mono`)
-3. Sound binary — int16 PCM bit string (16 kHz, 10 ms block)
-4. Sound context — waveform samples + peak envelope + light flash
+1. Binary first — mono vision bits + sound int16 bits + light scalar
+2. Rendered — rebuild vision pixels + waveform context + envelope
 
-Error on vision = any pixel that cannot rebuild (`drift_v`).  
-Error on sound = any sample whose int16 identity fails bit round-trip (`drift_s`).
+Error = cannot rebuild (`drift_v` pixel, `drift_s` sample).
 
-Fixed ring of **8** slots. Constant flow = overwrite oldest. No daemon, no
-threads, no dynamic allocation, no Python/JS.
-
-## Ingest seam (Swift later)
-
-Host or harness supplies:
-
-- RGBA page `64 x 64` (camera later fills this; C99 never sees Swift)
-- PCM float block of `160` samples (10 ms at 16 kHz; mic later)
-
-Same `sense_ingest` call binds both sides.
+API: `sense_converge(...)` is the sole meet point. `sense_now(ring)` is the
+live point. Ring of **8** points, overwrite oldest. No daemon/threads/alloc.
 
 ## Pre-Eden path
 

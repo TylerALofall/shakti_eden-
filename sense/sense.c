@@ -163,15 +163,15 @@ float sense_pcm_envelope(
     return peak;
 }
 
-int sense_ingest(
+int sense_converge(
     sense_ring_t *ring,
     const unsigned char *rgba,
     const float *pcm,
     float light_flash,
-    sense_frame_t **out_frame
+    sense_point_t **out_point
 )
 {
-    sense_frame_t *slot;
+    sense_point_t *slot;
     float local_pcm[SENSE_PCM_FRAME_SAMPLES];
     float roundtrip[SENSE_PCM_FRAME_SAMPLES];
     unsigned char recon[SENSE_VISION_RGBA_BYTES];
@@ -188,7 +188,10 @@ int sense_ingest(
         memset(local_pcm, 0, sizeof(local_pcm));
     }
 
-    /* Binary first: mono pull. */
+    /*
+     * One atomic converge: build every channel into a temporary view, then
+     * commit the full point. No half-written ring slot.
+     */
     if (!eyes_pull_mono(
             rgba,
             SENSE_VISION_WIDTH,
@@ -198,7 +201,6 @@ int sense_ingest(
         return 0;
     }
 
-    /* Rendered other side: rebuild from bits. */
     if (!eyes_reconstruct_mono(
             bits,
             SENSE_VISION_WIDTH,
@@ -219,46 +221,54 @@ int sense_ingest(
         return 0;
     }
 
-    slot = &ring->slots[ring->write_index];
-    memset(slot, 0, sizeof(*slot));
+    /* Sound binary + round-trip check before any ring commit. */
+    {
+        char sound_bits[SENSE_SOUND_BITS_CAPACITY];
+        unsigned long drift_s;
 
-    slot->seq = ring->next_seq;
-    slot->epoch = ring->epoch;
-    slot->in_use = 1U;
-    slot->drift_v = drift_v;
-    slot->light_flash = light_flash;
+        if (!sense_pcm_to_bits(
+                local_pcm,
+                SENSE_PCM_FRAME_SAMPLES,
+                sound_bits,
+                SENSE_SOUND_BITS_CAPACITY)) {
+            return 0;
+        }
 
-    memcpy(slot->vision_binary, bits, SENSE_VISION_BITS_CAPACITY);
-    memcpy(slot->vision_render, recon, SENSE_VISION_RGBA_BYTES);
+        if (!sense_bits_to_pcm(
+                sound_bits,
+                roundtrip,
+                SENSE_PCM_FRAME_SAMPLES)) {
+            return 0;
+        }
 
-    memcpy(slot->sound_pcm, local_pcm, sizeof(slot->sound_pcm));
-    slot->sound_envelope = sense_pcm_envelope(
-        local_pcm,
-        SENSE_PCM_FRAME_SAMPLES
-    );
-
-    if (!sense_pcm_to_bits(
+        drift_s = sense_pcm_drift(
             local_pcm,
-            SENSE_PCM_FRAME_SAMPLES,
-            slot->sound_binary,
-            SENSE_SOUND_BITS_CAPACITY)) {
-        return 0;
-    }
-
-    if (!sense_bits_to_pcm(
-            slot->sound_binary,
             roundtrip,
-            SENSE_PCM_FRAME_SAMPLES)) {
-        return 0;
-    }
+            SENSE_PCM_FRAME_SAMPLES
+        );
+        if (drift_s == (unsigned long)-1) {
+            return 0;
+        }
 
-    slot->drift_s = sense_pcm_drift(
-        local_pcm,
-        roundtrip,
-        SENSE_PCM_FRAME_SAMPLES
-    );
-    if (slot->drift_s == (unsigned long)-1) {
-        return 0;
+        /* All channels ready — one atomic write to the convergence point. */
+        slot = &ring->slots[ring->write_index];
+        memset(slot, 0, sizeof(*slot));
+
+        slot->seq = ring->next_seq;
+        slot->epoch = ring->epoch;
+        slot->in_use = 1U;
+        slot->drift_v = drift_v;
+        slot->drift_s = drift_s;
+        slot->light_flash = light_flash;
+
+        memcpy(slot->vision_binary, bits, SENSE_VISION_BITS_CAPACITY);
+        memcpy(slot->vision_render, recon, SENSE_VISION_RGBA_BYTES);
+        memcpy(slot->sound_pcm, local_pcm, sizeof(slot->sound_pcm));
+        memcpy(slot->sound_binary, sound_bits, SENSE_SOUND_BITS_CAPACITY);
+        slot->sound_envelope = sense_pcm_envelope(
+            local_pcm,
+            SENSE_PCM_FRAME_SAMPLES
+        );
     }
 
     ring->next_seq++;
@@ -268,14 +278,30 @@ int sense_ingest(
         ring->count++;
     }
 
-    if (out_frame != NULL) {
-        *out_frame = slot;
+    if (out_point != NULL) {
+        *out_point = slot;
     }
 
     return 1;
 }
 
-const sense_frame_t *sense_ring_latest(const sense_ring_t *ring)
+int sense_ingest(
+    sense_ring_t *ring,
+    const unsigned char *rgba,
+    const float *pcm,
+    float light_flash,
+    sense_point_t **out_point
+)
+{
+    return sense_converge(ring, rgba, pcm, light_flash, out_point);
+}
+
+const sense_point_t *sense_now(const sense_ring_t *ring)
+{
+    return sense_ring_latest(ring);
+}
+
+const sense_point_t *sense_ring_latest(const sense_ring_t *ring)
 {
     unsigned int index;
 
@@ -291,7 +317,7 @@ const sense_frame_t *sense_ring_latest(const sense_ring_t *ring)
     return &ring->slots[index];
 }
 
-const sense_frame_t *sense_ring_at(
+const sense_point_t *sense_ring_at(
     const sense_ring_t *ring,
     unsigned int logical_index
 )
@@ -325,7 +351,7 @@ unsigned int sense_ring_count(const sense_ring_t *ring)
 }
 
 int sense_present_vision_to_screen(
-    const sense_frame_t *frame,
+    const sense_point_t *point,
     void *screen_ptr
 )
 {
@@ -333,7 +359,7 @@ int sense_present_vision_to_screen(
     unsigned int y;
     unsigned int x;
 
-    if (frame == NULL || screen_ptr == NULL) {
+    if (point == NULL || screen_ptr == NULL) {
         return 0;
     }
 
@@ -348,7 +374,7 @@ int sense_present_vision_to_screen(
 
             pixel = (unsigned long)y * (unsigned long)SENSE_VISION_WIDTH +
                     (unsigned long)x;
-            p = &frame->vision_render[pixel * 4UL];
+            p = &point->vision_render[pixel * 4UL];
             luma = ((unsigned int)p[0] * 30U +
                     (unsigned int)p[1] * 59U +
                     (unsigned int)p[2] * 11U) / 100U;

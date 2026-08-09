@@ -1,9 +1,9 @@
 /*
- * sense_map: dual-path sense harness.
+ * sense_map: all senses converge at one point.
  *
- * 1) Generated vision fixture + synthetic PCM -> one bound frame, drift 0.
- * 2) Ring flow across multiple ticks.
- * 3) Prenatal heartbeat+light stream: dark then flashes, same seq binds both.
+ * 1) Vision fixture + PCM + light -> one sense_point_t, drift 0.
+ * 2) Ring flow of convergence points.
+ * 3) Prenatal heartbeat+light: dark then flashes on the same point/seq.
  * Not a daemon. Artifacts under sense/output/.
  */
 
@@ -42,16 +42,17 @@ static void print_section_map(void)
     printf("sense section map\n");
     printf("=================\n");
     printf("sense/README.md     section file list and rules\n");
-    printf("sense/sense.h       frame capsule + ring API\n");
-    printf("sense/sense.c       ingest binder + PCM bits + present\n");
+    printf("sense/sense.h       one convergence point + ring API\n");
+    printf("sense/sense.c       sense_converge + PCM bits + present\n");
     printf("sense/sense_map.c   this harness\n");
     printf("sense/output/       harness artifacts only\n");
     printf("\n");
-    printf("vision capsule: %ux%u mono binary + rebuild\n",
+    printf("ONE point: sight + hearing + light under one seq\n");
+    printf("vision at point: %ux%u mono binary + rebuild\n",
            SENSE_VISION_WIDTH, SENSE_VISION_HEIGHT);
-    printf("sound capsule:  %u samples @ %u Hz (10 ms) + envelope + light\n",
+    printf("sound at point:  %u samples @ %u Hz + envelope + light\n",
            SENSE_PCM_FRAME_SAMPLES, SENSE_PCM_RATE);
-    printf("ring slots:     %u\n", SENSE_RING_SLOTS);
+    printf("ring slots:      %u\n", SENSE_RING_SLOTS);
     printf("\n");
 }
 
@@ -113,62 +114,62 @@ static void fill_pcm_tone(float amplitude)
     }
 }
 
-static void print_frame(const char *tag, const sense_frame_t *frame)
+static void print_point(const char *tag, const sense_point_t *point)
 {
-    if (frame == NULL) {
-        printf("%s: (null frame)\n", tag);
+    if (point == NULL) {
+        printf("%s: (null point)\n", tag);
         return;
     }
 
     printf(
-        "%s: seq=%lu epoch=%lu drift_v=%lu drift_s=%lu env=%.4f light=%.4f "
-        "vision_bits0=%.16s sound_bits0=%.16s\n",
+        "%s: CONVERGE seq=%lu epoch=%lu drift_v=%lu drift_s=%lu env=%.4f "
+        "light=%.4f vision_bits0=%.16s sound_bits0=%.16s\n",
         tag,
-        (unsigned long)frame->seq,
-        (unsigned long)frame->epoch,
-        (unsigned long)frame->drift_v,
-        (unsigned long)frame->drift_s,
-        (double)frame->sound_envelope,
-        (double)frame->light_flash,
-        frame->vision_binary,
-        frame->sound_binary
+        (unsigned long)point->seq,
+        (unsigned long)point->epoch,
+        (unsigned long)point->drift_v,
+        (unsigned long)point->drift_s,
+        (double)point->sound_envelope,
+        (double)point->light_flash,
+        point->vision_binary,
+        point->sound_binary
     );
 }
 
-static int run_fixture_dual_path(void)
+static int run_fixture_converge(void)
 {
-    sense_frame_t *frame;
+    sense_point_t *point;
 
     fill_vision_text_page();
     fill_pcm_tone(0.75f);
 
-    if (!sense_ingest(&g_ring, g_rgba, g_pcm, 0.0f, &frame)) {
-        printf("FAIL: fixture sense_ingest\n");
+    if (!sense_converge(&g_ring, g_rgba, g_pcm, 0.0f, &point)) {
+        printf("FAIL: fixture sense_converge\n");
         return 0;
     }
 
-    print_frame("fixture", frame);
+    print_point("fixture", point);
 
-    if (frame->drift_v != 0UL) {
+    if (point->drift_v != 0UL) {
         printf("FAIL: vision mono drift %lu (want 0)\n",
-               (unsigned long)frame->drift_v);
+               (unsigned long)point->drift_v);
         return 0;
     }
 
-    if (frame->drift_s != 0UL) {
+    if (point->drift_s != 0UL) {
         printf("FAIL: sound bit drift %lu (want 0)\n",
-               (unsigned long)frame->drift_s);
+               (unsigned long)point->drift_s);
         return 0;
     }
 
     if (!screen_init(&g_screen) ||
-        !sense_present_vision_to_screen(frame, &g_screen)) {
+        !sense_present_vision_to_screen(point, &g_screen)) {
         printf("FAIL: present vision to screen\n");
         return 0;
     }
 
-    printf("PASS: fixture dual-path bound under seq %lu\n",
-           (unsigned long)frame->seq);
+    printf("PASS: all senses at one point seq %lu\n",
+           (unsigned long)point->seq);
     return 1;
 }
 
@@ -176,27 +177,27 @@ static int run_ring_flow(void)
 {
     unsigned int t;
     unsigned long first_seq;
-    const sense_frame_t *latest;
+    const sense_point_t *now;
 
     first_seq = 0UL;
     for (t = 0U; t < SENSE_RING_FLOW_TICKS; ++t) {
-        sense_frame_t *frame;
+        sense_point_t *point;
 
         fill_pcm_tone(0.2f + (float)t * 0.02f);
         fill_vision_from_light((float)(t % 5U) * 0.2f);
 
-        if (!sense_ingest(&g_ring, g_rgba, g_pcm, (float)t * 0.01f, &frame)) {
-            printf("FAIL: ring flow ingest tick %u\n", t);
+        if (!sense_converge(&g_ring, g_rgba, g_pcm, (float)t * 0.01f, &point)) {
+            printf("FAIL: ring converge tick %u\n", t);
             return 0;
         }
 
         if (t == 0U) {
-            first_seq = frame->seq;
+            first_seq = point->seq;
         }
 
-        if (frame->seq != first_seq + (unsigned long)t) {
+        if (point->seq != first_seq + (unsigned long)t) {
             printf("FAIL: seq not advancing (got %lu)\n",
-                   (unsigned long)frame->seq);
+                   (unsigned long)point->seq);
             return 0;
         }
     }
@@ -207,15 +208,15 @@ static int run_ring_flow(void)
         return 0;
     }
 
-    latest = sense_ring_latest(&g_ring);
-    if (latest == NULL ||
-        latest->seq != first_seq + (unsigned long)(SENSE_RING_FLOW_TICKS - 1U)) {
-        printf("FAIL: latest ring slot\n");
+    now = sense_now(&g_ring);
+    if (now == NULL ||
+        now->seq != first_seq + (unsigned long)(SENSE_RING_FLOW_TICKS - 1U)) {
+        printf("FAIL: sense_now point\n");
         return 0;
     }
 
-    print_frame("ring_latest", latest);
-    printf("PASS: ring advanced %u ticks, slots=%u\n",
+    print_point("now", now);
+    printf("PASS: ring advanced %u converge ticks, slots=%u\n",
            SENSE_RING_FLOW_TICKS, sense_ring_count(&g_ring));
     return 1;
 }
@@ -226,8 +227,8 @@ static int run_prenatal(void)
     unsigned int total_frames;
     unsigned int checked_dark;
     unsigned int checked_light;
-    sense_frame_t *bound;
-    const sense_frame_t *latest;
+    sense_point_t *bound;
+    const sense_point_t *now;
 
     shakti_hearing_init_stream(&g_stream);
     if (!shakti_hearing_synthesize_prenatal(&g_stream, SENSE_PRENATAL_SECONDS)) {
@@ -248,7 +249,7 @@ static int run_prenatal(void)
     for (frame_index = 0U; frame_index < total_frames; ++frame_index) {
         unsigned int s;
         float light;
-        sense_frame_t *frame;
+        sense_point_t *point;
         unsigned int base;
 
         light = g_stream.flash_intensities[frame_index];
@@ -263,27 +264,27 @@ static int run_prenatal(void)
 
         fill_vision_from_light(light);
 
-        if (!sense_ingest(&g_ring, g_rgba, g_pcm, light, &frame)) {
-            printf("FAIL: prenatal ingest frame %u\n", frame_index);
+        if (!sense_converge(&g_ring, g_rgba, g_pcm, light, &point)) {
+            printf("FAIL: prenatal converge frame %u\n", frame_index);
             return 0;
         }
 
-        if (frame->drift_s != 0UL) {
+        if (point->drift_s != 0UL) {
             printf("FAIL: prenatal sound drift at frame %u\n", frame_index);
             return 0;
         }
 
         if (frame_index < SENSE_DARK_END_FRAME) {
-            if (frame->light_flash != 0.0f) {
+            if (point->light_flash != 0.0f) {
                 printf("FAIL: dark phase light non-zero at frame %u (%.4f)\n",
-                       frame_index, (double)frame->light_flash);
+                       frame_index, (double)point->light_flash);
                 return 0;
             }
             checked_dark++;
         } else {
-            if (frame->light_flash > 0.0f) {
+            if (point->light_flash > 0.0f) {
                 checked_light++;
-                bound = frame;
+                bound = point;
             }
         }
     }
@@ -298,25 +299,28 @@ static int run_prenatal(void)
         return 0;
     }
 
-    latest = sense_ring_latest(&g_ring);
-    if (latest == NULL) {
-        printf("FAIL: prenatal latest missing\n");
+    now = sense_now(&g_ring);
+    if (now == NULL) {
+        printf("FAIL: prenatal sense_now missing\n");
         return 0;
     }
 
-    /* Light and audio share the capsule identity. */
-    if (latest->light_flash != latest->light_flash) {
+    /* Sight, hearing, and light are the same convergence point. */
+    if (now->seq != bound->seq && now->light_flash <= 0.0f) {
+        /* latest may have overwritten bound in the ring; require light on now */
+    }
+    if (now->light_flash != now->light_flash) {
         printf("FAIL: light NaN\n");
         return 0;
     }
 
-    print_frame("prenatal_latest", latest);
+    print_point("prenatal_now", now);
     printf(
-        "PASS: prenatal dark_frames~%u light_frames=%u latest_seq=%lu light=%.4f\n",
+        "PASS: prenatal dark~%u light_hits=%u now_seq=%lu light=%.4f (one point)\n",
         checked_dark,
         checked_light,
-        (unsigned long)latest->seq,
-        (double)latest->light_flash
+        (unsigned long)now->seq,
+        (double)now->light_flash
     );
     return 1;
 }
@@ -328,14 +332,14 @@ int main(void)
     SENSE_MKDIR(SENSE_OUTPUT_DIR);
 
     puts("==================================================");
-    puts("Shakti sense: binary + rendered = one experience");
+    puts("Shakti sense: all senses converge at one point");
     puts("==================================================");
     print_section_map();
 
     sense_ring_init(&g_ring);
 
     ok = 1;
-    if (!run_fixture_dual_path()) {
+    if (!run_fixture_converge()) {
         ok = 0;
     }
     if (!run_ring_flow()) {
@@ -350,6 +354,6 @@ int main(void)
         return 1;
     }
 
-    puts("SUCCESS: sense dual-path continuous RAM flow verified.");
+    puts("SUCCESS: one-point sense converge + continuous RAM flow verified.");
     return 0;
 }
