@@ -5,13 +5,14 @@ Read this first, then `SHAKTI_LOCK_V1_1.md` (the governing contract), then
 `.github/copilot-instructions.md` (the safety gate). Tyler's latest direct
 instruction always overrides everything below.
 
-## Current state (as of 2026-08-09)
+## Current state (as of 2026-08-11)
 
 - **Branch of record:** `copilot/binary-sound-implementation-scout` (hearing +
   sense + MCP phase 1). Never touch `main` / do not treat default `Shakti-main`
   uploads as auto-merge. Stop and report if the working branch is `main`.
-- **Branch of record:** `copilot/shakti-main`. Never touch `main`. Stop and
-  report if the working branch is `main`.
+- **PR #7 merge:** re-merged latest `origin/Shakti-main` (true merge commit).
+  Sole conflict was modify/delete on `CHANGELOG.md` — accepted Tyler's
+  deletion on `Shakti-main`. `make` + `make test` green after merge.
 - **Purity:** The tree is **100% C99**. No `.sh`, no Python, no JS, no other
   languages. This is a hard, non-negotiable requirement (see the `NOTICE` in
   `.github/copilot-instructions.md`).
