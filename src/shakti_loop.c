@@ -450,15 +450,28 @@ int shakti_loop_begin_cycle(
     if (runtime->loop.reflection_due) {
         if (runtime->loop.reflection_early_choice) {
             printf(
-                "Early self-reflection chosen after %u tool call(s). "
+                "Early self-reflection chosen after %u tool call(s) "
+                "(optional before due at tool call %u). "
+                "Fixed gate still ends required before tool call %u. "
                 "Deferrals used: %u of %u.\n",
                 runtime->loop.turns_since_reflection,
+                (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
                 runtime->loop.reflection_deferrals,
                 (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
             );
         } else {
             printf(
-                "Reflection is due. Deferrals used: %u of %u.\n",
+                "Reflection gate active: due at tool call %u; "
+                "defer on %u-%u; required before tool call %u. "
+                "Approved tool calls since last reflection: %u. "
+                "Deferrals used: %u of %u.\n",
+                (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                               SHAKTI_REFLECTION_MAX_DEFERRALS),
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
+                runtime->loop.turns_since_reflection,
                 runtime->loop.reflection_deferrals,
                 (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
             );

@@ -770,8 +770,14 @@ static int process_tool(
         runtime->loop.turns_since_reflection >=
             SHAKTI_REFLECTION_INTERVAL) {
         printf(
-            "Reflection is due after %u tool call(s). "
-            "Deferrals used: %u of %u.\n",
+            "Reflection gate: due at tool call %u; may defer on tool calls "
+            "%u-%u; required before tool call %u. "
+            "Now at approved tool call %u. Deferrals used: %u of %u.\n",
+            (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+            (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
+            (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                           SHAKTI_REFLECTION_MAX_DEFERRALS),
+            (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
             runtime->loop.turns_since_reflection,
             runtime->loop.reflection_deferrals,
             (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
