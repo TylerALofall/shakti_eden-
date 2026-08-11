@@ -43,6 +43,8 @@ typedef struct {
     shakti_mcp_tool_t tools[SHAKTI_MCP_MAX_TOOLS];
     size_t tool_count;
     unsigned long approved_receipts;
+    /* Last admit message owned by this state (not a shared static). */
+    char admit_message[192];
 } shakti_mcp_state_t;
 
 void shakti_mcp_init(shakti_mcp_state_t *state);

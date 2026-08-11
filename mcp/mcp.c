@@ -172,42 +172,40 @@ shakti_mcp_admit_t shakti_mcp_admit(
          loop->turns_since_reflection >=
              (SHAKTI_REFLECTION_INTERVAL +
               SHAKTI_REFLECTION_MAX_DEFERRALS))) {
+        if (loop->reflection_deferrals >=
+            SHAKTI_REFLECTION_MAX_DEFERRALS) {
+            (void)snprintf(
+                state->admit_message,
+                sizeof(state->admit_message),
+                "Reflection is required before tool call %u. "
+                "All %u deferrals used after tool call %u. "
+                "Complete /reflection/ now. Tool call %u is blocked.",
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
+                (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS,
+                (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL
+            );
+        } else {
+            (void)snprintf(
+                state->admit_message,
+                sizeof(state->admit_message),
+                "Reflection is required before tool call %u. "
+                "Approved tool-call count is %u (gate: due at %u, "
+                "defer %u-%u, required before %u). "
+                "Complete /reflection/ now. Tool call %u is blocked.",
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
+                loop->turns_since_reflection,
+                (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                               SHAKTI_REFLECTION_MAX_DEFERRALS),
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL
+            );
+        }
+
         if (message != NULL) {
-            static char hard_block_message[192];
-
-            if (loop->reflection_deferrals >=
-                SHAKTI_REFLECTION_MAX_DEFERRALS) {
-                (void)snprintf(
-                    hard_block_message,
-                    sizeof(hard_block_message),
-                    "Reflection is required before tool call %u. "
-                    "All %u deferrals used after tool call %u. "
-                    "Complete /reflection/ now. Tool call %u is blocked.",
-                    (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
-                    (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS,
-                    (unsigned int)SHAKTI_REFLECTION_INTERVAL,
-                    (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL
-                );
-            } else {
-                (void)snprintf(
-                    hard_block_message,
-                    sizeof(hard_block_message),
-                    "Reflection is required before tool call %u. "
-                    "Approved tool-call count is %u (gate: due at %u, "
-                    "defer %u-%u, required before %u). "
-                    "Complete /reflection/ now. Tool call %u is blocked.",
-                    (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
-                    loop->turns_since_reflection,
-                    (unsigned int)SHAKTI_REFLECTION_INTERVAL,
-                    (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
-                    (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
-                                   SHAKTI_REFLECTION_MAX_DEFERRALS),
-                    (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
-                    (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL
-                );
-            }
-
-            *message = hard_block_message;
+            *message = state->admit_message;
         }
 
         return SHAKTI_MCP_ADMIT_REFLECTION_BLOCK;
