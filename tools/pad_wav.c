@@ -180,11 +180,11 @@ int shakti_pad_wav_file(const char *input_path, const char *output_path)
         channels != UINT16_C(1) ||
         bits_per_sample != UINT16_C(16) ||
         block_align != UINT16_C(2) ||
-        sample_rate == 0U) {
+        sample_rate != UINT32_C(16000)) {
         fclose(input);
         fprintf(
             stderr,
-            "pad_wav: need PCM mono 16-bit: %s\n",
+            "pad_wav: need 16 kHz PCM mono 16-bit: %s\n",
             input_path
         );
         return 0;
