@@ -646,10 +646,11 @@ static void test_loop(const char *root)
     assert(chdir(cwd) == 0);
 
     snprintf(path, sizeof(path), "%s/runtime_output.txt", tmp);
-    assert_contains(path, "Early self-reflection chosen after 7 tool call(s).");
-    assert_contains(path, "Reflection is due after 10 tool call(s).");
-    assert_contains(path, "Reflection deferred. 3 of 3 deferrals used.");
-    assert_contains(path, "Complete /reflection/ before the next tool call.");
+    assert_contains(path, "Early self-reflection chosen after 7 tool call(s)");
+    assert_contains(path, "required before tool call 14");
+    assert_contains(path, "due at tool call 10");
+    assert_contains(path, "Reflection deferred (3 of 3)");
+    assert_contains(path, "Tool call 14 is blocked");
     assert_contains(path, "Reflection appended to long-term memory.");
     assert_contains(path, "MCP tools stopped. Shakti remains awake.");
     assert_contains(path, "MCP tools are interrupted. Shakti remains awake.");

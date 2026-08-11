@@ -1005,14 +1005,23 @@ static int process_control(
     if (strcmp(line, "/reflection/early/") == 0) {
         if (shakti_loop_choose_early_reflection(&runtime->loop)) {
             printf(
-                "Early self-reflection chosen after %u tool call(s). "
+                "Early self-reflection chosen after %u tool call(s) "
+                "(optional before the due gate at tool call %u). "
                 "Run /reflection/ when ready.\n",
-                runtime->loop.turns_since_reflection
+                runtime->loop.turns_since_reflection,
+                (unsigned int)SHAKTI_REFLECTION_INTERVAL
             );
         } else if (runtime->loop.reflection_due) {
-            puts(
-                "Reflection is already due. Use /reflection/ "
-                "(or /reflection/defer/ while deferrals remain)."
+            printf(
+                "Reflection is already on the fixed gate "
+                "(due at tool call %u; required before tool call %u). "
+                "Use /reflection/ now, or /reflection/defer/ only on "
+                "tool calls %u-%u while deferrals remain.\n",
+                (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                               SHAKTI_REFLECTION_MAX_DEFERRALS)
             );
         } else {
             puts("Early self-reflection choice failed.");
@@ -1024,14 +1033,27 @@ static int process_control(
     if (strcmp(line, "/reflection/defer/") == 0) {
         if (shakti_loop_defer_reflection(&runtime->loop)) {
             printf(
-                "Reflection deferred. %u of %u deferrals used.\n",
+                "Reflection deferred (%u of %u). "
+                "Defer window is tool calls %u-%u only. "
+                "Reflection is required before tool call %u.\n",
                 runtime->loop.reflection_deferrals,
-                (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
+                (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS,
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                               SHAKTI_REFLECTION_MAX_DEFERRALS),
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL
             );
         } else {
-            puts(
-                "Reflection deferral is available only when due and below "
-                "three deferrals."
+            printf(
+                "Deferral denied. Defer only after due (tool call %u) and "
+                "only for tool calls %u-%u, max %u deferrals. "
+                "Reflection is required before tool call %u.\n",
+                (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                               SHAKTI_REFLECTION_MAX_DEFERRALS),
+                (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS,
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL
             );
         }
 

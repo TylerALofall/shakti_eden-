@@ -889,13 +889,20 @@ void shakti_loop_print_status(const shakti_loop_state_t *state)
     );
     printf("Cycle count: %lu.\n", state->cycle_count);
     printf(
-        "Reflection: %u tool call(s) since completion, due=%s, early=%s, "
-        "deferrals=%u of %u.\n",
+        "Reflection: %u approved tool call(s) since completion, due=%s, "
+        "early=%s, deferrals=%u of %u. "
+        "Gate: due at %u; defer %u-%u; required before tool call %u "
+        "(not whenever).\n",
         state->turns_since_reflection,
         state->reflection_due ? "yes" : "no",
         state->reflection_early_choice ? "yes" : "no",
         state->reflection_deferrals,
-        (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
+        (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS,
+        (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+        (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
+        (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                       SHAKTI_REFLECTION_MAX_DEFERRALS),
+        (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL
     );
     printf(
         "MCP tools: %s. Shakti remains awake.\n",

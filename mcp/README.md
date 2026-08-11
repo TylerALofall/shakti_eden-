@@ -30,8 +30,16 @@ Any failed registration/menu/enable check returns **`DENIED`** and performs no
 handler side effect. Interrupt and hard reflection-block keep their existing
 clear messages and also perform no handler side effect.
 
-Reflection hard-block fires when reflection is due and either three deferrals
-are used or tool-call count has reached 13 (before tool call 14). Optional
+Fixed reflection gate (approved MCP tool calls only — not whenever):
+
+```text
+tool call 10           -> reflection becomes due
+tool calls 11, 12, 13  -> may defer (max 3)
+before tool call 14    -> reflection is required (hard block)
+```
+
+Hard-block fires when reflection is due and either all three deferrals are used
+or the approved tool-call count reaches 13 (so tool call 14 cannot run). Optional
 early self-reflection is chosen in the loop (`/reflection/early/`), not here.
 
 ## Tool table (current hardcoded set)
