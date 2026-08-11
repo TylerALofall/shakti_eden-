@@ -154,7 +154,7 @@ eyes: eyes/eyes_map
 screen/screen_map: screen/screen_map.c screen/screen.c screen/screen.h \
 		eyes/eyes.c eyes/eyes.h
 	$(CC) $(CFLAGS) -Iscreen -Ieyes screen/screen_map.c screen/screen.c \
-		eyes/eyes.c -o screen/screen_map
+		eyes/eyes.c -ko screen/screen_map
 
 screen: screen/screen_map
 	./screen/screen_map
@@ -182,3 +182,40 @@ clean:
 	rm -f tests/test_goal.txt tests/test_notebook.log tests/test_menu.txt
 	rm -f tests/test_long_term.log tests/test_loader_fixture.txt
 	rm -f tests/tmp_pad_in.wav tests/tmp_pad_out.wav
+
+.PHONY: eyes-xml-collect eyes-xml-rebuild eyes-xml
+
+eyes/eyes_xml_collect: eyes/eyes_xml_collect.c eyes/eyes_xml.h eyes/eyes.h eyes/eyes.c
+	$(CC) $(CFLAGS) -Ieyes eyes/eyes_xml_collect.c eyes/eyes.c -o eyes/eyes_xml_collect
+
+eyes/eyes_xml_rebuild: eyes/eyes_xml_rebuild.c eyes/eyes_xml.h eyes/eyes.h eyes/eyes.c
+	$(CC) $(CFLAGS) -Ieyes eyes/eyes_xml_rebuild.c eyes/eyes.c -o eyes/eyes_xml_rebuild
+
+eyes-xml-collect: eyes/eyes_xml_collect
+	./eyes/eyes_xml_collect
+
+eyes-xml-rebuild: eyes/eyes_xml_rebuild
+	./eyes/eyes_xml_rebuild
+
+eyes-xml: eyes/eyes_xml_collect eyes/eyes_xml_rebuild
+	./eyes/eyes_xml_collect
+	./eyes/eyes_xml_rebuild
+
+.PHONY: eyes-loop
+
+eyes/eyes_loop_rebuild: eyes/eyes_loop_rebuild.c eyes/eyes_xml.h eyes/eyes.h eyes/eyes.c
+	$(CC) $(CFLAGS) -Ieyes eyes/eyes_loop_rebuild.c eyes/eyes.c -o eyes/eyes_loop_rebuild
+
+eyes-loop: eyes/eyes_loop_rebuild
+	./eyes/eyes_loop_rebuild
+
+.PHONY: binary-deposit
+
+# binary: the pixel deposit. Reads binary/page1_picture.txt and
+# binary/page2_text.txt, deposits 5 binary marks per pixel location into
+# dated per-page files, rebuilds from the deposit, writes the dated PDF.
+binary/binary_deposit: binary/binary_deposit.c eyes/eyes.h eyes/eyes.c
+	$(CC) $(CFLAGS) -Ieyes binary/binary_deposit.c eyes/eyes.c -o binary/binary_deposit
+
+binary-deposit: binary/binary_deposit
+	./binary/binary_deposit

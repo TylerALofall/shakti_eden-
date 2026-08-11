@@ -19,9 +19,13 @@ tests/tmp_mvp/
 tests/tmp_pad_in.wav
 tests/tmp_pad_out.wav
 eyes/eyes_map
+eyes/eyes_xml_collect
+eyes/eyes_xml_rebuild
+eyes/eyes_loop_rebuild
 eyes/output/
 screen/screen_map
 screen/output/
 sense/sense_map
 sense/output/
 tests/test_sense
+binary/binary_deposit
