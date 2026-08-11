@@ -179,9 +179,20 @@ shakti_mcp_admit_t shakti_mcp_admit(
                     "Reflection reached three deferrals. Complete "
                     "/reflection/ before the next tool call.";
             } else {
-                *message =
-                    "Reflection is required before tool call 14. Complete "
-                    "/reflection/ before the next tool call.";
+                static char hard_block_message[128];
+                unsigned int next_tool_call;
+
+                next_tool_call =
+                    (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                                   SHAKTI_REFLECTION_MAX_DEFERRALS + 1U);
+                (void)snprintf(
+                    hard_block_message,
+                    sizeof(hard_block_message),
+                    "Reflection is required before tool call %u. Complete "
+                    "/reflection/ before the next tool call.",
+                    next_tool_call
+                );
+                *message = hard_block_message;
             }
         }
 

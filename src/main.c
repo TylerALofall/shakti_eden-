@@ -767,7 +767,7 @@ static int process_tool(
 
     if (runtime->loop.reflection_due &&
         !runtime->loop.reflection_early_choice &&
-        runtime->loop.turns_since_reflection ==
+        runtime->loop.turns_since_reflection >=
             SHAKTI_REFLECTION_INTERVAL) {
         printf(
             "Reflection is due after %u tool call(s). "

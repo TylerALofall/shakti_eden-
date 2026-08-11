@@ -262,7 +262,21 @@ int shakti_pad_wav_file(const char *input_path, const char *output_path)
         return 1;
     }
 
+    if (pad_bytes > (UINT32_MAX / 2U) ||
+        data_size > (UINT32_MAX - (pad_bytes * 2U))) {
+        fprintf(stderr, "pad_wav: padded size overflows 32-bit WAV limit\n");
+        free(pcm);
+        return 0;
+    }
+
     new_data_size = data_size + (pad_bytes * 2U);
+
+    if (new_data_size > (UINT32_MAX - UINT32_C(36))) {
+        fprintf(stderr, "pad_wav: RIFF size overflows 32-bit WAV limit\n");
+        free(pcm);
+        return 0;
+    }
+
     new_riff_size = UINT32_C(36) + new_data_size;
 
     output = fopen(output_path, "wb");

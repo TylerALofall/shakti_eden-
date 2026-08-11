@@ -208,7 +208,7 @@ static void test_reflection_hard_block(void)
         &message
     );
     assert(admit == SHAKTI_MCP_ADMIT_REFLECTION_BLOCK);
-    assert(strstr(message, "tool call 14") != NULL);
+    assert(strstr(message, "Reflection is required before tool call") != NULL);
     assert(mcp.approved_receipts == 0UL);
 }
 
