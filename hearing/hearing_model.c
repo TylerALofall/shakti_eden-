@@ -140,7 +140,11 @@ int shakti_hearing_train_prenatal_subconscious(
     unsigned int i;
     unsigned int j;
 
-    if (model == NULL || stream == NULL || stream->flash_count == 0U) {
+    if (model == NULL || stream == NULL ||
+        stream->flash_count < 2U ||
+        stream->flash_count > SHAKTI_HEARING_MAX_SAMPLES / 160U ||
+        stream->sample_count < stream->flash_count * 160U ||
+        epochs == 0U || !isfinite(learning_rate) || learning_rate <= 0.0f) {
         return 0;
     }
 
