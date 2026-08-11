@@ -1,35 +1,31 @@
-# Shakti Hearing and Prenatal Grounding Module
+# hearing
 
-## Files in this directory:
-- `hearing/README.md` (this file)
-- `hearing/hearing.h` (C99 interface)
-- `hearing/hearing.c` (top-level orchestration)
-- `hearing/hearing_synth.c` (deterministic pulse and wave synthesizers)
-- `hearing/hearing_model.c` (RNN/GRU learning and backpropagation)
+## Every file in this section
 
----
+- `README.md` — this file
+- `hearing.h` — C99 prenatal stream interface (PCM + light only)
+- `hearing_synth.c` — deterministic maternal heartbeat and light flashes
 
-## 1. Vision & Architecture
+## Role
 
-The prenatal subconscious stage represents the foundation of Shakti's neural development. By training on a continuous, rhythmic maternal heartbeat and synchronized flashes of light, we establish a time-sensitive, cross-sensory temporal clock inside the network. This subconscious "instinct" is trained in pure, deterministic C99 prior to the introduction of alphanumeric glyphs (Level 0) or numbers (Level 1).
+Prenatal subconscious grounding for sound and light **together**. One mechanical
+stream: 16 kHz PCM heartbeat plus a light scalar on the same 10 ms frames.
+Phase 1 (0–20 s) is dark acoustic. Phase 2 (20 s+) entrains light with the
+heartbeat peak.
 
-## 2. Mathematical Foundation (The 432 Abundant Number)
+This section does **not** hold a second core, GRU, trainer, or probability
+model. Those were removed from the active tree. Archived GRU scout sources live
+under `old/branches/copilot__binary-sound-implementation-scout/hearing/`.
 
-Gestation is parameterized in our C99 system by scaling down the colossal abundant number properties associated with human pregnancy (represented by the base divisor relationships of 432, whose prime factors are $2^4 \times 3^3$).
+Shakti stays in her shell. Hearing only fills buffers that `sense/` converges
+with vision on one point. MCP remains the only gated route out.
 
-The prenatal clock is structured around a sequence where:
-- **Phase 1: Dark Acoustic (0.0s to 20.0s):** Absolute visual darkness. The auditory model trains exclusively on the low-pass maternal heartbeat wave.
-- **Phase 2: Sensory Entrainment (20.0s+):** Cross-modal stimulation begins. Warm, low-frequency flashes of light are synthesized synchronously with the systolic contraction peak of the maternal heartbeat.
+## Build
 
-## 3. Modality Details
-
-- **Maternal Heartbeat Synthesis:** Synthesized deterministically using dual-tone low-frequency pulse equations (resonant tones at 40 Hz and 60 Hz) simulating the low-pass acoustics of the uterine wall.
-- **Flashes of Light:** One scalar light-intensity channel per 10 ms frame. Brightness peaks at the systole of the heartbeat, correlating the visual and auditory inputs.
-
-## 4. Compilation & Verification
-
-The module is written in strict, standard ANSI C99 and is compiled using standard GCC/Clang:
-```sh
+```text
+make sense
 make test
 ```
-The implementation has zero external dependencies, no threads, and no Python.
+
+`hearing_synth.c` links into `sense/sense_map` and `tests/test_sense` only.
+No standalone hearing binary is shipped in the active tree.

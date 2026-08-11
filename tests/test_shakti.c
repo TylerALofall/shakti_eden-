@@ -254,6 +254,27 @@ static void test_memory_and_loop(void)
     assert(shakti_loop_defer_reflection(&loop));
     assert(shakti_loop_defer_reflection(&loop));
     assert(!shakti_loop_defer_reflection(&loop));
+
+    shakti_loop_init(&loop);
+    assert(shakti_loop_choose_early_reflection(&loop));
+    assert(loop.reflection_due);
+    assert(loop.reflection_early_choice);
+    assert(!shakti_loop_choose_early_reflection(&loop));
+
+    shakti_loop_init(&loop);
+    assert(shakti_loop_note_tool_call(&loop));
+    assert(loop.turns_since_reflection == 1U);
+    assert(!loop.reflection_due);
+    {
+        unsigned int index;
+
+        for (index = 1U; index < SHAKTI_REFLECTION_INTERVAL; ++index) {
+            assert(shakti_loop_note_tool_call(&loop));
+        }
+    }
+    assert(loop.turns_since_reflection == SHAKTI_REFLECTION_INTERVAL);
+    assert(loop.reflection_due);
+    assert(!loop.reflection_early_choice);
 }
 
 static void test_reason_gate(void)

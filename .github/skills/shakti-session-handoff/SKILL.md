@@ -5,102 +5,48 @@ Read this first, then `SHAKTI_LOCK_V1_1.md` (the governing contract), then
 `.github/copilot-instructions.md` (the safety gate). Tyler's latest direct
 instruction always overrides everything below.
 
-## Current state (as of 2026-08-09)
+## Current state (as of 2026-08-11)
 
-- **Branch of record:** `copilot/shakti-main`. Never touch `main`. Stop and
-  report if the working branch is `main`.
-- **Purity:** The tree is **100% C99**. No `.sh`, no Python, no JS, no other
-  languages. This is a hard, non-negotiable requirement (see the `NOTICE` in
-  `.github/copilot-instructions.md`).
+- **Branch of record:** `copilot/mcp-architecture-closure`. Never touch `main`.
+- **Purity:** Active tree is **C99**. No Python, no JS in active ship paths.
+  HTML/JS host mock lives in `old/host_mock/`.
+- **One model / one shell:** Shakti is one process. MCP is the only gated route
+  out. No second core, no GRU inside her house.
 - **Build:** `make` (CFLAGS `-std=c99 -Wall -Wextra -Wpedantic -Werror -O2`).
-- **Test:** `make test` → runs `tests/test_shakti` (unit) and
-  `tests/test_integration` (in-process integration runner). Both green.
-- **Boundary (verified):** `src/`, `include/`, `tools/` contain **no**
-  `system`/`popen`/`fork`/`exec`/`spawn`, no threads, no daemon, **no runner**.
-  Shakti is one self-contained C99 process holding one `shakti_runtime_t`.
+- **Test:** `make test` → `test_shakti`, `test_mcp`, `test_integration`,
+  `test_roundtrip`, `test_sense`. All green after the sound+MCP merge.
+- **Senses together:** `sense/` converges vision + sound + light on one point.
+  Prenatal stream is `hearing/hearing_synth.c` only. Screen is `screen/`.
+  Eyes mechanical core remains `eyes/eyes.c`. Binary pixel deposit remains
+  `binary/`.
+- **Archived core/GRU:** `old/branches/copilot__binary-sound-implementation-scout/hearing/`
+  holds ELF, GRU main, and model. Do not re-link them into `shakti`.
 
 ## Tyler's architecture (do not violate)
 
-1. **Shakti lives in her own shell (her house).** Her code, Eden, memory,
-   lessons, and state stay inside. Everything inside is hers and stays together.
-2. **No runner, no subprocess, no daemon, no second core.** If a change would
-   introduce one, the change is wrong by definition.
-3. **The MCP is the only gated route out** — the gate and the fingers to the
-   outside. It is a router / dispatcher / receipt-recorder / memory-call route.
-   It does not think, iterate, or run a second core.
-4. **Every message goes through the MCP.** The MCP records chats and contacts to
-   the outside and connects Shakti to long-term memory. She uses it for
-   everything that crosses the shell boundary.
-5. **If she ever needs a CORE/ML to train her, that training happens outside her
-   house** and its artifacts wait elsewhere until deliberately admitted.
-6. **Inside Eden is 100% deterministic.** Fixed order; no probability, no
-   options, no randomness. Anything optional/probabilistic lives outside Eden.
-7. **Child-learning order:** solo lesson first → then crossing (two/three/four
-   way) only after every included lesson was learned solo. Mastery = a 10-correct
-   consecutive streak (100% or not mastered).
+1. **Shakti lives in her own shell.** Code, Eden, memory, lessons, state stay in.
+2. **No runner, no subprocess, no daemon, no second core.**
+3. **MCP is the only gated route out** — router / admit / receipt / memory-call.
+4. **Sound, light, and vision are taught/present together** at one converge point.
+5. **Inside Eden is deterministic.** Training cores stay outside the house.
+6. **Child-learning order:** solo first, then cross after each lesson is grounded.
 
-## Lock requirements still `UNKNOWN` (candidates for build-out)
+## What was done (2026-08-11 merge)
 
-From `SHAKTI_LOCK_V1_1.md` §16 — resolve only with Tyler's approval, one module
-at a time, each with named paths + validation before editing:
+- Brought from `copilot/binary-sound-implementation-scout`: `mcp/`, `sense/`,
+  `screen/`, `hearing_synth`, `tools/pad_wav.c`, `tests/test_mcp.c`,
+  `tests/test_sense.c`, MCP admit wiring in `src/main.c`, tool-call reflection
+  counting in `src/shakti_loop.c`.
+- Branch 7 (`tmz-7th-toile-merge-branches`) had no unique good C99 beyond what
+  HEAD already contained; extras stay archived under `old/`.
+- Removed GRU/core from active `hearing/` and moved them to `old/`.
+- Moved `shakti_host.html` to `old/host_mock/`.
+- Validation: `make`, `make test`, `make sense`, `make screen` — PASS.
 
-- Exact scheduler behavior for the nine loop routes (Ga–Gi).
-- Exact C99 in-memory structures for the XML dictionary.
-- Final approved token set beyond ASCII 32–126 + named math/control symbols.
-- Final dynamic-math transition after resident foundational tables.
-- Memory-game self-practice / twin-view behavior.
-- Exact future Swift APIs and entitlements.
-- Background music outside the Level-2 victory event.
-- Exact controlled repository deletion list after validation.
+## How to work here
 
-## Approved build-out order (from Tyler, child-learning order)
-
-1. **Nine-route loop scheduler** — deterministic fixed-order route selection
-   (resolves the lock `UNKNOWN`). Allowed: `src/shakti_loop.c`,
-   `include/shakti_loop.h`, `tests/` + `make`/`make test`.
-2. **Tri-sense convergence** — the four-panel lesson unit (visual_art /
-   voice_text / written_text / text) with `sound_art` timing (Lock §8).
-3. **Three-stage memory hardening** — append-only capsules + exact replay
-   (Lock §13, addendum §5).
-4. **Deterministic senses / pre-born tables** — extend hard-coded validation
-   tables level by level (Glyphs → Counting → ABC → Colors → Shapes → Basic
-   math), compositional crossing rather than flat mass example generation.
-
-## What was done in the session that created this card
-
-- Added the `binary/` pixel-deposit section (2026-08-09, Tyler-directed):
-  two small real input files (`binary/page1_picture.txt`,
-  `binary/page2_text.txt`) are read from disk, every pixel location is
-  deposited as 5 binary marks (R G B A as 8 bits each + the mono ink bit)
-  into dated per-page files, the page is rebuilt only from the deposit file
-  read back from disk, and the true counts print as measured. Collected
-  output is a dated 2-page Letter PDF. `make binary-deposit`. Locked
-  `eyes/eyes.c` core linked unchanged.
-- Inventoried the `TylerALofall-patch-1` zips (read-only, extracted to
-  `/tmp/patch1_inventory/`). Conclusion: the current repo tree is **newer and
-  better**; the zips are older snapshots. Do **not** overwrite the tree from
-  them. The only Python (`migrate_curriculum.py`) existed only inside a zip and
-  was **not** imported (Python is forbidden).
-- Ported the four POSIX shell integration tests to a single pure-C99
-  in-process runner `tests/test_integration.c` (no shell, no subprocess).
-- Refactored tools to C-callable entry points with `main` kept for standalone
-  builds: `shakti_build_xml_file`, `shakti_build_ledger_file`,
-  `shakti_build_seed_curriculum`, `shakti_write_test_wav`.
-- `src/main.c` exposes `shakti_app_main` when compiled with
-  `-DSHAKTI_APP_NO_MAIN`; standalone `shakti` still builds with `main`.
-- Deleted `tests/test_builder.sh`, `test_loop.sh`, `test_seed.sh`,
-  `test_mvp.sh`. `make` + `make test` green.
-
-## How to work here (hard rules)
-
-- **C99 only.** No Python/JS/shell/subprocess/daemon — and no wording that could
-  be read as adding them.
-- **Never edit files with Python.** Use transparent direct editing tools.
+- **C99 only.** No Python/JS/shell/subprocess/daemon.
+- **Never edit files with Python.**
 - **No agents unless Tyler directly commands them.**
-- **Think first; smallest change; never rewrite Tyler's documents or structure.**
-- Read-only for inventory/status unless Tyler approves a plan naming every
-  allowed path and its validation. State allowed paths + validation before any
-  edit.
-- One approved section/module at a time. Never bulk delete/overwrite/rename.
-- Keep Eden status OPEN. Preserve every correct and incorrect School attempt in
-  append-only readable logs.
+- **Think first; smallest change; one module at a time.**
+- Allowed next work only with named paths + validation after Tyler's say-so.
