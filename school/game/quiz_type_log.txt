@@ -1,0 +1,125 @@
+QUIZ TYPE — she computes, she types, the table cross-examines
+every keystroke is spoken. every answer is verified twice.
+
+Q math_Add_1-1: 1 + 1 = ?  say: founder_voice:math_Add_1-1
+  she types: [2] key:2 say:eden_out/Sound_art/2.wav
+  CHECK: computed 2, table 2 — AGREE. +10
+Q math_Add_1-2: 1 + 2 = ?  say: founder_voice:math_Add_1-2
+  she types: [3] key:3 say:eden_out/Sound_art/3.wav
+  CHECK: computed 3, table 3 — AGREE. +10
+Q math_Add_1-3: 1 + 3 = ?  say: founder_voice:math_Add_1-3
+  she types: [4] key:4 say:eden_out/Sound_art/4.wav
+  CHECK: computed 4, table 4 — AGREE. +10
+Q math_Add_1-4: 1 + 4 = ?  say: founder_voice:math_Add_1-4
+  she types: [5] key:5 say:eden_out/Sound_art/5.wav
+  CHECK: computed 5, table 5 — AGREE. +10
+Q math_Add_1-5: 1 + 5 = ?  say: founder_voice:math_Add_1-5
+  she types: [6] key:6 say:eden_out/Sound_art/6.wav
+  CHECK: computed 6, table 6 — AGREE. +10
+Q math_Add_1-6: 1 + 6 = ?  say: founder_voice:math_Add_1-6
+  she types: [7] key:7 say:eden_out/Sound_art/7.wav
+  CHECK: computed 7, table 7 — AGREE. +10
+Q math_Add_1-7: 1 + 7 = ?  say: founder_voice:math_Add_1-7
+  she types: [8] key:8 say:eden_out/Sound_art/8.wav
+  CHECK: computed 8, table 8 — AGREE. +10
+Q math_Add_1-8: 1 + 8 = ?  say: founder_voice:math_Add_1-8
+  she types: [9] key:9 say:eden_out/Sound_art/9.wav
+  CHECK: computed 9, table 9 — AGREE. +10
+Q math_Add_1-9: 1 + 9 = ?  say: founder_voice:math_Add_1-9
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav [0] key:0 say:eden_out/Sound_art/0.wav
+  CHECK: computed 10, table 10 — AGREE. +10
+Q math_Add_1-10: 1 + 10 = ?  say: founder_voice:math_Add_1-10
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 11, table 11 — AGREE. +10
+Q math_Sub_1-1: 1 - 1 = ?  say: founder_voice:math_Sub_1-1
+  she types: [0] key:0 say:eden_out/Sound_art/0.wav
+  CHECK: computed 0, table 0 — AGREE. +10
+Q math_Sub_1-2: 1 - 2 = ?  say: founder_voice:math_Sub_1-2
+  she types: [-] key:- say:founder_voice:key_- [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed -1, table -1 — AGREE. +10
+Q math_Sub_1-3: 1 - 3 = ?  say: founder_voice:math_Sub_1-3
+  she types: [-] key:- say:founder_voice:key_- [2] key:2 say:eden_out/Sound_art/2.wav
+  CHECK: computed -2, table -2 — AGREE. +10
+Q math_Sub_1-4: 1 - 4 = ?  say: founder_voice:math_Sub_1-4
+  she types: [-] key:- say:founder_voice:key_- [3] key:3 say:eden_out/Sound_art/3.wav
+  CHECK: computed -3, table -3 — AGREE. +10
+Q math_Sub_1-5: 1 - 5 = ?  say: founder_voice:math_Sub_1-5
+  she types: [-] key:- say:founder_voice:key_- [4] key:4 say:eden_out/Sound_art/4.wav
+  CHECK: computed -4, table -4 — AGREE. +10
+Q math_Sub_1-6: 1 - 6 = ?  say: founder_voice:math_Sub_1-6
+  she types: [-] key:- say:founder_voice:key_- [5] key:5 say:eden_out/Sound_art/5.wav
+  CHECK: computed -5, table -5 — AGREE. +10
+Q math_Sub_1-7: 1 - 7 = ?  say: founder_voice:math_Sub_1-7
+  she types: [-] key:- say:founder_voice:key_- [6] key:6 say:eden_out/Sound_art/6.wav
+  CHECK: computed -6, table -6 — AGREE. +10
+Q math_Sub_1-8: 1 - 8 = ?  say: founder_voice:math_Sub_1-8
+  she types: [-] key:- say:founder_voice:key_- [7] key:7 say:eden_out/Sound_art/7.wav
+  CHECK: computed -7, table -7 — AGREE. +10
+Q math_Sub_1-9: 1 - 9 = ?  say: founder_voice:math_Sub_1-9
+  she types: [-] key:- say:founder_voice:key_- [8] key:8 say:eden_out/Sound_art/8.wav
+  CHECK: computed -8, table -8 — AGREE. +10
+Q math_Sub_1-10: 1 - 10 = ?  say: founder_voice:math_Sub_1-10
+  she types: [-] key:- say:founder_voice:key_- [9] key:9 say:eden_out/Sound_art/9.wav
+  CHECK: computed -9, table -9 — AGREE. +10
+Q math_Mul_1-1: 1 * 1 = ?  say: founder_voice:math_Mul_1-1
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Mul_1-2: 1 * 2 = ?  say: founder_voice:math_Mul_1-2
+  she types: [2] key:2 say:eden_out/Sound_art/2.wav
+  CHECK: computed 2, table 2 — AGREE. +10
+Q math_Mul_1-3: 1 * 3 = ?  say: founder_voice:math_Mul_1-3
+  she types: [3] key:3 say:eden_out/Sound_art/3.wav
+  CHECK: computed 3, table 3 — AGREE. +10
+Q math_Mul_1-4: 1 * 4 = ?  say: founder_voice:math_Mul_1-4
+  she types: [4] key:4 say:eden_out/Sound_art/4.wav
+  CHECK: computed 4, table 4 — AGREE. +10
+Q math_Mul_1-5: 1 * 5 = ?  say: founder_voice:math_Mul_1-5
+  she types: [5] key:5 say:eden_out/Sound_art/5.wav
+  CHECK: computed 5, table 5 — AGREE. +10
+Q math_Mul_1-6: 1 * 6 = ?  say: founder_voice:math_Mul_1-6
+  she types: [6] key:6 say:eden_out/Sound_art/6.wav
+  CHECK: computed 6, table 6 — AGREE. +10
+Q math_Mul_1-7: 1 * 7 = ?  say: founder_voice:math_Mul_1-7
+  she types: [7] key:7 say:eden_out/Sound_art/7.wav
+  CHECK: computed 7, table 7 — AGREE. +10
+Q math_Mul_1-8: 1 * 8 = ?  say: founder_voice:math_Mul_1-8
+  she types: [8] key:8 say:eden_out/Sound_art/8.wav
+  CHECK: computed 8, table 8 — AGREE. +10
+Q math_Mul_1-9: 1 * 9 = ?  say: founder_voice:math_Mul_1-9
+  she types: [9] key:9 say:eden_out/Sound_art/9.wav
+  CHECK: computed 9, table 9 — AGREE. +10
+Q math_Mul_1-10: 1 * 10 = ?  say: founder_voice:math_Mul_1-10
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav [0] key:0 say:eden_out/Sound_art/0.wav
+  CHECK: computed 10, table 10 — AGREE. +10
+Q math_Div_1-1: 1 / 1 = ?  say: founder_voice:math_Div_1-1
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Div_2-2: 2 / 2 = ?  say: founder_voice:math_Div_2-2
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Div_3-3: 3 / 3 = ?  say: founder_voice:math_Div_3-3
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Div_4-4: 4 / 4 = ?  say: founder_voice:math_Div_4-4
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Div_5-5: 5 / 5 = ?  say: founder_voice:math_Div_5-5
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Div_6-6: 6 / 6 = ?  say: founder_voice:math_Div_6-6
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Div_7-7: 7 / 7 = ?  say: founder_voice:math_Div_7-7
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Div_8-8: 8 / 8 = ?  say: founder_voice:math_Div_8-8
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Div_9-9: 9 / 9 = ?  say: founder_voice:math_Div_9-9
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+Q math_Div_10-10: 10 / 10 = ?  say: founder_voice:math_Div_10-10
+  she types: [1] key:1 say:eden_out/Sound_art/1.wav
+  CHECK: computed 1, table 1 — AGREE. +10
+
+QUIZ OVER — 40/40 correct — 400 points
