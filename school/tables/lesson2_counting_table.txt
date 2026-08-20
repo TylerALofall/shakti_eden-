@@ -1,0 +1,103 @@
+LESSON 2 — COUNTING TABLE — 1..100 — sealed for Shakti ingest
+count,word,running_total
+1,one,1
+2,two,3
+3,three,6
+4,four,10
+5,five,15
+6,six,21
+7,seven,28
+8,eight,36
+9,nine,45
+10,ten,55
+11,eleven,66
+12,twelve,78
+13,thirteen,91
+14,fourteen,105
+15,fifteen,120
+16,sixteen,136
+17,seventeen,153
+18,eighteen,171
+19,nineteen,190
+20,twenty,210
+21,twenty one,231
+22,twenty two,253
+23,twenty three,276
+24,twenty four,300
+25,twenty five,325
+26,twenty six,351
+27,twenty seven,378
+28,twenty eight,406
+29,twenty nine,435
+30,thirty,465
+31,thirty one,496
+32,thirty two,528
+33,thirty three,561
+34,thirty four,595
+35,thirty five,630
+36,thirty six,666
+37,thirty seven,703
+38,thirty eight,741
+39,thirty nine,780
+40,forty,820
+41,forty one,861
+42,forty two,903
+43,forty three,946
+44,forty four,990
+45,forty five,1035
+46,forty six,1081
+47,forty seven,1128
+48,forty eight,1176
+49,forty nine,1225
+50,fifty,1275
+51,fifty one,1326
+52,fifty two,1378
+53,fifty three,1431
+54,fifty four,1485
+55,fifty five,1540
+56,fifty six,1596
+57,fifty seven,1653
+58,fifty eight,1711
+59,fifty nine,1770
+60,sixty,1830
+61,sixty one,1891
+62,sixty two,1953
+63,sixty three,2016
+64,sixty four,2080
+65,sixty five,2145
+66,sixty six,2211
+67,sixty seven,2278
+68,sixty eight,2346
+69,sixty nine,2415
+70,seventy,2485
+71,seventy one,2556
+72,seventy two,2628
+73,seventy three,2701
+74,seventy four,2775
+75,seventy five,2850
+76,seventy six,2926
+77,seventy seven,3003
+78,seventy eight,3081
+79,seventy nine,3160
+80,eighty,3240
+81,eighty one,3321
+82,eighty two,3403
+83,eighty three,3486
+84,eighty four,3570
+85,eighty five,3655
+86,eighty six,3741
+87,eighty seven,3828
+88,eighty eight,3916
+89,eighty nine,4005
+90,ninety,4095
+91,ninety one,4186
+92,ninety two,4278
+93,ninety three,4371
+94,ninety four,4465
+95,ninety five,4560
+96,ninety six,4656
+97,ninety seven,4753
+98,ninety eight,4851
+99,ninety nine,4950
+100,one hundred,5050
+composed_total,5050
