@@ -1,65 +1,68 @@
-MATCH (MEMORY) — deck: school/game/decks/shapes_class_deck.txt — 8 pairs, 16 cards — rule: CLASS (classification)
+MATCH (MEMORY) — deck: school/game/decks/shapes_class_deck.v5.txt — 8 pairs, 16 cards — rule: CLASS (classification)
 seed fnv1a64:68524336DA66F47D — deterministic, no rand(), C99
-all cards face down. every flip speaks the Doctor's voice atom.
+all cards face down. every card is an IMAGE seen through her eyes.
+every flip speaks the Doctor's voice atom.
+LONG-TERM MEMORY: 24 entries loaded, 0 cards on this table already known
 
 TURN 1 — SHAKTI
-  [flip  0] badge      (STAR    ) say: founder_voice:badge
-  [flip  1] moon       (CIRCLE  ) say: founder_voice:moon
+  [flip  0] see: school/game/cards/card_badge_7.pbm sight:EE767CC5D0062FED say: founder_voice:badge
+  [flip  1] see: school/game/cards/card_moon_1.pbm sight:EDFE1EA1F448B0BD say: founder_voice:moon
   no match — cards turn face down. she holds them in memory.
 TURN 2 — RANDOM
-  [flip 11] slice      (TRIANGLE) say: founder_voice:slice
-  [flip  1] moon       (CIRCLE  ) say: founder_voice:moon
+  [flip 11] see: school/game/cards/card_slice_5.pbm sight:AECEC8C8B6C356AD say: founder_voice:slice
+  [flip  1] see: school/game/cards/card_moon_1.pbm sight:EDFE1EA1F448B0BD say: founder_voice:moon
   no match — cards turn face down.
 TURN 3 — SHAKTI
-  [flip  2] cone       (TRIANGLE) say: founder_voice:cone
-  [flip 11] slice      (TRIANGLE) say: founder_voice:slice
-  MATCH (cone) — set kept, +10, she goes again
+  [flip  2] see: school/game/cards/card_cone_4.pbm sight:F19659BE29E2102D say: founder_voice:cone
+  [flip 11] see: school/game/cards/card_slice_5.pbm sight:AECEC8C8B6C356AD say: founder_voice:slice
+  MATCH (cone as TRIANGLE) — set kept, +10, she goes again
 TURN 4 — SHAKTI
-  [flip  3] moon       (CIRCLE  ) say: founder_voice:moon
-  [flip  1] moon       (CIRCLE  ) say: founder_voice:moon
-  MATCH (moon) — set kept, +10, she goes again
+  [flip  3] see: school/game/cards/card_moon_1.pbm sight:EDFE1EA1F448B0BD say: founder_voice:moon
+  [flip  1] see: school/game/cards/card_moon_1.pbm sight:EDFE1EA1F448B0BD say: founder_voice:moon
+  MATCH (moon as CIRCLE) — set kept, +10, she goes again
 TURN 5 — SHAKTI
-  [flip  4] starfish   (STAR    ) say: founder_voice:starfish
-  [flip  0] badge      (STAR    ) say: founder_voice:badge
-  MATCH (starfish) — set kept, +10, she goes again
+  [flip  4] see: school/game/cards/card_starfish_6.pbm sight:54B4A7E92D4F9BED say: founder_voice:starfish
+  [flip  0] see: school/game/cards/card_badge_7.pbm sight:EE767CC5D0062FED say: founder_voice:badge
+  MATCH (starfish as STAR) — set kept, +10, she goes again
 TURN 6 — SHAKTI
-  [flip  5] box        (SQUARE  ) say: founder_voice:box
-  [flip  6] window     (SQUARE  ) say: founder_voice:window
-  MATCH (box) — set kept, +10, she goes again
+  [flip  5] see: school/game/cards/card_box_2.pbm sight:513CADE34A4EFBDD say: founder_voice:box
+  [flip  6] see: school/game/cards/card_window_3.pbm sight:439100470D84401D say: founder_voice:window
+  MATCH (box as SQUARE) — set kept, +10, she goes again
 TURN 7 — SHAKTI
-  [flip  7] starfish   (STAR    ) say: founder_voice:starfish
-  [flip  8] ball       (CIRCLE  ) say: founder_voice:ball
+  [flip  7] see: school/game/cards/card_starfish_6.pbm sight:54B4A7E92D4F9BED say: founder_voice:starfish
+  [flip  8] see: school/game/cards/card_ball_0.pbm sight:B6B0D543CD6A922D say: founder_voice:ball
   no match — cards turn face down. she holds them in memory.
 TURN 8 — RANDOM
-  [flip  8] ball       (CIRCLE  ) say: founder_voice:ball
-  [flip  7] starfish   (STAR    ) say: founder_voice:starfish
+  [flip  8] see: school/game/cards/card_ball_0.pbm sight:B6B0D543CD6A922D say: founder_voice:ball
+  [flip  7] see: school/game/cards/card_starfish_6.pbm sight:54B4A7E92D4F9BED say: founder_voice:starfish
   no match — cards turn face down.
 TURN 9 — SHAKTI
-  [flip  9] cone       (TRIANGLE) say: founder_voice:cone
-  [flip 10] badge      (STAR    ) say: founder_voice:badge
+  [flip  9] see: school/game/cards/card_cone_4.pbm sight:F19659BE29E2102D say: founder_voice:cone
+  [flip 10] see: school/game/cards/card_badge_7.pbm sight:EE767CC5D0062FED say: founder_voice:badge
   no match — cards turn face down. she holds them in memory.
 TURN 10 — RANDOM
-  [flip  8] ball       (CIRCLE  ) say: founder_voice:ball
-  [flip 13] slice      (TRIANGLE) say: founder_voice:slice
+  [flip  8] see: school/game/cards/card_ball_0.pbm sight:B6B0D543CD6A922D say: founder_voice:ball
+  [flip 13] see: school/game/cards/card_slice_5.pbm sight:AECEC8C8B6C356AD say: founder_voice:slice
   no match — cards turn face down.
 TURN 11 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip  7] starfish   (STAR    ) say: founder_voice:starfish
-  [flip 10] badge      (STAR    ) say: founder_voice:badge
+  [flip  7] see: school/game/cards/card_starfish_6.pbm sight:54B4A7E92D4F9BED say: founder_voice:starfish
+  [flip 10] see: school/game/cards/card_badge_7.pbm sight:EE767CC5D0062FED say: founder_voice:badge
   MATCH (starfish as STAR) — set kept, +10, she goes again
 TURN 12 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip  9] cone       (TRIANGLE) say: founder_voice:cone
-  [flip 13] slice      (TRIANGLE) say: founder_voice:slice
+  [flip  9] see: school/game/cards/card_cone_4.pbm sight:F19659BE29E2102D say: founder_voice:cone
+  [flip 13] see: school/game/cards/card_slice_5.pbm sight:AECEC8C8B6C356AD say: founder_voice:slice
   MATCH (cone as TRIANGLE) — set kept, +10, she goes again
 TURN 13 — SHAKTI
-  [flip 12] ball       (CIRCLE  ) say: founder_voice:ball
-  [flip  8] ball       (CIRCLE  ) say: founder_voice:ball
-  MATCH (ball) — set kept, +10, she goes again
+  [flip 12] see: school/game/cards/card_ball_0.pbm sight:B6B0D543CD6A922D say: founder_voice:ball
+  [flip  8] see: school/game/cards/card_ball_0.pbm sight:B6B0D543CD6A922D say: founder_voice:ball
+  MATCH (ball as CIRCLE) — set kept, +10, she goes again
 TURN 14 — SHAKTI
-  [flip 14] box        (SQUARE  ) say: founder_voice:box
-  [flip 15] window     (SQUARE  ) say: founder_voice:window
-  MATCH (box) — set kept, +10, she goes again
+  [flip 14] see: school/game/cards/card_box_2.pbm sight:513CADE34A4EFBDD say: founder_voice:box
+  [flip 15] see: school/game/cards/card_window_3.pbm sight:439100470D84401D say: founder_voice:window
+  MATCH (box as SQUARE) — set kept, +10, she goes again
 
 GAME OVER — SHAKTI 80, RANDOM 0 — 14 turns for 16 cards
 WINNER: SHAKTI — the memory holds. the weave works.
+LONG-TERM MEMORY: saved, 32 entries total
