@@ -39,9 +39,28 @@ static const char *P[] = {
     "school/game/match_exact_teach_log.txt",
     "school/game/match_exact_play_log.txt",
     "school/game/match_class_colors_log.txt",
-    "school/game/match_class_shapes_log.txt"
+    "school/game/match_class_shapes_log.txt",
+    "school/game/match_math_10x10_log.txt",
+    "school/game/match_math_20x20_log.txt",
+    "school/game/quiz_type_log.txt",
+    "school/game/scoreboard.txt",
+    "school/game/memory_long.txt",
+    "school/game/avatar_shakti_v1.svg",
+    "school/game/decks/math_deck_10x10.txt",
+    "school/game/decks/math_deck_20x20.txt",
+    "school/game/decks/first_five_deck.v5.txt",
+    "school/game/decks/colors_class_deck.v5.txt",
+    "school/game/decks/shapes_class_deck.v5.txt",
+    "school/game/decks/math_deck_10x10.v5.txt",
+    "school/game/decks/math_deck_20x20.v5.txt",
+    "school/game/forge_first_five_sight.txt",
+    "school/game/forge_colors_sight.txt",
+    "school/game/forge_shapes_sight.txt",
+    "school/game/forge_math10_sight.txt",
+    "school/game/forge_math20_sight.txt",
+    "school/CURRICULUM_ORDER.txt"
 };
-#define N 24
+#define N 42
 
 int main(void)
 {

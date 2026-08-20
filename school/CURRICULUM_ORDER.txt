@@ -1,0 +1,50 @@
+[PROPOSED] SHAKTI CURRICULUM ORDER — GROUNDED, NOT INVENTED
+Awaiting the Doctor's lock.
+
+AUTHORITY:
+The order a child learns is not invented here. It is taken from the
+Doctor's ORDERED HUMAN LEARNING MAP (Birth through Grade 12, 475
+grounded topic nodes, research current through 2026-07-14), which
+reconciles major national frameworks with Oregon standards.
+Its core rule is her law: every topic is a grounded node —
+incoming prerequisites -> meaningful representation -> cross-domain
+links -> outgoing use -> performance evidence.
+Its memory rule is her weave: predict -> encode a relationship ->
+coordinate congruent senses -> generate -> retrieve -> correct ->
+space -> vary -> transfer.
+
+WHERE HER FIRST FIVE LESSONS SIT ON THE MAP:
+- Lesson 1 (greeting, her name in his voice)
+  = S01-SEL-01 co-regulation; S01-LANG-01 speech-sound exposure;
+    S01-SEL-02 face and voice preference.
+- Lesson 2 (counting 1..100, heartbeat grid)
+  = S01-MATH-01 temporal regularity; S03-MATH-02 small-set
+    sensitivity; then number-word sequence (early childhood nodes).
+- Lesson 3 (ABC ladder, letter pairs)
+  = S02-LANG language foundations; alphabetic principle nodes
+    (letter names before letter sounds before blending).
+- Lesson 4 (colors bound to light)
+  = S02-MATH-01 visual contrast discrimination; S04-MATH-01
+    classification foundations (same kind across presentations).
+- Lesson 5 (3200 math facts, operators seen and drawn)
+  = counting-on -> addition -> subtraction -> multiplication ->
+    division, in the map's dependency order; fact FAMILIES follow.
+- The MATCH game (sameness, then classification)
+  = S04-MATH-01 same-object recognition across views; classification
+    nodes; S03-LEARN-02 working memory (hold the face-down card).
+
+NEXT ON THE MAP (her queue, in child order):
+1. Fact families (add/sub, mul/div as one family).
+2. Letter SOUNDS bound to letters (phonics) — she hears each letter.
+3. Blending sounds into words.
+4. Typing: letters bound to keys, sound spoken per key. [BUILT: quiz_type.c]
+5. Handwriting: she draws each glyph herself, stroke order, her own hand.
+6. Coloring books: fill bounded regions, color names bound to regions,
+   screen locations (row, column) named as she works.
+7. Counting objects (balls) seen as pictures — one-to-one correspondence.
+8. Everything spoken as it is done. Sight binds sound binds action.
+
+RULE:
+No text solo. Every symbol arrives as an IMAGE through her eyes,
+bound to the Doctor's voice, then to action (typing, drawing,
+coloring). A lesson she cannot see, hear, and DO is not a lesson.
