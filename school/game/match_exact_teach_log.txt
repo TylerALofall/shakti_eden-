@@ -1,118 +1,121 @@
-MATCH (MEMORY) — deck: school/game/decks/first_five_deck.txt — 16 pairs, 32 cards — rule: EXACT (sameness)
+MATCH (MEMORY) — deck: school/game/decks/first_five_deck.v5.txt — 16 pairs, 32 cards — rule: EXACT (sameness)
 seed fnv1a64:0B5098E7E54D5DED — deterministic, no rand(), C99
-all cards face down. every flip speaks the Doctor's voice atom.
+all cards face down. every card is an IMAGE seen through her eyes.
+every flip speaks the Doctor's voice atom.
+LONG-TERM MEMORY: 0 entries loaded, 0 cards on this table already known
 
 == TEACH MODE — the Goddess plays first so she sees how it is done ==
-GODDESS: Watch me, little one. Two cards. Same symbol. That is the whole game.
+GODDESS: Watch me, little one. Two cards. Same picture. That is the whole game.
 GODDESS TURN
-  [flip  0] A          (LETTER  ) say: eden_out/Sound_art/A.wav
-  [flip 24] A          (LETTER  ) say: eden_out/Sound_art/A.wav
+  [flip  0] see: school/game/cards/card_A_8.pbm sight:C8A4A5B446586E2D say: eden_out/Sound_art/A.wav
+  [flip 24] see: school/game/cards/card_A_8.pbm sight:C8A4A5B446586E2D say: eden_out/Sound_art/A.wav
   MATCH (A / A) — see? Keep the set. 10 points.
 GODDESS: When you miss they turn face down — and you HOLD them.
 GODDESS: Your turn, my queen. Match them.
 
 TURN 1 — SHAKTI
-  [flip  1] BLUE       (COLOR   ) say: founder_voice:BLUE
-  [flip  2] C          (LETTER  ) say: eden_out/Sound_art/C.wav
+  [flip  1] see: school/game/cards/card_BLUE_15.pbm sight:D4681012185AD00D say: founder_voice:BLUE
+  [flip  2] see: school/game/cards/card_C_10.pbm sight:7F0053AD58B3265D say: eden_out/Sound_art/C.wav
   no match — cards turn face down. she holds them in memory.
 TURN 2 — RANDOM
-  [flip 20] 2          (NUMBER  ) say: eden_out/Sound_art/2.wav
-  [flip  5] BLUE       (COLOR   ) say: founder_voice:BLUE
+  [flip 20] see: school/game/cards/card_2_1.pbm sight:D0900D7153FBA5ED say: eden_out/Sound_art/2.wav
+  [flip  5] see: school/game/cards/card_BLUE_15.pbm sight:D4681012185AD00D say: founder_voice:BLUE
   no match — cards turn face down.
 TURN 3 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip  1] BLUE       (COLOR   ) say: founder_voice:BLUE
-  [flip  5] BLUE       (COLOR   ) say: founder_voice:BLUE
+  [flip  1] see: school/game/cards/card_BLUE_15.pbm sight:D4681012185AD00D say: founder_voice:BLUE
+  [flip  5] see: school/game/cards/card_BLUE_15.pbm sight:D4681012185AD00D say: founder_voice:BLUE
   MATCH (BLUE) — set kept, +10, she goes again
 TURN 4 — SHAKTI
-  [flip  3] RED        (COLOR   ) say: founder_voice:RED
-  [flip  4] 5          (NUMBER  ) say: eden_out/Sound_art/5.wav
+  [flip  3] see: school/game/cards/card_RED_12.pbm sight:91C29D3E08730B6D say: founder_voice:RED
+  [flip  4] see: school/game/cards/card_5_4.pbm sight:9BF3B98FD5180A9D say: eden_out/Sound_art/5.wav
   no match — cards turn face down. she holds them in memory.
 TURN 5 — RANDOM
-  [flip 26] two        (NUMBER-WORD) say: eden_out/Sound_art/two.wav
-  [flip 16] WHITE      (COLOR   ) say: founder_voice:WHITE
+  [flip 26] see: school/game/cards/card_two_6.pbm sight:FEF2D6A2E481C1BD say: eden_out/Sound_art/two.wav
+  [flip 16] see: school/game/cards/card_WHITE_14.pbm sight:D871FE61ECAC25ED say: founder_voice:WHITE
   no match — cards turn face down.
 TURN 6 — SHAKTI
-  [flip  6] 4          (NUMBER  ) say: eden_out/Sound_art/4.wav
-  [flip  7] 3          (NUMBER  ) say: eden_out/Sound_art/3.wav
+  [flip  6] see: school/game/cards/card_4_3.pbm sight:C75DC5F16300CCED say: eden_out/Sound_art/4.wav
+  [flip  7] see: school/game/cards/card_3_2.pbm sight:AF3ED9F444DD0B7D say: eden_out/Sound_art/3.wav
   no match — cards turn face down. she holds them in memory.
 TURN 7 — RANDOM
-  [flip  3] RED        (COLOR   ) say: founder_voice:RED
-  [flip  8] GREEN      (COLOR   ) say: founder_voice:GREEN
+  [flip  3] see: school/game/cards/card_RED_12.pbm sight:91C29D3E08730B6D say: founder_voice:RED
+  [flip  8] see: school/game/cards/card_GREEN_13.pbm sight:4F41AB66A61DBD1D say: founder_voice:GREEN
   no match — cards turn face down.
 TURN 8 — SHAKTI
-  [flip  9] 3          (NUMBER  ) say: eden_out/Sound_art/3.wav
-  [flip  7] 3          (NUMBER  ) say: eden_out/Sound_art/3.wav
+  [flip  9] see: school/game/cards/card_3_2.pbm sight:AF3ED9F444DD0B7D say: eden_out/Sound_art/3.wav
+  [flip  7] see: school/game/cards/card_3_2.pbm sight:AF3ED9F444DD0B7D say: eden_out/Sound_art/3.wav
   MATCH (3) — set kept, +10, she goes again
 TURN 9 — SHAKTI
-  [flip 10] WHITE      (COLOR   ) say: founder_voice:WHITE
-  [flip 16] WHITE      (COLOR   ) say: founder_voice:WHITE
+  [flip 10] see: school/game/cards/card_WHITE_14.pbm sight:D871FE61ECAC25ED say: founder_voice:WHITE
+  [flip 16] see: school/game/cards/card_WHITE_14.pbm sight:D871FE61ECAC25ED say: founder_voice:WHITE
   MATCH (WHITE) — set kept, +10, she goes again
 TURN 10 — SHAKTI
-  [flip 11] 2          (NUMBER  ) say: eden_out/Sound_art/2.wav
-  [flip 20] 2          (NUMBER  ) say: eden_out/Sound_art/2.wav
+  [flip 11] see: school/game/cards/card_2_1.pbm sight:D0900D7153FBA5ED say: eden_out/Sound_art/2.wav
+  [flip 20] see: school/game/cards/card_2_1.pbm sight:D0900D7153FBA5ED say: eden_out/Sound_art/2.wav
   MATCH (2) — set kept, +10, she goes again
 TURN 11 — SHAKTI
-  [flip 12] 1          (NUMBER  ) say: eden_out/Sound_art/1.wav
-  [flip 13] three      (NUMBER-WORD) say: eden_out/Sound_art/three.wav
+  [flip 12] see: school/game/cards/card_1_0.pbm sight:5B66F0E4C05EFAAD say: eden_out/Sound_art/1.wav
+  [flip 13] see: school/game/cards/card_three_7.pbm sight:8A89D9C7F80DFB0D say: eden_out/Sound_art/three.wav
   no match — cards turn face down. she holds them in memory.
 TURN 12 — RANDOM
-  [flip 18] one        (NUMBER-WORD) say: eden_out/Sound_art/one.wav
-  [flip  3] RED        (COLOR   ) say: founder_voice:RED
+  [flip 18] see: school/game/cards/card_one_5.pbm sight:50D6F10C8CB0E0FD say: eden_out/Sound_art/one.wav
+  [flip  3] see: school/game/cards/card_RED_12.pbm sight:91C29D3E08730B6D say: founder_voice:RED
   no match — cards turn face down.
 TURN 13 — SHAKTI
-  [flip 14] 5          (NUMBER  ) say: eden_out/Sound_art/5.wav
-  [flip  4] 5          (NUMBER  ) say: eden_out/Sound_art/5.wav
+  [flip 14] see: school/game/cards/card_5_4.pbm sight:9BF3B98FD5180A9D say: eden_out/Sound_art/5.wav
+  [flip  4] see: school/game/cards/card_5_4.pbm sight:9BF3B98FD5180A9D say: eden_out/Sound_art/5.wav
   MATCH (5) — set kept, +10, she goes again
 TURN 14 — SHAKTI
-  [flip 15] B          (LETTER  ) say: eden_out/Sound_art/B.wav
-  [flip 17] B          (LETTER  ) say: eden_out/Sound_art/B.wav
+  [flip 15] see: school/game/cards/card_B_9.pbm sight:60E16FE71F7E9B4D say: eden_out/Sound_art/B.wav
+  [flip 17] see: school/game/cards/card_B_9.pbm sight:60E16FE71F7E9B4D say: eden_out/Sound_art/B.wav
   MATCH (B) — set kept, +10, she goes again
 TURN 15 — SHAKTI
-  [flip 19] RED        (COLOR   ) say: founder_voice:RED
-  [flip  3] RED        (COLOR   ) say: founder_voice:RED
+  [flip 19] see: school/game/cards/card_RED_12.pbm sight:91C29D3E08730B6D say: founder_voice:RED
+  [flip  3] see: school/game/cards/card_RED_12.pbm sight:91C29D3E08730B6D say: founder_voice:RED
   MATCH (RED) — set kept, +10, she goes again
 TURN 16 — SHAKTI
-  [flip 21] one        (NUMBER-WORD) say: eden_out/Sound_art/one.wav
-  [flip 18] one        (NUMBER-WORD) say: eden_out/Sound_art/one.wav
+  [flip 21] see: school/game/cards/card_one_5.pbm sight:50D6F10C8CB0E0FD say: eden_out/Sound_art/one.wav
+  [flip 18] see: school/game/cards/card_one_5.pbm sight:50D6F10C8CB0E0FD say: eden_out/Sound_art/one.wav
   MATCH (one) — set kept, +10, she goes again
 TURN 17 — SHAKTI
-  [flip 22] GREEN      (COLOR   ) say: founder_voice:GREEN
-  [flip  8] GREEN      (COLOR   ) say: founder_voice:GREEN
+  [flip 22] see: school/game/cards/card_GREEN_13.pbm sight:4F41AB66A61DBD1D say: founder_voice:GREEN
+  [flip  8] see: school/game/cards/card_GREEN_13.pbm sight:4F41AB66A61DBD1D say: founder_voice:GREEN
   MATCH (GREEN) — set kept, +10, she goes again
 TURN 18 — SHAKTI
-  [flip 23] 1          (NUMBER  ) say: eden_out/Sound_art/1.wav
-  [flip 12] 1          (NUMBER  ) say: eden_out/Sound_art/1.wav
+  [flip 23] see: school/game/cards/card_1_0.pbm sight:5B66F0E4C05EFAAD say: eden_out/Sound_art/1.wav
+  [flip 12] see: school/game/cards/card_1_0.pbm sight:5B66F0E4C05EFAAD say: eden_out/Sound_art/1.wav
   MATCH (1) — set kept, +10, she goes again
 TURN 19 — SHAKTI
-  [flip 25] two        (NUMBER-WORD) say: eden_out/Sound_art/two.wav
-  [flip 26] two        (NUMBER-WORD) say: eden_out/Sound_art/two.wav
+  [flip 25] see: school/game/cards/card_two_6.pbm sight:FEF2D6A2E481C1BD say: eden_out/Sound_art/two.wav
+  [flip 26] see: school/game/cards/card_two_6.pbm sight:FEF2D6A2E481C1BD say: eden_out/Sound_art/two.wav
   MATCH (two) — set kept, +10, she goes again
 TURN 20 — SHAKTI
-  [flip 27] three      (NUMBER-WORD) say: eden_out/Sound_art/three.wav
-  [flip 13] three      (NUMBER-WORD) say: eden_out/Sound_art/three.wav
+  [flip 27] see: school/game/cards/card_three_7.pbm sight:8A89D9C7F80DFB0D say: eden_out/Sound_art/three.wav
+  [flip 13] see: school/game/cards/card_three_7.pbm sight:8A89D9C7F80DFB0D say: eden_out/Sound_art/three.wav
   MATCH (three) — set kept, +10, she goes again
 TURN 21 — SHAKTI
-  [flip 28] D          (LETTER  ) say: eden_out/Sound_art/D.wav
-  [flip 29] 4          (NUMBER  ) say: eden_out/Sound_art/4.wav
+  [flip 28] see: school/game/cards/card_D_11.pbm sight:64B7AEF0A8100A2D say: eden_out/Sound_art/D.wav
+  [flip 29] see: school/game/cards/card_4_3.pbm sight:C75DC5F16300CCED say: eden_out/Sound_art/4.wav
   no match — cards turn face down. she holds them in memory.
 TURN 22 — RANDOM
-  [flip 28] D          (LETTER  ) say: eden_out/Sound_art/D.wav
-  [flip  2] C          (LETTER  ) say: eden_out/Sound_art/C.wav
+  [flip 28] see: school/game/cards/card_D_11.pbm sight:64B7AEF0A8100A2D say: eden_out/Sound_art/D.wav
+  [flip  2] see: school/game/cards/card_C_10.pbm sight:7F0053AD58B3265D say: eden_out/Sound_art/C.wav
   no match — cards turn face down.
 TURN 23 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip  6] 4          (NUMBER  ) say: eden_out/Sound_art/4.wav
-  [flip 29] 4          (NUMBER  ) say: eden_out/Sound_art/4.wav
+  [flip  6] see: school/game/cards/card_4_3.pbm sight:C75DC5F16300CCED say: eden_out/Sound_art/4.wav
+  [flip 29] see: school/game/cards/card_4_3.pbm sight:C75DC5F16300CCED say: eden_out/Sound_art/4.wav
   MATCH (4) — set kept, +10, she goes again
 TURN 24 — SHAKTI
-  [flip 30] C          (LETTER  ) say: eden_out/Sound_art/C.wav
-  [flip  2] C          (LETTER  ) say: eden_out/Sound_art/C.wav
+  [flip 30] see: school/game/cards/card_C_10.pbm sight:7F0053AD58B3265D say: eden_out/Sound_art/C.wav
+  [flip  2] see: school/game/cards/card_C_10.pbm sight:7F0053AD58B3265D say: eden_out/Sound_art/C.wav
   MATCH (C) — set kept, +10, she goes again
 TURN 25 — SHAKTI
-  [flip 31] D          (LETTER  ) say: eden_out/Sound_art/D.wav
-  [flip 28] D          (LETTER  ) say: eden_out/Sound_art/D.wav
+  [flip 31] see: school/game/cards/card_D_11.pbm sight:64B7AEF0A8100A2D say: eden_out/Sound_art/D.wav
+  [flip 28] see: school/game/cards/card_D_11.pbm sight:64B7AEF0A8100A2D say: eden_out/Sound_art/D.wav
   MATCH (D) — set kept, +10, she goes again
 
 GAME OVER — SHAKTI 150, RANDOM 0 — 25 turns for 32 cards
 WINNER: SHAKTI — the memory holds. the weave works.
+LONG-TERM MEMORY: saved, 16 entries total
