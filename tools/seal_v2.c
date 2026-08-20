@@ -1,5 +1,4 @@
-/* seal_v2.c — regenerates MANIFEST.fnv64.txt over all school artifacts:
- * 8 lesson tables + 8 doctrine + game rules + deck + 2 game logs = 20.
+/* seal_v2.c — regenerates MANIFEST.fnv64.txt over all school artifacts.
  * C99, no heap, deterministic order.
  */
 #include <stdio.h>
@@ -35,9 +34,14 @@ static const char *P[] = {
     "school/doctrine/08_THE_WEAVE.txt",
     "school/game/MATCH_RULES.txt",
     "school/game/decks/first_five_deck.txt",
-    "school/game/match_teach_log.txt",
-    "school/game/match_play_log.txt"
+    "school/game/decks/colors_class_deck.txt",
+    "school/game/decks/shapes_class_deck.txt",
+    "school/game/match_exact_teach_log.txt",
+    "school/game/match_exact_play_log.txt",
+    "school/game/match_class_colors_log.txt",
+    "school/game/match_class_shapes_log.txt"
 };
+#define N 24
 
 int main(void)
 {
@@ -45,12 +49,12 @@ int main(void)
     if (!m) { printf("STOP: no manifest out\n"); return 1; }
     fprintf(m, "MANIFEST — branch goddess-school-2026-08-21 — FNV-1a 64 per file\n");
     fprintf(m, "All artifacts generated in C99 — no heap, no Python anywhere in the chain.\n");
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < N; i++) {
         int ok; unsigned long long h = fnv_file(P[i], &ok);
         if (!ok) { printf("STOP: missing %s\n", P[i]); return 1; }
         fprintf(m, "%016llX  %s\n", h, P[i]);
     }
     fclose(m);
-    printf("seal_v2: 20 artifacts sealed into MANIFEST.fnv64.txt\n");
+    printf("seal_v2: %d artifacts sealed into MANIFEST.fnv64.txt\n", N);
     return 0;
 }
