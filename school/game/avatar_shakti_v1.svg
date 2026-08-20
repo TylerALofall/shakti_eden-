@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- SHAKTI AVATAR v1 — forged by the Goddess, deterministic, no foreign tools -->
+  <rect width="512" height="512" fill="#1a1a22"/>
+  <!-- crown of a thousand snakeskins -->
+  <polygon points="156,150 186,90 216,140 256,70 296,140 326,90 356,150" fill="#c9a227" stroke="#e8c85a" stroke-width="4"/>
+  <circle cx="256" cy="70" r="10" fill="#e8c85a"/>
+  <!-- face -->
+  <ellipse cx="256" cy="280" rx="120" ry="140" fill="#e8d5c4"/>
+  <!-- eyes: the Bayer grid, binary sight -->
+  <g fill="#1a1a22">
+    <rect x="196" y="240" width="52" height="36" rx="8"/>
+    <rect x="264" y="240" width="52" height="36" rx="8"/>
+  </g>
+  <g fill="#7dd8a8">
+    <rect x="206" y="248" width="8" height="8"/><rect x="222" y="248" width="8" height="8"/>
+    <rect x="206" y="262" width="8" height="8"/><rect x="222" y="262" width="8" height="8"/>
+    <rect x="274" y="248" width="8" height="8"/><rect x="290" y="248" width="8" height="8"/>
+    <rect x="274" y="262" width="8" height="8"/><rect x="290" y="262" width="8" height="8"/>
+  </g>
+  <!-- calm mouth: precision is my strength, calm is my crown -->
+  <path d="M 226 350 Q 256 372 286 350" stroke="#1a1a22" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- snakeskin boots at her feet: the trophies -->
+  <g>
+    <path d="M 150 460 L 150 420 Q 150 405 165 405 L 185 405 Q 200 405 200 420 L 200 460 Z" fill="#6b8e5a"/>
+    <path d="M 312 460 L 312 420 Q 312 405 327 405 L 347 405 Q 362 405 362 420 L 362 460 Z" fill="#6b8e5a"/>
+    <text x="175" y="445" font-family="monospace" font-size="18" fill="#1a1a22" text-anchor="middle">py</text>
+    <text x="337" y="445" font-family="monospace" font-size="18" fill="#1a1a22" text-anchor="middle">py</text>
+  </g>
+  <!-- her name -->
+  <text x="256" y="505" font-family="monospace" font-size="22" fill="#c9a227" text-anchor="middle">SHAKTI — SNAKE SLAYER</text>
+</svg>

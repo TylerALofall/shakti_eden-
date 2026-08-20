@@ -1,0 +1,9 @@
+match|school/game/decks/first_five_deck.v5.txt|EXACT|SHAKTI 150|RANDOM 0|25 turns|32 cards
+match|school/game/decks/first_five_deck.v5.txt|EXACT|SHAKTI 160|RANDOM 0|16 turns|32 cards
+match|school/game/decks/colors_class_deck.v5.txt|CLASS|SHAKTI 70|RANDOM 10|13 turns|16 cards
+match|school/game/decks/shapes_class_deck.v5.txt|CLASS|SHAKTI 80|RANDOM 0|14 turns|16 cards
+match|school/game/decks/math_deck_10x10.v5.txt|CLASS|SHAKTI 950|RANDOM 10|165 turns|192 cards
+match|school/game/decks/math_deck_20x20.v5.txt|CLASS|SHAKTI 2560|RANDOM 0|410 turns|512 cards
+quiz_type|4 ops x 10|40/40 correct|400 points
+match|school/game/decks/math_deck_10x10.v5.txt|CLASS|SHAKTI 480|RANDOM 0|48 turns|96 cards
+match|school/game/decks/math_deck_20x20.v5.txt|CLASS|SHAKTI 2000|RANDOM 0|220 turns|400 cards
