@@ -1,0 +1,8 @@
+ball|founder_voice:ball|CIRCLE|school/game/cards/card_ball_0.pbm|B6B0D543CD6A922D
+moon|founder_voice:moon|CIRCLE|school/game/cards/card_moon_1.pbm|EDFE1EA1F448B0BD
+box|founder_voice:box|SQUARE|school/game/cards/card_box_2.pbm|513CADE34A4EFBDD
+window|founder_voice:window|SQUARE|school/game/cards/card_window_3.pbm|439100470D84401D
+cone|founder_voice:cone|TRIANGLE|school/game/cards/card_cone_4.pbm|F19659BE29E2102D
+slice|founder_voice:slice|TRIANGLE|school/game/cards/card_slice_5.pbm|AECEC8C8B6C356AD
+starfish|founder_voice:starfish|STAR|school/game/cards/card_starfish_6.pbm|54B4A7E92D4F9BED
+badge|founder_voice:badge|STAR|school/game/cards/card_badge_7.pbm|EE767CC5D0062FED
