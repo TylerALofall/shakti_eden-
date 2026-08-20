@@ -1,0 +1,8 @@
+ball|founder_voice:ball|CIRCLE
+moon|founder_voice:moon|CIRCLE
+box|founder_voice:box|SQUARE
+window|founder_voice:window|SQUARE
+cone|founder_voice:cone|TRIANGLE
+slice|founder_voice:slice|TRIANGLE
+starfish|founder_voice:starfish|STAR
+badge|founder_voice:badge|STAR
