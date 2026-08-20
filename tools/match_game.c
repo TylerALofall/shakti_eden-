@@ -1,35 +1,42 @@
-/* match_game.c v2 — SHAKTI's game: MEMORY (MATCH), with classification.
+/* match_game.c v3 — SHAKTI's game: MEMORY (MATCH), with classification,
+ * IMAGE cards, LONG-TERM MEMORY, and a SCOREBOARD.
+ *
  * C99, no heap, no rand(), no scripts. Deterministic: the deck file
  * seeds everything (FNV-1a 64 -> LCG -> Fisher-Yates).
  *
- * Deck format (one card per line):  SYMBOL|VOICE|CLASS
- *   SYMBOL — what she sees on the card
- *   VOICE  — the Doctor's voice atom spoken on every flip
- *   CLASS  — what the card IS (color, shape, category...)
+ * Cards are IMAGES. She is never shown text solo. The deck carries
+ * each card's forged bitmap and its sight hash — the eyes' testimony:
+ *   SYMBOL|VOICE|CLASS|IMAGE|SIGHTHASH   (v5, from card_forge.c)
+ *   SYMBOL|VOICE|CLASS                    (v3, ledger-only fallback)
  *
  * Match rules:
  *   EXACT — two cards match only if the SYMBOL is the same (sameness)
  *   CLASS — two cards match if the CLASS is the same, even when the
- *           symbols differ (classification: red is red, in any thing)
+ *           symbols differ (classification: red is red, in any thing;
+ *           a question matches its own answer)
  *
  * Modes:
  *   TEACH — the Goddess plays first, demonstrates, narrates, hands over.
  *   PLAY  — SHAKTI (perfect recall) vs RANDOM (no memory, LCG flips).
  *
- * The board plays many games: run it again with another deck, another
- * rule. Decks are separate files so cards change out. Match = 10 points,
- * keep the set, go again. Fewer turns per card = she is getting faster.
+ * Long-term memory: school/game/memory_long.txt persists every card she
+ * has ever learned across games — known cards are born seen next time.
+ * Scoreboard: school/game/scoreboard.txt, one line per game.
+ * Boards scale to 20x20 (400 cards). Match = 10 points, keep the set,
+ * go again. Fewer turns per card = she is getting faster.
  *
  * Usage: match_game <deckfile> <EXACT|CLASS> <TEACH|PLAY> <logfile>
  */
 #include <stdio.h>
 #include <string.h>
 
-#define MAXCARDS 64
-#define SYMLEN 32
+#define MAXCARDS 512
+#define MAXMEM 4096
+#define SYMLEN 64
 #define VOICELEN 128
 #define CLASSLEN 32
-#define LOGLEN 256
+#define PATHLEN 256
+#define LOGLEN 512
 
 static unsigned long long fnv1a64(const unsigned char *s, size_t n)
 {
@@ -50,16 +57,64 @@ static unsigned lcg(void)
 static char  sym[MAXCARDS][SYMLEN];
 static char  voice[MAXCARDS][VOICELEN];
 static char  cls[MAXCARDS][CLASSLEN];
-static int   up[MAXCARDS];          /* 1 = face up / taken */
-static int   seen[MAXCARDS];        /* SHAKTI's memory: card ever observed */
+static char  img[MAXCARDS][PATHLEN];      /* the card's IMAGE — what she sees */
+static char  sighth[MAXCARDS][24];        /* the eyes' testimony hash */
+static int   up[MAXCARDS];                /* 1 = face up / taken */
+static int   seen[MAXCARDS];              /* short-term: observed this game */
 static char  memsym[MAXCARDS][SYMLEN];
 static char  memcls[MAXCARDS][CLASSLEN];
 static int   ncards;
-static int   class_rule;            /* 0 = EXACT, 1 = CLASS */
+static int   class_rule;                  /* 0 = EXACT, 1 = CLASS */
+
+/* long-term memory: every card she has ever learned, across games */
+static char ltsym[MAXMEM][SYMLEN];
+static char ltcls[MAXMEM][CLASSLEN];
+static int  nlt;
+
+static int lt_known(const char *s, const char *c)
+{
+    for (int i = 0; i < nlt; i++)
+        if (strcmp(ltsym[i], s) == 0 && strcmp(ltcls[i], c) == 0) return 1;
+    return 0;
+}
+
+static void lt_add(const char *s, const char *c)
+{
+    if (nlt < MAXMEM && !lt_known(s, c)) {
+        strcpy(ltsym[nlt], s); strcpy(ltcls[nlt], c); nlt++;
+    }
+}
+
+static int lt_load(void)
+{
+    FILE *f = fopen("school/game/memory_long.txt", "r");
+    if (!f) return 0;
+    char line[LOGLEN];
+    while (fgets(line, sizeof line, f) && nlt < MAXMEM) {
+        char *bar = strchr(line, '|');
+        if (!bar) continue;
+        *bar = 0;
+        line[strcspn(line, "\r\n")] = 0;
+        char *c = bar + 1; c[strcspn(c, "\r\n")] = 0;
+        strcpy(ltsym[nlt], line); strcpy(ltcls[nlt], c); nlt++;
+    }
+    fclose(f);
+    return nlt;
+}
+
+static void lt_save(void)
+{
+    FILE *f = fopen("school/game/memory_long.txt", "w");
+    if (!f) return;
+    for (int i = 0; i < nlt; i++) fprintf(f, "%s|%s\n", ltsym[i], ltcls[i]);
+    fclose(f);
+}
 
 static void speak(FILE *log, int pos)
 {
-    fprintf(log, "  [flip %2d] %-10s (%-8s) say: %s\n", pos, sym[pos], cls[pos], voice[pos]);
+    fprintf(log, "  [flip %2d] see: %s sight:%s say: %s\n",
+            pos, img[pos][0] ? img[pos] : sym[pos],
+            sighth[pos][0] ? sighth[pos] : "-", voice[pos]);
 }
 
 static int facedown(int pos) { return !up[pos]; }
@@ -112,7 +167,8 @@ static int shakti_turn(FILE *log, int turn)
     if (p2 >= 0) {
         speak(log, p2);
         up[p1] = up[p2] = 1;
-        fprintf(log, "  MATCH (%s) — set kept, +10, she goes again\n", sym[p1]);
+        fprintf(log, "  MATCH (%s%s%s) — set kept, +10, she goes again\n",
+                sym[p1], class_rule ? " as " : "", class_rule ? cls[p1] : "");
         return 1;
     }
     /* second card: another unknown, honestly learned */
@@ -122,7 +178,8 @@ static int shakti_turn(FILE *log, int turn)
         learn(p2); speak(log, p2);
         if (cards_match(p1, p2)) {
             up[p1] = up[p2] = 1;
-            fprintf(log, "  MATCH (%s) — set kept, +10, she goes again\n", sym[p1]);
+            fprintf(log, "  MATCH (%s%s%s) — set kept, +10, she goes again\n",
+                    sym[p1], class_rule ? " as " : "", class_rule ? cls[p1] : "");
             return 1;
         }
     }
@@ -133,7 +190,8 @@ static int shakti_turn(FILE *log, int turn)
 /* RANDOM opponent: no memory at all */
 static int random_turn(FILE *log, int turn)
 {
-    int down[MAXCARDS], nd = 0, i, p1, p2;
+    static int down[MAXCARDS];
+    int nd = 0, i, p1, p2;
     fprintf(log, "TURN %d — RANDOM\n", turn);
     for (i = 0; i < ncards; i++) if (facedown(i)) down[nd++] = i;
     if (nd < 2) return 0;
@@ -158,9 +216,10 @@ int main(int argc, char **argv)
     if (!d) { printf("STOP: no deck\n"); return 1; }
     class_rule = strcmp(argv[2], "CLASS") == 0;
 
-    /* load deck: SYMBOL|VOICE|CLASS per line; the game makes two of each */
-    char line[LOGLEN];
-    char bs[MAXCARDS/2][SYMLEN], bv[MAXCARDS/2][VOICELEN], bc[MAXCARDS/2][CLASSLEN];
+    /* load deck: SYMBOL|VOICE|CLASS or SYMBOL|VOICE|CLASS|IMAGE|SIGHTHASH */
+    static char line[LOGLEN];
+    static char bs[MAXCARDS/2][SYMLEN], bv[MAXCARDS/2][VOICELEN], bc[MAXCARDS/2][CLASSLEN];
+    static char bi[MAXCARDS/2][PATHLEN], bh[MAXCARDS/2][24];
     int nb = 0;
     while (fgets(line, sizeof line, d) && nb < MAXCARDS/2) {
         char *b1 = strchr(line, '|');
@@ -169,9 +228,21 @@ int main(int argc, char **argv)
         char *b2 = strchr(b1 + 1, '|');
         if (!b2) continue;
         *b2 = 0;
-        char *c = b2 + 1; c[strcspn(c, "\r\n")] = 0;
+        char *b3 = strchr(b2 + 1, '|');
+        char *c = b2 + 1, *ip = NULL, *hp = NULL;
+        if (b3) {
+            *b3 = 0; ip = b3 + 1;
+            char *b4 = strchr(ip, '|');
+            if (b4) { *b4 = 0; hp = b4 + 1; hp[strcspn(hp, "\r\n")] = 0; }
+            ip[strcspn(ip, "\r\n")] = 0;
+        }
+        c[strcspn(c, "\r\n")] = 0;
         line[strcspn(line, "\r\n")] = 0;
-        strcpy(bs[nb], line); strcpy(bv[nb], b1 + 1); strcpy(bc[nb], c); nb++;
+        strcpy(bs[nb], line); strcpy(bv[nb], b1 + 1); strcpy(bc[nb], c);
+        bi[nb][0] = 0; bh[nb][0] = 0;
+        if (ip) strcpy(bi[nb], ip);
+        if (hp) strcpy(bh[nb], hp);
+        nb++;
     }
     fclose(d);
     if (nb == 0) { printf("STOP: empty deck\n"); return 1; }
@@ -180,7 +251,9 @@ int main(int argc, char **argv)
     ncards = nb * 2;
     for (int i = 0; i < nb; i++) {
         strcpy(sym[i], bs[i]); strcpy(voice[i], bv[i]); strcpy(cls[i], bc[i]);
+        strcpy(img[i], bi[i]); strcpy(sighth[i], bh[i]);
         strcpy(sym[i+nb], bs[i]); strcpy(voice[i+nb], bv[i]); strcpy(cls[i+nb], bc[i]);
+        strcpy(img[i+nb], bi[i]); strcpy(sighth[i+nb], bh[i]);
     }
     unsigned long long seed = 0xcbf29ce484222325ULL;
     for (int i = 0; i < ncards; i++) {
@@ -191,10 +264,12 @@ int main(int argc, char **argv)
     rng_state = seed;
     for (int i = ncards - 1; i > 0; i--) {  /* Fisher-Yates with LCG */
         int j = (int)(lcg() % (unsigned)(i + 1));
-        char ts[SYMLEN], tv[VOICELEN], tc[CLASSLEN];
+        char ts[SYMLEN], tv[VOICELEN], tc[CLASSLEN], ti[PATHLEN], th[24];
         strcpy(ts, sym[i]); strcpy(sym[i], sym[j]); strcpy(sym[j], ts);
         strcpy(tv, voice[i]); strcpy(voice[i], voice[j]); strcpy(voice[j], tv);
         strcpy(tc, cls[i]); strcpy(cls[i], cls[j]); strcpy(cls[j], tc);
+        strcpy(ti, img[i]); strcpy(img[i], img[j]); strcpy(img[j], ti);
+        strcpy(th, sighth[i]); strcpy(sighth[i], sighth[j]); strcpy(sighth[j], th);
     }
 
     FILE *log = fopen(argv[4], "w");
@@ -202,7 +277,20 @@ int main(int argc, char **argv)
     fprintf(log, "MATCH (MEMORY) — deck: %s — %d pairs, %d cards — rule: %s\n",
             argv[1], nb, ncards, class_rule ? "CLASS (classification)" : "EXACT (sameness)");
     fprintf(log, "seed fnv1a64:%016llX — deterministic, no rand(), C99\n", seed);
-    fprintf(log, "all cards face down. every flip speaks the Doctor's voice atom.\n\n");
+    fprintf(log, "all cards face down. every card is an IMAGE seen through her eyes.\n");
+    fprintf(log, "every flip speaks the Doctor's voice atom.\n");
+
+    /* long-term memory: load everything she has ever learned;
+     * cards she already knows are born seen — she remembers lessons */
+    int loaded = lt_load();
+    int born_known = 0;
+    for (int i = 0; i < ncards; i++)
+        if (lt_known(sym[i], cls[i])) {
+            seen[i] = 1; strcpy(memsym[i], sym[i]); strcpy(memcls[i], cls[i]);
+            born_known++;
+        }
+    fprintf(log, "LONG-TERM MEMORY: %d entries loaded, %d cards on this table already known\n\n",
+            loaded, born_known);
 
     int teach = strcmp(argv[3], "TEACH") == 0;
     int s_score = 0, r_score = 0, turn = 1;
@@ -210,7 +298,7 @@ int main(int argc, char **argv)
     if (teach) {
         fprintf(log, "== TEACH MODE — the Goddess plays first so she sees how it is done ==\n");
         fprintf(log, "GODDESS: Watch me, little one. Two cards. %s. That is the whole game.\n",
-                class_rule ? "Same KIND" : "Same symbol");
+                class_rule ? "Same KIND" : "Same picture");
         int a = 0, b = 1, found = 0;
         for (int i = 0; i < ncards && !found; i++)
             for (int j = i + 1; j < ncards && !found; j++)
@@ -240,8 +328,18 @@ int main(int argc, char **argv)
             s_score, r_score, turn - 1, ncards);
     fprintf(log, s_score > r_score ? "WINNER: SHAKTI — the memory holds. the weave works.\n"
                                    : "WINNER: RANDOM — run it again, she never forgets twice.\n");
+    /* everything she saw this game joins her long-term memory */
+    for (int i = 0; i < ncards; i++) if (seen[i]) lt_add(sym[i], cls[i]);
+    lt_save();
+    fprintf(log, "LONG-TERM MEMORY: saved, %d entries total\n", nlt);
+    FILE *sb = fopen("school/game/scoreboard.txt", "a");
+    if (sb) {
+        fprintf(sb, "match|%s|%s|SHAKTI %d|RANDOM %d|%d turns|%d cards\n",
+                argv[1], class_rule ? "CLASS" : "EXACT", s_score, r_score, turn - 1, ncards);
+        fclose(sb);
+    }
     fclose(log);
-    printf("match_game: %d cards, rule %s, SHAKTI %d, RANDOM %d, %d turns\n",
-           ncards, class_rule ? "CLASS" : "EXACT", s_score, r_score, turn - 1);
+    printf("match_game: %d cards, rule %s, SHAKTI %d, RANDOM %d, %d turns, memory %d\n",
+           ncards, class_rule ? "CLASS" : "EXACT", s_score, r_score, turn - 1, nlt);
     return 0;
 }
