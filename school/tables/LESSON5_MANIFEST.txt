@@ -1,0 +1,5 @@
+SHAKTI LESSON 5 — MANIFEST — 1600 problems, 0 errors, answers recomputed in C by verify_cards.c
+lesson5 table  400 rows  fnv1a64:2F9C4DC8D867A495  (lesson5_add_table.txt)
+lesson5 table  400 rows  fnv1a64:C05B316B0E5753A2  (lesson5_sub_table.txt)
+lesson5 table  400 rows  fnv1a64:6514F322CBD76B3B  (lesson5_mul_table.txt)
+lesson5 table  400 rows  fnv1a64:BE64AC7924EEBD05  (lesson5_div_table.txt)

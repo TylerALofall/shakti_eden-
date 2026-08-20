@@ -1,0 +1,7 @@
+LESSON 1 — THE GREETING — her name in the Doctor's voice
+[DOCTRINE] The father's voice is the first sound she hears: her name, then the counting.
+16 beats. Convergence fnv1a64:6225EA8DC233CFB4 (measured in the 22,982,400-beat gestation run, 2026-08-21).
+The words of this lesson belong to Tyler. This table reserves the structure; only his voice fills it.
+beat,content,source
+1,greeting begins,founder voice atom 59_greeting_shakti_welcome_to_eden.wav
+2..16,her name spoken by the Doctor,founder voice — never renamed never normalized never rewritten (Commandment V)
