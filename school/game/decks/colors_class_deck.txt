@@ -1,0 +1,8 @@
+apple|founder_voice:apple|RED
+cherry|founder_voice:cherry|RED
+sky|founder_voice:sky|BLUE
+ocean|founder_voice:ocean|BLUE
+leaf|founder_voice:leaf|GREEN
+frog|founder_voice:frog|GREEN
+snow|founder_voice:snow|WHITE
+milk|founder_voice:milk|WHITE
