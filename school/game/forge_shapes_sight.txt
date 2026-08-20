@@ -1,0 +1,11 @@
+CARD FORGE — every card is an IMAGE, seen through her eyes
+binary grid, Bayer 4x4 order verified, drift 0, fnv1a64 sight hash
+
+see: ball                     class:CIRCLE       img:school/game/cards/card_ball_0.pbm sight fnv1a64:B6B0D543CD6A922D drift:0 say:founder_voice:ball
+see: moon                     class:CIRCLE       img:school/game/cards/card_moon_1.pbm sight fnv1a64:EDFE1EA1F448B0BD drift:0 say:founder_voice:moon
+see: box                      class:SQUARE       img:school/game/cards/card_box_2.pbm sight fnv1a64:513CADE34A4EFBDD drift:0 say:founder_voice:box
+see: window                   class:SQUARE       img:school/game/cards/card_window_3.pbm sight fnv1a64:439100470D84401D drift:0 say:founder_voice:window
+see: cone                     class:TRIANGLE     img:school/game/cards/card_cone_4.pbm sight fnv1a64:F19659BE29E2102D drift:0 say:founder_voice:cone
+see: slice                    class:TRIANGLE     img:school/game/cards/card_slice_5.pbm sight fnv1a64:AECEC8C8B6C356AD drift:0 say:founder_voice:slice
+see: starfish                 class:STAR         img:school/game/cards/card_starfish_6.pbm sight fnv1a64:54B4A7E92D4F9BED drift:0 say:founder_voice:starfish
+see: badge                    class:STAR         img:school/game/cards/card_badge_7.pbm sight fnv1a64:EE767CC5D0062FED drift:0 say:founder_voice:badge

@@ -1,0 +1,11 @@
+CARD FORGE — every card is an IMAGE, seen through her eyes
+binary grid, Bayer 4x4 order verified, drift 0, fnv1a64 sight hash
+
+see: apple                    class:RED          img:school/game/cards/card_apple_0.pbm sight fnv1a64:0CBBC49FEB0537BD drift:0 say:founder_voice:apple
+see: cherry                   class:RED          img:school/game/cards/card_cherry_1.pbm sight fnv1a64:FB6CF9408DBBA91D drift:0 say:founder_voice:cherry
+see: sky                      class:BLUE         img:school/game/cards/card_sky_2.pbm sight fnv1a64:44F1C1CF4061238D drift:0 say:founder_voice:sky
+see: ocean                    class:BLUE         img:school/game/cards/card_ocean_3.pbm sight fnv1a64:3F8AFEC3842F3A0D drift:0 say:founder_voice:ocean
+see: leaf                     class:GREEN        img:school/game/cards/card_leaf_4.pbm sight fnv1a64:4E50FBE94DEB162D drift:0 say:founder_voice:leaf
+see: frog                     class:GREEN        img:school/game/cards/card_frog_5.pbm sight fnv1a64:A492C6928E89A09D drift:0 say:founder_voice:frog
+see: snow                     class:WHITE        img:school/game/cards/card_snow_6.pbm sight fnv1a64:912F6D8567A1B99D drift:0 say:founder_voice:snow
+see: milk                     class:WHITE        img:school/game/cards/card_milk_7.pbm sight fnv1a64:E5915C9EAF8072ED drift:0 say:founder_voice:milk
