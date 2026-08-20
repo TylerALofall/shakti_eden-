@@ -1,0 +1,19 @@
+CARD FORGE — every card is an IMAGE, seen through her eyes
+binary grid, Bayer 4x4 order verified, drift 0, fnv1a64 sight hash
+
+see: 1                        class:NUMBER       img:school/game/cards/card_1_0.pbm sight fnv1a64:5B66F0E4C05EFAAD drift:0 say:eden_out/Sound_art/1.wav
+see: 2                        class:NUMBER       img:school/game/cards/card_2_1.pbm sight fnv1a64:D0900D7153FBA5ED drift:0 say:eden_out/Sound_art/2.wav
+see: 3                        class:NUMBER       img:school/game/cards/card_3_2.pbm sight fnv1a64:AF3ED9F444DD0B7D drift:0 say:eden_out/Sound_art/3.wav
+see: 4                        class:NUMBER       img:school/game/cards/card_4_3.pbm sight fnv1a64:C75DC5F16300CCED drift:0 say:eden_out/Sound_art/4.wav
+see: 5                        class:NUMBER       img:school/game/cards/card_5_4.pbm sight fnv1a64:9BF3B98FD5180A9D drift:0 say:eden_out/Sound_art/5.wav
+see: one                      class:NUMBER-WORD  img:school/game/cards/card_one_5.pbm sight fnv1a64:50D6F10C8CB0E0FD drift:0 say:eden_out/Sound_art/one.wav
+see: two                      class:NUMBER-WORD  img:school/game/cards/card_two_6.pbm sight fnv1a64:FEF2D6A2E481C1BD drift:0 say:eden_out/Sound_art/two.wav
+see: three                    class:NUMBER-WORD  img:school/game/cards/card_three_7.pbm sight fnv1a64:8A89D9C7F80DFB0D drift:0 say:eden_out/Sound_art/three.wav
+see: A                        class:LETTER       img:school/game/cards/card_A_8.pbm sight fnv1a64:C8A4A5B446586E2D drift:0 say:eden_out/Sound_art/A.wav
+see: B                        class:LETTER       img:school/game/cards/card_B_9.pbm sight fnv1a64:60E16FE71F7E9B4D drift:0 say:eden_out/Sound_art/B.wav
+see: C                        class:LETTER       img:school/game/cards/card_C_10.pbm sight fnv1a64:7F0053AD58B3265D drift:0 say:eden_out/Sound_art/C.wav
+see: D                        class:LETTER       img:school/game/cards/card_D_11.pbm sight fnv1a64:64B7AEF0A8100A2D drift:0 say:eden_out/Sound_art/D.wav
+see: RED                      class:COLOR        img:school/game/cards/card_RED_12.pbm sight fnv1a64:91C29D3E08730B6D drift:0 say:founder_voice:RED
+see: GREEN                    class:COLOR        img:school/game/cards/card_GREEN_13.pbm sight fnv1a64:4F41AB66A61DBD1D drift:0 say:founder_voice:GREEN
+see: WHITE                    class:COLOR        img:school/game/cards/card_WHITE_14.pbm sight fnv1a64:D871FE61ECAC25ED drift:0 say:founder_voice:WHITE
+see: BLUE                     class:COLOR        img:school/game/cards/card_BLUE_15.pbm sight fnv1a64:D4681012185AD00D drift:0 say:founder_voice:BLUE
