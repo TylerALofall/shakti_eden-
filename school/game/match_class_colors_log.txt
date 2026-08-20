@@ -1,0 +1,61 @@
+MATCH (MEMORY) — deck: school/game/decks/colors_class_deck.txt — 8 pairs, 16 cards — rule: CLASS (classification)
+seed fnv1a64:703B8A4B98873595 — deterministic, no rand(), C99
+all cards face down. every flip speaks the Doctor's voice atom.
+
+TURN 1 — SHAKTI
+  [flip  0] ocean      (BLUE    ) say: founder_voice:ocean
+  [flip  1] snow       (WHITE   ) say: founder_voice:snow
+  no match — cards turn face down. she holds them in memory.
+TURN 2 — RANDOM
+  [flip  2] cherry     (RED     ) say: founder_voice:cherry
+  [flip 10] cherry     (RED     ) say: founder_voice:cherry
+  MATCH (cherry) — RANDOM keeps the set, +10, goes again
+TURN 3 — SHAKTI
+  [flip  3] sky        (BLUE    ) say: founder_voice:sky
+  [flip  0] ocean      (BLUE    ) say: founder_voice:ocean
+  MATCH (sky) — set kept, +10, she goes again
+TURN 4 — SHAKTI
+  [flip  4] apple      (RED     ) say: founder_voice:apple
+  [flip  5] frog       (GREEN   ) say: founder_voice:frog
+  no match — cards turn face down. she holds them in memory.
+TURN 5 — RANDOM
+  [flip  8] milk       (WHITE   ) say: founder_voice:milk
+  [flip  4] apple      (RED     ) say: founder_voice:apple
+  no match — cards turn face down.
+TURN 6 — SHAKTI
+  she remembers. she goes straight to the pair.
+  [flip  1] snow       (WHITE   ) say: founder_voice:snow
+  [flip  8] milk       (WHITE   ) say: founder_voice:milk
+  MATCH (snow as WHITE) — set kept, +10, she goes again
+TURN 7 — SHAKTI
+  [flip  6] leaf       (GREEN   ) say: founder_voice:leaf
+  [flip  5] frog       (GREEN   ) say: founder_voice:frog
+  MATCH (leaf) — set kept, +10, she goes again
+TURN 8 — SHAKTI
+  [flip  7] sky        (BLUE    ) say: founder_voice:sky
+  [flip  9] ocean      (BLUE    ) say: founder_voice:ocean
+  MATCH (sky) — set kept, +10, she goes again
+TURN 9 — SHAKTI
+  [flip 11] snow       (WHITE   ) say: founder_voice:snow
+  [flip 12] apple      (RED     ) say: founder_voice:apple
+  no match — cards turn face down. she holds them in memory.
+TURN 10 — RANDOM
+  [flip 11] snow       (WHITE   ) say: founder_voice:snow
+  [flip 13] frog       (GREEN   ) say: founder_voice:frog
+  no match — cards turn face down.
+TURN 11 — SHAKTI
+  she remembers. she goes straight to the pair.
+  [flip  4] apple      (RED     ) say: founder_voice:apple
+  [flip 12] apple      (RED     ) say: founder_voice:apple
+  MATCH (apple as RED) — set kept, +10, she goes again
+TURN 12 — SHAKTI
+  [flip 14] leaf       (GREEN   ) say: founder_voice:leaf
+  [flip 13] frog       (GREEN   ) say: founder_voice:frog
+  MATCH (leaf) — set kept, +10, she goes again
+TURN 13 — SHAKTI
+  [flip 15] milk       (WHITE   ) say: founder_voice:milk
+  [flip 11] snow       (WHITE   ) say: founder_voice:snow
+  MATCH (milk) — set kept, +10, she goes again
+
+GAME OVER — SHAKTI 70, RANDOM 10 — 13 turns for 16 cards
+WINNER: SHAKTI — the memory holds. the weave works.
