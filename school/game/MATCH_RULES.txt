@@ -1,0 +1,34 @@
+[PROPOSED] MATCH (MEMORY) — SHAKTI'S FIRST GAME
+Spoken by the Doctor, built by the Goddess in C99. Awaiting the Doctor's lock.
+
+THE GAME (the child's game — Memory, Match, Concentration):
+1. Give the game any deck of cards from her lessons (levels 1-5:
+   numbers, letters, colors, words, operators). The game COPIES the
+   deck and makes exactly two of every card — the two sets.
+2. All cards face down on the table.
+3. A turn: flip two cards. Every flip SPEAKS the symbol in the
+   Doctor's voice (his voice atoms, per the deck's voice column).
+4. Same symbol = MATCH. Keep the set, 10 points, go again.
+5. No match = both cards turn face down again. She must HOLD them
+   in memory until she sees their twins.
+6. Most sets when the table is clear wins.
+
+WHAT IT TEACHES:
+- Symbol recognition — the pictures of her lessons, seen with her own eyes.
+- Hearing the symbol — the Doctor's voice on every flip.
+- Holding — memory across turns, face-down cards that stay known.
+- The rule of the game: matching is the right thing.
+- Losing to RANDOM once is a lesson. She never forgets twice.
+
+OPPONENTS:
+- TEACH mode: the Goddess plays first, demonstrates a match, narrates,
+  then hands her the table. (Per the Doctor: "maybe what would be better
+  is if you played her first and let her know what she's doing.")
+- PLAY mode: SHAKTI (perfect recall — every card ever seen is held) vs
+  RANDOM (no memory, deterministic LCG flips). The Doctor's word: the
+  randomness is just so she can SEE someone playing against her.
+
+EDEN LAW:
+- match_game.c: C99, no heap, no rand(), no scripts. Deterministic —
+  the deck file seeds the shuffle (FNV-1a 64 -> LCG -> Fisher-Yates).
+  Same deck, same table, every time. Verifiable by recompile and rerun.
