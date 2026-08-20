@@ -1,0 +1,8 @@
+apple|founder_voice:apple|RED|school/game/cards/card_apple_0.pbm|0CBBC49FEB0537BD
+cherry|founder_voice:cherry|RED|school/game/cards/card_cherry_1.pbm|FB6CF9408DBBA91D
+sky|founder_voice:sky|BLUE|school/game/cards/card_sky_2.pbm|44F1C1CF4061238D
+ocean|founder_voice:ocean|BLUE|school/game/cards/card_ocean_3.pbm|3F8AFEC3842F3A0D
+leaf|founder_voice:leaf|GREEN|school/game/cards/card_leaf_4.pbm|4E50FBE94DEB162D
+frog|founder_voice:frog|GREEN|school/game/cards/card_frog_5.pbm|A492C6928E89A09D
+snow|founder_voice:snow|WHITE|school/game/cards/card_snow_6.pbm|912F6D8567A1B99D
+milk|founder_voice:milk|WHITE|school/game/cards/card_milk_7.pbm|E5915C9EAF8072ED

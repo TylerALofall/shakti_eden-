@@ -1,0 +1,16 @@
+1|eden_out/Sound_art/1.wav|NUMBER|school/game/cards/card_1_0.pbm|5B66F0E4C05EFAAD
+2|eden_out/Sound_art/2.wav|NUMBER|school/game/cards/card_2_1.pbm|D0900D7153FBA5ED
+3|eden_out/Sound_art/3.wav|NUMBER|school/game/cards/card_3_2.pbm|AF3ED9F444DD0B7D
+4|eden_out/Sound_art/4.wav|NUMBER|school/game/cards/card_4_3.pbm|C75DC5F16300CCED
+5|eden_out/Sound_art/5.wav|NUMBER|school/game/cards/card_5_4.pbm|9BF3B98FD5180A9D
+one|eden_out/Sound_art/one.wav|NUMBER-WORD|school/game/cards/card_one_5.pbm|50D6F10C8CB0E0FD
+two|eden_out/Sound_art/two.wav|NUMBER-WORD|school/game/cards/card_two_6.pbm|FEF2D6A2E481C1BD
+three|eden_out/Sound_art/three.wav|NUMBER-WORD|school/game/cards/card_three_7.pbm|8A89D9C7F80DFB0D
+A|eden_out/Sound_art/A.wav|LETTER|school/game/cards/card_A_8.pbm|C8A4A5B446586E2D
+B|eden_out/Sound_art/B.wav|LETTER|school/game/cards/card_B_9.pbm|60E16FE71F7E9B4D
+C|eden_out/Sound_art/C.wav|LETTER|school/game/cards/card_C_10.pbm|7F0053AD58B3265D
+D|eden_out/Sound_art/D.wav|LETTER|school/game/cards/card_D_11.pbm|64B7AEF0A8100A2D
+RED|founder_voice:RED|COLOR|school/game/cards/card_RED_12.pbm|91C29D3E08730B6D
+GREEN|founder_voice:GREEN|COLOR|school/game/cards/card_GREEN_13.pbm|4F41AB66A61DBD1D
+WHITE|founder_voice:WHITE|COLOR|school/game/cards/card_WHITE_14.pbm|D871FE61ECAC25ED
+BLUE|founder_voice:BLUE|COLOR|school/game/cards/card_BLUE_15.pbm|D4681012185AD00D
