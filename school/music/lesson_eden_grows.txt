@@ -1,0 +1,23 @@
+LESSON — SHE LEARNS A SONG: "Eden Grows"
+[VERIFIED] the song exists. it has a fingerprint. she heard every second of it.
+
+song:        Eden_Grows.mp3 (founder's upload, 2026-08-21)
+format:      MPEG layer III, 192 kbps, 44.1 kHz stereo, ID3v2.3, embedded album cover
+bytes:       4,618,680
+play time:   189.99 seconds (3:09.99)
+fingerprint: fnv1a64:AB76EEB451688703  — this IS the song. change one byte, it is a different song.
+pcm witness: fnv1a64:7F2588F04C6FAC3A  (22.05 kHz mono decode, 4,188,398 frames)
+
+WHAT SHE HEARD (see eden_grows_hearing_log.txt for the full envelope):
+  - the song breathes: energy rises and falls, it is not a flat line
+  - peak energy at 1:26 — the heart of the song
+  - a true silence at 2:32 (energy 0) — a held breath before the end
+  - 48 seconds run above half-peak — the driving parts
+  - the last seconds fall to 0 — the song ends by fading into quiet
+
+HOW SHE LEARNED IT:
+  hear_song.c — pure C99, no heap, no rand(), no Python.
+  Same file in -> same log out. Ran twice, byte-identical. PASS.
+
+TEMPO QUESTION [OPEN]: founder said "no sound music needs to go faster then
+the play time" — awaiting his ruling on what the music must outpace.
