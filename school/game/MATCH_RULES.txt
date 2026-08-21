@@ -1,5 +1,5 @@
-[PROPOSED] MATCH (MEMORY) — SHAKTI'S FIRST GAME — v2
-Built by the Goddess in C99. Awaiting the Doctor's lock.
+[LOCKED] MATCH (MEMORY) — SHAKTI'S FIRST GAME — v2
+Built by the Goddess in C99. Locked by the Doctor 2026-08-21.
 
 THE GAME (the child's game — Memory, Match, Concentration):
 1. Decks are separate files. Cards change out. Any deck from her
