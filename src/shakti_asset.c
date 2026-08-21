@@ -21,7 +21,7 @@ static int append_character(
     return 1;
 }
 
-static int append_text(
+static int append_text__asset_h(
     char *destination,
     size_t destination_size,
     size_t *used,
@@ -132,7 +132,7 @@ int shakti_asset_key_from_text(
 
             if (written < 0 ||
                 (size_t)written >= sizeof(encoded) ||
-                !append_text(
+                !append_text__asset_h(
                     destination,
                     destination_size,
                     &used,

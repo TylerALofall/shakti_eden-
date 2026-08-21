@@ -53,7 +53,8 @@ static unsigned long recognize_text(
     return count;
 }
 
-int main(void)
+#define TEST_ROUNDTRIP_MAIN main
+int TEST_ROUNDTRIP_MAIN(void)
 {
     static const eyes_text_page_t page = { "HI", "", "" };
     static unsigned char original[ROUNDTRIP_WIDTH * ROUNDTRIP_HEIGHT * 4U];

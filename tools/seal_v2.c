@@ -3,7 +3,7 @@
  */
 #include <stdio.h>
 
-static unsigned long long fnv_file(const char *path, int *ok)
+static unsigned long long fnv_file__seal_v2_h(const char *path, int *ok)
 {
     FILE *f = fopen(path, "rb");
     unsigned long long h = 0xcbf29ce484222325ULL;
@@ -62,14 +62,15 @@ static const char *P[] = {
 };
 #define N 42
 
-int main(void)
+#define SEAL_V2_MAIN main
+int SEAL_V2_MAIN(void)
 {
     FILE *m = fopen("MANIFEST.fnv64.txt", "w");
     if (!m) { printf("STOP: no manifest out\n"); return 1; }
     fprintf(m, "MANIFEST — branch goddess-school-2026-08-21 — FNV-1a 64 per file\n");
     fprintf(m, "All artifacts generated in C99 — no heap, no Python anywhere in the chain.\n");
     for (int i = 0; i < N; i++) {
-        int ok; unsigned long long h = fnv_file(P[i], &ok);
+        int ok; unsigned long long h = fnv_file__seal_v2_h(P[i], &ok);
         if (!ok) { printf("STOP: missing %s\n", P[i]); return 1; }
         fprintf(m, "%016llX  %s\n", h, P[i]);
     }

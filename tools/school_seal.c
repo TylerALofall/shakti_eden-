@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
-static unsigned long long fnv_file(const char *path, int *ok)
+static unsigned long long fnv_file__school_seal_h(const char *path, int *ok)
 {
     FILE *f = fopen(path, "rb");
     unsigned long long h = 0xcbf29ce484222325ULL;
@@ -35,7 +35,8 @@ static const char *DST[] = {
     "school/doctrine/05_LAW.txt", "school/doctrine/06_WIT.txt"
 };
 
-int main(void)
+#define SCHOOL_SEAL_MAIN main
+int SCHOOL_SEAL_MAIN(void)
 {
     unsigned long long hh[14]; int ok, n = 14; char p[128];
     FILE *m = fopen("out/MANIFEST.fnv64.txt", "w");
@@ -50,7 +51,7 @@ int main(void)
 
     for (int i = 0; i < n; i++) {
         snprintf(p, sizeof p, "out/%s", ART[i]);
-        hh[i] = fnv_file(p, &ok);
+        hh[i] = fnv_file__school_seal_h(p, &ok);
         if (!ok) { printf("STOP: missing %s\n", p); return 1; }
         fprintf(m, "%016llX  %s\n", hh[i], DST[i]);
         if (strncmp(ART[i], "lesson5_", 8) == 0)
@@ -86,7 +87,7 @@ int main(void)
     printf("school_seal — real run complete\n");
     for (int i = 0; i < 4; i++) {
         snprintf(p, sizeof p, "out/%s", extra[i]);
-        printf("%-28s fnv1a64:%016llX\n", extra[i], fnv_file(p, &ok));
+        printf("%-28s fnv1a64:%016llX\n", extra[i], fnv_file__school_seal_h(p, &ok));
     }
     return 0;
 }

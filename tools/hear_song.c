@@ -37,7 +37,8 @@ static uint64_t fnv1a_mem(const unsigned char *p, size_t n) {
     return h;
 }
 
-int main(int argc, char **argv) {
+#define HEAR_SONG_MAIN main
+int HEAR_SONG_MAIN(int argc, char **argv) {
     static short pcm[RATE * MAX_SEC];
     static unsigned char pcmb[RATE * MAX_SEC * 2];
     static unsigned rms[MAX_SEC];

@@ -27,7 +27,8 @@ static void disc(int cx, int cy, int r)
                 img[yy][xx] = 1;
 }
 
-int main(void)
+#define AVATAR_PURE_MAIN main
+int AVATAR_PURE_MAIN(void)
 {
     /* crown: band + three points — earned, never given */
     rect(34, 18, 60, 6);
