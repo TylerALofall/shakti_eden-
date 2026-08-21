@@ -11,7 +11,7 @@
 #include "shakti_loop.h"
 #include "shakti_time.h"
 
-static char *trim_text(char *text)
+static char *trim_text__school_h(char *text)
 {
     char *end;
 
@@ -116,7 +116,7 @@ int shakti_school_load(shakti_school_state_t *state, const char *path)
         char symbol[SHAKTI_ANSWER_CAPACITY];
         unsigned int pass;
         unsigned int streak;
-        if (line[0] == '#' || trim_text(line)[0] == '\0') {
+        if (line[0] == '#' || trim_text__school_h(line)[0] == '\0') {
             continue;
         }
 
@@ -266,8 +266,8 @@ int shakti_school_record_trial(
 static const char *reward_for_streak(unsigned int streak)
 {
     static const char *const rewards[10] = {
-        "🙂", "😊", "😄", "😁", "😆",
-        "🤗", "⭐", "🌟", "🎉", "🥳"
+        "F642", "F60A", "F604", "F601", "F606",
+        "F917", "ʵ0", "F31F", "F389", "F973"
     };
 
     if (streak == 0U) {
@@ -327,7 +327,7 @@ static void show_mastery_reward(
     puts("YOU DID IT!");
 
     for (index = 0U; index < state->mastery_target; ++index) {
-        fputs("🥳", stdout);
+        fputs("F973", stdout);
     }
 
     printf(
@@ -564,7 +564,7 @@ int shakti_school_run_drill(
             return 0;
         }
 
-        answer = trim_text(input);
+        answer = trim_text__school_h(input);
 
         {
             shakti_drill_input_result_t control_result;

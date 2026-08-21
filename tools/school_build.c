@@ -148,7 +148,8 @@ static unsigned long long build_doctrine(const char *path, const char *body)
     fclose(s.f); return s.h;
 }
 
-int main(void)
+#define SCHOOL_BUILD_MAIN main
+int SCHOOL_BUILD_MAIN(void)
 {
     char h[32];
     printf("school_build — C99, no heap, deterministic — real run begins\n");

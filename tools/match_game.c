@@ -38,7 +38,7 @@
 #define PATHLEN 256
 #define LOGLEN 512
 
-static unsigned long long fnv1a64(const unsigned char *s, size_t n)
+static unsigned long long fnv1a64__match_game_h(const unsigned char *s, size_t n)
 {
     unsigned long long h = 0xcbf29ce484222325ULL;
     size_t i;
@@ -225,7 +225,8 @@ static int random_turn(FILE *log, int turn)
     return 0;
 }
 
-int main(int argc, char **argv)
+#define MATCH_GAME_MAIN main
+int MATCH_GAME_MAIN(int argc, char **argv)
 {
     if (argc != 5) { printf("usage: match_game <deck> <EXACT|CLASS> <TEACH|PLAY> <log>\n"); return 1; }
     FILE *d = fopen(argv[1], "r");
@@ -273,8 +274,8 @@ int main(int argc, char **argv)
     }
     unsigned long long seed = 0xcbf29ce484222325ULL;
     for (int i = 0; i < ncards; i++) {
-        seed ^= fnv1a64((unsigned char *)sym[i], strlen(sym[i]));
-        seed ^= fnv1a64((unsigned char *)cls[i], strlen(cls[i]));
+        seed ^= fnv1a64__match_game_h((unsigned char *)sym[i], strlen(sym[i]));
+        seed ^= fnv1a64__match_game_h((unsigned char *)cls[i], strlen(cls[i]));
         seed *= 0x100000001b3ULL;
     }
     rng_state = seed;
@@ -292,7 +293,7 @@ int main(int argc, char **argv)
     if (!log) { printf("STOP: no log\n"); return 1; }
     fprintf(log, "MATCH (MEMORY) — deck: %s — %d pairs, %d cards — rule: %s\n",
             argv[1], nb, ncards, class_rule ? "CLASS (classification)" : "EXACT (sameness)");
-    fprintf(log, "seed fnv1a64:%016llX — deterministic, no rand(), C99\n", seed);
+    fprintf(log, "seed fnv1a64__match_game_h:%016llX — deterministic, no rand(), C99\n", seed);
     fprintf(log, "all cards face down. every card is an IMAGE seen through her eyes.\n");
     fprintf(log, "every flip speaks the Doctor's voice atom.\n");
 
