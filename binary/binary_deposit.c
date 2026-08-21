@@ -69,7 +69,7 @@ static unsigned long g_bit_loses[BD_PAGE_COUNT];
 static char g_deposit_name[BD_PAGE_COUNT][BD_PATH_CAPACITY];
 
 /* Section 2: small helpers. */
-static int text_append(
+static int text_append__deposit_h(
     char *buffer,
     unsigned long capacity,
     unsigned long *used,
@@ -97,7 +97,7 @@ static int text_append(
     return 1;
 }
 
-static int date_today(char *out, unsigned long capacity)
+static int date_today__deposit_h(char *out, unsigned long capacity)
 {
     time_t now;
     struct tm *local;
@@ -131,7 +131,7 @@ static int date_today(char *out, unsigned long capacity)
     return written > 0 && (unsigned long)written < capacity;
 }
 
-static void strip_line_end(char *line)
+static void strip_line_end__deposit_h(char *line)
 {
     unsigned long length;
 
@@ -189,7 +189,7 @@ static int read_picture_file(
     height = 0U;
 
     if (fgets(g_line, (int)sizeof(g_line), file) == NULL ||
-        (strip_line_end(g_line), strcmp(g_line, "BINARY_PICTURE_V1")) != 0 ||
+        (strip_line_end__deposit_h(g_line), strcmp(g_line, "BINARY_PICTURE_V1")) != 0 ||
         fgets(g_line, (int)sizeof(g_line), file) == NULL ||
         sscanf(g_line, "WIDTH=%u", &width) != 1 ||
         fgets(g_line, (int)sizeof(g_line), file) == NULL ||
@@ -197,7 +197,7 @@ static int read_picture_file(
         fgets(g_line, (int)sizeof(g_line), file) == NULL ||
         strncmp(g_line, "PALETTE", 7UL) != 0 ||
         fgets(g_line, (int)sizeof(g_line), file) == NULL ||
-        (strip_line_end(g_line), strcmp(g_line, "ROWS")) != 0 ||
+        (strip_line_end__deposit_h(g_line), strcmp(g_line, "ROWS")) != 0 ||
         width == 0U || width > BD_WIDTH_MAX ||
         height == 0U || height > BD_HEIGHT_MAX) {
         printf("FAIL: bad picture header in %s\n", path);
@@ -214,7 +214,7 @@ static int read_picture_file(
             return 0;
         }
 
-        strip_line_end(g_line);
+        strip_line_end__deposit_h(g_line);
 
         if ((unsigned long)strlen(g_line) != (unsigned long)width) {
             printf("FAIL: %s row %u is not %u letters\n", path, row, width);
@@ -275,7 +275,7 @@ static int read_text_file(const char *path, eyes_text_page_t *text)
             break;
         }
 
-        strip_line_end(g_line);
+        strip_line_end__deposit_h(g_line);
 
         if ((unsigned long)strlen(g_line) >= EYES_TEXT_MAX) {
             printf("FAIL: %s line %u too long\n", path, index + 1U);
@@ -428,7 +428,7 @@ static int read_deposit(
     header_height = 0U;
 
     if (fgets(g_line, (int)sizeof(g_line), file) == NULL ||
-        (strip_line_end(g_line), strcmp(g_line, "BINARY_DEPOSIT_V1")) != 0 ||
+        (strip_line_end__deposit_h(g_line), strcmp(g_line, "BINARY_DEPOSIT_V1")) != 0 ||
         fgets(g_line, (int)sizeof(g_line), file) == NULL ||
         strncmp(g_line, "DATE=", 5UL) != 0 ||
         fgets(g_line, (int)sizeof(g_line), file) == NULL ||
@@ -438,7 +438,7 @@ static int read_deposit(
         fgets(g_line, (int)sizeof(g_line), file) == NULL ||
         sscanf(g_line, "HEIGHT=%u", &header_height) != 1 ||
         fgets(g_line, (int)sizeof(g_line), file) == NULL ||
-        (strip_line_end(g_line), strcmp(g_line, "MARKS=R G B A BIT")) != 0 ||
+        (strip_line_end__deposit_h(g_line), strcmp(g_line, "MARKS=R G B A BIT")) != 0 ||
         header_page != page_number ||
         header_width != width ||
         header_height != height) {
@@ -490,7 +490,7 @@ static int read_deposit(
     bits[pixel_count] = '\0';
 
     if (fgets(g_line, (int)sizeof(g_line), file) == NULL ||
-        (strip_line_end(g_line), strcmp(g_line, "END")) != 0) {
+        (strip_line_end__deposit_h(g_line), strcmp(g_line, "END")) != 0) {
         printf("FAIL: %s END line missing\n", path);
         fclose(file);
         return 0;
@@ -501,7 +501,7 @@ static int read_deposit(
 }
 
 /* Section 5: plain C99 PDF writer (uncompressed, no libraries). */
-static int pdf_begin_object(FILE *file, unsigned int number)
+static int pdf_begin_object__deposit_h(FILE *file, unsigned int number)
 {
     long offset;
 
@@ -519,7 +519,7 @@ static int pdf_begin_object(FILE *file, unsigned int number)
     return fprintf(file, "%u 0 obj\n", number) > 0;
 }
 
-static int pdf_escape(const char *in, char *out, unsigned long capacity)
+static int pdf_escape__deposit_h(const char *in, char *out, unsigned long capacity)
 {
     unsigned long used;
     unsigned long index;
@@ -554,7 +554,7 @@ static int pdf_escape(const char *in, char *out, unsigned long capacity)
     return 1;
 }
 
-static int pdf_write_image_object(
+static int pdf_write_image_object__deposit_h(
     FILE *file,
     unsigned int number,
     const unsigned char *rgba,
@@ -583,7 +583,7 @@ static int pdf_write_image_object(
         g_image[index * 3UL + 2UL] = rgba[index * 4UL + 2UL];
     }
 
-    if (!pdf_begin_object(file, number)) {
+    if (!pdf_begin_object__deposit_h(file, number)) {
         return 0;
     }
 
@@ -606,7 +606,7 @@ static int pdf_write_image_object(
     return fprintf(file, "\nendstream\nendobj\n") > 0;
 }
 
-static int pdf_write_stream_object(
+static int pdf_write_stream_object__deposit_h(
     FILE *file,
     unsigned int number,
     const char *content
@@ -614,7 +614,7 @@ static int pdf_write_stream_object(
 {
     unsigned long length;
 
-    if (content == NULL || !pdf_begin_object(file, number)) {
+    if (content == NULL || !pdf_begin_object__deposit_h(file, number)) {
         return 0;
     }
 
@@ -631,10 +631,10 @@ static int pdf_write_stream_object(
     return fprintf(file, "\nendstream\nendobj\n") > 0;
 }
 
-static int content_caption(unsigned long *used, int y, const char *caption)
+static int content_caption__deposit_h(unsigned long *used, int y, const char *caption)
 {
-    return pdf_escape(caption, g_escaped, sizeof(g_escaped)) &&
-        text_append(
+    return pdf_escape__deposit_h(caption, g_escaped, sizeof(g_escaped)) &&
+        text_append__deposit_h(
             g_content,
             sizeof(g_content),
             used,
@@ -644,7 +644,7 @@ static int content_caption(unsigned long *used, int y, const char *caption)
         );
 }
 
-static int content_image(
+static int content_image__deposit_h(
     unsigned long *used,
     int bottom,
     unsigned int width,
@@ -652,7 +652,7 @@ static int content_image(
     unsigned int local_index
 )
 {
-    return text_append(
+    return text_append__deposit_h(
         g_content,
         sizeof(g_content),
         used,
@@ -665,7 +665,7 @@ static int content_image(
 }
 
 /* Two normal Letter-size pages, one per document page number. */
-static int write_pdf(const char *path)
+static int write_pdf__deposit_h(const char *path)
 {
     FILE *file;
     unsigned int page_index;
@@ -683,11 +683,11 @@ static int write_pdf(const char *path)
     success = fprintf(file, "%%PDF-1.4\n%%\342\343\317\323\n") > 0;
 
     success = success &&
-        pdf_begin_object(file, 1U) &&
+        pdf_begin_object__deposit_h(file, 1U) &&
         fprintf(file, "<< /Type /Catalog /Pages 2 0 R >>\nendobj\n") > 0;
 
     if (success) {
-        success = pdf_begin_object(file, 2U) &&
+        success = pdf_begin_object__deposit_h(file, 2U) &&
             fprintf(
                 file,
                 "<< /Type /Pages /Count %u /Kids [",
@@ -706,7 +706,7 @@ static int write_pdf(const char *path)
     }
 
     success = success &&
-        pdf_begin_object(file, 3U) &&
+        pdf_begin_object__deposit_h(file, 3U) &&
         fprintf(
             file,
             "<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>\n"
@@ -728,13 +728,13 @@ static int write_pdf(const char *path)
         height = g_height[page_index];
 
         success =
-            pdf_write_image_object(
+            pdf_write_image_object__deposit_h(
                 file, base, g_original[page_index], width, height
             ) &&
-            pdf_write_image_object(
+            pdf_write_image_object__deposit_h(
                 file, base + 1U, g_rebuilt[page_index], width, height
             ) &&
-            pdf_write_image_object(
+            pdf_write_image_object__deposit_h(
                 file, base + 2U, g_bitonly[page_index], width, height
             );
 
@@ -745,7 +745,7 @@ static int write_pdf(const char *path)
         used = 0UL;
         g_content[0] = '\0';
 
-        success = text_append(
+        success = text_append__deposit_h(
             g_content,
             sizeof(g_content),
             &used,
@@ -758,30 +758,30 @@ static int write_pdf(const char *path)
         y = 720;
         bottom = y - 8 - (int)(height * BD_PDF_SCALE);
         success = success &&
-            content_caption(&used, y, "ORIGINAL") &&
-            content_image(&used, bottom, width, height, 1U);
+            content_caption__deposit_h(&used, y, "ORIGINAL") &&
+            content_image__deposit_h(&used, bottom, width, height, 1U);
 
         y = bottom - 22;
         bottom = y - 8 - (int)(height * BD_PDF_SCALE);
         success = success &&
-            content_caption(&used, y, "REBUILT FROM THE DEPOSIT FILE") &&
-            content_image(&used, bottom, width, height, 2U);
+            content_caption__deposit_h(&used, y, "REBUILT FROM THE DEPOSIT FILE") &&
+            content_image__deposit_h(&used, bottom, width, height, 2U);
 
         y = bottom - 22;
         bottom = y - 8 - (int)(height * BD_PDF_SCALE);
         success = success &&
-            content_caption(&used, y, "BIT MARK ONLY") &&
-            content_image(&used, bottom, width, height, 3U);
+            content_caption__deposit_h(&used, y, "BIT MARK ONLY") &&
+            content_image__deposit_h(&used, bottom, width, height, 3U);
 
         y = bottom - 26;
-        success = success && text_append(
+        success = success && text_append__deposit_h(
             g_content, sizeof(g_content), &used,
             "BT /F1 9 Tf 72 %d Td (DEPOSIT %s) Tj ET\n",
             y, g_deposit_name[page_index]
         );
 
         y -= 14;
-        success = success && text_append(
+        success = success && text_append__deposit_h(
             g_content, sizeof(g_content), &used,
             "BT /F1 9 Tf 72 %d Td "
             "(PIXELS %lu  5 MARKS EACH  R G B A BIT) Tj ET\n",
@@ -790,7 +790,7 @@ static int write_pdf(const char *path)
         );
 
         y -= 14;
-        success = success && text_append(
+        success = success && text_append__deposit_h(
             g_content, sizeof(g_content), &used,
             "BT /F1 9 Tf 72 %d Td "
             "(CANNOT REBUILD FROM DEPOSIT %lu PIXELS) Tj ET\n",
@@ -798,7 +798,7 @@ static int write_pdf(const char *path)
         );
 
         y -= 14;
-        success = success && text_append(
+        success = success && text_append__deposit_h(
             g_content, sizeof(g_content), &used,
             "BT /F1 9 Tf 72 %d Td "
             "(BIT MARK ALONE LOSES %lu PIXELS) Tj ET\n",
@@ -806,8 +806,8 @@ static int write_pdf(const char *path)
         );
 
         success = success &&
-            pdf_write_stream_object(file, base + 3U, g_content) &&
-            pdf_begin_object(file, base + 4U) &&
+            pdf_write_stream_object__deposit_h(file, base + 3U, g_content) &&
+            pdf_begin_object__deposit_h(file, base + 4U) &&
             fprintf(
                 file,
                 "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] "
@@ -869,7 +869,7 @@ int main(void)
     eyes_text_page_t text;
     unsigned int page_index;
 
-    if (!date_today(date, sizeof(date))) {
+    if (!date_today__deposit_h(date, sizeof(date))) {
         printf("FAIL: could not read today's date\n");
         return 1;
     }
@@ -1017,7 +1017,7 @@ int main(void)
         return 1;
     }
 
-    if (!write_pdf(path)) {
+    if (!write_pdf__deposit_h(path)) {
         return 1;
     }
 
