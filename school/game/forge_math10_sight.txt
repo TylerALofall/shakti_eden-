@@ -1,51 +1,51 @@
 CARD FORGE — every card is an IMAGE, seen through her eyes
 binary grid, Bayer 4x4 order verified, drift 0, fnv1a64 sight hash
 
-see: 1 + 1 = ?                class:math_Add_1-1 img:school/game/cards/card_1___1_____0.pbm sight fnv1a64:5688E9D8C6B5274D drift:0 say:founder_voice:math_Add_1-1
+see: 1 + 1 = ?                class:math_Add_1-1 img:school/game/cards/card_1___1_____0.pbm sight fnv1a64:7F9072E5BD8A8C0D drift:0 say:founder_voice:math_Add_1-1
 see: 2                        class:math_Add_1-1 img:school/game/cards/card_2_1.pbm sight fnv1a64:D0900D7153FBA5ED drift:0 say:founder_voice:2
-see: 1 + 2 = ?                class:math_Add_1-2 img:school/game/cards/card_1___2_____2.pbm sight fnv1a64:CBB206655A51D28D drift:0 say:founder_voice:math_Add_1-2
+see: 1 + 2 = ?                class:math_Add_1-2 img:school/game/cards/card_1___2_____2.pbm sight fnv1a64:F4B98F725127374D drift:0 say:founder_voice:math_Add_1-2
 see: 3                        class:math_Add_1-2 img:school/game/cards/card_3_3.pbm sight fnv1a64:AF3ED9F444DD0B7D drift:0 say:founder_voice:3
-see: 1 + 3 = ?                class:math_Add_1-3 img:school/game/cards/card_1___3_____4.pbm sight fnv1a64:AA60D2E84B33381D drift:0 say:founder_voice:math_Add_1-3
+see: 1 + 3 = ?                class:math_Add_1-3 img:school/game/cards/card_1___3_____4.pbm sight fnv1a64:D3685BF542089CDD drift:0 say:founder_voice:math_Add_1-3
 see: 4                        class:math_Add_1-3 img:school/game/cards/card_4_5.pbm sight fnv1a64:C75DC5F16300CCED drift:0 say:founder_voice:4
-see: 1 + 4 = ?                class:math_Add_1-4 img:school/game/cards/card_1___4_____6.pbm sight fnv1a64:C27FBEE56956F98D drift:0 say:founder_voice:math_Add_1-4
+see: 1 + 4 = ?                class:math_Add_1-4 img:school/game/cards/card_1___4_____6.pbm sight fnv1a64:EB8747F2602C5E4D drift:0 say:founder_voice:math_Add_1-4
 see: 5                        class:math_Add_1-4 img:school/game/cards/card_5_7.pbm sight fnv1a64:9BF3B98FD5180A9D drift:0 say:founder_voice:5
-see: 1 + 5 = ?                class:math_Add_1-5 img:school/game/cards/card_1___5_____8.pbm sight fnv1a64:9715B283DB6E373D drift:0 say:founder_voice:math_Add_1-5
+see: 1 + 5 = ?                class:math_Add_1-5 img:school/game/cards/card_1___5_____8.pbm sight fnv1a64:C01D3B90D2439BFD drift:0 say:founder_voice:math_Add_1-5
 see: 6                        class:math_Add_1-5 img:school/game/cards/card_6_9.pbm sight fnv1a64:8387E89EF492750D drift:0 say:founder_voice:6
-see: 1 + 6 = ?                class:math_Add_1-6 img:school/game/cards/card_1___6_____10.pbm sight fnv1a64:7EA9E192FAE8A1AD drift:0 say:founder_voice:math_Add_1-6
+see: 1 + 6 = ?                class:math_Add_1-6 img:school/game/cards/card_1___6_____10.pbm sight fnv1a64:A7B16A9FF1BE066D drift:0 say:founder_voice:math_Add_1-6
 see: 7                        class:math_Add_1-6 img:school/game/cards/card_7_11.pbm sight fnv1a64:743BDDE51CACD13D drift:0 say:founder_voice:7
-see: 1 - 1 = ?                class:math_Sub_1-1 img:school/game/cards/card_1___1_____12.pbm sight fnv1a64:5688E9D8C6B5274D drift:0 say:founder_voice:math_Sub_1-1
+see: 1 - 1 = ?                class:math_Sub_1-1 img:school/game/cards/card_1___1_____12.pbm sight fnv1a64:9B6561984EFD5DCD drift:0 say:founder_voice:math_Sub_1-1
 see: 0                        class:math_Sub_1-1 img:school/game/cards/card_0_13.pbm sight fnv1a64:4C3D070F48AECDBD drift:0 say:founder_voice:0
-see: 1 - 2 = ?                class:math_Sub_1-2 img:school/game/cards/card_1___2_____14.pbm sight fnv1a64:CBB206655A51D28D drift:0 say:founder_voice:math_Sub_1-2
-see: -1                       class:math_Sub_1-2 img:school/game/cards/card__1_15.pbm sight fnv1a64:7BD82B08248858AD drift:0 say:founder_voice:-1
-see: 1 - 3 = ?                class:math_Sub_1-3 img:school/game/cards/card_1___3_____16.pbm sight fnv1a64:AA60D2E84B33381D drift:0 say:founder_voice:math_Sub_1-3
-see: -2                       class:math_Sub_1-3 img:school/game/cards/card__2_17.pbm sight fnv1a64:5DD31880531D1FED drift:0 say:founder_voice:-2
-see: 1 - 4 = ?                class:math_Sub_1-4 img:school/game/cards/card_1___4_____18.pbm sight fnv1a64:C27FBEE56956F98D drift:0 say:founder_voice:math_Sub_1-4
-see: -3                       class:math_Sub_1-4 img:school/game/cards/card__3_19.pbm sight fnv1a64:E605F494874F907D drift:0 say:founder_voice:-3
-see: 1 - 5 = ?                class:math_Sub_1-5 img:school/game/cards/card_1___5_____20.pbm sight fnv1a64:9715B283DB6E373D drift:0 say:founder_voice:math_Sub_1-5
-see: -4                       class:math_Sub_1-5 img:school/game/cards/card__4_21.pbm sight fnv1a64:BF63FFD0323996ED drift:0 say:founder_voice:-4
-see: 1 - 6 = ?                class:math_Sub_1-6 img:school/game/cards/card_1___6_____22.pbm sight fnv1a64:7EA9E192FAE8A1AD drift:0 say:founder_voice:math_Sub_1-6
-see: -5                       class:math_Sub_1-6 img:school/game/cards/card__5_23.pbm sight fnv1a64:21DE19B67E36659D drift:0 say:founder_voice:-5
-see: 1 * 1 = ?                class:math_Mul_1-1 img:school/game/cards/card_1___1_____24.pbm sight fnv1a64:5688E9D8C6B5274D drift:0 say:founder_voice:math_Mul_1-1
+see: 1 - 2 = ?                class:math_Sub_1-2 img:school/game/cards/card_1___2_____14.pbm sight fnv1a64:108E7E24E29A090D drift:0 say:founder_voice:math_Sub_1-2
+see: -1                       class:math_Sub_1-2 img:school/game/cards/card__1_15.pbm sight fnv1a64:F7A865554A21177D drift:0 say:founder_voice:-1
+see: 1 - 3 = ?                class:math_Sub_1-3 img:school/game/cards/card_1___3_____16.pbm sight fnv1a64:EF3D4AA7D37B6E9D drift:0 say:founder_voice:math_Sub_1-3
+see: -2                       class:math_Sub_1-3 img:school/game/cards/card__2_17.pbm sight fnv1a64:D9A352CD78B5DEBD drift:0 say:founder_voice:-2
+see: 1 - 4 = ?                class:math_Sub_1-4 img:school/game/cards/card_1___4_____18.pbm sight fnv1a64:075C36A4F19F300D drift:0 say:founder_voice:math_Sub_1-4
+see: -3                       class:math_Sub_1-4 img:school/game/cards/card__3_19.pbm sight fnv1a64:61D62EE1ACE84F4D drift:0 say:founder_voice:-3
+see: 1 - 5 = ?                class:math_Sub_1-5 img:school/game/cards/card_1___5_____20.pbm sight fnv1a64:DBF22A4363B66DBD drift:0 say:founder_voice:math_Sub_1-5
+see: -4                       class:math_Sub_1-5 img:school/game/cards/card__4_21.pbm sight fnv1a64:3B343A1D57D255BD drift:0 say:founder_voice:-4
+see: 1 - 6 = ?                class:math_Sub_1-6 img:school/game/cards/card_1___6_____22.pbm sight fnv1a64:C38659528330D82D drift:0 say:founder_voice:math_Sub_1-6
+see: -5                       class:math_Sub_1-6 img:school/game/cards/card__5_23.pbm sight fnv1a64:9DAE5403A3CF246D drift:0 say:founder_voice:-5
+see: 1 * 1 = ?                class:math_Mul_1-1 img:school/game/cards/card_1___1_____24.pbm sight fnv1a64:656914759280888D drift:0 say:founder_voice:math_Mul_1-1
 see: 1                        class:math_Mul_1-1 img:school/game/cards/card_1_25.pbm sight fnv1a64:5B66F0E4C05EFAAD drift:0 say:founder_voice:1
-see: 1 * 2 = ?                class:math_Mul_1-2 img:school/game/cards/card_1___2_____26.pbm sight fnv1a64:CBB206655A51D28D drift:0 say:founder_voice:math_Mul_1-2
+see: 1 * 2 = ?                class:math_Mul_1-2 img:school/game/cards/card_1___2_____26.pbm sight fnv1a64:DA923102261D33CD drift:0 say:founder_voice:math_Mul_1-2
 see: 2                        class:math_Mul_1-2 img:school/game/cards/card_2_27.pbm sight fnv1a64:D0900D7153FBA5ED drift:0 say:founder_voice:2
-see: 1 * 3 = ?                class:math_Mul_1-3 img:school/game/cards/card_1___3_____28.pbm sight fnv1a64:AA60D2E84B33381D drift:0 say:founder_voice:math_Mul_1-3
+see: 1 * 3 = ?                class:math_Mul_1-3 img:school/game/cards/card_1___3_____28.pbm sight fnv1a64:B940FD8516FE995D drift:0 say:founder_voice:math_Mul_1-3
 see: 3                        class:math_Mul_1-3 img:school/game/cards/card_3_29.pbm sight fnv1a64:AF3ED9F444DD0B7D drift:0 say:founder_voice:3
-see: 1 * 4 = ?                class:math_Mul_1-4 img:school/game/cards/card_1___4_____30.pbm sight fnv1a64:C27FBEE56956F98D drift:0 say:founder_voice:math_Mul_1-4
+see: 1 * 4 = ?                class:math_Mul_1-4 img:school/game/cards/card_1___4_____30.pbm sight fnv1a64:D15FE98235225ACD drift:0 say:founder_voice:math_Mul_1-4
 see: 4                        class:math_Mul_1-4 img:school/game/cards/card_4_31.pbm sight fnv1a64:C75DC5F16300CCED drift:0 say:founder_voice:4
-see: 1 * 5 = ?                class:math_Mul_1-5 img:school/game/cards/card_1___5_____32.pbm sight fnv1a64:9715B283DB6E373D drift:0 say:founder_voice:math_Mul_1-5
+see: 1 * 5 = ?                class:math_Mul_1-5 img:school/game/cards/card_1___5_____32.pbm sight fnv1a64:A5F5DD20A739987D drift:0 say:founder_voice:math_Mul_1-5
 see: 5                        class:math_Mul_1-5 img:school/game/cards/card_5_33.pbm sight fnv1a64:9BF3B98FD5180A9D drift:0 say:founder_voice:5
-see: 1 * 6 = ?                class:math_Mul_1-6 img:school/game/cards/card_1___6_____34.pbm sight fnv1a64:7EA9E192FAE8A1AD drift:0 say:founder_voice:math_Mul_1-6
+see: 1 * 6 = ?                class:math_Mul_1-6 img:school/game/cards/card_1___6_____34.pbm sight fnv1a64:8D8A0C2FC6B402ED drift:0 say:founder_voice:math_Mul_1-6
 see: 6                        class:math_Mul_1-6 img:school/game/cards/card_6_35.pbm sight fnv1a64:8387E89EF492750D drift:0 say:founder_voice:6
-see: 1 / 1 = ?                class:math_Div_1-1 img:school/game/cards/card_1___1_____36.pbm sight fnv1a64:5688E9D8C6B5274D drift:0 say:founder_voice:math_Div_1-1
+see: 1 / 1 = ?                class:math_Div_1-1 img:school/game/cards/card_1___1_____36.pbm sight fnv1a64:438C97BA2C3684ED drift:0 say:founder_voice:math_Div_1-1
 see: 1                        class:math_Div_1-1 img:school/game/cards/card_1_37.pbm sight fnv1a64:5B66F0E4C05EFAAD drift:0 say:founder_voice:1
-see: 2 / 2 = ?                class:math_Div_2-2 img:school/game/cards/card_2___2_____38.pbm sight fnv1a64:7759E386F54A9DCD drift:0 say:founder_voice:math_Div_2-2
+see: 2 / 2 = ?                class:math_Div_2-2 img:school/game/cards/card_2___2_____38.pbm sight fnv1a64:645D91685ACBFB6D drift:0 say:founder_voice:math_Div_2-2
 see: 1                        class:math_Div_2-2 img:school/game/cards/card_1_39.pbm sight fnv1a64:5B66F0E4C05EFAAD drift:0 say:founder_voice:1
-see: 3 / 3 = ?                class:math_Div_3-3 img:school/game/cards/card_3___3_____40.pbm sight fnv1a64:C4EBA1297D4750ED drift:0 say:founder_voice:math_Div_3-3
+see: 3 / 3 = ?                class:math_Div_3-3 img:school/game/cards/card_3___3_____40.pbm sight fnv1a64:B1EF4F0AE2C8AE8D drift:0 say:founder_voice:math_Div_3-3
 see: 1                        class:math_Div_3-3 img:school/game/cards/card_1_41.pbm sight fnv1a64:5B66F0E4C05EFAAD drift:0 say:founder_voice:1
-see: 4 / 4 = ?                class:math_Div_4-4 img:school/game/cards/card_4___4_____42.pbm sight fnv1a64:96DC8BED94766BCD drift:0 say:founder_voice:math_Div_4-4
+see: 4 / 4 = ?                class:math_Div_4-4 img:school/game/cards/card_4___4_____42.pbm sight fnv1a64:83E039CEF9F7C96D drift:0 say:founder_voice:math_Div_4-4
 see: 1                        class:math_Div_4-4 img:school/game/cards/card_1_43.pbm sight fnv1a64:5B66F0E4C05EFAAD drift:0 say:founder_voice:1
-see: 5 / 5 = ?                class:math_Div_5-5 img:school/game/cards/card_5___5_____44.pbm sight fnv1a64:31D4B4D5B1B31F2D drift:0 say:founder_voice:math_Div_5-5
+see: 5 / 5 = ?                class:math_Div_5-5 img:school/game/cards/card_5___5_____44.pbm sight fnv1a64:1ED862B717347CCD drift:0 say:founder_voice:math_Div_5-5
 see: 1                        class:math_Div_5-5 img:school/game/cards/card_1_45.pbm sight fnv1a64:5B66F0E4C05EFAAD drift:0 say:founder_voice:1
-see: 6 / 6 = ?                class:math_Div_6-6 img:school/game/cards/card_6___6_____46.pbm sight fnv1a64:B3CC9625DBF60C0D drift:0 say:founder_voice:math_Div_6-6
+see: 6 / 6 = ?                class:math_Div_6-6 img:school/game/cards/card_6___6_____46.pbm sight fnv1a64:A0D04407417769AD drift:0 say:founder_voice:math_Div_6-6
 see: 1                        class:math_Div_6-6 img:school/game/cards/card_1_47.pbm sight fnv1a64:5B66F0E4C05EFAAD drift:0 say:founder_voice:1

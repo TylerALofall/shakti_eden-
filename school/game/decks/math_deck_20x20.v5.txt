@@ -1,200 +1,200 @@
-1 + 1 = ?|founder_voice:math_Add_1-1|math_Add_1-1|school/game/cards/card_1___1_____0.pbm|5688E9D8C6B5274D
+1 + 1 = ?|founder_voice:math_Add_1-1|math_Add_1-1|school/game/cards/card_1___1_____0.pbm|7F9072E5BD8A8C0D
 2|founder_voice:2|math_Add_1-1|school/game/cards/card_2_1.pbm|D0900D7153FBA5ED
-1 + 2 = ?|founder_voice:math_Add_1-2|math_Add_1-2|school/game/cards/card_1___2_____2.pbm|CBB206655A51D28D
+1 + 2 = ?|founder_voice:math_Add_1-2|math_Add_1-2|school/game/cards/card_1___2_____2.pbm|F4B98F725127374D
 3|founder_voice:3|math_Add_1-2|school/game/cards/card_3_3.pbm|AF3ED9F444DD0B7D
-1 + 3 = ?|founder_voice:math_Add_1-3|math_Add_1-3|school/game/cards/card_1___3_____4.pbm|AA60D2E84B33381D
+1 + 3 = ?|founder_voice:math_Add_1-3|math_Add_1-3|school/game/cards/card_1___3_____4.pbm|D3685BF542089CDD
 4|founder_voice:4|math_Add_1-3|school/game/cards/card_4_5.pbm|C75DC5F16300CCED
-1 + 4 = ?|founder_voice:math_Add_1-4|math_Add_1-4|school/game/cards/card_1___4_____6.pbm|C27FBEE56956F98D
+1 + 4 = ?|founder_voice:math_Add_1-4|math_Add_1-4|school/game/cards/card_1___4_____6.pbm|EB8747F2602C5E4D
 5|founder_voice:5|math_Add_1-4|school/game/cards/card_5_7.pbm|9BF3B98FD5180A9D
-1 + 5 = ?|founder_voice:math_Add_1-5|math_Add_1-5|school/game/cards/card_1___5_____8.pbm|9715B283DB6E373D
+1 + 5 = ?|founder_voice:math_Add_1-5|math_Add_1-5|school/game/cards/card_1___5_____8.pbm|C01D3B90D2439BFD
 6|founder_voice:6|math_Add_1-5|school/game/cards/card_6_9.pbm|8387E89EF492750D
-1 + 6 = ?|founder_voice:math_Add_1-6|math_Add_1-6|school/game/cards/card_1___6_____10.pbm|7EA9E192FAE8A1AD
+1 + 6 = ?|founder_voice:math_Add_1-6|math_Add_1-6|school/game/cards/card_1___6_____10.pbm|A7B16A9FF1BE066D
 7|founder_voice:7|math_Add_1-6|school/game/cards/card_7_11.pbm|743BDDE51CACD13D
-1 + 7 = ?|founder_voice:math_Add_1-7|math_Add_1-7|school/game/cards/card_1___7_____12.pbm|6F5DD6D92302FDDD
+1 + 7 = ?|founder_voice:math_Add_1-7|math_Add_1-7|school/game/cards/card_1___7_____12.pbm|98655FE619D8629D
 8|founder_voice:8|math_Add_1-7|school/game/cards/card_8_13.pbm|927DCCC011B8DE9D
-1 + 8 = ?|founder_voice:math_Add_1-8|math_Add_1-8|school/game/cards/card_1___8_____14.pbm|8D9FC5B4180F0B3D
+1 + 8 = ?|founder_voice:math_Add_1-8|math_Add_1-8|school/game/cards/card_1___8_____14.pbm|B6A74EC10EE46FFD
 9|founder_voice:9|math_Add_1-8|school/game/cards/card_9_15.pbm|1DDE636C6D88590D
-1 + 9 = ?|founder_voice:math_Add_1-9|math_Add_1-9|school/game/cards/card_1___9_____16.pbm|19005C6073DE85AD
+1 + 9 = ?|founder_voice:math_Add_1-9|math_Add_1-9|school/game/cards/card_1___9_____16.pbm|4207E56D6AB3EA6D
 10|founder_voice:10|math_Add_1-9|school/game/cards/card_10_17.pbm|C077B355670E9D5D
-1 + 10 = ?|founder_voice:math_Add_1-10|math_Add_1-10|school/game/cards/card_1___10_____18.pbm|C77D6E438EB40BFD
+1 + 10 = ?|founder_voice:math_Add_1-10|math_Add_1-10|school/game/cards/card_1___10_____18.pbm|5AA2546AF678DEBD
 11|founder_voice:11|math_Add_1-10|school/game/cards/card_11_19.pbm|447DA8621A69374D
-1 + 11 = ?|founder_voice:math_Add_1-11|math_Add_1-11|school/game/cards/card_1___11_____20.pbm|4B836350420EA5ED
+1 + 11 = ?|founder_voice:math_Add_1-11|math_Add_1-11|school/game/cards/card_1___11_____20.pbm|DEA84977A9D378AD
 12|founder_voice:12|math_Add_1-11|school/game/cards/card_12_21.pbm|267895DA48FDFE8D
-1 + 12 = ?|founder_voice:math_Add_1-12|math_Add_1-12|school/game/cards/card_1___12_____22.pbm|2D7E50C870A36D2D
+1 + 12 = ?|founder_voice:math_Add_1-12|math_Add_1-12|school/game/cards/card_1___12_____22.pbm|C0A336EFD8683FED
 13|founder_voice:13|math_Add_1-12|school/game/cards/card_13_23.pbm|AEAB71EE7D306F1D
-1 + 13 = ?|founder_voice:math_Add_1-13|math_Add_1-13|school/game/cards/card_1___13_____24.pbm|B5B12CDCA4D5DDBD
+1 + 13 = ?|founder_voice:math_Add_1-13|math_Add_1-13|school/game/cards/card_1___13_____24.pbm|48D613040C9AB07D
 14|founder_voice:14|math_Add_1-13|school/game/cards/card_14_25.pbm|88097D2A281A758D
-1 + 14 = ?|founder_voice:math_Add_1-14|math_Add_1-14|school/game/cards/card_1___14_____26.pbm|8F0F38184FBFE42D
+1 + 14 = ?|founder_voice:math_Add_1-14|math_Add_1-14|school/game/cards/card_1___14_____26.pbm|22341E3FB784B6ED
 15|founder_voice:15|math_Add_1-14|school/game/cards/card_15_27.pbm|EA8397107417443D
-1 + 15 = ?|founder_voice:math_Add_1-15|math_Add_1-15|school/game/cards/card_1___15_____28.pbm|F18951FE9BBCB2DD
+1 + 15 = ?|founder_voice:math_Add_1-15|math_Add_1-15|school/game/cards/card_1___15_____28.pbm|84AE38260381859D
 16|founder_voice:16|math_Add_1-15|school/game/cards/card_16_29.pbm|A8D4C3C2A777A3AD
-1 + 16 = ?|founder_voice:math_Add_1-16|math_Add_1-16|school/game/cards/card_1___16_____30.pbm|AFDA7EB0CF1D124D
+1 + 16 = ?|founder_voice:math_Add_1-16|math_Add_1-16|school/game/cards/card_1___16_____30.pbm|42FF64D836E1E50D
 17|founder_voice:17|math_Add_1-16|school/game/cards/card_17_31.pbm|6B57A8104C3D48DD
-1 + 17 = ?|founder_voice:math_Add_1-17|math_Add_1-17|school/game/cards/card_1___17_____32.pbm|725D62FE73E2B77D
+1 + 17 = ?|founder_voice:math_Add_1-17|math_Add_1-17|school/game/cards/card_1___17_____32.pbm|05824925DBA78A3D
 18|founder_voice:18|math_Add_1-17|school/game/cards/card_18_33.pbm|E024E58FA45FD83D
-1 + 18 = ?|founder_voice:math_Add_1-18|math_Add_1-18|school/game/cards/card_1___18_____34.pbm|E72AA07DCC0546DD
+1 + 18 = ?|founder_voice:math_Add_1-18|math_Add_1-18|school/game/cards/card_1___18_____34.pbm|7A4F86A533CA199D
 19|founder_voice:19|math_Add_1-18|school/game/cards/card_19_35.pbm|159D6E77820847AD
-1 + 19 = ?|founder_voice:math_Add_1-19|math_Add_1-19|school/game/cards/card_1___19_____36.pbm|1CA32965A9ADB64D
+1 + 19 = ?|founder_voice:math_Add_1-19|math_Add_1-19|school/game/cards/card_1___19_____36.pbm|AFC80F8D1172890D
 20|founder_voice:20|math_Add_1-19|school/game/cards/card_20_37.pbm|7615073624FC6C9D
-1 + 20 = ?|founder_voice:math_Add_1-20|math_Add_1-20|school/game/cards/card_1___20_____38.pbm|7D1AC2244CA1DB3D
+1 + 20 = ?|founder_voice:math_Add_1-20|math_Add_1-20|school/game/cards/card_1___20_____38.pbm|103FA84BB466ADFD
 21|founder_voice:21|math_Add_1-20|school/game/cards/card_21_39.pbm|FA1AFC42D857068D
-2 + 1 = ?|founder_voice:math_Add_2-1|math_Add_2-1|school/game/cards/card_2___1_____40.pbm|0230C6FA61ADF28D
+2 + 1 = ?|founder_voice:math_Add_2-1|math_Add_2-1|school/game/cards/card_2___1_____40.pbm|2B3850075883574D
 3|founder_voice:3|math_Add_2-1|school/game/cards/card_3_41.pbm|AF3ED9F444DD0B7D
-2 + 2 = ?|founder_voice:math_Add_2-2|math_Add_2-2|school/game/cards/card_2___2_____42.pbm|7759E386F54A9DCD
+2 + 2 = ?|founder_voice:math_Add_2-2|math_Add_2-2|school/game/cards/card_2___2_____42.pbm|A0616C93EC20028D
 4|founder_voice:4|math_Add_2-2|school/game/cards/card_4_43.pbm|C75DC5F16300CCED
-2 + 3 = ?|founder_voice:math_Add_2-3|math_Add_2-3|school/game/cards/card_2___3_____44.pbm|5608B009E62C035D
+2 + 3 = ?|founder_voice:math_Add_2-3|math_Add_2-3|school/game/cards/card_2___3_____44.pbm|7F103916DD01681D
 5|founder_voice:5|math_Add_2-3|school/game/cards/card_5_45.pbm|9BF3B98FD5180A9D
-2 + 4 = ?|founder_voice:math_Add_2-4|math_Add_2-4|school/game/cards/card_2___4_____46.pbm|6E279C07044FC4CD
+2 + 4 = ?|founder_voice:math_Add_2-4|math_Add_2-4|school/game/cards/card_2___4_____46.pbm|972F2513FB25298D
 6|founder_voice:6|math_Add_2-4|school/game/cards/card_6_47.pbm|8387E89EF492750D
-2 + 5 = ?|founder_voice:math_Add_2-5|math_Add_2-5|school/game/cards/card_2___5_____48.pbm|42BD8FA57667027D
+2 + 5 = ?|founder_voice:math_Add_2-5|math_Add_2-5|school/game/cards/card_2___5_____48.pbm|6BC518B26D3C673D
 7|founder_voice:7|math_Add_2-5|school/game/cards/card_7_49.pbm|743BDDE51CACD13D
-1 - 1 = ?|founder_voice:math_Sub_1-1|math_Sub_1-1|school/game/cards/card_1___1_____50.pbm|5688E9D8C6B5274D
+1 - 1 = ?|founder_voice:math_Sub_1-1|math_Sub_1-1|school/game/cards/card_1___1_____50.pbm|9B6561984EFD5DCD
 0|founder_voice:0|math_Sub_1-1|school/game/cards/card_0_51.pbm|4C3D070F48AECDBD
-1 - 2 = ?|founder_voice:math_Sub_1-2|math_Sub_1-2|school/game/cards/card_1___2_____52.pbm|CBB206655A51D28D
--1|founder_voice:-1|math_Sub_1-2|school/game/cards/card__1_53.pbm|7BD82B08248858AD
-1 - 3 = ?|founder_voice:math_Sub_1-3|math_Sub_1-3|school/game/cards/card_1___3_____54.pbm|AA60D2E84B33381D
--2|founder_voice:-2|math_Sub_1-3|school/game/cards/card__2_55.pbm|5DD31880531D1FED
-1 - 4 = ?|founder_voice:math_Sub_1-4|math_Sub_1-4|school/game/cards/card_1___4_____56.pbm|C27FBEE56956F98D
--3|founder_voice:-3|math_Sub_1-4|school/game/cards/card__3_57.pbm|E605F494874F907D
-1 - 5 = ?|founder_voice:math_Sub_1-5|math_Sub_1-5|school/game/cards/card_1___5_____58.pbm|9715B283DB6E373D
--4|founder_voice:-4|math_Sub_1-5|school/game/cards/card__4_59.pbm|BF63FFD0323996ED
-1 - 6 = ?|founder_voice:math_Sub_1-6|math_Sub_1-6|school/game/cards/card_1___6_____60.pbm|7EA9E192FAE8A1AD
--5|founder_voice:-5|math_Sub_1-6|school/game/cards/card__5_61.pbm|21DE19B67E36659D
-1 - 7 = ?|founder_voice:math_Sub_1-7|math_Sub_1-7|school/game/cards/card_1___7_____62.pbm|6F5DD6D92302FDDD
--6|founder_voice:-6|math_Sub_1-7|school/game/cards/card__6_63.pbm|E02F4668B196C50D
-1 - 8 = ?|founder_voice:math_Sub_1-8|math_Sub_1-8|school/game/cards/card_1___8_____64.pbm|8D9FC5B4180F0B3D
--7|founder_voice:-7|math_Sub_1-8|school/game/cards/card__7_65.pbm|A2B22AB6565C6A3D
-1 - 9 = ?|founder_voice:math_Sub_1-9|math_Sub_1-9|school/game/cards/card_1___9_____66.pbm|19005C6073DE85AD
--8|founder_voice:-8|math_Sub_1-9|school/game/cards/card__8_67.pbm|177F6835AE7EF99D
-1 - 10 = ?|founder_voice:math_Sub_1-10|math_Sub_1-10|school/game/cards/card_1___10_____68.pbm|C77D6E438EB40BFD
--9|founder_voice:-9|math_Sub_1-10|school/game/cards/card__9_69.pbm|4CF7F11D8C27690D
-1 - 11 = ?|founder_voice:math_Sub_1-11|math_Sub_1-11|school/game/cards/card_1___11_____70.pbm|4B836350420EA5ED
--10|founder_voice:-10|math_Sub_1-11|school/game/cards/card__10_71.pbm|2EED8100A1107C5D
-1 - 12 = ?|founder_voice:math_Sub_1-12|math_Sub_1-12|school/game/cards/card_1___12_____72.pbm|2D7E50C870A36D2D
--11|founder_voice:-11|math_Sub_1-12|school/game/cards/card__11_73.pbm|D2A5F0697E69F34D
-1 - 13 = ?|founder_voice:math_Sub_1-13|math_Sub_1-13|school/game/cards/card_1___13_____74.pbm|B5B12CDCA4D5DDBD
--12|founder_voice:-12|math_Sub_1-13|school/game/cards/card__12_75.pbm|BA7ADBE3E2FC168D
-1 - 14 = ?|founder_voice:math_Sub_1-14|math_Sub_1-14|school/game/cards/card_1___14_____76.pbm|8F0F38184FBFE42D
--13|founder_voice:-13|math_Sub_1-14|school/game/cards/card__13_77.pbm|EFA2F0B0EC51A21D
-1 - 15 = ?|founder_voice:math_Sub_1-15|math_Sub_1-15|school/game/cards/card_1___15_____78.pbm|F18951FE9BBCB2DD
--14|founder_voice:-14|math_Sub_1-15|school/game/cards/card__14_79.pbm|B5451B066C8EDD8D
-1 - 16 = ?|founder_voice:math_Sub_1-16|math_Sub_1-16|school/game/cards/card_1___16_____80.pbm|AFDA7EB0CF1D124D
--15|founder_voice:-15|math_Sub_1-16|school/game/cards/card__15_81.pbm|FB9064CA375C6D3D
-1 - 17 = ?|founder_voice:math_Sub_1-17|math_Sub_1-17|school/game/cards/card_1___17_____82.pbm|725D62FE73E2B77D
--16|founder_voice:-16|math_Sub_1-17|school/game/cards/card__16_83.pbm|026176456720B1AD
-1 - 18 = ?|founder_voice:math_Sub_1-18|math_Sub_1-18|school/game/cards/card_1___18_____84.pbm|E72AA07DCC0546DD
--17|founder_voice:-17|math_Sub_1-18|school/game/cards/card__17_85.pbm|A1B830A11B8F4FDD
-1 - 19 = ?|founder_voice:math_Sub_1-19|math_Sub_1-19|school/game/cards/card_1___19_____86.pbm|1CA32965A9ADB64D
--18|founder_voice:-18|math_Sub_1-19|school/game/cards/card__18_87.pbm|0144516212C0C13D
-1 - 20 = ?|founder_voice:math_Sub_1-20|math_Sub_1-20|school/game/cards/card_1___20_____88.pbm|7D1AC2244CA1DB3D
--19|founder_voice:-19|math_Sub_1-20|school/game/cards/card__19_89.pbm|84C749F5985015AD
-2 - 1 = ?|founder_voice:math_Sub_2-1|math_Sub_2-1|school/game/cards/card_2___1_____90.pbm|0230C6FA61ADF28D
+1 - 2 = ?|founder_voice:math_Sub_1-2|math_Sub_1-2|school/game/cards/card_1___2_____52.pbm|108E7E24E29A090D
+-1|founder_voice:-1|math_Sub_1-2|school/game/cards/card__1_53.pbm|F7A865554A21177D
+1 - 3 = ?|founder_voice:math_Sub_1-3|math_Sub_1-3|school/game/cards/card_1___3_____54.pbm|EF3D4AA7D37B6E9D
+-2|founder_voice:-2|math_Sub_1-3|school/game/cards/card__2_55.pbm|D9A352CD78B5DEBD
+1 - 4 = ?|founder_voice:math_Sub_1-4|math_Sub_1-4|school/game/cards/card_1___4_____56.pbm|075C36A4F19F300D
+-3|founder_voice:-3|math_Sub_1-4|school/game/cards/card__3_57.pbm|61D62EE1ACE84F4D
+1 - 5 = ?|founder_voice:math_Sub_1-5|math_Sub_1-5|school/game/cards/card_1___5_____58.pbm|DBF22A4363B66DBD
+-4|founder_voice:-4|math_Sub_1-5|school/game/cards/card__4_59.pbm|3B343A1D57D255BD
+1 - 6 = ?|founder_voice:math_Sub_1-6|math_Sub_1-6|school/game/cards/card_1___6_____60.pbm|C38659528330D82D
+-5|founder_voice:-5|math_Sub_1-6|school/game/cards/card__5_61.pbm|9DAE5403A3CF246D
+1 - 7 = ?|founder_voice:math_Sub_1-7|math_Sub_1-7|school/game/cards/card_1___7_____62.pbm|B43A4E98AB4B345D
+-6|founder_voice:-6|math_Sub_1-7|school/game/cards/card__6_63.pbm|5BFF80B5D72F83DD
+1 - 8 = ?|founder_voice:math_Sub_1-8|math_Sub_1-8|school/game/cards/card_1___8_____64.pbm|D27C3D73A05741BD
+-7|founder_voice:-7|math_Sub_1-8|school/game/cards/card__7_65.pbm|1E8265037BF5290D
+1 - 9 = ?|founder_voice:math_Sub_1-9|math_Sub_1-9|school/game/cards/card_1___9_____66.pbm|5DDCD41FFC26BC2D
+-8|founder_voice:-8|math_Sub_1-9|school/game/cards/card__8_67.pbm|934FA282D417B86D
+1 - 10 = ?|founder_voice:math_Sub_1-10|math_Sub_1-10|school/game/cards/card_1___10_____68.pbm|E608845297C81C7D
+-9|founder_voice:-9|math_Sub_1-10|school/game/cards/card__9_69.pbm|C8C82B6AB1C027DD
+1 - 11 = ?|founder_voice:math_Sub_1-11|math_Sub_1-11|school/game/cards/card_1___11_____70.pbm|6A0E795F4B22B66D
+-10|founder_voice:-10|math_Sub_1-11|school/game/cards/card__10_71.pbm|A3AE98DD6AE5C42D
+1 - 12 = ?|founder_voice:math_Sub_1-12|math_Sub_1-12|school/game/cards/card_1___12_____72.pbm|4C0966D779B77DAD
+-11|founder_voice:-11|math_Sub_1-12|school/game/cards/card__11_73.pbm|47670846483F3B1D
+1 - 13 = ?|founder_voice:math_Sub_1-13|math_Sub_1-13|school/game/cards/card_1___13_____74.pbm|D43C42EBADE9EE3D
+-12|founder_voice:-12|math_Sub_1-13|school/game/cards/card__12_75.pbm|2F3BF3C0ACD15E5D
+1 - 14 = ?|founder_voice:math_Sub_1-14|math_Sub_1-14|school/game/cards/card_1___14_____76.pbm|AD9A4E2758D3F4AD
+-13|founder_voice:-13|math_Sub_1-14|school/game/cards/card__13_77.pbm|6464088DB626E9ED
+1 - 15 = ?|founder_voice:math_Sub_1-15|math_Sub_1-15|school/game/cards/card_1___15_____78.pbm|1014680DA4D0C35D
+-14|founder_voice:-14|math_Sub_1-15|school/game/cards/card__14_79.pbm|2A0632E33664255D
+1 - 16 = ?|founder_voice:math_Sub_1-16|math_Sub_1-16|school/game/cards/card_1___16_____80.pbm|CE6594BFD83122CD
+-15|founder_voice:-15|math_Sub_1-16|school/game/cards/card__15_81.pbm|70517CA70131B50D
+1 - 17 = ?|founder_voice:math_Sub_1-17|math_Sub_1-17|school/game/cards/card_1___17_____82.pbm|90E8790D7CF6C7FD
+-16|founder_voice:-16|math_Sub_1-17|school/game/cards/card__16_83.pbm|77228E2230F5F97D
+1 - 18 = ?|founder_voice:math_Sub_1-18|math_Sub_1-18|school/game/cards/card_1___18_____84.pbm|05B5B68CD519575D
+-17|founder_voice:-17|math_Sub_1-18|school/game/cards/card__17_85.pbm|1679487DE56497AD
+1 - 19 = ?|founder_voice:math_Sub_1-19|math_Sub_1-19|school/game/cards/card_1___19_____86.pbm|3B2E3F74B2C1C6CD
+-18|founder_voice:-18|math_Sub_1-19|school/game/cards/card__18_87.pbm|7605693EDC96090D
+1 - 20 = ?|founder_voice:math_Sub_1-20|math_Sub_1-20|school/game/cards/card_1___20_____88.pbm|9BA5D83355B5EBBD
+-19|founder_voice:-19|math_Sub_1-20|school/game/cards/card__19_89.pbm|F98861D262255D7D
+2 - 1 = ?|founder_voice:math_Sub_2-1|math_Sub_2-1|school/game/cards/card_2___1_____90.pbm|470D3EB9E9F6290D
 1|founder_voice:1|math_Sub_2-1|school/game/cards/card_1_91.pbm|5B66F0E4C05EFAAD
-2 - 2 = ?|founder_voice:math_Sub_2-2|math_Sub_2-2|school/game/cards/card_2___2_____92.pbm|7759E386F54A9DCD
+2 - 2 = ?|founder_voice:math_Sub_2-2|math_Sub_2-2|school/game/cards/card_2___2_____92.pbm|BC365B467D92D44D
 0|founder_voice:0|math_Sub_2-2|school/game/cards/card_0_93.pbm|4C3D070F48AECDBD
-2 - 3 = ?|founder_voice:math_Sub_2-3|math_Sub_2-3|school/game/cards/card_2___3_____94.pbm|5608B009E62C035D
--1|founder_voice:-1|math_Sub_2-3|school/game/cards/card__1_95.pbm|7BD82B08248858AD
-2 - 4 = ?|founder_voice:math_Sub_2-4|math_Sub_2-4|school/game/cards/card_2___4_____96.pbm|6E279C07044FC4CD
--2|founder_voice:-2|math_Sub_2-4|school/game/cards/card__2_97.pbm|5DD31880531D1FED
-2 - 5 = ?|founder_voice:math_Sub_2-5|math_Sub_2-5|school/game/cards/card_2___5_____98.pbm|42BD8FA57667027D
--3|founder_voice:-3|math_Sub_2-5|school/game/cards/card__3_99.pbm|E605F494874F907D
-1 * 1 = ?|founder_voice:math_Mul_1-1|math_Mul_1-1|school/game/cards/card_1___1_____100.pbm|5688E9D8C6B5274D
+2 - 3 = ?|founder_voice:math_Sub_2-3|math_Sub_2-3|school/game/cards/card_2___3_____94.pbm|9AE527C96E7439DD
+-1|founder_voice:-1|math_Sub_2-3|school/game/cards/card__1_95.pbm|F7A865554A21177D
+2 - 4 = ?|founder_voice:math_Sub_2-4|math_Sub_2-4|school/game/cards/card_2___4_____96.pbm|B30413C68C97FB4D
+-2|founder_voice:-2|math_Sub_2-4|school/game/cards/card__2_97.pbm|D9A352CD78B5DEBD
+2 - 5 = ?|founder_voice:math_Sub_2-5|math_Sub_2-5|school/game/cards/card_2___5_____98.pbm|879A0764FEAF38FD
+-3|founder_voice:-3|math_Sub_2-5|school/game/cards/card__3_99.pbm|61D62EE1ACE84F4D
+1 * 1 = ?|founder_voice:math_Mul_1-1|math_Mul_1-1|school/game/cards/card_1___1_____100.pbm|656914759280888D
 1|founder_voice:1|math_Mul_1-1|school/game/cards/card_1_101.pbm|5B66F0E4C05EFAAD
-1 * 2 = ?|founder_voice:math_Mul_1-2|math_Mul_1-2|school/game/cards/card_1___2_____102.pbm|CBB206655A51D28D
+1 * 2 = ?|founder_voice:math_Mul_1-2|math_Mul_1-2|school/game/cards/card_1___2_____102.pbm|DA923102261D33CD
 2|founder_voice:2|math_Mul_1-2|school/game/cards/card_2_103.pbm|D0900D7153FBA5ED
-1 * 3 = ?|founder_voice:math_Mul_1-3|math_Mul_1-3|school/game/cards/card_1___3_____104.pbm|AA60D2E84B33381D
+1 * 3 = ?|founder_voice:math_Mul_1-3|math_Mul_1-3|school/game/cards/card_1___3_____104.pbm|B940FD8516FE995D
 3|founder_voice:3|math_Mul_1-3|school/game/cards/card_3_105.pbm|AF3ED9F444DD0B7D
-1 * 4 = ?|founder_voice:math_Mul_1-4|math_Mul_1-4|school/game/cards/card_1___4_____106.pbm|C27FBEE56956F98D
+1 * 4 = ?|founder_voice:math_Mul_1-4|math_Mul_1-4|school/game/cards/card_1___4_____106.pbm|D15FE98235225ACD
 4|founder_voice:4|math_Mul_1-4|school/game/cards/card_4_107.pbm|C75DC5F16300CCED
-1 * 5 = ?|founder_voice:math_Mul_1-5|math_Mul_1-5|school/game/cards/card_1___5_____108.pbm|9715B283DB6E373D
+1 * 5 = ?|founder_voice:math_Mul_1-5|math_Mul_1-5|school/game/cards/card_1___5_____108.pbm|A5F5DD20A739987D
 5|founder_voice:5|math_Mul_1-5|school/game/cards/card_5_109.pbm|9BF3B98FD5180A9D
-1 * 6 = ?|founder_voice:math_Mul_1-6|math_Mul_1-6|school/game/cards/card_1___6_____110.pbm|7EA9E192FAE8A1AD
+1 * 6 = ?|founder_voice:math_Mul_1-6|math_Mul_1-6|school/game/cards/card_1___6_____110.pbm|8D8A0C2FC6B402ED
 6|founder_voice:6|math_Mul_1-6|school/game/cards/card_6_111.pbm|8387E89EF492750D
-1 * 7 = ?|founder_voice:math_Mul_1-7|math_Mul_1-7|school/game/cards/card_1___7_____112.pbm|6F5DD6D92302FDDD
+1 * 7 = ?|founder_voice:math_Mul_1-7|math_Mul_1-7|school/game/cards/card_1___7_____112.pbm|7E3E0175EECE5F1D
 7|founder_voice:7|math_Mul_1-7|school/game/cards/card_7_113.pbm|743BDDE51CACD13D
-1 * 8 = ?|founder_voice:math_Mul_1-8|math_Mul_1-8|school/game/cards/card_1___8_____114.pbm|8D9FC5B4180F0B3D
+1 * 8 = ?|founder_voice:math_Mul_1-8|math_Mul_1-8|school/game/cards/card_1___8_____114.pbm|9C7FF050E3DA6C7D
 8|founder_voice:8|math_Mul_1-8|school/game/cards/card_8_115.pbm|927DCCC011B8DE9D
-1 * 9 = ?|founder_voice:math_Mul_1-9|math_Mul_1-9|school/game/cards/card_1___9_____116.pbm|19005C6073DE85AD
+1 * 9 = ?|founder_voice:math_Mul_1-9|math_Mul_1-9|school/game/cards/card_1___9_____116.pbm|27E086FD3FA9E6ED
 9|founder_voice:9|math_Mul_1-9|school/game/cards/card_9_117.pbm|1DDE636C6D88590D
-1 * 10 = ?|founder_voice:math_Mul_1-10|math_Mul_1-10|school/game/cards/card_1___10_____118.pbm|C77D6E438EB40BFD
+1 * 10 = ?|founder_voice:math_Mul_1-10|math_Mul_1-10|school/game/cards/card_1___10_____118.pbm|D2013FF86128033D
 10|founder_voice:10|math_Mul_1-10|school/game/cards/card_10_119.pbm|C077B355670E9D5D
-1 * 11 = ?|founder_voice:math_Mul_1-11|math_Mul_1-11|school/game/cards/card_1___11_____120.pbm|4B836350420EA5ED
+1 * 11 = ?|founder_voice:math_Mul_1-11|math_Mul_1-11|school/game/cards/card_1___11_____120.pbm|5607350514829D2D
 11|founder_voice:11|math_Mul_1-11|school/game/cards/card_11_121.pbm|447DA8621A69374D
-1 * 12 = ?|founder_voice:math_Mul_1-12|math_Mul_1-12|school/game/cards/card_1___12_____122.pbm|2D7E50C870A36D2D
+1 * 12 = ?|founder_voice:math_Mul_1-12|math_Mul_1-12|school/game/cards/card_1___12_____122.pbm|3802227D4317646D
 12|founder_voice:12|math_Mul_1-12|school/game/cards/card_12_123.pbm|267895DA48FDFE8D
-1 * 13 = ?|founder_voice:math_Mul_1-13|math_Mul_1-13|school/game/cards/card_1___13_____124.pbm|B5B12CDCA4D5DDBD
+1 * 13 = ?|founder_voice:math_Mul_1-13|math_Mul_1-13|school/game/cards/card_1___13_____124.pbm|C034FE917749D4FD
 13|founder_voice:13|math_Mul_1-13|school/game/cards/card_13_125.pbm|AEAB71EE7D306F1D
-1 * 14 = ?|founder_voice:math_Mul_1-14|math_Mul_1-14|school/game/cards/card_1___14_____126.pbm|8F0F38184FBFE42D
+1 * 14 = ?|founder_voice:math_Mul_1-14|math_Mul_1-14|school/game/cards/card_1___14_____126.pbm|999309CD2233DB6D
 14|founder_voice:14|math_Mul_1-14|school/game/cards/card_14_127.pbm|88097D2A281A758D
-1 * 15 = ?|founder_voice:math_Mul_1-15|math_Mul_1-15|school/game/cards/card_1___15_____128.pbm|F18951FE9BBCB2DD
+1 * 15 = ?|founder_voice:math_Mul_1-15|math_Mul_1-15|school/game/cards/card_1___15_____128.pbm|FC0D23B36E30AA1D
 15|founder_voice:15|math_Mul_1-15|school/game/cards/card_15_129.pbm|EA8397107417443D
-1 * 16 = ?|founder_voice:math_Mul_1-16|math_Mul_1-16|school/game/cards/card_1___16_____130.pbm|AFDA7EB0CF1D124D
+1 * 16 = ?|founder_voice:math_Mul_1-16|math_Mul_1-16|school/game/cards/card_1___16_____130.pbm|BA5E5065A191098D
 16|founder_voice:16|math_Mul_1-16|school/game/cards/card_16_131.pbm|A8D4C3C2A777A3AD
-1 * 17 = ?|founder_voice:math_Mul_1-17|math_Mul_1-17|school/game/cards/card_1___17_____132.pbm|725D62FE73E2B77D
+1 * 17 = ?|founder_voice:math_Mul_1-17|math_Mul_1-17|school/game/cards/card_1___17_____132.pbm|7CE134B34656AEBD
 17|founder_voice:17|math_Mul_1-17|school/game/cards/card_17_133.pbm|6B57A8104C3D48DD
-1 * 18 = ?|founder_voice:math_Mul_1-18|math_Mul_1-18|school/game/cards/card_1___18_____134.pbm|E72AA07DCC0546DD
+1 * 18 = ?|founder_voice:math_Mul_1-18|math_Mul_1-18|school/game/cards/card_1___18_____134.pbm|F1AE72329E793E1D
 18|founder_voice:18|math_Mul_1-18|school/game/cards/card_18_135.pbm|E024E58FA45FD83D
-1 * 19 = ?|founder_voice:math_Mul_1-19|math_Mul_1-19|school/game/cards/card_1___19_____136.pbm|1CA32965A9ADB64D
+1 * 19 = ?|founder_voice:math_Mul_1-19|math_Mul_1-19|school/game/cards/card_1___19_____136.pbm|2726FB1A7C21AD8D
 19|founder_voice:19|math_Mul_1-19|school/game/cards/card_19_137.pbm|159D6E77820847AD
-1 * 20 = ?|founder_voice:math_Mul_1-20|math_Mul_1-20|school/game/cards/card_1___20_____138.pbm|7D1AC2244CA1DB3D
+1 * 20 = ?|founder_voice:math_Mul_1-20|math_Mul_1-20|school/game/cards/card_1___20_____138.pbm|879E93D91F15D27D
 20|founder_voice:20|math_Mul_1-20|school/game/cards/card_20_139.pbm|7615073624FC6C9D
-2 * 1 = ?|founder_voice:math_Mul_2-1|math_Mul_2-1|school/game/cards/card_2___1_____140.pbm|0230C6FA61ADF28D
+2 * 1 = ?|founder_voice:math_Mul_2-1|math_Mul_2-1|school/game/cards/card_2___1_____140.pbm|1110F1972D7953CD
 2|founder_voice:2|math_Mul_2-1|school/game/cards/card_2_141.pbm|D0900D7153FBA5ED
-2 * 2 = ?|founder_voice:math_Mul_2-2|math_Mul_2-2|school/game/cards/card_2___2_____142.pbm|7759E386F54A9DCD
+2 * 2 = ?|founder_voice:math_Mul_2-2|math_Mul_2-2|school/game/cards/card_2___2_____142.pbm|863A0E23C115FF0D
 4|founder_voice:4|math_Mul_2-2|school/game/cards/card_4_143.pbm|C75DC5F16300CCED
-2 * 3 = ?|founder_voice:math_Mul_2-3|math_Mul_2-3|school/game/cards/card_2___3_____144.pbm|5608B009E62C035D
+2 * 3 = ?|founder_voice:math_Mul_2-3|math_Mul_2-3|school/game/cards/card_2___3_____144.pbm|64E8DAA6B1F7649D
 6|founder_voice:6|math_Mul_2-3|school/game/cards/card_6_145.pbm|8387E89EF492750D
-2 * 4 = ?|founder_voice:math_Mul_2-4|math_Mul_2-4|school/game/cards/card_2___4_____146.pbm|6E279C07044FC4CD
+2 * 4 = ?|founder_voice:math_Mul_2-4|math_Mul_2-4|school/game/cards/card_2___4_____146.pbm|7D07C6A3D01B260D
 8|founder_voice:8|math_Mul_2-4|school/game/cards/card_8_147.pbm|927DCCC011B8DE9D
-2 * 5 = ?|founder_voice:math_Mul_2-5|math_Mul_2-5|school/game/cards/card_2___5_____148.pbm|42BD8FA57667027D
+2 * 5 = ?|founder_voice:math_Mul_2-5|math_Mul_2-5|school/game/cards/card_2___5_____148.pbm|519DBA42423263BD
 10|founder_voice:10|math_Mul_2-5|school/game/cards/card_10_149.pbm|C077B355670E9D5D
-1 / 1 = ?|founder_voice:math_Div_1-1|math_Div_1-1|school/game/cards/card_1___1_____150.pbm|5688E9D8C6B5274D
+1 / 1 = ?|founder_voice:math_Div_1-1|math_Div_1-1|school/game/cards/card_1___1_____150.pbm|438C97BA2C3684ED
 1|founder_voice:1|math_Div_1-1|school/game/cards/card_1_151.pbm|5B66F0E4C05EFAAD
-2 / 2 = ?|founder_voice:math_Div_2-2|math_Div_2-2|school/game/cards/card_2___2_____152.pbm|7759E386F54A9DCD
+2 / 2 = ?|founder_voice:math_Div_2-2|math_Div_2-2|school/game/cards/card_2___2_____152.pbm|645D91685ACBFB6D
 1|founder_voice:1|math_Div_2-2|school/game/cards/card_1_153.pbm|5B66F0E4C05EFAAD
-3 / 3 = ?|founder_voice:math_Div_3-3|math_Div_3-3|school/game/cards/card_3___3_____154.pbm|C4EBA1297D4750ED
+3 / 3 = ?|founder_voice:math_Div_3-3|math_Div_3-3|school/game/cards/card_3___3_____154.pbm|B1EF4F0AE2C8AE8D
 1|founder_voice:1|math_Div_3-3|school/game/cards/card_1_155.pbm|5B66F0E4C05EFAAD
-4 / 4 = ?|founder_voice:math_Div_4-4|math_Div_4-4|school/game/cards/card_4___4_____156.pbm|96DC8BED94766BCD
+4 / 4 = ?|founder_voice:math_Div_4-4|math_Div_4-4|school/game/cards/card_4___4_____156.pbm|83E039CEF9F7C96D
 1|founder_voice:1|math_Div_4-4|school/game/cards/card_1_157.pbm|5B66F0E4C05EFAAD
-5 / 5 = ?|founder_voice:math_Div_5-5|math_Div_5-5|school/game/cards/card_5___5_____158.pbm|31D4B4D5B1B31F2D
+5 / 5 = ?|founder_voice:math_Div_5-5|math_Div_5-5|school/game/cards/card_5___5_____158.pbm|1ED862B717347CCD
 1|founder_voice:1|math_Div_5-5|school/game/cards/card_1_159.pbm|5B66F0E4C05EFAAD
-6 / 6 = ?|founder_voice:math_Div_6-6|math_Div_6-6|school/game/cards/card_6___6_____160.pbm|B3CC9625DBF60C0D
+6 / 6 = ?|founder_voice:math_Div_6-6|math_Div_6-6|school/game/cards/card_6___6_____160.pbm|A0D04407417769AD
 1|founder_voice:1|math_Div_6-6|school/game/cards/card_1_161.pbm|5B66F0E4C05EFAAD
-7 / 7 = ?|founder_voice:math_Div_7-7|math_Div_7-7|school/game/cards/card_7___7_____162.pbm|95481CBE0A653C6D
+7 / 7 = ?|founder_voice:math_Div_7-7|math_Div_7-7|school/game/cards/card_7___7_____162.pbm|824BCA9F6FE69A0D
 1|founder_voice:1|math_Div_7-7|school/game/cards/card_1_163.pbm|5B66F0E4C05EFAAD
-8 / 8 = ?|founder_voice:math_Div_8-8|math_Div_8-8|school/game/cards/card_8___8_____164.pbm|A6F96B367006C72D
+8 / 8 = ?|founder_voice:math_Div_8-8|math_Div_8-8|school/game/cards/card_8___8_____164.pbm|93FD1917D58824CD
 1|founder_voice:1|math_Div_8-8|school/game/cards/card_1_165.pbm|5B66F0E4C05EFAAD
-9 / 9 = ?|founder_voice:math_Div_9-9|math_Div_9-9|school/game/cards/card_9___9_____166.pbm|13B8FE25C39BD40D
+9 / 9 = ?|founder_voice:math_Div_9-9|math_Div_9-9|school/game/cards/card_9___9_____166.pbm|00BCAC07291D31AD
 1|founder_voice:1|math_Div_9-9|school/game/cards/card_1_167.pbm|5B66F0E4C05EFAAD
-10 / 10 = ?|founder_voice:math_Div_10-10|math_Div_10-10|school/game/cards/card_10___10_____168.pbm|9C53E281EFEC74AD
+10 / 10 = ?|founder_voice:math_Div_10-10|math_Div_10-10|school/game/cards/card_10___10_____168.pbm|59A404D7A5ECC44D
 1|founder_voice:1|math_Div_10-10|school/game/cards/card_1_169.pbm|5B66F0E4C05EFAAD
-11 / 11 = ?|founder_voice:math_Div_11-11|math_Div_11-11|school/game/cards/card_11___11_____170.pbm|B3CC0F75330A708D
+11 / 11 = ?|founder_voice:math_Div_11-11|math_Div_11-11|school/game/cards/card_11___11_____170.pbm|711C31CAE90AC02D
 1|founder_voice:1|math_Div_11-11|school/game/cards/card_1_171.pbm|5B66F0E4C05EFAAD
-12 / 12 = ?|founder_voice:math_Div_12-12|math_Div_12-12|school/game/cards/card_12___12_____172.pbm|4748D81132955F0D
+12 / 12 = ?|founder_voice:math_Div_12-12|math_Div_12-12|school/game/cards/card_12___12_____172.pbm|0498FA66E895AEAD
 1|founder_voice:1|math_Div_12-12|school/game/cards/card_1_173.pbm|5B66F0E4C05EFAAD
-13 / 13 = ?|founder_voice:math_Div_13-13|math_Div_13-13|school/game/cards/card_13___13_____174.pbm|EB53DDFDD306382D
+13 / 13 = ?|founder_voice:math_Div_13-13|math_Div_13-13|school/game/cards/card_13___13_____174.pbm|A8A40053890687CD
 1|founder_voice:1|math_Div_13-13|school/game/cards/card_1_175.pbm|5B66F0E4C05EFAAD
-14 / 14 = ?|founder_voice:math_Div_14-14|math_Div_14-14|school/game/cards/card_14___14_____176.pbm|6AC8071A4C4ECD0D
+14 / 14 = ?|founder_voice:math_Div_14-14|math_Div_14-14|school/game/cards/card_14___14_____176.pbm|28182970024F1CAD
 1|founder_voice:1|math_Div_14-14|school/game/cards/card_1_177.pbm|5B66F0E4C05EFAAD
-15 / 15 = ?|founder_voice:math_Div_15-15|math_Div_15-15|school/game/cards/card_15___15_____178.pbm|77758627C241D26D
+15 / 15 = ?|founder_voice:math_Div_15-15|math_Div_15-15|school/game/cards/card_15___15_____178.pbm|34C5A87D7842220D
 1|founder_voice:1|math_Div_15-15|school/game/cards/card_1_179.pbm|5B66F0E4C05EFAAD
-16 / 16 = ?|founder_voice:math_Div_16-16|math_Div_16-16|school/game/cards/card_16___16_____180.pbm|18AA49E3FCCE994D
+16 / 16 = ?|founder_voice:math_Div_16-16|math_Div_16-16|school/game/cards/card_16___16_____180.pbm|D5FA6C39B2CEE8ED
 1|founder_voice:1|math_Div_16-16|school/game/cards/card_1_181.pbm|5B66F0E4C05EFAAD
-17 / 17 = ?|founder_voice:math_Div_17-17|math_Div_17-17|school/game/cards/card_17___17_____182.pbm|A8C89591B7920BAD
+17 / 17 = ?|founder_voice:math_Div_17-17|math_Div_17-17|school/game/cards/card_17___17_____182.pbm|6618B7E76D925B4D
 1|founder_voice:1|math_Div_17-17|school/game/cards/card_1_183.pbm|5B66F0E4C05EFAAD
-18 / 18 = ?|founder_voice:math_Div_18-18|math_Div_18-18|school/game/cards/card_18___18_____184.pbm|FBC415F01F58FA6D
+18 / 18 = ?|founder_voice:math_Div_18-18|math_Div_18-18|school/game/cards/card_18___18_____184.pbm|B9143845D5594A0D
 1|founder_voice:1|math_Div_18-18|school/game/cards/card_1_185.pbm|5B66F0E4C05EFAAD
-19 / 19 = ?|founder_voice:math_Div_19-19|math_Div_19-19|school/game/cards/card_19___19_____186.pbm|60A60AC69CADE14D
+19 / 19 = ?|founder_voice:math_Div_19-19|math_Div_19-19|school/game/cards/card_19___19_____186.pbm|1DF62D1C52AE30ED
 1|founder_voice:1|math_Div_19-19|school/game/cards/card_1_187.pbm|5B66F0E4C05EFAAD
-20 / 20 = ?|founder_voice:math_Div_20-20|math_Div_20-20|school/game/cards/card_20___20_____188.pbm|C7539383DEC5732D
+20 / 20 = ?|founder_voice:math_Div_20-20|math_Div_20-20|school/game/cards/card_20___20_____188.pbm|84A3B5D994C5C2CD
 1|founder_voice:1|math_Div_20-20|school/game/cards/card_1_189.pbm|5B66F0E4C05EFAAD
-2 / 1 = ?|founder_voice:math_Div_2-1|math_Div_2-1|school/game/cards/card_2___1_____190.pbm|0230C6FA61ADF28D
+2 / 1 = ?|founder_voice:math_Div_2-1|math_Div_2-1|school/game/cards/card_2___1_____190.pbm|EF3474DBC72F502D
 2|founder_voice:2|math_Div_2-1|school/game/cards/card_2_191.pbm|D0900D7153FBA5ED
-4 / 2 = ?|founder_voice:math_Div_4-2|math_Div_4-2|school/game/cards/card_4___2_____192.pbm|A00ED36D857144CD
+4 / 2 = ?|founder_voice:math_Div_4-2|math_Div_4-2|school/game/cards/card_4___2_____192.pbm|8D12814EEAF2A26D
 2|founder_voice:2|math_Div_4-2|school/game/cards/card_2_193.pbm|D0900D7153FBA5ED
-6 / 3 = ?|founder_voice:math_Div_6-3|math_Div_6-3|school/game/cards/card_6___3_____194.pbm|DF83877B2C40A27D
+6 / 3 = ?|founder_voice:math_Div_6-3|math_Div_6-3|school/game/cards/card_6___3_____194.pbm|CC87355C91C2001D
 2|founder_voice:2|math_Div_6-3|school/game/cards/card_2_195.pbm|D0900D7153FBA5ED
-8 / 4 = ?|founder_voice:math_Div_8-4|math_Div_8-4|school/game/cards/card_8___4_____196.pbm|DBD96467C14EB57D
+8 / 4 = ?|founder_voice:math_Div_8-4|math_Div_8-4|school/game/cards/card_8___4_____196.pbm|C8DD124926D0131D
 2|founder_voice:2|math_Div_8-4|school/game/cards/card_2_197.pbm|D0900D7153FBA5ED
-10 / 5 = ?|founder_voice:math_Div_10-5|math_Div_10-5|school/game/cards/card_10___5_____198.pbm|5F5818636206ECED
+10 / 5 = ?|founder_voice:math_Div_10-5|math_Div_10-5|school/game/cards/card_10___5_____198.pbm|C446A16B4595D88D
 2|founder_voice:2|math_Div_10-5|school/game/cards/card_2_199.pbm|D0900D7153FBA5ED
