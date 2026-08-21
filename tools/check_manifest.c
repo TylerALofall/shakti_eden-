@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-static unsigned long long fnv_file(const char *path, int *ok)
+static unsigned long long fnv_file__check_manifest_h(const char *path, int *ok)
 {
     FILE *f = fopen(path, "rb");
     unsigned long long h = 0xcbf29ce484222325ULL;
@@ -16,7 +16,8 @@ static unsigned long long fnv_file(const char *path, int *ok)
     return h;
 }
 
-int main(void)
+#define CHECK_MANIFEST_MAIN main
+int CHECK_MANIFEST_MAIN(void)
 {
     FILE *m = fopen("MANIFEST.fnv64.txt", "r");
     if (!m) { printf("STOP: no manifest\n"); return 1; }
@@ -25,7 +26,7 @@ int main(void)
         unsigned long long want; char path[256];
         if (sscanf(line, "%16llX  %255s", &want, path) != 2) continue;
         if (!strchr(path, '/')) continue; /* skip prose header lines */
-        int ok; unsigned long long got = fnv_file(path, &ok);
+        int ok; unsigned long long got = fnv_file__check_manifest_h(path, &ok);
         total++;
         if (!ok || got != want) {
             printf("MISMATCH %s: manifest %016llX, pulled %016llX\n", path, want, got);
