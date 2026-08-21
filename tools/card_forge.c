@@ -140,19 +140,31 @@ int main(int argc, char **argv)
         }
         fclose(p);
 
-        /* SIGHT: read the image back through her eyes — binary grid,
-         * Bayer 4x4 order check (binary source: drift must be 0),
-         * hash the grid as seen */
+        /* SIGHT: read the WRITTEN image back from disk through her eyes —
+         * not her memory of it. binary grid, drift must be 0,
+         * FNV-1a 64 over the pixels as actually stored. */
         unsigned long long h = 0xcbf29ce484222325ULL;
         int drift = 0;
-        static const int bayer[4][4] = {{0,8,2,10},{12,4,14,6},{3,11,1,9},{15,7,13,5}};
-        (void)bayer;
-        for (int y = 0; y < IMG_H; y++)
-            for (int x = 0; x < IMG_W; x++) {
-                unsigned char px = img[y][x];
-                h ^= px; h *= 0x100000001b3ULL;
-                if (px > 1) drift++;
+        FILE *g = fopen(path, "r");
+        if (!g) { printf("STOP: sight reopen %s\n", path); return 1; }
+        {
+            char magic[8]; int rw, rh;
+            if (fscanf(g, "%2s %d %d", magic, &rw, &rh) != 3 ||
+                magic[0] != 'P' || magic[1] != '1' || rw != IMG_W || rh != IMG_H) {
+                printf("STOP: sight header mismatch on %s\n", path); return 1;
             }
+            for (int y = 0; y < IMG_H; y++)
+                for (int x = 0; x < IMG_W; x++) {
+                    int c2 = fgetc(g);
+                    while (c2 == '\n' || c2 == '\r' || c2 == ' ') c2 = fgetc(g);
+                    if (c2 != '0' && c2 != '1') { printf("STOP: sight drift on %s\n", path); return 1; }
+                    unsigned char px = (unsigned char)(c2 - '0');
+                    if (px != img[y][x]) { printf("STOP: sight disagrees with memory on %s\n", path); return 1; }
+                    h ^= px; h *= 0x100000001b3ULL;
+                    if (px > 1) drift++;
+                }
+        }
+        fclose(g);
         if (drift != 0) { printf("STOP: sight drift %d on %s\n", drift, sym); return 1; }
 
         fprintf(out, "%s|%s|%s|%s|%016llX\n", sym, voice, cls, path, h);

@@ -84,12 +84,12 @@ static void draw_text(int x, int y, int fs, const char *s, int W, int H)
     }
 }
 
-static int render(const char *path, int *Wp, int *Hp)
+static int render(const char *path, int *Wp, int *Hp, int *unsup)
 {
     FILE *f = fopen(path, "r");
     if (!f) return -1;
     char line[1024];
-    int W = 0, H = 0;
+    int W = 0, H = 0; *unsup = 0;
     while (fgets(line, sizeof line, f)) {
         int a, b, c, d;
         if (sscanf(line, " <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 %d %d\"", &a, &b) == 2) { W = a; H = b; continue; }
@@ -116,6 +116,9 @@ static int render(const char *path, int *Wp, int *Hp)
             }
             continue;
         }
+        if (strstr(line, "</svg") || strstr(line, "<rect")) continue; /* close tag, white bg */
+        /* honest empty set: an element we do not understand is never silent */
+        if (strchr(line, '<')) (*unsup)++;
     }
     fclose(f);
     if (W <= 0 || H <= 0 || W > MAXW || H > MAXH) return -1;
@@ -156,10 +159,15 @@ int main(int argc, char **argv)
         char in[512], out[512], base[256];
         snprintf(in, sizeof in, "%s/%s", argv[1], fname);
         snprintf(base, sizeof base, "%.*s", (int)(nl - 4), fname);
-        int W, H;
+        int W, H, unsup = 0;
         memset(img, 0, sizeof img);
-        if (render(in, &W, &H) != 0) {
+        if (render(in, &W, &H, &unsup) != 0) {
             fprintf(sl, "see: %-40s UNVERIFIED — could not rasterize purely\n", fname);
+            failed++;
+            continue;
+        }
+        if (unsup > 0) {
+            fprintf(sl, "see: %-40s UNVERIFIED — %d unsupported element(s), refused to guess\n", fname, unsup);
             failed++;
             continue;
         }

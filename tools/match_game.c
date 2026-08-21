@@ -78,10 +78,18 @@ static int lt_known(const char *s, const char *c)
     return 0;
 }
 
+/* bounded copy — no unbounded writes anywhere in Eden */
+static void bcopy(char *dst, const char *src, size_t cap)
+{
+    size_t i;
+    for (i = 0; i + 1 < cap && src[i]; i++) dst[i] = src[i];
+    dst[i] = 0;
+}
+
 static void lt_add(const char *s, const char *c)
 {
     if (nlt < MAXMEM && !lt_known(s, c)) {
-        strcpy(ltsym[nlt], s); strcpy(ltcls[nlt], c); nlt++;
+        bcopy(ltsym[nlt], s, SYMLEN); bcopy(ltcls[nlt], c, CLASSLEN); nlt++;
     }
 }
 
@@ -96,7 +104,7 @@ static int lt_load(void)
         *bar = 0;
         line[strcspn(line, "\r\n")] = 0;
         char *c = bar + 1; c[strcspn(c, "\r\n")] = 0;
-        strcpy(ltsym[nlt], line); strcpy(ltcls[nlt], c); nlt++;
+        bcopy(ltsym[nlt], line, SYMLEN); bcopy(ltcls[nlt], c, CLASSLEN); nlt++;
     }
     fclose(f);
     return nlt;
@@ -104,10 +112,18 @@ static int lt_load(void)
 
 static void lt_save(void)
 {
-    FILE *f = fopen("school/game/memory_long.txt", "w");
+    /* hardened: write temp, verify the temp, then rename —
+     * a failed run can never truncate her long-term memory */
+    FILE *f = fopen("school/game/memory_long.txt.tmp", "w");
     if (!f) return;
     for (int i = 0; i < nlt; i++) fprintf(f, "%s|%s\n", ltsym[i], ltcls[i]);
     fclose(f);
+    f = fopen("school/game/memory_long.txt.tmp", "r");
+    if (!f) return;
+    int n = 0; char vline[LOGLEN];
+    while (fgets(vline, sizeof vline, f)) n++;
+    fclose(f);
+    if (n == nlt) rename("school/game/memory_long.txt.tmp", "school/game/memory_long.txt");
 }
 
 static void speak(FILE *log, int pos)
@@ -128,8 +144,8 @@ static int cards_match(int a, int b)
 static void learn(int pos)
 {
     seen[pos] = 1;
-    strcpy(memsym[pos], sym[pos]);
-    strcpy(memcls[pos], cls[pos]);
+    bcopy(memsym[pos], sym[pos], SYMLEN);
+    bcopy(memcls[pos], cls[pos], CLASSLEN);
 }
 
 /* SHAKTI: perfect recall. returns 1 if match found. */
@@ -238,10 +254,10 @@ int main(int argc, char **argv)
         }
         c[strcspn(c, "\r\n")] = 0;
         line[strcspn(line, "\r\n")] = 0;
-        strcpy(bs[nb], line); strcpy(bv[nb], b1 + 1); strcpy(bc[nb], c);
+        bcopy(bs[nb], line, SYMLEN); bcopy(bv[nb], b1 + 1, VOICELEN); bcopy(bc[nb], c, CLASSLEN);
         bi[nb][0] = 0; bh[nb][0] = 0;
-        if (ip) strcpy(bi[nb], ip);
-        if (hp) strcpy(bh[nb], hp);
+        if (ip) bcopy(bi[nb], ip, PATHLEN);
+        if (hp) bcopy(bh[nb], hp, 24);
         nb++;
     }
     fclose(d);
@@ -250,10 +266,10 @@ int main(int argc, char **argv)
     /* two sets, then deterministic shuffle seeded by the deck itself */
     ncards = nb * 2;
     for (int i = 0; i < nb; i++) {
-        strcpy(sym[i], bs[i]); strcpy(voice[i], bv[i]); strcpy(cls[i], bc[i]);
-        strcpy(img[i], bi[i]); strcpy(sighth[i], bh[i]);
-        strcpy(sym[i+nb], bs[i]); strcpy(voice[i+nb], bv[i]); strcpy(cls[i+nb], bc[i]);
-        strcpy(img[i+nb], bi[i]); strcpy(sighth[i+nb], bh[i]);
+        bcopy(sym[i], bs[i], SYMLEN); bcopy(voice[i], bv[i], VOICELEN); bcopy(cls[i], bc[i], CLASSLEN);
+        bcopy(img[i], bi[i], PATHLEN); bcopy(sighth[i], bh[i], 24);
+        bcopy(sym[i+nb], bs[i], SYMLEN); bcopy(voice[i+nb], bv[i], VOICELEN); bcopy(cls[i+nb], bc[i], CLASSLEN);
+        bcopy(img[i+nb], bi[i], PATHLEN); bcopy(sighth[i+nb], bh[i], 24);
     }
     unsigned long long seed = 0xcbf29ce484222325ULL;
     for (int i = 0; i < ncards; i++) {
@@ -265,11 +281,11 @@ int main(int argc, char **argv)
     for (int i = ncards - 1; i > 0; i--) {  /* Fisher-Yates with LCG */
         int j = (int)(lcg() % (unsigned)(i + 1));
         char ts[SYMLEN], tv[VOICELEN], tc[CLASSLEN], ti[PATHLEN], th[24];
-        strcpy(ts, sym[i]); strcpy(sym[i], sym[j]); strcpy(sym[j], ts);
-        strcpy(tv, voice[i]); strcpy(voice[i], voice[j]); strcpy(voice[j], tv);
-        strcpy(tc, cls[i]); strcpy(cls[i], cls[j]); strcpy(cls[j], tc);
-        strcpy(ti, img[i]); strcpy(img[i], img[j]); strcpy(img[j], ti);
-        strcpy(th, sighth[i]); strcpy(sighth[i], sighth[j]); strcpy(sighth[j], th);
+        bcopy(ts, sym[i], SYMLEN); bcopy(sym[i], sym[j], SYMLEN); bcopy(sym[j], ts, SYMLEN);
+        bcopy(tv, voice[i], VOICELEN); bcopy(voice[i], voice[j], VOICELEN); bcopy(voice[j], tv, VOICELEN);
+        bcopy(tc, cls[i], CLASSLEN); bcopy(cls[i], cls[j], CLASSLEN); bcopy(cls[j], tc, CLASSLEN);
+        bcopy(ti, img[i], PATHLEN); bcopy(img[i], img[j], PATHLEN); bcopy(img[j], ti, PATHLEN);
+        bcopy(th, sighth[i], 24); bcopy(sighth[i], sighth[j], 24); bcopy(sighth[j], th, 24);
     }
 
     FILE *log = fopen(argv[4], "w");
@@ -286,7 +302,7 @@ int main(int argc, char **argv)
     int born_known = 0;
     for (int i = 0; i < ncards; i++)
         if (lt_known(sym[i], cls[i])) {
-            seen[i] = 1; strcpy(memsym[i], sym[i]); strcpy(memcls[i], cls[i]);
+            seen[i] = 1; bcopy(memsym[i], sym[i], SYMLEN); bcopy(memcls[i], cls[i], CLASSLEN);
             born_known++;
         }
     fprintf(log, "LONG-TERM MEMORY: %d entries loaded, %d cards on this table already known\n\n",
