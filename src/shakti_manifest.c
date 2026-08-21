@@ -9,7 +9,7 @@
 #include "shakti_tablet.h"
 #include "shakti_score.h"
 
-static char *trim_text(char *text)
+static char *trim_text__manifest_h(char *text)
 {
     char *end;
 
@@ -31,7 +31,7 @@ static char *trim_text(char *text)
     return text;
 }
 
-static int xml_unescape(
+static int xml_unescape__manifest_h(
     const char *source,
     char *destination,
     size_t destination_size
@@ -79,7 +79,7 @@ static int xml_unescape(
     return 1;
 }
 
-static int extract_tag(
+static int extract_tag__manifest_h(
     const char *line,
     const char *tag,
     char *destination,
@@ -131,14 +131,14 @@ static int extract_tag(
     memcpy(encoded, start, length);
     encoded[length] = '\0';
 
-    return xml_unescape(
+    return xml_unescape__manifest_h(
         encoded,
         destination,
         destination_size
     );
 }
 
-static int extract_order(
+static int extract_order__manifest_h(
     const char *line,
     const char *element,
     unsigned int *order
@@ -300,7 +300,7 @@ static int requirements_are_valid(
         const shakti_manifest_level_t *required;
         char *trimmed;
 
-        trimmed = trim_text(token);
+        trimmed = trim_text__manifest_h(token);
         required = find_level(manifest, trimmed);
 
         if (required == NULL ||
@@ -464,7 +464,7 @@ int shakti_manifest_load(
             return 0;
         }
 
-        trimmed = trim_text(line);
+        trimmed = trim_text__manifest_h(line);
 
         if (strcmp(
                 trimmed,
@@ -478,7 +478,7 @@ int shakti_manifest_load(
                 inside_tablet ||
                 manifest->level_count >=
                     SHAKTI_MAX_MANIFEST_LEVELS ||
-                !extract_order(
+                !extract_order__manifest_h(
                     trimmed,
                     "level",
                     &current_level.order)) {
@@ -511,7 +511,7 @@ int shakti_manifest_load(
                 inside_tablet ||
                 manifest->tablet_count >=
                     SHAKTI_MAX_MANIFEST_TABLETS ||
-                !extract_order(
+                !extract_order__manifest_h(
                     trimmed,
                     "tablet",
                     &current_tablet.order) ||
@@ -549,19 +549,19 @@ int shakti_manifest_load(
 
             field = 0U;
 
-            if (extract_tag(
+            if (extract_tag__manifest_h(
                     trimmed,
                     "id",
                     current_level.id,
                     sizeof(current_level.id))) {
                 field = 1U;
-            } else if (extract_tag(
+            } else if (extract_tag__manifest_h(
                     trimmed,
                     "title",
                     current_level.title,
                     sizeof(current_level.title))) {
                 field = 2U;
-            } else if (extract_tag(
+            } else if (extract_tag__manifest_h(
                     trimmed,
                     "requires",
                     current_level.requires,
@@ -586,37 +586,37 @@ int shakti_manifest_load(
 
             field = 0U;
 
-            if (extract_tag(
+            if (extract_tag__manifest_h(
                     trimmed,
                     "level",
                     current_tablet.level,
                     sizeof(current_tablet.level))) {
                 field = 1U;
-            } else if (extract_tag(
+            } else if (extract_tag__manifest_h(
                     trimmed,
                     "lesson",
                     current_tablet.lesson,
                     sizeof(current_tablet.lesson))) {
                 field = 2U;
-            } else if (extract_tag(
+            } else if (extract_tag__manifest_h(
                     trimmed,
                     "mode",
                     current_tablet.mode,
                     sizeof(current_tablet.mode))) {
                 field = 4U;
-            } else if (extract_tag(
+            } else if (extract_tag__manifest_h(
                     trimmed,
                     "requires",
                     current_tablet.requires,
                     sizeof(current_tablet.requires))) {
                 field = 8U;
-            } else if (extract_tag(
+            } else if (extract_tag__manifest_h(
                     trimmed,
                     "state",
                     current_tablet.state,
                     sizeof(current_tablet.state))) {
                 field = 16U;
-            } else if (extract_tag(
+            } else if (extract_tag__manifest_h(
                     trimmed,
                     "path",
                     current_tablet.path,
@@ -636,12 +636,12 @@ int shakti_manifest_load(
             continue;
         }
 
-        if (extract_tag(
+        if (extract_tag__manifest_h(
                 trimmed,
                 "status",
                 manifest->status,
                 sizeof(manifest->status)) ||
-            extract_tag(
+            extract_tag__manifest_h(
                 trimmed,
                 "artifact_root",
                 manifest->artifact_root,

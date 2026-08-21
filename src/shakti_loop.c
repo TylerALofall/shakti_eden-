@@ -29,7 +29,7 @@ static const char *REFLECTION_QUESTIONS[] = {
 #define REFLECTION_QUESTION_COUNT \
     (sizeof(REFLECTION_QUESTIONS) / sizeof(REFLECTION_QUESTIONS[0]))
 
-static void copy_text(
+static void copy_text__loop_h(
     char *destination,
     size_t destination_size,
     const char *source
@@ -56,7 +56,7 @@ static void copy_text(
     destination[length] = '\0';
 }
 
-static char *trim_text(char *text)
+static char *trim_text__loop_h(char *text)
 {
     char *end;
 
@@ -143,7 +143,7 @@ static int parse_menu(shakti_loop_state_t *state)
         return 0;
     }
 
-    copy_text(buffer, sizeof(buffer), state->menu_text);
+    copy_text__loop_h(buffer, sizeof(buffer), state->menu_text);
     state->menu_section_count = 0U;
     current = NULL;
     line = strtok(buffer, "\n");
@@ -151,7 +151,7 @@ static int parse_menu(shakti_loop_state_t *state)
     while (line != NULL) {
         char *trimmed;
 
-        trimmed = trim_text(line);
+        trimmed = trim_text__loop_h(line);
 
         if (trimmed[0] == '[') {
             char *close;
@@ -171,7 +171,7 @@ static int parse_menu(shakti_loop_state_t *state)
                     current =
                         &state->menu_sections[state->menu_section_count];
                     memset(current, 0, sizeof(*current));
-                    copy_text(
+                    copy_text__loop_h(
                         current->title,
                         sizeof(current->title),
                         trimmed + 1
@@ -525,7 +525,7 @@ int shakti_loop_set_goal(
         return 0;
     }
 
-    copy_text(runtime->loop.goal, sizeof(runtime->loop.goal), goal);
+    copy_text__loop_h(runtime->loop.goal, sizeof(runtime->loop.goal), goal);
 
     if (!shakti_memory_reload_goal(
             &runtime->memory,
@@ -792,7 +792,7 @@ int shakti_loop_run_reflection(
         {
             char *trimmed;
 
-            trimmed = trim_text(answer);
+            trimmed = trim_text__loop_h(answer);
 
             if (trimmed[0] == '\0') {
                 trimmed = "(left blank)";
