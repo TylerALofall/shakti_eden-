@@ -14,7 +14,7 @@ static unsigned char g_original[EYES_XML_RGBA_CAPACITY];
 static unsigned char g_rebuilt[EYES_XML_RGBA_CAPACITY];
 
 /* Section 2: small strict parser helpers. */
-static void strip_line_end(char *line)
+static void strip_line_end__xml_rebuild_h(char *line)
 {
     unsigned long length;
 
@@ -45,7 +45,7 @@ static int read_line(FILE *file, char *line, unsigned long capacity)
         return 0;
     }
 
-    strip_line_end(line);
+    strip_line_end__xml_rebuild_h(line);
     return 1;
 }
 
