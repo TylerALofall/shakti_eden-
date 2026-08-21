@@ -24,7 +24,7 @@ static const char *COUNTING_WORDS[COUNTING_STONES] = {
     "six", "seven", "eight", "nine", "ten"
 };
 
-static int xml_write_escaped(FILE *file, const char *text)
+static int xml_write_escaped__seed_h(FILE *file, const char *text)
 {
     while (*text != '\0') {
         const char *entity;
@@ -65,7 +65,7 @@ static int xml_write_escaped(FILE *file, const char *text)
     return 1;
 }
 
-static int write_tag(
+static int write_tag__seed_h(
     FILE *file,
     const char *indent,
     const char *tag,
@@ -73,11 +73,11 @@ static int write_tag(
 )
 {
     return fprintf(file, "%s<%s>", indent, tag) >= 0 &&
-           xml_write_escaped(file, value) &&
+           xml_write_escaped__seed_h(file, value) &&
            fprintf(file, "</%s>\n", tag) >= 0;
 }
 
-static int append_text(
+static int append_text__seed_h(
     char *destination,
     size_t destination_size,
     const char *text
@@ -105,11 +105,11 @@ static int append_sound_clip(
 )
 {
     if (sequence[0] != '\0' &&
-        !append_text(sequence, sequence_size, "|")) {
+        !append_text__seed_h(sequence, sequence_size, "|")) {
         return 0;
     }
 
-    return append_text(sequence, sequence_size, clip);
+    return append_text__seed_h(sequence, sequence_size, clip);
 }
 
 static int append_character_sound(
@@ -396,10 +396,10 @@ static int write_stone_header(
 )
 {
     return fprintf(file, "  <stone order=\"%u\">\n", order) > 0 &&
-           write_tag(file, "    ", "text", text) &&
-           write_tag(file, "    ", "written_text", written) &&
-           write_tag(file, "    ", "sound_art", sound) &&
-           write_tag(file, "    ", "visual_art", visual);
+           write_tag__seed_h(file, "    ", "text", text) &&
+           write_tag__seed_h(file, "    ", "written_text", written) &&
+           write_tag__seed_h(file, "    ", "sound_art", sound) &&
+           write_tag__seed_h(file, "    ", "visual_art", visual);
 }
 
 static int write_tablet_start(
@@ -501,7 +501,7 @@ static int build_ascii(
         snprintf(ascii_code, sizeof(ascii_code), "%u", character);
 
         success =
-            write_tag(xml, "    ", "ascii_code", ascii_code) &&
+            write_tag__seed_h(xml, "    ", "ascii_code", ascii_code) &&
             fprintf(xml, "  </stone>\n") > 0;
     }
 
@@ -600,9 +600,9 @@ static int build_counting(
         );
 
         success =
-            write_tag(xml, "    ", "numeral", number) &&
-            write_tag(xml, "    ", "quantity", number) &&
-            write_tag(xml, "    ", "duration_ms", duration) &&
+            write_tag__seed_h(xml, "    ", "numeral", number) &&
+            write_tag__seed_h(xml, "    ", "quantity", number) &&
+            write_tag__seed_h(xml, "    ", "duration_ms", duration) &&
             fprintf(xml, "  </stone>\n") > 0;
     }
 
@@ -673,7 +673,7 @@ static int build_alphabet_solo(
         snprintf(position, sizeof(position), "%u", index + 1U);
 
         success =
-            write_tag(xml, "    ", "alphabet_position", position) &&
+            write_tag__seed_h(xml, "    ", "alphabet_position", position) &&
             fprintf(xml, "  </stone>\n") > 0;
     }
 
@@ -752,10 +752,10 @@ static int build_case_pairs_and_counting(
         snprintf(position, sizeof(position), "%u", index + 1U);
 
         success =
-            write_tag(xml, "    ", "uppercase", upper) &&
-            write_tag(xml, "    ", "lowercase", lower) &&
-            write_tag(xml, "    ", "alphabet_position", position) &&
-            write_tag(xml, "    ", "bridge_kind", "case_pair") &&
+            write_tag__seed_h(xml, "    ", "uppercase", upper) &&
+            write_tag__seed_h(xml, "    ", "lowercase", lower) &&
+            write_tag__seed_h(xml, "    ", "alphabet_position", position) &&
+            write_tag__seed_h(xml, "    ", "bridge_kind", "case_pair") &&
             fprintf(xml, "  </stone>\n") > 0;
 
         order++;
@@ -829,10 +829,10 @@ static int build_case_pairs_and_counting(
         snprintf(position, sizeof(position), "%u", index + 1U);
 
         success =
-            write_tag(xml, "    ", "quantity", position) &&
-            write_tag(xml, "    ", "uppercase", upper) &&
-            write_tag(xml, "    ", "lowercase", lower) &&
-            write_tag(xml, "    ", "bridge_kind", "counting_case") &&
+            write_tag__seed_h(xml, "    ", "quantity", position) &&
+            write_tag__seed_h(xml, "    ", "uppercase", upper) &&
+            write_tag__seed_h(xml, "    ", "lowercase", lower) &&
+            write_tag__seed_h(xml, "    ", "bridge_kind", "counting_case") &&
             fprintf(xml, "  </stone>\n") > 0;
 
         order++;
@@ -883,12 +883,12 @@ static int write_sequence_stone(
         sequence_length
     );
 
-    return write_tag(
+    return write_tag__seed_h(
                xml,
                "    ",
                "sequence_kind",
                sequence_kind) &&
-           write_tag(
+           write_tag__seed_h(
                xml,
                "    ",
                "sequence_length",
@@ -932,7 +932,7 @@ static int build_growing_sequences(
         character[1] = '\0';
 
         success =
-            append_text(
+            append_text__seed_h(
                 sequence,
                 sizeof(sequence),
                 character) &&
@@ -959,7 +959,7 @@ static int build_growing_sequences(
         character[1] = '\0';
 
         success =
-            append_text(
+            append_text__seed_h(
                 sequence,
                 sizeof(sequence),
                 character) &&
@@ -986,7 +986,7 @@ static int build_growing_sequences(
         pair[2] = '\0';
 
         success =
-            append_text(
+            append_text__seed_h(
                 sequence,
                 sizeof(sequence),
                 pair) &&
@@ -1117,7 +1117,8 @@ int shakti_build_seed_curriculum(
 }
 
 #ifndef SHAKTI_TOOL_NO_MAIN
-int main(int argc, char **argv)
+#define BUILD_SEED_CURRICULUM_MAIN main
+int BUILD_SEED_CURRICULUM_MAIN(int argc, char **argv)
 {
     if (argc != 3) {
         fprintf(

@@ -864,7 +864,7 @@ static void test_mvp(const char *root)
         "/status/\n"
         "/resume/\n"
         "/shakti_run/ school +\n"
-        "+\n+\n+\n+\n+\n+\n+\n+\n+\n+\n"
+        "+\n+\n+\n+\n+\n+\n+\n+\n+\n+\n+\n"
         "/quit/\n"
     );
 
@@ -934,7 +934,8 @@ static void test_mvp(const char *root)
 
 /* ------------------------------------------------------------------ */
 
-int main(void)
+#define TEST_INTEGRATION_MAIN main
+int TEST_INTEGRATION_MAIN(void)
 {
     char root[1024];
 
