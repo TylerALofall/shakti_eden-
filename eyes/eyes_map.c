@@ -481,7 +481,8 @@ static unsigned long sweep_breaking_point(FILE *summary)
     return first_error;
 }
 
-int main(void)
+#define EYES_MAP_MAIN main
+int EYES_MAP_MAIN(void)
 {
     static const eyes_text_page_t page_hi = { "HI EDEN", "ABC 123", "" };
     static const eyes_text_page_t page_one = { "A", "", "" };

@@ -49,7 +49,7 @@ static int read_line(FILE *file, char *line, unsigned long capacity)
     return 1;
 }
 
-static int append_text(
+static int append_text__xml_rebuild_h(
     char *buffer,
     unsigned long capacity,
     unsigned long *used,
@@ -75,7 +75,7 @@ static int append_text(
     return 1;
 }
 
-static int build_document_path(
+static int build_document_path__xml_rebuild_h(
     const char *tag,
     char *path,
     unsigned long capacity
@@ -90,9 +90,9 @@ static int build_document_path(
     path[0] = '\0';
     used = 0UL;
 
-    return append_text(path, capacity, &used, EYES_XML_OUTPUT_DIR "/") &&
-           append_text(path, capacity, &used, tag) &&
-           append_text(path, capacity, &used, "_document.xml");
+    return append_text__xml_rebuild_h(path, capacity, &used, EYES_XML_OUTPUT_DIR "/") &&
+           append_text__xml_rebuild_h(path, capacity, &used, tag) &&
+           append_text__xml_rebuild_h(path, capacity, &used, "_document.xml");
 }
 
 static int argument_is_xml_path(const char *argument)
@@ -113,7 +113,7 @@ static int argument_is_xml_path(const char *argument)
            strcmp(argument + length - 4U, ".xml") == 0;
 }
 
-static int parse_unsigned(const char **cursor, unsigned int *value_out)
+static int parse_unsigned__xml_rebuild_h(const char **cursor, unsigned int *value_out)
 {
     unsigned long value;
     unsigned int digit_count;
@@ -173,7 +173,7 @@ static int parse_document_open(const char *line, unsigned int *page_count_out)
     cursor = line;
 
     return match_text(&cursor, "<EYES_DOCUMENT version=\"1\" pages=\"") &&
-           parse_unsigned(&cursor, page_count_out) &&
+           parse_unsigned__xml_rebuild_h(&cursor, page_count_out) &&
            match_text(&cursor, "\">") &&
            *cursor == '\0';
 }
@@ -192,11 +192,11 @@ static int parse_page_open(
     cursor = line;
 
     if (!match_text(&cursor, "  <PAGE number=\"") ||
-        !parse_unsigned(&cursor, &page->number) ||
+        !parse_unsigned__xml_rebuild_h(&cursor, &page->number) ||
         !match_text(&cursor, "\" width=\"") ||
-        !parse_unsigned(&cursor, &page->width) ||
+        !parse_unsigned__xml_rebuild_h(&cursor, &page->width) ||
         !match_text(&cursor, "\" height=\"") ||
-        !parse_unsigned(&cursor, &page->height) ||
+        !parse_unsigned__xml_rebuild_h(&cursor, &page->height) ||
         !match_text(&cursor, "\" kind=\"mono\">") ||
         *cursor != '\0') {
         return 0;
@@ -319,7 +319,8 @@ int eyes_xml_read_document(
 }
 
 /* Section 4: deterministic rebuild entry point. */
-int main(int argc, char **argv)
+#define EYES_XML_REBUILD_MAIN main
+int EYES_XML_REBUILD_MAIN(int argc, char **argv)
 {
     const char *xml_path;
     char default_path[EYES_XML_PATH_CAPACITY];
@@ -339,7 +340,7 @@ int main(int argc, char **argv)
 
         tag = argc == 2 && argv[1][0] != '\0' ? argv[1] : EYES_XML_DEFAULT_TAG;
 
-        if (!build_document_path(tag, default_path, sizeof(default_path))) {
+        if (!build_document_path__xml_rebuild_h(tag, default_path, sizeof(default_path))) {
             printf("FAIL: path build\n");
             return 1;
         }

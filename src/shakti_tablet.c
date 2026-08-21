@@ -9,7 +9,7 @@
 #include "shakti_config.h"
 #include "shakti_score.h"
 
-static char *trim_text(char *text)
+static char *trim_text__tablet_h(char *text)
 {
     char *end;
 
@@ -31,7 +31,7 @@ static char *trim_text(char *text)
     return text;
 }
 
-static int xml_unescape(
+static int xml_unescape__tablet_h(
     const char *source,
     char *destination,
     size_t destination_size
@@ -79,7 +79,7 @@ static int xml_unescape(
     return 1;
 }
 
-static int extract_tag(
+static int extract_tag__tablet_h(
     const char *line,
     const char *tag,
     char *destination,
@@ -131,14 +131,14 @@ static int extract_tag(
     memcpy(encoded, start, length);
     encoded[length] = '\0';
 
-    return xml_unescape(
+    return xml_unescape__tablet_h(
         encoded,
         destination,
         destination_size
     );
 }
 
-static int extract_order(
+static int extract_order__tablet_h(
     const char *line,
     const char *element,
     unsigned int *order
@@ -407,7 +407,7 @@ static int shakti_tablet_load_internal(
             return 0;
         }
 
-        trimmed = trim_text(line);
+        trimmed = trim_text__tablet_h(line);
 
         if (strcmp(
                 trimmed,
@@ -420,7 +420,7 @@ static int shakti_tablet_load_internal(
             unsigned int order;
 
             if (inside_stone ||
-                !extract_order(trimmed, "stone", &order) ||
+                !extract_order__tablet_h(trimmed, "stone", &order) ||
                 order != expected_order ||
                 tablet->stone_count >= SHAKTI_MAX_TABLET_STONES) {
                 fclose(file);
@@ -458,12 +458,12 @@ static int shakti_tablet_load_internal(
             char count_text[32];
             char alias[SHAKTI_PATH_CAPACITY];
 
-            if (extract_tag(
+            if (extract_tag__tablet_h(
                     trimmed,
                     "level",
                     tablet->level,
                     sizeof(tablet->level)) ||
-                extract_tag(
+                extract_tag__tablet_h(
                     trimmed,
                     "lesson",
                     tablet->lesson,
@@ -471,7 +471,7 @@ static int shakti_tablet_load_internal(
                 continue;
             }
 
-            if (extract_tag(
+            if (extract_tag__tablet_h(
                     trimmed,
                     "stone_count",
                     count_text,
@@ -493,7 +493,7 @@ static int shakti_tablet_load_internal(
                 continue;
             }
 
-            if (extract_tag(
+            if (extract_tag__tablet_h(
                     trimmed,
                     "visual_text",
                     alias,
@@ -505,7 +505,7 @@ static int shakti_tablet_load_internal(
             continue;
         }
 
-        if (extract_tag(
+        if (extract_tag__tablet_h(
                 trimmed,
                 "text",
                 current.text,
@@ -519,12 +519,12 @@ static int shakti_tablet_load_internal(
             continue;
         }
 
-        if (extract_tag(
+        if (extract_tag__tablet_h(
                 trimmed,
                 "written_text",
                 current.written_text,
                 sizeof(current.written_text)) ||
-            extract_tag(
+            extract_tag__tablet_h(
                 trimmed,
                 "visual_text",
                 current.written_text,
@@ -538,7 +538,7 @@ static int shakti_tablet_load_internal(
             continue;
         }
 
-        if (extract_tag(
+        if (extract_tag__tablet_h(
                 trimmed,
                 "sound_art",
                 current.sound_art,
@@ -552,7 +552,7 @@ static int shakti_tablet_load_internal(
             continue;
         }
 
-        if (extract_tag(
+        if (extract_tag__tablet_h(
                 trimmed,
                 "visual_art",
                 current.visual_art,

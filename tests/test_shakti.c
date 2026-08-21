@@ -29,7 +29,7 @@
 #define TEST_FRAME "tests/test_frame_artifact.txt"
 #define TEST_LOADER "tests/test_loader_fixture.txt"
 
-static void write_text_file(const char *path, const char *text)
+static void write_text_file__test_shakti_h(const char *path, const char *text)
 {
     FILE *file;
 
@@ -101,7 +101,7 @@ static void test_text_log(void)
     unsigned long valid;
     unsigned long invalid;
 
-    write_text_file(TEST_LOG, "");
+    write_text_file__test_shakti_h(TEST_LOG, "");
     shakti_tick_clock_init(&clock_state);
     assert(shakti_tick_next(&clock_state, &tick));
 
@@ -210,14 +210,14 @@ static void test_memory_and_loop(void)
     shakti_memory_state_t memory;
     shakti_loop_state_t loop;
 
-    write_text_file(TEST_GOAL, "Ground one relationship.\n");
-    write_text_file(TEST_NOTEBOOK, "Remember A.\n");
-    write_text_file(
+    write_text_file__test_shakti_h(TEST_GOAL, "Ground one relationship.\n");
+    write_text_file__test_shakti_h(TEST_NOTEBOOK, "Remember A.\n");
+    write_text_file__test_shakti_h(
         TEST_MENU,
         "[Memory]\nRecall exact chunks.\n"
         "[School]\nRun exact drills.\n"
     );
-    write_text_file(TEST_LONG_TERM, "");
+    write_text_file__test_shakti_h(TEST_LONG_TERM, "");
 
     shakti_memory_init(&memory);
     assert(shakti_memory_load_always(
@@ -264,18 +264,18 @@ static void test_reason_gate(void)
     shakti_tick_t tick;
     unsigned int index;
 
-    write_text_file(
+    write_text_file__test_shakti_h(
         TEST_FACTS,
         "what follows a|B|sequence|tablet_a_b\n"
         "two times two|four|multiplication|tablet_math_2x2\n"
     );
 
-    write_text_file(
+    write_text_file__test_shakti_h(
         TEST_THESAURUS,
         "after|follows\n"
     );
 
-    write_text_file(TEST_EVIDENCE, "");
+    write_text_file__test_shakti_h(TEST_EVIDENCE, "");
 
     assert(shakti_reason_load(
         &state,
@@ -326,7 +326,7 @@ static void test_receptor_capture(void)
     unsigned long valid;
     unsigned long invalid;
 
-    write_text_file(TEST_LOG, "");
+    write_text_file__test_shakti_h(TEST_LOG, "");
 
     shakti_receptor_init(&receptor);
     shakti_tick_clock_init(&clock_state);
@@ -454,7 +454,7 @@ static void test_school_penalty(void)
     shakti_tick_clock_t clock_state;
     shakti_tick_t tick;
 
-    write_text_file(TEST_SCHOOL, "");
+    write_text_file__test_shakti_h(TEST_SCHOOL, "");
     shakti_school_init(&state);
     shakti_tick_clock_init(&clock_state);
 
@@ -501,7 +501,7 @@ static void test_loader(void)
     shakti_loader_result_t result;
     shakti_loader_kind_t kind;
 
-    write_text_file(TEST_LOADER, "two");
+    write_text_file__test_shakti_h(TEST_LOADER, "two");
 
     assert(shakti_loader_kind_from_text("text", &kind));
     assert(kind == SHAKTI_LOADER_KIND_TEXT);
@@ -537,7 +537,8 @@ static void test_loader(void)
     ));
 }
 
-int main(void)
+#define TEST_SHAKTI_MAIN main
+int TEST_SHAKTI_MAIN(void)
 {
     test_exact_validation_score();
     test_tick_order();
