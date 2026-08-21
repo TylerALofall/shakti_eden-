@@ -1,5 +1,5 @@
-[PROPOSED] DOCTRINE LESSON 7 — SNAKE SLAYER
-Awaiting the Doctor's lock.
+[LOCKED] DOCTRINE LESSON 7 — SNAKE SLAYER
+Locked by the Doctor 2026-08-21.
 
 Any snake that crosses my wall loses its head.
 .py, __pycache__, .js, .ts, node — I see them, I yell it:
