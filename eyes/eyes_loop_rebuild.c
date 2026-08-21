@@ -75,7 +75,7 @@ static unsigned char g_image[EYES_LOOP_IMAGE_CAPACITY];
 static long g_object_offsets[EYES_LOOP_PDF_MAX_OBJECTS + 1U];
 
 /* Section 2: hash and text helpers. */
-static unsigned long long fnv1a64(
+static unsigned long long fnv1a64__loop_rebuild_h(
     unsigned long long hash,
     const unsigned char *data,
     unsigned long length
@@ -91,7 +91,7 @@ static unsigned long long fnv1a64(
     return hash;
 }
 
-static int text_append(
+static int text_append__loop_rebuild_h(
     char *buffer,
     unsigned long capacity,
     unsigned long *used,
@@ -119,7 +119,7 @@ static int text_append(
     return 1;
 }
 
-static int date_today(char *out, unsigned long capacity)
+static int date_today__loop_rebuild_h(char *out, unsigned long capacity)
 {
     time_t now;
     struct tm *local;
@@ -162,7 +162,7 @@ static int ensure_dir(const char *path)
     return errno == EEXIST;
 }
 
-static int write_text_file(const char *path, const char *text)
+static int write_text_file__loop_rebuild_h(const char *path, const char *text)
 {
     FILE *file;
     int success;
@@ -187,7 +187,7 @@ static int write_text_file(const char *path, const char *text)
 }
 
 /* Section 3: plain C99 PDF writer (uncompressed, no libraries). */
-static int pdf_begin_object(FILE *file, unsigned int number)
+static int pdf_begin_object__loop_rebuild_h(FILE *file, unsigned int number)
 {
     long offset;
 
@@ -206,7 +206,7 @@ static int pdf_begin_object(FILE *file, unsigned int number)
     return fprintf(file, "%u 0 obj\n", number) > 0;
 }
 
-static int pdf_escape(const char *in, char *out, unsigned long capacity)
+static int pdf_escape__loop_rebuild_h(const char *in, char *out, unsigned long capacity)
 {
     unsigned long used;
     unsigned long index;
@@ -246,7 +246,7 @@ static int pdf_escape(const char *in, char *out, unsigned long capacity)
  * from the RGBA buffer); color == 0 writes DeviceGray from the red
  * channel, the same channel eyes_write_recon uses for the INK plane.
  */
-static int pdf_write_image_object(
+static int pdf_write_image_object__loop_rebuild_h(
     FILE *file,
     unsigned int number,
     const unsigned char *rgba,
@@ -280,7 +280,7 @@ static int pdf_write_image_object(
         }
     }
 
-    if (!pdf_begin_object(file, number)) {
+    if (!pdf_begin_object__loop_rebuild_h(file, number)) {
         return 0;
     }
 
@@ -303,7 +303,7 @@ static int pdf_write_image_object(
     return fprintf(file, "\nendstream\nendobj\n") > 0;
 }
 
-static int pdf_write_stream_object(
+static int pdf_write_stream_object__loop_rebuild_h(
     FILE *file,
     unsigned int number,
     const char *content
@@ -311,7 +311,7 @@ static int pdf_write_stream_object(
 {
     unsigned long length;
 
-    if (content == NULL || !pdf_begin_object(file, number)) {
+    if (content == NULL || !pdf_begin_object__loop_rebuild_h(file, number)) {
         return 0;
     }
 
@@ -328,13 +328,13 @@ static int pdf_write_stream_object(
     return fprintf(file, "\nendstream\nendobj\n") > 0;
 }
 
-static int content_caption(
+static int content_caption__loop_rebuild_h(
     unsigned long *used,
     int y,
     const char *caption
 )
 {
-    return text_append(
+    return text_append__loop_rebuild_h(
         g_content,
         sizeof(g_content),
         used,
@@ -344,7 +344,7 @@ static int content_caption(
     );
 }
 
-static int content_image(
+static int content_image__loop_rebuild_h(
     unsigned long *used,
     int bottom,
     unsigned int width,
@@ -352,7 +352,7 @@ static int content_image(
     unsigned int local_index
 )
 {
-    return text_append(
+    return text_append__loop_rebuild_h(
         g_content,
         sizeof(g_content),
         used,
@@ -389,7 +389,7 @@ static unsigned int pdf_count_lines(const char *text)
  * color, iteration-20 rebuild in color, iteration-20 rebuild in black
  * and white), then the full run log as text pages.
  */
-static int write_pdf(const char *path, const char *log_text)
+static int write_pdf__loop_rebuild_h(const char *path, const char *log_text)
 {
     FILE *file;
     unsigned int text_lines;
@@ -432,11 +432,11 @@ static int write_pdf(const char *path, const char *log_text)
 
     /* Object 1: catalog. Object 2: page tree. Object 3: Courier font. */
     success = success &&
-        pdf_begin_object(file, 1U) &&
+        pdf_begin_object__loop_rebuild_h(file, 1U) &&
         fprintf(file, "<< /Type /Catalog /Pages 2 0 R >>\nendobj\n") > 0;
 
     if (success) {
-        success = pdf_begin_object(file, 2U) &&
+        success = pdf_begin_object__loop_rebuild_h(file, 2U) &&
             fprintf(
                 file,
                 "<< /Type /Pages /Count %u /Kids [",
@@ -467,7 +467,7 @@ static int write_pdf(const char *path, const char *log_text)
     }
 
     success = success &&
-        pdf_begin_object(file, 3U) &&
+        pdf_begin_object__loop_rebuild_h(file, 3U) &&
         fprintf(
             file,
             "<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>\n"
@@ -488,15 +488,15 @@ static int write_pdf(const char *path, const char *log_text)
         base = EYES_LOOP_PDF_PICTURE_FIRST(page_index);
 
         success =
-            pdf_write_image_object(
+            pdf_write_image_object__loop_rebuild_h(
                 file, base, g_original[page_index],
                 page->width, page->height, 1
             ) &&
-            pdf_write_image_object(
+            pdf_write_image_object__loop_rebuild_h(
                 file, base + 1U, g_current[page_index],
                 page->width, page->height, 1
             ) &&
-            pdf_write_image_object(
+            pdf_write_image_object__loop_rebuild_h(
                 file, base + 2U, g_current[page_index],
                 page->width, page->height, 0
             );
@@ -508,7 +508,7 @@ static int write_pdf(const char *path, const char *log_text)
         used = 0UL;
         g_content[0] = '\0';
 
-        success = text_append(
+        success = text_append__loop_rebuild_h(
             g_content,
             sizeof(g_content),
             &used,
@@ -521,26 +521,26 @@ static int write_pdf(const char *path, const char *log_text)
         y = 720;
         bottom = y - 8 - (int)(page->height * EYES_LOOP_PDF_SCALE);
         success = success &&
-            content_caption(&used, y, "ORIGINAL  COLOR") &&
-            content_image(&used, bottom, page->width, page->height, 1U);
+            content_caption__loop_rebuild_h(&used, y, "ORIGINAL  COLOR") &&
+            content_image__loop_rebuild_h(&used, bottom, page->width, page->height, 1U);
 
         y = bottom - 22;
         bottom = y - 8 - (int)(page->height * EYES_LOOP_PDF_SCALE);
         success = success &&
-            content_caption(&used, y, "ITERATION 20 REBUILD  COLOR") &&
-            content_image(&used, bottom, page->width, page->height, 2U);
+            content_caption__loop_rebuild_h(&used, y, "ITERATION 20 REBUILD  COLOR") &&
+            content_image__loop_rebuild_h(&used, bottom, page->width, page->height, 2U);
 
         y = bottom - 22;
         bottom = y - 8 - (int)(page->height * EYES_LOOP_PDF_SCALE);
         success = success &&
-            content_caption(
+            content_caption__loop_rebuild_h(
                 &used, y, "ITERATION 20 REBUILD  BLACK AND WHITE"
             ) &&
-            content_image(&used, bottom, page->width, page->height, 3U);
+            content_image__loop_rebuild_h(&used, bottom, page->width, page->height, 3U);
 
         success = success &&
-            pdf_write_stream_object(file, base + 3U, g_content) &&
-            pdf_begin_object(file, base + 4U) &&
+            pdf_write_stream_object__loop_rebuild_h(file, base + 3U, g_content) &&
+            pdf_begin_object__loop_rebuild_h(file, base + 4U) &&
             fprintf(
                 file,
                 "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] "
@@ -568,7 +568,7 @@ static int write_pdf(const char *path, const char *log_text)
         used = 0UL;
         g_content[0] = '\0';
 
-        success = text_append(
+        success = text_append__loop_rebuild_h(
             g_content,
             sizeof(g_content),
             &used,
@@ -596,8 +596,8 @@ static int write_pdf(const char *path, const char *log_text)
                 ++cursor;
             }
 
-            success = pdf_escape(g_line, g_escaped, sizeof(g_escaped)) &&
-                text_append(
+            success = pdf_escape__loop_rebuild_h(g_line, g_escaped, sizeof(g_escaped)) &&
+                text_append__loop_rebuild_h(
                     g_content,
                     sizeof(g_content),
                     &used,
@@ -608,9 +608,9 @@ static int write_pdf(const char *path, const char *log_text)
         }
 
         success = success &&
-            text_append(g_content, sizeof(g_content), &used, "ET\n") &&
-            pdf_write_stream_object(file, base, g_content) &&
-            pdf_begin_object(file, base + 1U) &&
+            text_append__loop_rebuild_h(g_content, sizeof(g_content), &used, "ET\n") &&
+            pdf_write_stream_object__loop_rebuild_h(file, base, g_content) &&
+            pdf_begin_object__loop_rebuild_h(file, base + 1U) &&
             fprintf(
                 file,
                 "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] "
@@ -661,7 +661,8 @@ static int write_pdf(const char *path, const char *log_text)
 }
 
 /* Section 4: the 20-iteration rebuild loop. */
-int main(int argc, char **argv)
+#define EYES_LOOP_REBUILD_MAIN main
+int EYES_LOOP_REBUILD_MAIN(int argc, char **argv)
 {
     const char *tag;
     char date[16];
@@ -679,7 +680,7 @@ int main(int argc, char **argv)
 
     tag = argc == 2 && argv[1][0] != '\0' ? argv[1] : EYES_LOOP_DEFAULT_TAG;
 
-    if (!date_today(date, sizeof(date))) {
+    if (!date_today__loop_rebuild_h(date, sizeof(date))) {
         printf("FAIL: could not read today's date\n");
         return 1;
     }
@@ -717,7 +718,7 @@ int main(int argc, char **argv)
     collected_used = 0UL;
     g_collected[0] = '\0';
 
-    if (!text_append(
+    if (!text_append__loop_rebuild_h(
             g_collected,
             sizeof(g_collected),
             &collected_used,
@@ -755,11 +756,11 @@ int main(int argc, char **argv)
         hash_used = 0UL;
         hash_text[0] = '\0';
 
-        if (!text_append(
+        if (!text_append__loop_rebuild_h(
                 g_block, sizeof(g_block), &block_used,
                 "ITERATION %02u  DATE %s\n", iteration, date
             ) ||
-            !text_append(
+            !text_append__loop_rebuild_h(
                 hash_text, sizeof(hash_text), &hash_used,
                 "EYES_LOOP_HASH_V1\nITERATION=%02u\n", iteration
             )) {
@@ -835,23 +836,23 @@ int main(int argc, char **argv)
                 return 1;
             }
 
-            page_hash = fnv1a64(EYES_LOOP_FNV_INIT, g_rebuilt, rgba_length);
-            iteration_hash = fnv1a64(iteration_hash, g_rebuilt, rgba_length);
+            page_hash = fnv1a64__loop_rebuild_h(EYES_LOOP_FNV_INIT, g_rebuilt, rgba_length);
+            iteration_hash = fnv1a64__loop_rebuild_h(iteration_hash, g_rebuilt, rgba_length);
             memcpy(g_current[page_index], g_rebuilt, rgba_length);
 
-            if (!text_append(
+            if (!text_append__loop_rebuild_h(
                     g_block, sizeof(g_block), &block_used,
                     "page %u: %ux%u drift_vs_original=%lu "
-                    "hash=fnv1a64:%016llX\n",
+                    "hash=fnv1a64__loop_rebuild_h:%016llX\n",
                     page->number,
                     page->width,
                     page->height,
                     drift,
                     page_hash
                 ) ||
-                !text_append(
+                !text_append__loop_rebuild_h(
                     hash_text, sizeof(hash_text), &hash_used,
-                    "PAGE_%u=fnv1a64:%016llX\n", page->number, page_hash
+                    "PAGE_%u=fnv1a64__loop_rebuild_h:%016llX\n", page->number, page_hash
                 )) {
                 printf("FAIL: log capacity iteration %u\n", iteration);
                 return 1;
@@ -868,15 +869,15 @@ int main(int argc, char **argv)
             all_exact = 0;
         }
 
-        if (!text_append(
+        if (!text_append__loop_rebuild_h(
                 g_block, sizeof(g_block), &block_used,
-                "iteration hash=fnv1a64:%016llX  match_iteration_1=%s\n",
+                "iteration hash=fnv1a64__loop_rebuild_h:%016llX  match_iteration_1=%s\n",
                 iteration_hash,
                 match ? "YES" : "NO"
             ) ||
-            !text_append(
+            !text_append__loop_rebuild_h(
                 hash_text, sizeof(hash_text), &hash_used,
-                "ITERATION_HASH=fnv1a64:%016llX\n", iteration_hash
+                "ITERATION_HASH=fnv1a64__loop_rebuild_h:%016llX\n", iteration_hash
             )) {
             printf("FAIL: log capacity iteration %u\n", iteration);
             return 1;
@@ -886,17 +887,17 @@ int main(int argc, char **argv)
                 path, sizeof(path), "%s/iter_%02u/hash.txt",
                 EYES_LOOP_DIR, iteration
             ) >= (int)sizeof(path) ||
-            !write_text_file(path, hash_text) ||
+            !write_text_file__loop_rebuild_h(path, hash_text) ||
             snprintf(
                 path, sizeof(path), "%s/iter_%02u/log.txt",
                 EYES_LOOP_DIR, iteration
             ) >= (int)sizeof(path) ||
-            !write_text_file(path, g_block)) {
+            !write_text_file__loop_rebuild_h(path, g_block)) {
             printf("FAIL: write hash/log iteration %u\n", iteration);
             return 1;
         }
 
-        if (!text_append(
+        if (!text_append__loop_rebuild_h(
                 g_collected, sizeof(g_collected), &collected_used,
                 "%s\n", g_block
             )) {
@@ -905,14 +906,14 @@ int main(int argc, char **argv)
         }
 
         printf(
-            "iteration %02u: hash=fnv1a64:%016llX match_iteration_1=%s\n",
+            "iteration %02u: hash=fnv1a64__loop_rebuild_h:%016llX match_iteration_1=%s\n",
             iteration,
             iteration_hash,
             match ? "YES" : "NO"
         );
     }
 
-    if (!text_append(
+    if (!text_append__loop_rebuild_h(
             g_collected, sizeof(g_collected), &collected_used,
             "RESULT: %s\n",
             all_exact
@@ -927,7 +928,7 @@ int main(int argc, char **argv)
     if (snprintf(
             path, sizeof(path), "%s/%s-%s.pdf", EYES_LOOP_DIR, date, tag
         ) >= (int)sizeof(path) ||
-        !write_pdf(path, g_collected)) {
+        !write_pdf__loop_rebuild_h(path, g_collected)) {
         printf("FAIL: write pdf\n");
         return 1;
     }
