@@ -5,7 +5,7 @@
 
 #include "shakti_config.h"
 
-static void copy_text(
+static void copy_text__memory_h(
     char *destination,
     size_t destination_size,
     const char *source
@@ -195,7 +195,7 @@ void shakti_memory_remember(
     }
 
     memory->working[working_index].tick = *tick;
-    copy_text(
+    copy_text__memory_h(
         memory->working[working_index].text,
         sizeof(memory->working[working_index].text),
         text
@@ -203,7 +203,7 @@ void shakti_memory_remember(
 
     short_index = memory->short_term_next;
     memory->short_term[short_index].tick = *tick;
-    copy_text(
+    copy_text__memory_h(
         memory->short_term[short_index].text,
         sizeof(memory->short_term[short_index].text),
         text

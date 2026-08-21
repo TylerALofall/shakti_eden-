@@ -21,7 +21,7 @@ static unsigned char g_original[EYES_XML_RGBA_CAPACITY];
 static char g_bits[EYES_XML_PAGE_COUNT][EYES_XML_PAGE_BITS_CAPACITY];
 
 /* Section 2: small path helpers, no heap, no shell. */
-static int append_text(
+static int append_text__xml_collect_h(
     char *buffer,
     unsigned long capacity,
     unsigned long *used,
@@ -62,7 +62,7 @@ static int append_number(
     }
 
     if (value == 0U) {
-        return append_text(buffer, capacity, used, "0");
+        return append_text__xml_collect_h(buffer, capacity, used, "0");
     }
 
     count = 0UL;
@@ -87,7 +87,7 @@ static int append_number(
     return 1;
 }
 
-static int build_document_path(
+static int build_document_path__xml_collect_h(
     const char *tag,
     char *path,
     unsigned long capacity
@@ -102,9 +102,9 @@ static int build_document_path(
     path[0] = '\0';
     used = 0UL;
 
-    return append_text(path, capacity, &used, EYES_XML_OUTPUT_DIR "/") &&
-           append_text(path, capacity, &used, tag) &&
-           append_text(path, capacity, &used, "_document.xml");
+    return append_text__xml_collect_h(path, capacity, &used, EYES_XML_OUTPUT_DIR "/") &&
+           append_text__xml_collect_h(path, capacity, &used, tag) &&
+           append_text__xml_collect_h(path, capacity, &used, "_document.xml");
 }
 
 static int build_original_path(
@@ -123,11 +123,11 @@ static int build_original_path(
     path[0] = '\0';
     used = 0UL;
 
-    return append_text(path, capacity, &used, EYES_XML_OUTPUT_DIR "/") &&
-           append_text(path, capacity, &used, tag) &&
-           append_text(path, capacity, &used, "_page") &&
+    return append_text__xml_collect_h(path, capacity, &used, EYES_XML_OUTPUT_DIR "/") &&
+           append_text__xml_collect_h(path, capacity, &used, tag) &&
+           append_text__xml_collect_h(path, capacity, &used, "_page") &&
            append_number(path, capacity, &used, page_number) &&
-           append_text(path, capacity, &used, "_original.tan");
+           append_text__xml_collect_h(path, capacity, &used, "_original.tan");
 }
 
 static int ensure_output_dir(void)
@@ -232,7 +232,8 @@ int eyes_xml_write_document(
 }
 
 /* Section 4: deterministic document collection entry point. */
-int main(int argc, char **argv)
+#define EYES_XML_COLLECT_MAIN main
+int EYES_XML_COLLECT_MAIN(int argc, char **argv)
 {
     const char *tag;
     char path[EYES_XML_PATH_CAPACITY];
@@ -294,7 +295,7 @@ int main(int argc, char **argv)
         );
     }
 
-    if (!build_document_path(tag, path, sizeof(path)) ||
+    if (!build_document_path__xml_collect_h(tag, path, sizeof(path)) ||
         !eyes_xml_write_document(
             path,
             g_eyes_xml_document_pages,
