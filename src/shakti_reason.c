@@ -14,7 +14,7 @@ typedef struct {
     char answer[SHAKTI_ANSWER_CAPACITY];
 } scored_answer_t;
 
-static char *trim_text(char *text)
+static char *trim_text__reason_h(char *text)
 {
     char *end;
 
@@ -68,7 +68,7 @@ static int split_fields(
     for (index = 0U; index < field_count; ++index) {
         char *separator;
 
-        fields[index] = trim_text(cursor);
+        fields[index] = trim_text__reason_h(cursor);
 
         if (index + 1U == field_count) {
             return fields[index][0] != '\0' &&
@@ -82,7 +82,7 @@ static int split_fields(
         }
 
         *separator = '\0';
-        fields[index] = trim_text(fields[index]);
+        fields[index] = trim_text__reason_h(fields[index]);
 
         if (fields[index][0] == '\0') {
             return 0;
@@ -728,7 +728,7 @@ static int load_facts(
         char normalized_question[SHAKTI_QUESTION_CAPACITY];
         char *trimmed;
 
-        trimmed = trim_text(line);
+        trimmed = trim_text__reason_h(line);
 
         if (trimmed[0] == '\0' || trimmed[0] == '#') {
             continue;
@@ -796,7 +796,7 @@ static int load_synonyms(
         char canonical[SHAKTI_TOKEN_CAPACITY];
         char *trimmed;
 
-        trimmed = trim_text(line);
+        trimmed = trim_text__reason_h(line);
 
         if (trimmed[0] == '\0' || trimmed[0] == '#') {
             continue;
@@ -856,7 +856,7 @@ static int load_evidence(
         shakti_tick_t tick;
         shakti_source_t source;
 
-        trimmed = trim_text(line);
+        trimmed = trim_text__reason_h(line);
 
         if (trimmed[0] == '\0' || trimmed[0] == '#') {
             continue;
@@ -997,7 +997,6 @@ shakti_decision_t shakti_reason_answer(
 
         rewritten_decision =
             evaluate_exact_question(state, rewritten);
-
         rewritten_decision.used_creative_rewrite = 1;
 
         if (rewritten_decision.kind != SHAKTI_DECISION_UNKNOWN) {
