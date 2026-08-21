@@ -27,7 +27,7 @@
 static unsigned char glyph[128][8];     /* ascii -> 8 rows of 8 bits */
 static int glyph_ok[128];
 
-static void load_glyph_file(const char *path)
+static void load_glyph_file__card_forge_h(const char *path)
 {
     FILE *f = fopen(path, "r");
     if (!f) return;
@@ -47,7 +47,7 @@ static void load_glyph_file(const char *path)
     fclose(f);
 }
 
-static void load_glyphs(void)
+static void load_glyphs__card_forge_h(void)
 {
     /* Eden law: glyphs come from the branch itself (eden_out/Visual_text),
      * never from a temp path. Anyone who clones can reforge her eyes. */
@@ -56,20 +56,20 @@ static void load_glyphs(void)
     int a;
     for (char c = '0'; c <= '9'; c++) {
         snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c);
-        load_glyph_file(path);
+        load_glyph_file__card_forge_h(path);
     }
     for (char c = 'a'; c <= 'z'; c++) {
         snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c);
-        load_glyph_file(path);
+        load_glyph_file__card_forge_h(path);
     }
     for (char c = 'A'; c <= 'Z'; c++) {
         snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c);
-        load_glyph_file(path);
+        load_glyph_file__card_forge_h(path);
     }
     /* operators and punctuation live as ascii_NNN.8x8.txt */
     for (a = 32; a < 128; a++) {
         snprintf(path, sizeof path, "%s/ascii_%03d.8x8.txt", dir, a);
-        load_glyph_file(path);
+        load_glyph_file__card_forge_h(path);
     }
 }
 
@@ -84,10 +84,11 @@ static void safe_name(const char *sym, char *out)
     out[j] = 0;
 }
 
-int main(int argc, char **argv)
+#define CARD_FORGE_MAIN main
+int CARD_FORGE_MAIN(int argc, char **argv)
 {
     if (argc != 5) { printf("usage: card_forge <deck_in> <deck_out> <cards_dir> <sight_log>\n"); return 1; }
-    load_glyphs();
+    load_glyphs__card_forge_h();
     FILE *in = fopen(argv[1], "r");
     FILE *out = fopen(argv[2], "w");
     FILE *sl = fopen(argv[4], "w");

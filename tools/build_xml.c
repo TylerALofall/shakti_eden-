@@ -26,7 +26,7 @@ static char *trim_line_ending(char *text)
     return text;
 }
 
-static int xml_write_escaped(FILE *file, const char *text)
+static int xml_write_escaped__build_xml_h(FILE *file, const char *text)
 {
     while (*text != '\0') {
         const char *entity;
@@ -119,7 +119,7 @@ static int count_stones(FILE *list, size_t *count)
     return 1;
 }
 
-static int write_tag(
+static int write_tag__build_xml_h(
     FILE *file,
     const char *indent,
     const char *tag,
@@ -127,7 +127,7 @@ static int write_tag(
 )
 {
     return fprintf(file, "%s<%s>", indent, tag) >= 0 &&
-           xml_write_escaped(file, value) &&
+           xml_write_escaped__build_xml_h(file, value) &&
            fprintf(file, "</%s>\n", tag) >= 0;
 }
 
@@ -196,18 +196,18 @@ static int write_stone(
             output,
             "  <stone order=\"%lu\">\n",
             (unsigned long)order) < 0 ||
-        !write_tag(output, "    ", "text", text) ||
-        !write_tag(
+        !write_tag__build_xml_h(output, "    ", "text", text) ||
+        !write_tag__build_xml_h(
             output,
             "    ",
             "written_text",
             written_name) ||
-        !write_tag(
+        !write_tag__build_xml_h(
             output,
             "    ",
             "sound_art",
             sound_name) ||
-        !write_tag(
+        !write_tag__build_xml_h(
             output,
             "    ",
             "visual_art",
@@ -274,8 +274,8 @@ int shakti_build_xml_file(
             "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
             "<tablet schema=\"SHAKTI_TABLET_4S_V2\">\n"
         ) > 0 &&
-        write_tag(output, "  ", "level", level) &&
-        write_tag(output, "  ", "lesson", lesson) &&
+        write_tag__build_xml_h(output, "  ", "level", level) &&
+        write_tag__build_xml_h(output, "  ", "lesson", lesson) &&
         fprintf(
             output,
             "  <stone_count>%lu</stone_count>\n",
@@ -343,7 +343,8 @@ int shakti_build_xml_file(
 }
 
 #ifndef SHAKTI_TOOL_NO_MAIN
-int main(int argc, char **argv)
+#define BUILD_XML_MAIN main
+int BUILD_XML_MAIN(int argc, char **argv)
 {
     if (argc != 6) {
         fprintf(

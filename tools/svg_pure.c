@@ -23,7 +23,7 @@ static unsigned char img[MAXH][MAXW];
 static unsigned char glyph[128][8];
 static int glyph_ok[128];
 
-static void load_glyph_file(const char *path)
+static void load_glyph_file__svg_pure_h(const char *path)
 {
     FILE *f = fopen(path, "r");
     if (!f) return;
@@ -43,14 +43,14 @@ static void load_glyph_file(const char *path)
     fclose(f);
 }
 
-static void load_glyphs(void)
+static void load_glyphs__svg_pure_h(void)
 {
     const char *dir = "eden_out/Visual_text";
     char path[512]; int a;
-    for (char c = '0'; c <= '9'; c++) { snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c); load_glyph_file(path); }
-    for (char c = 'a'; c <= 'z'; c++) { snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c); load_glyph_file(path); }
-    for (char c = 'A'; c <= 'Z'; c++) { snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c); load_glyph_file(path); }
-    for (a = 32; a < 128; a++) { snprintf(path, sizeof path, "%s/ascii_%03d.8x8.txt", dir, a); load_glyph_file(path); }
+    for (char c = '0'; c <= '9'; c++) { snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c); load_glyph_file__svg_pure_h(path); }
+    for (char c = 'a'; c <= 'z'; c++) { snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c); load_glyph_file__svg_pure_h(path); }
+    for (char c = 'A'; c <= 'Z'; c++) { snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c); load_glyph_file__svg_pure_h(path); }
+    for (a = 32; a < 128; a++) { snprintf(path, sizeof path, "%s/ascii_%03d.8x8.txt", dir, a); load_glyph_file__svg_pure_h(path); }
 }
 
 static void draw_rect(int x, int y, int w, int h, int W, int H)
@@ -126,10 +126,11 @@ static int render(const char *path, int *Wp, int *Hp, int *unsup)
     return 0;
 }
 
-int main(int argc, char **argv)
+#define SVG_PURE_MAIN main
+int SVG_PURE_MAIN(int argc, char **argv)
 {
     if (argc != 4) { fprintf(stderr, "usage: svg_pure <svg_dir> <out_dir> <sight_log>\n"); return 2; }
-    load_glyphs();
+    load_glyphs__svg_pure_h();
     FILE *sl = fopen(argv[3], "w");
     if (!sl) { fprintf(stderr, "cannot write %s\n", argv[3]); return 1; }
     fprintf(sl, "SIGHT PURE — every image redrawn as pixels, passed through her eyes.\n");
