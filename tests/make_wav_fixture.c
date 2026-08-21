@@ -78,7 +78,8 @@ int shakti_write_test_wav(const char *path)
 }
 
 #ifndef SHAKTI_TOOL_NO_MAIN
-int main(int argc, char **argv)
+#define MAKE_WAV_FIXTURE_MAIN main
+int MAKE_WAV_FIXTURE_MAIN(int argc, char **argv)
 {
     if (argc != 2) {
         fprintf(stderr, "Usage: %s OUTPUT.wav\n", argv[0]);

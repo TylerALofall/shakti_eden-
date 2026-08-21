@@ -46,7 +46,8 @@ int shakti_build_ledger_file(
 }
 
 #ifndef SHAKTI_TOOL_NO_MAIN
-int main(int argc, char **argv)
+#define BUILD_LEDGER_MAIN main
+int BUILD_LEDGER_MAIN(int argc, char **argv)
 {
     if (argc != 3) {
         fprintf(

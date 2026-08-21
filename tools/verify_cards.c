@@ -33,7 +33,8 @@ static int extract_text(const char *path, char *out, size_t cap)
     return 1;
 }
 
-int main(void)
+#define VERIFY_CARDS_MAIN main
+int VERIFY_CARDS_MAIN(void)
 {
     static const struct { const char *name; char sym; int mode; } OPS[4] = {
         {"Add", '+', 0}, {"Sub", '-', 1}, {"Mul", '*', 2}, {"Div", '/', 3}

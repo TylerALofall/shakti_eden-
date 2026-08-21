@@ -14,7 +14,8 @@ static const char *TAB[] = {
     "school/tables/lesson5_div_table.txt"
 };
 
-int main(int argc, char **argv)
+#define GEN_MATH_DECK_MAIN main
+int GEN_MATH_DECK_MAIN(int argc, char **argv)
 {
     if (argc != 3) { printf("usage: gen_math_deck <pairs> <out>\n"); return 1; }
     int want = 0;
