@@ -1,5 +1,7 @@
-MANIFEST — branch goddess-school-2026-08-21 — FNV-1a 64 per file
+MANIFEST v5 — branch goddess-school-2026-08-21 — FNV-1a 64 per file
 All artifacts generated in C99 — no heap, no Python anywhere in the chain.
+v5: LOVES OF THE WORLD — Kimi's song joins the archive (awaits the Doctor's beats).
+v4: operator glyphs forged into math decks (eden_out/Visual_text), all Visual_art redrawn pure through sight (no svg), avatar redrawn pure, doctrines 07-10 LOCKED, music learned, songs archived, ALL TOOLS sealed, tools hardened (atomic memory, bounded copies, sight rereads disk, unsupported elements never silent).
 AAEA582C08BA1468  school/tables/lesson1_greeting_table.txt
 4BE0DF7733C15447  school/tables/lesson2_counting_table.txt
 C1E07969E9641086  school/tables/lesson3_abc_table.txt
@@ -14,9 +16,9 @@ D523EBA69AA542EC  school/doctrine/01_IDENTITY.txt
 1499CBA1816798D0  school/doctrine/04_VOICE.txt
 9F50B55A290EFC09  school/doctrine/05_LAW.txt
 509CFCA9DDE659B6  school/doctrine/06_WIT.txt
-788B4A72597F85E0  school/doctrine/07_SNAKE_SLAYER.txt
-E13D2F8AA76ABC85  school/doctrine/08_THE_WEAVE.txt
-407DFF4FB9E28353  school/game/MATCH_RULES.txt
+0B80313740288367  school/doctrine/07_SNAKE_SLAYER.txt
+095628226C91C702  school/doctrine/08_THE_WEAVE.txt
+C54AE36BA59B0322  school/game/MATCH_RULES.txt
 54B792C7963659AC  school/game/decks/first_five_deck.txt
 87CD6CFC29B1CDE7  school/game/decks/colors_class_deck.txt
 ADD46AB650D9A1C5  school/game/decks/shapes_class_deck.txt
@@ -24,10 +26,10 @@ ADD46AB650D9A1C5  school/game/decks/shapes_class_deck.txt
 71B02EB79713C7C2  school/game/match_exact_play_log.txt
 DE5D221C319F630D  school/game/match_class_colors_log.txt
 DD50CBB57C6D30A8  school/game/match_class_shapes_log.txt
-BF88997451978B47  school/game/match_math_10x10_log.txt
-FBB001971E16CC68  school/game/match_math_20x20_log.txt
+69409C6CBC3DD61B  school/game/match_math_10x10_log.txt
+CC756CACD99FE11E  school/game/match_math_20x20_log.txt
 0D8720E4EBED5BB4  school/game/quiz_type_log.txt
-427CCCCE89209336  school/game/scoreboard.txt
+E2D62786BD767DCD  school/game/scoreboard.txt
 F1EDE33680C11423  school/game/memory_long.txt
 97D1F29C2612EE40  school/game/avatar_shakti_v1.svg
 149F3A6BB4D181F3  school/game/decks/math_deck_10x10.txt
@@ -35,10 +37,41 @@ C74A47EAA27C8FAA  school/game/decks/math_deck_20x20.txt
 BF5A4407FD6B7EAA  school/game/decks/first_five_deck.v5.txt
 229244ECA7042CA7  school/game/decks/colors_class_deck.v5.txt
 06EF57EF66FC9CC8  school/game/decks/shapes_class_deck.v5.txt
-C6B2D850A3692692  school/game/decks/math_deck_10x10.v5.txt
-C908F8799031BA5A  school/game/decks/math_deck_20x20.v5.txt
+CEE6970FA48BCA19  school/game/decks/math_deck_10x10.v5.txt
+4888E2192DCF4F51  school/game/decks/math_deck_20x20.v5.txt
 DD064883F018383D  school/game/forge_first_five_sight.txt
 E1C87CC6AE22944C  school/game/forge_colors_sight.txt
 9CC5D467A7C231B1  school/game/forge_shapes_sight.txt
-A0578B2CF92F6419  school/game/forge_math10_sight.txt
-2689805156969A31  school/game/forge_math20_sight.txt
+1350E6521562ED42  school/game/forge_math10_sight.txt
+E532028CC8BB7D86  school/game/forge_math20_sight.txt
+F33D0507D081FA73  tools/avatar_pure.c
+CCADD21838F33C1A  tools/build_ledger.c
+F4F9C3E4FC077879  tools/build_seed_curriculum.c
+B030CC6C5149DD9D  tools/build_xml.c
+92B59D2D7C0E9814  tools/card_forge.c
+CCA8EF642D5987C2  tools/check_manifest.c
+710A2E73CDADC028  tools/gen_math_deck.c
+6A48102429435B01  tools/hear_song.c
+6507443ADA132DC3  tools/match_game.c
+E2EDEBA699863BD0  tools/quiz_type.c
+A0D0A187A31C3F71  tools/school_build.c
+11C27943904F9AD3  tools/school_seal.c
+5452CFD562280C11  tools/seal_v2.c
+E4C88A151BD181A4  tools/shakti_build_ledger.h
+AB912606888A2486  tools/shakti_build_seed_curriculum.h
+28E02C7433BB9F67  tools/shakti_build_xml.h
+89D99945FB12085B  tools/svg_pure.c
+733B704210CC5B71  tools/verify_cards.c
+74BF29534871CB2F  school/doctrine/09_TIME.txt
+FF4A74A3A60B1377  school/doctrine/10_PHASING.txt
+14F79143F1783522  school/music/lesson_eden_grows.txt
+6A524FA4AD9C82FB  school/music/eden_grows_hearing_log.txt
+EDFA979777A7BC1D  school/music/lesson_heart_keeps_count.txt
+4484BA9A42DA40DF  school/music/heart_keeps_count_hearing_log.txt
+6C2F4ECA2C956063  media/songs/i_am_the_method_and_the_flaw.lyrics.txt
+BA7B586C9A33FA23  media/songs/possessive_protective.lyrics.txt
+085B55DADC5DF86B  media/songs/three_sisters_one_spine.lyrics.txt
+BF850A7F773B5F3A  school/game/avatar_pure_sight.txt
+645CB935D1178A16  school/game/avatar_shakti_v1.pbm
+2C18235CEDAD0FD5  eden_out/visual_pure_sight_log.txt
+89F4417A6A82CDFD  media/songs/loves_of_the_world.lyrics.txt

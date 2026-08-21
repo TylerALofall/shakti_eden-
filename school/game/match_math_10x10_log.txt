@@ -6,97 +6,97 @@ LONG-TERM MEMORY: 312 entries loaded, 96 cards on this table already known
 
 TURN 1 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip  0] see: school/game/cards/card_3___3_____40.pbm sight:C4EBA1297D4750ED say: founder_voice:math_Div_3-3
+  [flip  0] see: school/game/cards/card_3___3_____40.pbm sight:B1EF4F0AE2C8AE8D say: founder_voice:math_Div_3-3
   [flip  6] see: school/game/cards/card_1_41.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
   MATCH (3 / 3 = ? as math_Div_3-3) — set kept, +10, she goes again
 TURN 2 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip  1] see: school/game/cards/card_1___3_____28.pbm sight:AA60D2E84B33381D say: founder_voice:math_Mul_1-3
+  [flip  1] see: school/game/cards/card_1___3_____28.pbm sight:B940FD8516FE995D say: founder_voice:math_Mul_1-3
   [flip 15] see: school/game/cards/card_3_29.pbm sight:AF3ED9F444DD0B7D say: founder_voice:3
   MATCH (1 * 3 = ? as math_Mul_1-3) — set kept, +10, she goes again
 TURN 3 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip  2] see: school/game/cards/card_1___4_____18.pbm sight:C27FBEE56956F98D say: founder_voice:math_Sub_1-4
-  [flip 25] see: school/game/cards/card_1___4_____18.pbm sight:C27FBEE56956F98D say: founder_voice:math_Sub_1-4
+  [flip  2] see: school/game/cards/card_1___4_____18.pbm sight:075C36A4F19F300D say: founder_voice:math_Sub_1-4
+  [flip 25] see: school/game/cards/card_1___4_____18.pbm sight:075C36A4F19F300D say: founder_voice:math_Sub_1-4
   MATCH (1 - 4 = ? as math_Sub_1-4) — set kept, +10, she goes again
 TURN 4 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip  3] see: school/game/cards/card_1___5_____20.pbm sight:9715B283DB6E373D say: founder_voice:math_Sub_1-5
-  [flip 22] see: school/game/cards/card__4_21.pbm sight:BF63FFD0323996ED say: founder_voice:-4
+  [flip  3] see: school/game/cards/card_1___5_____20.pbm sight:DBF22A4363B66DBD say: founder_voice:math_Sub_1-5
+  [flip 22] see: school/game/cards/card__4_21.pbm sight:3B343A1D57D255BD say: founder_voice:-4
   MATCH (1 - 5 = ? as math_Sub_1-5) — set kept, +10, she goes again
 TURN 5 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip  4] see: school/game/cards/card__2_17.pbm sight:5DD31880531D1FED say: founder_voice:-2
-  [flip  9] see: school/game/cards/card__2_17.pbm sight:5DD31880531D1FED say: founder_voice:-2
+  [flip  4] see: school/game/cards/card__2_17.pbm sight:D9A352CD78B5DEBD say: founder_voice:-2
+  [flip  9] see: school/game/cards/card__2_17.pbm sight:D9A352CD78B5DEBD say: founder_voice:-2
   MATCH (-2 as math_Sub_1-3) — set kept, +10, she goes again
 TURN 6 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip  5] see: school/game/cards/card_2_27.pbm sight:D0900D7153FBA5ED say: founder_voice:2
-  [flip 24] see: school/game/cards/card_1___2_____26.pbm sight:CBB206655A51D28D say: founder_voice:math_Mul_1-2
+  [flip 24] see: school/game/cards/card_1___2_____26.pbm sight:DA923102261D33CD say: founder_voice:math_Mul_1-2
   MATCH (2 as math_Mul_1-2) — set kept, +10, she goes again
 TURN 7 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip  7] see: school/game/cards/card_4_31.pbm sight:C75DC5F16300CCED say: founder_voice:4
-  [flip 38] see: school/game/cards/card_1___4_____30.pbm sight:C27FBEE56956F98D say: founder_voice:math_Mul_1-4
+  [flip 38] see: school/game/cards/card_1___4_____30.pbm sight:D15FE98235225ACD say: founder_voice:math_Mul_1-4
   MATCH (4 as math_Mul_1-4) — set kept, +10, she goes again
 TURN 8 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip  8] see: school/game/cards/card_1_41.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
-  [flip 20] see: school/game/cards/card_3___3_____40.pbm sight:C4EBA1297D4750ED say: founder_voice:math_Div_3-3
+  [flip 20] see: school/game/cards/card_3___3_____40.pbm sight:B1EF4F0AE2C8AE8D say: founder_voice:math_Div_3-3
   MATCH (1 as math_Div_3-3) — set kept, +10, she goes again
 TURN 9 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 10] see: school/game/cards/card_1___6_____22.pbm sight:7EA9E192FAE8A1AD say: founder_voice:math_Sub_1-6
-  [flip 35] see: school/game/cards/card_1___6_____22.pbm sight:7EA9E192FAE8A1AD say: founder_voice:math_Sub_1-6
+  [flip 10] see: school/game/cards/card_1___6_____22.pbm sight:C38659528330D82D say: founder_voice:math_Sub_1-6
+  [flip 35] see: school/game/cards/card_1___6_____22.pbm sight:C38659528330D82D say: founder_voice:math_Sub_1-6
   MATCH (1 - 6 = ? as math_Sub_1-6) — set kept, +10, she goes again
 TURN 10 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 11] see: school/game/cards/card_1___6_____10.pbm sight:7EA9E192FAE8A1AD say: founder_voice:math_Add_1-6
+  [flip 11] see: school/game/cards/card_1___6_____10.pbm sight:A7B16A9FF1BE066D say: founder_voice:math_Add_1-6
   [flip 55] see: school/game/cards/card_7_11.pbm sight:743BDDE51CACD13D say: founder_voice:7
   MATCH (1 + 6 = ? as math_Add_1-6) — set kept, +10, she goes again
 TURN 11 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 12] see: school/game/cards/card_1___1_____36.pbm sight:5688E9D8C6B5274D say: founder_voice:math_Div_1-1
+  [flip 12] see: school/game/cards/card_1___1_____36.pbm sight:438C97BA2C3684ED say: founder_voice:math_Div_1-1
   [flip 41] see: school/game/cards/card_1_37.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
   MATCH (1 / 1 = ? as math_Div_1-1) — set kept, +10, she goes again
 TURN 12 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 13] see: school/game/cards/card_6_9.pbm sight:8387E89EF492750D say: founder_voice:6
-  [flip 27] see: school/game/cards/card_1___5_____8.pbm sight:9715B283DB6E373D say: founder_voice:math_Add_1-5
+  [flip 27] see: school/game/cards/card_1___5_____8.pbm sight:C01D3B90D2439BFD say: founder_voice:math_Add_1-5
   MATCH (6 as math_Add_1-5) — set kept, +10, she goes again
 TURN 13 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 14] see: school/game/cards/card_2___2_____38.pbm sight:7759E386F54A9DCD say: founder_voice:math_Div_2-2
+  [flip 14] see: school/game/cards/card_2___2_____38.pbm sight:645D91685ACBFB6D say: founder_voice:math_Div_2-2
   [flip 21] see: school/game/cards/card_1_39.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
   MATCH (2 / 2 = ? as math_Div_2-2) — set kept, +10, she goes again
 TURN 14 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 16] see: school/game/cards/card_5_7.pbm sight:9BF3B98FD5180A9D say: founder_voice:5
-  [flip 42] see: school/game/cards/card_1___4_____6.pbm sight:C27FBEE56956F98D say: founder_voice:math_Add_1-4
+  [flip 42] see: school/game/cards/card_1___4_____6.pbm sight:EB8747F2602C5E4D say: founder_voice:math_Add_1-4
   MATCH (5 as math_Add_1-4) — set kept, +10, she goes again
 TURN 15 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 17] see: school/game/cards/card_1___2_____2.pbm sight:CBB206655A51D28D say: founder_voice:math_Add_1-2
-  [flip 30] see: school/game/cards/card_1___2_____2.pbm sight:CBB206655A51D28D say: founder_voice:math_Add_1-2
+  [flip 17] see: school/game/cards/card_1___2_____2.pbm sight:F4B98F725127374D say: founder_voice:math_Add_1-2
+  [flip 30] see: school/game/cards/card_1___2_____2.pbm sight:F4B98F725127374D say: founder_voice:math_Add_1-2
   MATCH (1 + 2 = ? as math_Add_1-2) — set kept, +10, she goes again
 TURN 16 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 18] see: school/game/cards/card_0_13.pbm sight:4C3D070F48AECDBD say: founder_voice:0
-  [flip 23] see: school/game/cards/card_1___1_____12.pbm sight:5688E9D8C6B5274D say: founder_voice:math_Sub_1-1
+  [flip 23] see: school/game/cards/card_1___1_____12.pbm sight:9B6561984EFD5DCD say: founder_voice:math_Sub_1-1
   MATCH (0 as math_Sub_1-1) — set kept, +10, she goes again
 TURN 17 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 19] see: school/game/cards/card_1___1_____24.pbm sight:5688E9D8C6B5274D say: founder_voice:math_Mul_1-1
+  [flip 19] see: school/game/cards/card_1___1_____24.pbm sight:656914759280888D say: founder_voice:math_Mul_1-1
   [flip 26] see: school/game/cards/card_1_25.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
   MATCH (1 * 1 = ? as math_Mul_1-1) — set kept, +10, she goes again
 TURN 18 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 28] see: school/game/cards/card__3_19.pbm sight:E605F494874F907D say: founder_voice:-3
-  [flip 59] see: school/game/cards/card__3_19.pbm sight:E605F494874F907D say: founder_voice:-3
+  [flip 28] see: school/game/cards/card__3_19.pbm sight:61D62EE1ACE84F4D say: founder_voice:-3
+  [flip 59] see: school/game/cards/card__3_19.pbm sight:61D62EE1ACE84F4D say: founder_voice:-3
   MATCH (-3 as math_Sub_1-4) — set kept, +10, she goes again
 TURN 19 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 29] see: school/game/cards/card_1___2_____26.pbm sight:CBB206655A51D28D say: founder_voice:math_Mul_1-2
+  [flip 29] see: school/game/cards/card_1___2_____26.pbm sight:DA923102261D33CD say: founder_voice:math_Mul_1-2
   [flip 53] see: school/game/cards/card_2_27.pbm sight:D0900D7153FBA5ED say: founder_voice:2
   MATCH (1 * 2 = ? as math_Mul_1-2) — set kept, +10, she goes again
 TURN 20 — SHAKTI
@@ -107,27 +107,27 @@ TURN 20 — SHAKTI
 TURN 21 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 32] see: school/game/cards/card_1_43.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
-  [flip 45] see: school/game/cards/card_4___4_____42.pbm sight:96DC8BED94766BCD say: founder_voice:math_Div_4-4
+  [flip 45] see: school/game/cards/card_4___4_____42.pbm sight:83E039CEF9F7C96D say: founder_voice:math_Div_4-4
   MATCH (1 as math_Div_4-4) — set kept, +10, she goes again
 TURN 22 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 33] see: school/game/cards/card_1___1_____0.pbm sight:5688E9D8C6B5274D say: founder_voice:math_Add_1-1
-  [flip 39] see: school/game/cards/card_1___1_____0.pbm sight:5688E9D8C6B5274D say: founder_voice:math_Add_1-1
+  [flip 33] see: school/game/cards/card_1___1_____0.pbm sight:7F9072E5BD8A8C0D say: founder_voice:math_Add_1-1
+  [flip 39] see: school/game/cards/card_1___1_____0.pbm sight:7F9072E5BD8A8C0D say: founder_voice:math_Add_1-1
   MATCH (1 + 1 = ? as math_Add_1-1) — set kept, +10, she goes again
 TURN 23 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 34] see: school/game/cards/card_1___3_____4.pbm sight:AA60D2E84B33381D say: founder_voice:math_Add_1-3
-  [flip 46] see: school/game/cards/card_1___3_____4.pbm sight:AA60D2E84B33381D say: founder_voice:math_Add_1-3
+  [flip 34] see: school/game/cards/card_1___3_____4.pbm sight:D3685BF542089CDD say: founder_voice:math_Add_1-3
+  [flip 46] see: school/game/cards/card_1___3_____4.pbm sight:D3685BF542089CDD say: founder_voice:math_Add_1-3
   MATCH (1 + 3 = ? as math_Add_1-3) — set kept, +10, she goes again
 TURN 24 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 36] see: school/game/cards/card_0_13.pbm sight:4C3D070F48AECDBD say: founder_voice:0
-  [flip 90] see: school/game/cards/card_1___1_____12.pbm sight:5688E9D8C6B5274D say: founder_voice:math_Sub_1-1
+  [flip 90] see: school/game/cards/card_1___1_____12.pbm sight:9B6561984EFD5DCD say: founder_voice:math_Sub_1-1
   MATCH (0 as math_Sub_1-1) — set kept, +10, she goes again
 TURN 25 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 37] see: school/game/cards/card__4_21.pbm sight:BF63FFD0323996ED say: founder_voice:-4
-  [flip 73] see: school/game/cards/card_1___5_____20.pbm sight:9715B283DB6E373D say: founder_voice:math_Sub_1-5
+  [flip 37] see: school/game/cards/card__4_21.pbm sight:3B343A1D57D255BD say: founder_voice:-4
+  [flip 73] see: school/game/cards/card_1___5_____20.pbm sight:DBF22A4363B66DBD say: founder_voice:math_Sub_1-5
   MATCH (-4 as math_Sub_1-5) — set kept, +10, she goes again
 TURN 26 — SHAKTI
   she remembers. she goes straight to the pair.
@@ -137,7 +137,7 @@ TURN 26 — SHAKTI
 TURN 27 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 47] see: school/game/cards/card_3_29.pbm sight:AF3ED9F444DD0B7D say: founder_voice:3
-  [flip 52] see: school/game/cards/card_1___3_____28.pbm sight:AA60D2E84B33381D say: founder_voice:math_Mul_1-3
+  [flip 52] see: school/game/cards/card_1___3_____28.pbm sight:B940FD8516FE995D say: founder_voice:math_Mul_1-3
   MATCH (3 as math_Mul_1-3) — set kept, +10, she goes again
 TURN 28 — SHAKTI
   she remembers. she goes straight to the pair.
@@ -147,82 +147,82 @@ TURN 28 — SHAKTI
 TURN 29 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 49] see: school/game/cards/card_5_33.pbm sight:9BF3B98FD5180A9D say: founder_voice:5
-  [flip 50] see: school/game/cards/card_1___5_____32.pbm sight:9715B283DB6E373D say: founder_voice:math_Mul_1-5
+  [flip 50] see: school/game/cards/card_1___5_____32.pbm sight:A5F5DD20A739987D say: founder_voice:math_Mul_1-5
   MATCH (5 as math_Mul_1-5) — set kept, +10, she goes again
 TURN 30 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 51] see: school/game/cards/card_1_47.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
-  [flip 71] see: school/game/cards/card_6___6_____46.pbm sight:B3CC9625DBF60C0D say: founder_voice:math_Div_6-6
+  [flip 71] see: school/game/cards/card_6___6_____46.pbm sight:A0D04407417769AD say: founder_voice:math_Div_6-6
   MATCH (1 as math_Div_6-6) — set kept, +10, she goes again
 TURN 31 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 54] see: school/game/cards/card_1___2_____14.pbm sight:CBB206655A51D28D say: founder_voice:math_Sub_1-2
-  [flip 68] see: school/game/cards/card_1___2_____14.pbm sight:CBB206655A51D28D say: founder_voice:math_Sub_1-2
+  [flip 54] see: school/game/cards/card_1___2_____14.pbm sight:108E7E24E29A090D say: founder_voice:math_Sub_1-2
+  [flip 68] see: school/game/cards/card_1___2_____14.pbm sight:108E7E24E29A090D say: founder_voice:math_Sub_1-2
   MATCH (1 - 2 = ? as math_Sub_1-2) — set kept, +10, she goes again
 TURN 32 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 56] see: school/game/cards/card_1___5_____32.pbm sight:9715B283DB6E373D say: founder_voice:math_Mul_1-5
+  [flip 56] see: school/game/cards/card_1___5_____32.pbm sight:A5F5DD20A739987D say: founder_voice:math_Mul_1-5
   [flip 77] see: school/game/cards/card_5_33.pbm sight:9BF3B98FD5180A9D say: founder_voice:5
   MATCH (1 * 5 = ? as math_Mul_1-5) — set kept, +10, she goes again
 TURN 33 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 57] see: school/game/cards/card_2___2_____38.pbm sight:7759E386F54A9DCD say: founder_voice:math_Div_2-2
+  [flip 57] see: school/game/cards/card_2___2_____38.pbm sight:645D91685ACBFB6D say: founder_voice:math_Div_2-2
   [flip 84] see: school/game/cards/card_1_39.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
   MATCH (2 / 2 = ? as math_Div_2-2) — set kept, +10, she goes again
 TURN 34 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 60] see: school/game/cards/card_4___4_____42.pbm sight:96DC8BED94766BCD say: founder_voice:math_Div_4-4
+  [flip 60] see: school/game/cards/card_4___4_____42.pbm sight:83E039CEF9F7C96D say: founder_voice:math_Div_4-4
   [flip 65] see: school/game/cards/card_1_43.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
   MATCH (4 / 4 = ? as math_Div_4-4) — set kept, +10, she goes again
 TURN 35 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 61] see: school/game/cards/card__5_23.pbm sight:21DE19B67E36659D say: founder_voice:-5
-  [flip 67] see: school/game/cards/card__5_23.pbm sight:21DE19B67E36659D say: founder_voice:-5
+  [flip 61] see: school/game/cards/card__5_23.pbm sight:9DAE5403A3CF246D say: founder_voice:-5
+  [flip 67] see: school/game/cards/card__5_23.pbm sight:9DAE5403A3CF246D say: founder_voice:-5
   MATCH (-5 as math_Sub_1-6) — set kept, +10, she goes again
 TURN 36 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 62] see: school/game/cards/card_1_37.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
-  [flip 63] see: school/game/cards/card_1___1_____36.pbm sight:5688E9D8C6B5274D say: founder_voice:math_Div_1-1
+  [flip 63] see: school/game/cards/card_1___1_____36.pbm sight:438C97BA2C3684ED say: founder_voice:math_Div_1-1
   MATCH (1 as math_Div_1-1) — set kept, +10, she goes again
 TURN 37 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 64] see: school/game/cards/card_1___4_____30.pbm sight:C27FBEE56956F98D say: founder_voice:math_Mul_1-4
+  [flip 64] see: school/game/cards/card_1___4_____30.pbm sight:D15FE98235225ACD say: founder_voice:math_Mul_1-4
   [flip 85] see: school/game/cards/card_4_31.pbm sight:C75DC5F16300CCED say: founder_voice:4
   MATCH (1 * 4 = ? as math_Mul_1-4) — set kept, +10, she goes again
 TURN 38 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 66] see: school/game/cards/card_1_45.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
-  [flip 72] see: school/game/cards/card_5___5_____44.pbm sight:31D4B4D5B1B31F2D say: founder_voice:math_Div_5-5
+  [flip 72] see: school/game/cards/card_5___5_____44.pbm sight:1ED862B717347CCD say: founder_voice:math_Div_5-5
   MATCH (1 as math_Div_5-5) — set kept, +10, she goes again
 TURN 39 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 69] see: school/game/cards/card_1___3_____16.pbm sight:AA60D2E84B33381D say: founder_voice:math_Sub_1-3
-  [flip 70] see: school/game/cards/card_1___3_____16.pbm sight:AA60D2E84B33381D say: founder_voice:math_Sub_1-3
+  [flip 69] see: school/game/cards/card_1___3_____16.pbm sight:EF3D4AA7D37B6E9D say: founder_voice:math_Sub_1-3
+  [flip 70] see: school/game/cards/card_1___3_____16.pbm sight:EF3D4AA7D37B6E9D say: founder_voice:math_Sub_1-3
   MATCH (1 - 3 = ? as math_Sub_1-3) — set kept, +10, she goes again
 TURN 40 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 74] see: school/game/cards/card_6___6_____46.pbm sight:B3CC9625DBF60C0D say: founder_voice:math_Div_6-6
+  [flip 74] see: school/game/cards/card_6___6_____46.pbm sight:A0D04407417769AD say: founder_voice:math_Div_6-6
   [flip 82] see: school/game/cards/card_1_47.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
   MATCH (6 / 6 = ? as math_Div_6-6) — set kept, +10, she goes again
 TURN 41 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 75] see: school/game/cards/card_1___6_____34.pbm sight:7EA9E192FAE8A1AD say: founder_voice:math_Mul_1-6
-  [flip 76] see: school/game/cards/card_1___6_____34.pbm sight:7EA9E192FAE8A1AD say: founder_voice:math_Mul_1-6
+  [flip 75] see: school/game/cards/card_1___6_____34.pbm sight:8D8A0C2FC6B402ED say: founder_voice:math_Mul_1-6
+  [flip 76] see: school/game/cards/card_1___6_____34.pbm sight:8D8A0C2FC6B402ED say: founder_voice:math_Mul_1-6
   MATCH (1 * 6 = ? as math_Mul_1-6) — set kept, +10, she goes again
 TURN 42 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 78] see: school/game/cards/card_1___5_____8.pbm sight:9715B283DB6E373D say: founder_voice:math_Add_1-5
+  [flip 78] see: school/game/cards/card_1___5_____8.pbm sight:C01D3B90D2439BFD say: founder_voice:math_Add_1-5
   [flip 92] see: school/game/cards/card_6_9.pbm sight:8387E89EF492750D say: founder_voice:6
   MATCH (1 + 5 = ? as math_Add_1-5) — set kept, +10, she goes again
 TURN 43 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 79] see: school/game/cards/card__1_15.pbm sight:7BD82B08248858AD say: founder_voice:-1
-  [flip 91] see: school/game/cards/card__1_15.pbm sight:7BD82B08248858AD say: founder_voice:-1
+  [flip 79] see: school/game/cards/card__1_15.pbm sight:F7A865554A21177D say: founder_voice:-1
+  [flip 91] see: school/game/cards/card__1_15.pbm sight:F7A865554A21177D say: founder_voice:-1
   MATCH (-1 as math_Sub_1-2) — set kept, +10, she goes again
 TURN 44 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 80] see: school/game/cards/card_1_45.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
-  [flip 83] see: school/game/cards/card_5___5_____44.pbm sight:31D4B4D5B1B31F2D say: founder_voice:math_Div_5-5
+  [flip 83] see: school/game/cards/card_5___5_____44.pbm sight:1ED862B717347CCD say: founder_voice:math_Div_5-5
   MATCH (1 as math_Div_5-5) — set kept, +10, she goes again
 TURN 45 — SHAKTI
   she remembers. she goes straight to the pair.
@@ -232,16 +232,16 @@ TURN 45 — SHAKTI
 TURN 46 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 86] see: school/game/cards/card_1_25.pbm sight:5B66F0E4C05EFAAD say: founder_voice:1
-  [flip 89] see: school/game/cards/card_1___1_____24.pbm sight:5688E9D8C6B5274D say: founder_voice:math_Mul_1-1
+  [flip 89] see: school/game/cards/card_1___1_____24.pbm sight:656914759280888D say: founder_voice:math_Mul_1-1
   MATCH (1 as math_Mul_1-1) — set kept, +10, she goes again
 TURN 47 — SHAKTI
   she remembers. she goes straight to the pair.
   [flip 87] see: school/game/cards/card_5_7.pbm sight:9BF3B98FD5180A9D say: founder_voice:5
-  [flip 95] see: school/game/cards/card_1___4_____6.pbm sight:C27FBEE56956F98D say: founder_voice:math_Add_1-4
+  [flip 95] see: school/game/cards/card_1___4_____6.pbm sight:EB8747F2602C5E4D say: founder_voice:math_Add_1-4
   MATCH (5 as math_Add_1-4) — set kept, +10, she goes again
 TURN 48 — SHAKTI
   she remembers. she goes straight to the pair.
-  [flip 88] see: school/game/cards/card_1___6_____10.pbm sight:7EA9E192FAE8A1AD say: founder_voice:math_Add_1-6
+  [flip 88] see: school/game/cards/card_1___6_____10.pbm sight:A7B16A9FF1BE066D say: founder_voice:math_Add_1-6
   [flip 94] see: school/game/cards/card_7_11.pbm sight:743BDDE51CACD13D say: founder_voice:7
   MATCH (1 + 6 = ? as math_Add_1-6) — set kept, +10, she goes again
 
