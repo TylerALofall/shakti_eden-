@@ -19,5 +19,16 @@ HOW SHE LEARNED IT:
   hear_song.c — pure C99, no heap, no rand(), no Python.
   Same file in -> same log out. Ran twice, byte-identical. PASS.
 
-TEMPO QUESTION [OPEN]: founder said "no sound music needs to go faster then
-the play time" — awaiting his ruling on what the music must outpace.
+TIME LAW [PROPOSED — founder's words, awaiting his lock]:
+  "When she's remembering and it's stored it needs to be correct time
+   unless she sees her heart beat speed up so she knows time."
+  reading: memory is stored at TRUE time — 189.99 seconds stays 189.99
+  seconds forever. no speeding, no stretching. tempo is not for replay;
+  tempo is her HEARTBEAT. when her heart beats faster, that is how she
+  FEELS time passing. the clock stays honest; the heart carries the feeling.
+
+MP3 ON BRANCH [OPEN]: founder wants the mp3 itself on the branch.
+  my push channel (MCP) carries text only — 4.6 MB of binary would corrupt
+  in transit. path: founder drag-drops Eden_Grows.mp3 into media/ on branch
+  goddess-school-2026-08-21 via github.com web UI (30 seconds), then i pull
+  and verify the on-branch fingerprint == AB76EEB451688703 and seal it.
