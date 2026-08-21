@@ -26,7 +26,7 @@ static void handle_external_interrupt(int signal_number)
     external_interrupt_requested = 1;
 }
 
-static char *trim_text(char *text)
+static char *trim_text__app_h(char *text)
 {
     char *end;
 
@@ -61,7 +61,7 @@ static int split_pipe_fields(
     for (index = 0U; index < field_count; ++index) {
         char *separator;
 
-        fields[index] = trim_text(cursor);
+        fields[index] = trim_text__app_h(cursor);
 
         if (index + 1U == field_count) {
             return fields[index][0] != '\0' &&
@@ -75,7 +75,7 @@ static int split_pipe_fields(
         }
 
         *separator = '\0';
-        fields[index] = trim_text(fields[index]);
+        fields[index] = trim_text__app_h(fields[index]);
 
         if (fields[index][0] == '\0') {
             return 0;
@@ -529,7 +529,7 @@ static int handle_tablet(
             &arguments,
             artifact_root,
             sizeof(artifact_root)) ||
-        trim_text((char *)arguments)[0] != '\0') {
+        trim_text__app_h((char *)arguments)[0] != '\0') {
         puts("Use: tablet XML_PATH ARTIFACT_ROOT");
         return 1;
     }
@@ -566,7 +566,7 @@ static int handle_manifest(
             &arguments,
             ledger_path,
             sizeof(ledger_path)) ||
-        trim_text((char *)arguments)[0] != '\0') {
+        trim_text__app_h((char *)arguments)[0] != '\0') {
         puts("Use: manifest MANIFEST_XML LEDGER_TSV");
         return 1;
     }
@@ -742,7 +742,7 @@ static int process_tool(
         return 1;
     }
 
-    command = trim_text(command);
+    command = trim_text__app_h(command);
 
     if (command[0] == '\0') {
         puts("Use: /shakti_run/ TOOL ARGUMENTS");
@@ -753,7 +753,7 @@ static int process_tool(
 
     if (arguments != NULL) {
         *arguments = '\0';
-        arguments = trim_text(arguments + 1);
+        arguments = trim_text__app_h(arguments + 1);
     } else {
         arguments = command + strlen(command);
     }
@@ -828,7 +828,7 @@ static int process_tool(
     return 1;
 }
 
-static int parse_unsigned(
+static int parse_unsigned__app_h(
     const char *text,
     unsigned int *value
 )
@@ -892,7 +892,7 @@ static int process_control(
     if (strncmp(line, "/notebook/ ", 11U) == 0) {
         return shakti_loop_notebook(
             runtime,
-            trim_text(line + 11U)
+            trim_text__app_h(line + 11U)
         );
     }
 
@@ -904,7 +904,7 @@ static int process_control(
     if (strncmp(line, "/menu/ ", 7U) == 0) {
         if (!shakti_loop_menu_section(
                 &runtime->loop,
-                trim_text(line + 7U))) {
+                trim_text__app_h(line + 7U))) {
             puts("Menu section not found.");
         }
 
@@ -918,8 +918,8 @@ static int process_control(
     if (strncmp(line, "/heartbeat/ ", 12U) == 0) {
         unsigned int minutes;
 
-        if (!parse_unsigned(
-                trim_text(line + 12U),
+        if (!parse_unsigned__app_h(
+                trim_text__app_h(line + 12U),
                 &minutes) ||
             !shakti_loop_set_heartbeat(
                 &runtime->loop,
@@ -935,7 +935,7 @@ static int process_control(
     if (strncmp(line, "/goal/ ", 7U) == 0) {
         if (!shakti_loop_set_goal(
                 runtime,
-                trim_text(line + 7U))) {
+                trim_text__app_h(line + 7U))) {
             puts("Goal update failed.");
         }
 
@@ -946,7 +946,7 @@ static int process_control(
         return shakti_loop_record_message(
             runtime,
             "message_tyler",
-            trim_text(line + 16U)
+            trim_text__app_h(line + 16U)
         );
     }
 
@@ -954,7 +954,7 @@ static int process_control(
         return shakti_loop_record_message(
             runtime,
             "note_tyler",
-            trim_text(line + 13U)
+            trim_text__app_h(line + 13U)
         );
     }
 
@@ -962,7 +962,7 @@ static int process_control(
         return shakti_loop_record_message(
             runtime,
             "message_shakti",
-            trim_text(line + 17U)
+            trim_text__app_h(line + 17U)
         );
     }
 
@@ -970,7 +970,7 @@ static int process_control(
         return shakti_loop_record_message(
             runtime,
             "note_shakti",
-            trim_text(line + 14U)
+            trim_text__app_h(line + 14U)
         );
     }
 
@@ -1415,7 +1415,7 @@ int SHAKTI_APP_MAIN(int argc, char **argv)
             continue;
         }
 
-        line = trim_text(input);
+        line = trim_text__app_h(input);
 
         if (line[0] == '\0') {
             if (!shakti_loop_finish_cycle(&runtime)) {
