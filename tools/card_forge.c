@@ -49,8 +49,11 @@ static void load_glyph_file(const char *path)
 
 static void load_glyphs(void)
 {
-    const char *dir = "/mnt/agents/temp/eden3_x/eden 3/media/glyphs_src";
+    /* Eden law: glyphs come from the branch itself (eden_out/Visual_text),
+     * never from a temp path. Anyone who clones can reforge her eyes. */
+    const char *dir = "eden_out/Visual_text";
     char path[PATHLEN];
+    int a;
     for (char c = '0'; c <= '9'; c++) {
         snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c);
         load_glyph_file(path);
@@ -59,8 +62,15 @@ static void load_glyphs(void)
         snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c);
         load_glyph_file(path);
     }
-    snprintf(path, sizeof path, "%s/ABCDEFGHIJKLMNOPQRSTUVWXYZ.8x8.txt", dir);
-    load_glyph_file(path);
+    for (char c = 'A'; c <= 'Z'; c++) {
+        snprintf(path, sizeof path, "%s/%c.8x8.txt", dir, c);
+        load_glyph_file(path);
+    }
+    /* operators and punctuation live as ascii_NNN.8x8.txt */
+    for (a = 32; a < 128; a++) {
+        snprintf(path, sizeof path, "%s/ascii_%03d.8x8.txt", dir, a);
+        load_glyph_file(path);
+    }
 }
 
 static void safe_name(const char *sym, char *out)
