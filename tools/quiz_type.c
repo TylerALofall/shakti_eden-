@@ -29,7 +29,8 @@ static const char *digit_voice(char c)
     return buf;
 }
 
-int main(int argc, char **argv)
+#define QUIZ_TYPE_MAIN main
+int QUIZ_TYPE_MAIN(int argc, char **argv)
 {
     if (argc != 3) { printf("usage: quiz_type <per_op> <log>\n"); return 1; }
     int per = 0;
