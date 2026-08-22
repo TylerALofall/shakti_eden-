@@ -277,6 +277,11 @@ These do not advance it:
 The gate is:
 
 ```text
+tool calls below 10
+→ Shakti may optionally choose early self-reflection at any time
+→ when work finishes short of 10 tool calls (for example 7), she may still
+  reflect through that early choice; she does not pad fake tool calls
+
 tool call 10
 → reflection becomes due
 
@@ -286,6 +291,10 @@ tool calls 11, 12, and 13
 before tool call 14
 → reflection is required
 ```
+
+Optional early self-reflection is Shakti's own choice. It uses the same
+thirteen-question capsule and the same commit rules as a due reflection.
+Completing any reflection (early or due) resets the tool-call counter.
 
 A memory-capsule retrieval through MCP is a tool call.
 

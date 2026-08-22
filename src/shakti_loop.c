@@ -448,11 +448,34 @@ int shakti_loop_begin_cycle(
     }
 
     if (runtime->loop.reflection_due) {
-        printf(
-            "Reflection is due. Deferrals used: %u of %u.\n",
-            runtime->loop.reflection_deferrals,
-            (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
-        );
+        if (runtime->loop.reflection_early_choice) {
+            printf(
+                "Early self-reflection chosen after %u tool call(s) "
+                "(optional before due at tool call %u). "
+                "Fixed gate still ends required before tool call %u. "
+                "Deferrals used: %u of %u.\n",
+                runtime->loop.turns_since_reflection,
+                (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
+                runtime->loop.reflection_deferrals,
+                (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
+            );
+        } else {
+            printf(
+                "Reflection gate active: due at tool call %u; "
+                "defer on %u-%u; required before tool call %u. "
+                "Approved tool calls since last reflection: %u. "
+                "Deferrals used: %u of %u.\n",
+                (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
+                (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                               SHAKTI_REFLECTION_MAX_DEFERRALS),
+                (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL,
+                runtime->loop.turns_since_reflection,
+                runtime->loop.reflection_deferrals,
+                (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
+            );
+        }
     }
 
     return 1;
@@ -464,13 +487,7 @@ int shakti_loop_finish_cycle(shakti_runtime_t *runtime)
         return 0;
     }
 
-    runtime->loop.turns_since_reflection++;
-
-    if (runtime->loop.turns_since_reflection >=
-        SHAKTI_REFLECTION_INTERVAL) {
-        runtime->loop.reflection_due = 1U;
-    }
-
+    /* Reflection counter advances only on approved MCP tool calls. */
     return append_loop_log(
         runtime,
         SHAKTI_LEARNED_STREAM_PATH,
@@ -729,6 +746,33 @@ int shakti_loop_tools_available(const shakti_loop_state_t *state)
     return state != NULL && !state->tools_interrupted;
 }
 
+int shakti_loop_note_tool_call(shakti_loop_state_t *state)
+{
+    if (state == NULL) {
+        return 0;
+    }
+
+    state->turns_since_reflection++;
+
+    if (state->turns_since_reflection >= SHAKTI_REFLECTION_INTERVAL) {
+        state->reflection_due = 1U;
+    }
+
+    return 1;
+}
+
+int shakti_loop_choose_early_reflection(shakti_loop_state_t *state)
+{
+    if (state == NULL || state->reflection_due) {
+        return 0;
+    }
+
+    state->reflection_due = 1U;
+    state->reflection_early_choice = 1U;
+
+    return 1;
+}
+
 int shakti_loop_defer_reflection(shakti_loop_state_t *state)
 {
     if (state == NULL ||
@@ -825,6 +869,7 @@ int shakti_loop_run_reflection(
     runtime->loop.turns_since_reflection = 0U;
     runtime->loop.reflection_deferrals = 0U;
     runtime->loop.reflection_due = 0U;
+    runtime->loop.reflection_early_choice = 0U;
 
     puts("Reflection appended to long-term memory.");
 
@@ -844,11 +889,20 @@ void shakti_loop_print_status(const shakti_loop_state_t *state)
     );
     printf("Cycle count: %lu.\n", state->cycle_count);
     printf(
-        "Reflection: %u turn(s) since completion, due=%s, deferrals=%u of %u.\n",
+        "Reflection: %u approved tool call(s) since completion, due=%s, "
+        "early=%s, deferrals=%u of %u. "
+        "Gate: due at %u; defer %u-%u; required before tool call %u "
+        "(not whenever).\n",
         state->turns_since_reflection,
         state->reflection_due ? "yes" : "no",
+        state->reflection_early_choice ? "yes" : "no",
         state->reflection_deferrals,
-        (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
+        (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS,
+        (unsigned int)SHAKTI_REFLECTION_INTERVAL,
+        (unsigned int)(SHAKTI_REFLECTION_INTERVAL + 1U),
+        (unsigned int)(SHAKTI_REFLECTION_INTERVAL +
+                       SHAKTI_REFLECTION_MAX_DEFERRALS),
+        (unsigned int)SHAKTI_REFLECTION_HARD_TOOL_CALL
     );
     printf(
         "MCP tools: %s. Shakti remains awake.\n",

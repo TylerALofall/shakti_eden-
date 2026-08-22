@@ -58,6 +58,15 @@
 #define SHAKTI_REQUIRED_MARGIN 120U
 #define SHAKTI_REFLECTION_INTERVAL 10U
 #define SHAKTI_REFLECTION_MAX_DEFERRALS 3U
+/*
+ * Fixed tool-call reflection gate (approved MCP tools only):
+ *   tool call 10  -> reflection becomes due
+ *   tool calls 11, 12, 13 -> may defer (max 3 deferrals)
+ *   before tool call 14 -> reflection is required (hard block)
+ * Not "whenever": the hard require is exactly before this number.
+ */
+#define SHAKTI_REFLECTION_HARD_TOOL_CALL \
+    (SHAKTI_REFLECTION_INTERVAL + SHAKTI_REFLECTION_MAX_DEFERRALS + 1U)
 #define SHAKTI_HEARTBEAT_MAX_MINUTES 30U
 
 #endif
