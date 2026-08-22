@@ -182,10 +182,11 @@ typedef struct {
 typedef struct {
     unsigned int heartbeat_minutes;
     time_t next_heartbeat_epoch;
-    unsigned int turns_since_reflection;
+    unsigned int turns_since_reflection; /* MCP tool calls since last reflection */
     unsigned int reflection_deferrals;
     unsigned long cycle_count;
     unsigned char reflection_due;
+    unsigned char reflection_early_choice;
     unsigned char tools_interrupted;
     unsigned char waiting_for_tyler;
     unsigned char memory_streaming;

@@ -17,8 +17,10 @@
 #include "shakti_tablet.h"
 #include "shakti_time.h"
 #include "shakti_types.h"
+#include "mcp.h"
 
 static volatile sig_atomic_t external_interrupt_requested = 0;
+static shakti_mcp_state_t g_mcp;
 
 static void handle_external_interrupt(int signal_number)
 {
@@ -688,6 +690,7 @@ static void print_help(void)
     puts("/message_shakti/ message");
     puts("/note_shakti/ note");
     puts("/reflection/");
+    puts("/reflection/early/");
     puts("/reflection/defer/");
     puts("/reflection/questions/");
     puts("/interrupt/");
@@ -696,25 +699,21 @@ static void print_help(void)
     puts("/help/");
     puts("/quit/");
     puts("");
-    puts("MCP tools:");
+    shakti_mcp_print_tools(&g_mcp);
     puts("ask question");
-    puts("learn question | answer | observed");
-    puts("learn question | answer | curriculum");
-    puts("learn question | answer | verified");
+    puts("learn question | answer | observed|curriculum|verified");
     puts("reject question | answer | observed");
     puts(
         "sense text|written_text|visual_art|sound_art "
         "subject property value"
     );
     puts("pass 1|2|3|4");
-    puts("school exact-text");
-    puts("draft exact-text");
+    puts("school|draft exact-text");
     puts("tablet XML_PATH ARTIFACT_ROOT");
     puts("manifest MANIFEST_XML LEDGER_TSV");
     puts("load path | text|written_text|visual_art|sound_art");
     puts("recall exact-text-fragment");
-    puts("validate");
-    puts("status");
+    puts("validate | status");
 }
 
 static int process_tool(
@@ -723,24 +722,9 @@ static int process_tool(
 )
 {
     char *arguments;
-
-    if (!shakti_loop_tools_available(&runtime->loop)) {
-        puts(
-            "MCP tools are interrupted. Shakti remains awake. "
-            "Use /resume/ to restore tool calls."
-        );
-        return 1;
-    }
-
-    if (runtime->loop.reflection_due &&
-        runtime->loop.reflection_deferrals >=
-            SHAKTI_REFLECTION_MAX_DEFERRALS) {
-        puts(
-            "Reflection reached three deferrals. Complete /reflection/ "
-            "before the next tool call."
-        );
-        return 1;
-    }
+    shakti_mcp_admit_t admit;
+    shakti_mcp_handler_id_t handler_id;
+    const char *admit_message;
 
     command = trim_text__app_h(command);
 
@@ -758,51 +742,83 @@ static int process_tool(
         arguments = command + strlen(command);
     }
 
+    admit = shakti_mcp_admit(
+        &g_mcp,
+        &runtime->loop,
+        command,
+        &handler_id,
+        &admit_message
+    );
+
+    if (admit != SHAKTI_MCP_ADMIT_OK) {
+        puts(admit_message);
+        return 1;
+    }
+
     if (!log_tool_call(runtime, command, arguments)) {
         return 0;
     }
 
-    if (strcmp(command, "ask") == 0) {
+    if (!shakti_loop_note_tool_call(&runtime->loop)) {
+        return 0;
+    }
+
+    shakti_mcp_record_receipt(&g_mcp);
+
+    if (runtime->loop.reflection_due &&
+        !runtime->loop.reflection_early_choice &&
+        runtime->loop.turns_since_reflection ==
+            SHAKTI_REFLECTION_INTERVAL) {
+        printf(
+            "Reflection is due after %u tool call(s). "
+            "Deferrals used: %u of %u.\n",
+            runtime->loop.turns_since_reflection,
+            runtime->loop.reflection_deferrals,
+            (unsigned int)SHAKTI_REFLECTION_MAX_DEFERRALS
+        );
+    }
+
+    if (handler_id == SHAKTI_MCP_HANDLER_ASK) {
         return handle_ask(runtime, arguments);
     }
 
-    if (strcmp(command, "learn") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_LEARN) {
         return handle_evidence(runtime, arguments, 0);
     }
 
-    if (strcmp(command, "reject") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_REJECT) {
         return handle_evidence(runtime, arguments, 1);
     }
 
-    if (strcmp(command, "sense") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_SENSE) {
         return handle_sense(runtime, arguments);
     }
 
-    if (strcmp(command, "pass") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_PASS) {
         return handle_pass(runtime, arguments);
     }
 
-    if (strcmp(command, "school") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_SCHOOL) {
         return shakti_school_run_drill(runtime, arguments);
     }
 
-    if (strcmp(command, "draft") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_DRAFT) {
         return shakti_school_draft_snapshots(runtime, arguments);
     }
 
-    if (strcmp(command, "tablet") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_TABLET) {
         return handle_tablet(runtime, arguments);
     }
 
-    if (strcmp(command, "manifest") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_MANIFEST) {
         return handle_manifest(runtime, arguments);
     }
 
-    if (strcmp(command, "load") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_LOAD) {
         return handle_load(runtime, arguments);
     }
 
-    if (strcmp(command, "recall") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_RECALL) {
         if (!shakti_memory_recall_text_file(
                 SHAKTI_LEARNED_STREAM_PATH,
                 arguments,
@@ -813,17 +829,18 @@ static int process_tool(
         return 1;
     }
 
-    if (strcmp(command, "validate") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_VALIDATE) {
         validate_logs();
         return 1;
     }
 
-    if (strcmp(command, "status") == 0) {
+    if (handler_id == SHAKTI_MCP_HANDLER_STATUS) {
         print_status(runtime);
         return 1;
     }
 
-    puts("Unknown MCP tool. Use /menu/ or /help/.");
+    /* Admitted id with no dispatch branch — treat as hard fail, no silent OK. */
+    puts("DENIED");
 
     return 1;
 }
@@ -979,6 +996,25 @@ static int process_control(
         return 1;
     }
 
+    if (strcmp(line, "/reflection/early/") == 0) {
+        if (shakti_loop_choose_early_reflection(&runtime->loop)) {
+            printf(
+                "Early self-reflection chosen after %u tool call(s). "
+                "Run /reflection/ when ready.\n",
+                runtime->loop.turns_since_reflection
+            );
+        } else if (runtime->loop.reflection_due) {
+            puts(
+                "Reflection is already due. Use /reflection/ "
+                "(or /reflection/defer/ while deferrals remain)."
+            );
+        } else {
+            puts("Early self-reflection choice failed.");
+        }
+
+        return 1;
+    }
+
     if (strcmp(line, "/reflection/defer/") == 0) {
         if (shakti_loop_defer_reflection(&runtime->loop)) {
             printf(
@@ -1090,6 +1126,7 @@ static int initialize_runtime(shakti_runtime_t *runtime)
     shakti_loop_init(&runtime->loop);
     shakti_tablet_init(&runtime->tablet);
     shakti_manifest_init(&runtime->manifest);
+    shakti_mcp_init(&g_mcp);
 
     return shakti_reason_load(
                &runtime->reason,
