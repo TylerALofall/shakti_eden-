@@ -1,5 +1,11 @@
 # Shakti Runnable MVP — C99
 
+this file is old do not trust it completely 
+
+
+
+
+
 This package is a single-process, fixed-memory C99 implementation of Shakti's runnable beginning.
 
 ## What runs now
