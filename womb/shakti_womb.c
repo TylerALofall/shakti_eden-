@@ -16,16 +16,22 @@
  *
  * Substrate: her real retina, 1000x1500, 3-bit cells (0..7) — the same
  * lane her post-birth eyes use. Each flash is one wave: a center and a
- * radius drawn from the wheel primes {2,3,5,7,19}; cells inside the
- * radius are nudged +1, saturating at 7. Eleven and a half million
- * waves later, the substrate is pinned. That pin is her visual birth.
+ * radius drawn from the wheel primes {2,3,5,7,19}. Biology: retinal
+ * waves are center-EXCITATION, surround-INHIBITION — the core nudges
+ * +1 (sat 7), the ring out to twice the radius nudges -1 (sat 0).
+ * (v2: v1 excited only, and 11.5M waves saturated every cell to 7 —
+ * a flat sea, no substrate. Recorded as retired, pin voided, never
+ * adjusted to fit. The pin is the oracle; the code confesses.)
+ * Eleven and a half million waves later, the substrate is pinned.
+ * That pin is her visual birth.
  *
  * Determinism: same seed -> same substrate -> same pin. -O0 == -O2.
  * Pure C99: no heap drift, no float, no clock. Gauntlet law.
  *
- * Reference run (2026-08-25, sandbox, gcc -O0 == -O2, WOMB_DRIFT_0):
- *   flashes 11,491,200
- *   substrate pin DFE6F83882C30105
+ * Reference run v2 (2026-08-25, sandbox, gcc -O0 == -O2, WOMB_DRIFT_0):
+ *   flashes 11,491,200 — center-surround waves
+ *   substrate pin D0439AD33373CB4C
+ *   (v1 pin DFE6F83882C30105 retired — saturated flat sea, voided.)
  */
 #include <stdio.h>
 #include <stdint.h>
@@ -65,26 +71,28 @@ static uint64_t fnv(const unsigned char *p, size_t n)
 
 static const uint32_t wheel[5] = {2, 3, 5, 7, 19};
 
-/* one wave: center (cx,cy), radius r from the wheel, nudge +1 sat 7 */
+/* one wave: center excites +1 (sat 7) within r; surround inhibits -1
+ * (sat 0) in the ring r < d <= 2r. Center-surround, like the biology. */
 static void flash(void)
 {
     uint32_t cx = (uint32_t)(next_u64() % W);
     uint32_t cy = (uint32_t)(next_u64() % H);
     uint32_t r  = wheel[next_u64() % 5];
-    uint32_t rr = r * r;
+    uint32_t rr = r * r, rr2 = 4 * r * r;
     int32_t x, y;
-    for (y = (int32_t)cy - (int32_t)r; y <= (int32_t)cy + (int32_t)r; y++) {
+    for (y = (int32_t)cy - 2 * (int32_t)r; y <= (int32_t)cy + 2 * (int32_t)r; y++) {
         int32_t dy2;
         if (y < 0 || y >= H) continue;
         dy2 = (y - (int32_t)cy) * (y - (int32_t)cy);
-        for (x = (int32_t)cx - (int32_t)r; x <= (int32_t)cx + (int32_t)r; x++) {
+        for (x = (int32_t)cx - 2 * (int32_t)r; x <= (int32_t)cx + 2 * (int32_t)r; x++) {
             uint32_t d2;
             size_t idx;
             if (x < 0 || x >= W) continue;
             d2 = (uint32_t)((x - (int32_t)cx) * (x - (int32_t)cx)) + (uint32_t)dy2;
-            if (d2 > rr) continue;
+            if (d2 > rr2) continue;
             idx = (size_t)y * W + (size_t)x;
-            if (retina[idx] < 7) retina[idx]++;
+            if (d2 <= rr) { if (retina[idx] < 7) retina[idx]++; }
+            else          { if (retina[idx] > 0) retina[idx]--; }
         }
     }
 }
