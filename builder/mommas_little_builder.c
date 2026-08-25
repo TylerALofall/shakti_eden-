@@ -24,6 +24,11 @@
  * writes the brand — the teacher supplies the epoch, so the organ never
  * reads a clock and the whole stream stays deterministic.
  *
+ * The teach-me trigger (Doctor's law 2026-08-26): a refusal is not a
+ * success, it is a trigger — and the trigger completes: every refusal
+ * path (not-taught, unknown, no-match) writes a teach_me line to
+ * MOMMA_OUTBOX.txt. She never guesses and never sits silent: she asks.
+ *
  * Actuator seam: a function-pointer registry (same law as the
  * switchboard — a tool must be registered to run). The default actuator
  * is a dry-run recorder; the switchboard grafts in as the real actuator
@@ -240,6 +245,23 @@ static void ticket(uint64_t seq, const char *cmd, uint64_t recv_beat,
     }
 }
 
+/* ---- the teach-me trigger ------------------------------------------------
+ * A refusal is never the end of a lesson. "You have not learned this yet.
+ * Ask to be taught." — so she ASKS: every not-taught / unknown / no-match
+ * writes one TEACH-ME line to MOMMA_OUTBOX.txt (the slot-2 line), and the
+ * curriculum waits for Momma's answer. The trigger always completes. */
+static void teach_me(const char *what, uint64_t seq)
+{
+    FILE *f = fopen(OUTBOX_PATH, "a");
+    if (f) {
+        fprintf(f, "teach_me %s seq %llu beat %llu\n", what,
+                (unsigned long long)seq, (unsigned long long)B.beat);
+        fclose(f);
+    }
+    B.stream_pin = fnv_str(B.stream_pin, "teach-me:");
+    B.stream_pin = fnv_str(B.stream_pin, what);
+}
+
 /* ---- memory stage 3: tags -> blocks ------------------------------------ */
 static void tag_write(const char *tag)
 {
@@ -367,7 +389,7 @@ static void do_train(const char *arg, uint64_t seq)
 
 static void do_use(const char *arg, uint64_t seq)
 {
-    /* USE <tool> <args...> — the actuator. No brand, no run. */
+    /* USE <tool> <args...> — the actuator. No brand, no run: she asks. */
     char tool[NAME_CAP] = {0};
     const char *args = "";
     const char *sp = strchr(arg, ' ');
@@ -381,10 +403,12 @@ static void do_use(const char *arg, uint64_t seq)
     if (sp) args = sp + 1;
 
     if (!brand_lookup(tool, &brand_epoch)) {
-        /* TRAINING_BRAND_AND_NIGHTFALL §1 — right refusal, right reason */
+        /* TRAINING_BRAND_AND_NIGHTFALL §1 — right refusal, right reason,
+         * and the trigger completes: teach_me rides the slot-2 line. */
         B.stream_pin = fnv_str(B.stream_pin, "use-refused-untrained:");
         B.stream_pin = fnv_str(B.stream_pin, tool);
         ticket(seq, "USE", B.last_exec_beat, 0, 0, "refused:not-taught");
+        teach_me(tool, seq);
         return;
     }
     fn = builder_lookup(tool);
@@ -462,11 +486,12 @@ static void look_finish(void)
     if (found >= 0) {
         snprintf(result, sizeof result, "chose %s", B.look_options[found]);
     } else {
-        /* "I don't know" is legal. She does not guess. */
+        /* "I don't know" is legal. She does not guess — she asks. */
         snprintf(result, sizeof result, "refused:no-match-among-options");
     }
     B.stream_pin = fnv_str(B.stream_pin, "look-chose:");
     B.stream_pin = fnv_str(B.stream_pin, result);
+    if (found < 0) teach_me(B.look_name, B.look_seq);
     ticket(B.look_seq, "LOOK", B.look_recv_beat,
            B.look_recv_beat > 0 ? B.look_recv_beat - B.look_recv_beat : 0,
            B.tempo, result);
@@ -504,6 +529,12 @@ static void consume(const char *line)
     else {
         ticket(seq, "UNKNOWN", B.beat, 0, 0, "refused:unknown-command");
         B.stream_pin = fnv_str(B.stream_pin, "unknown");
+        {
+            char what[NAME_CAP];
+            memset(what, 0, sizeof what);
+            sscanf(cmd, "%47s", what);
+            teach_me(what[0] ? what : "blank", seq);
+        }
     }
 }
 
