@@ -1,0 +1,12 @@
+FOUR LADDERS (working reference, founder-verified)
+
+13-ladder: 13-26-52-104   steps: 2/1, 2/1, 2/1
+binary: 1-2-4-8   steps: 2/1, 2/1, 2/1
+fibonacci: 2-3-5-8   steps: 3/2=fifth, 5/3=maj6, 8/5=min6
+C1-C4 octaves: 1-2-4-8   steps: 2/1, 2/1, 2/1
+
+crossing rung 8: 104/13=8, binary rung4=8, fibonacci rung4=8
+crossing set {1,2,8} holds
+fibonacci road steps are just notes: fifth 3/2, maj6 5/3, min6 8/5
+ladders pin 404CFB10794E304B
+drift 0
