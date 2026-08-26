@@ -1,0 +1,1 @@
+<content of CLAUDE_HANDOFF_2026-08-27.md — will inline on push>
