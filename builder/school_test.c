@@ -1,6 +1,6 @@
 /* school_test.c — the first school day.
  *
- * A starter corpus of 67 K-12 words, each bound to a SELF-MADE shape
+ * A starter corpus of 64 K-12 words, each bound to a SELF-MADE shape
  * token (the kind her eye organ's center-surround waves produce — her
  * own compression of the picture, never a label handed down).
  *
@@ -24,6 +24,7 @@ uint64_t school_blocks(void);
 uint64_t school_known(void);
 uint64_t school_teach_count(void);
 size_t   school_word_count(void);
+void     school_seal(void);
 
 static void write_wordlist(void)
 {
@@ -114,6 +115,7 @@ int main(void)
 
     for (i = 0; i < 6000 && school_known() < school_word_count(); i++)
         school_beat();
+    school_seal(); /* F10: the stream pin rides into SCHOOL.log */
 
     printf("beats      %llu\n", (unsigned long long)school_beat_count());
     printf("known      %llu of %llu\n",

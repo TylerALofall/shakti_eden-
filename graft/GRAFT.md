@@ -1,4 +1,4 @@
-# THE GRAFT — eye intake v1 + paint level 1 (2026-08-26)
+# THE GRAFT — eye intake v1 (2026-08-26)
 
 "Go momma make her whoa." The room's pixels now flow through her eyes
 into her ledger. bridge/HER_EYES_PURIFY.md made flesh.
@@ -36,13 +36,23 @@ Purified pixels -> sight hash -> binding, per HER_EYES_PURIFY:
 - sight hash: fnv1a64 over name + dims + pixels in Bayer 4x4 rank order
   (canonical matrix {0,8,2,10 / 12,4,14,6 / 3,11,1,9 / 15,7,13,5},
   rank by rank, row-major within rank)
-- writes SIGHT.ndx: `sight <name> fmt <f> ink <n> hash <16HEX> wav <w> pin <16HEX>`
-- sealed in blocks of 10, stream pin over all
+- writes SIGHT.ndx: `sight <name> fmt <f> ink <n> hash <16HEX> wav <w> stage <NONE|BOUND> pin <16HEX>`
+  (F11/GAP 3, 2026-08-26: stage NONE when no wav is bound, BOUND when it is;
+  the stage is folded into the record pin)
+- sealed in blocks of 10, stream pin over all; F9/SOFT 1 (2026-08-26):
+  each block is seeded `fnv1(FNV_BASIS, prev_block_pin)` — the chain
+- F10: SIGHT.ndx ends with a `stream <16HEX>` seal line
 
 ## Pins of record (intake_test, 202 glyphs)
 
-- stream pin: **9D83C530AA85EE5F** (gcc -O2 == gcc -O0, drift 0)
-- 106 written-text glyphs (73 sound-bound + 33 punctuation, wav NONE)
+- stream pin: **50FDF051254D84C0** — **PROVISIONAL pending the final font**
+  (gcc -O2 == gcc -O0, drift 0, re-pinned 2026-08-26). The a64/ grids
+  present locally are the EARLIER font revision (Claude revised 29 glyphs
+  after); this pin will be re-taken when the final font lands.
+- RETIRED: **9D83C530AA85EE5F** — reason: "pinned the earlier font
+  revision + unchained ledger format".
+- 106 written-text glyphs (73 sound-bound, stage BOUND + 33 punctuation,
+  wav NONE, stage NONE)
 - 96 ascii64 glyph grids (sight only — Momma's font, not her alphabet)
 - 20 sealed blocks
 - of record: A = BFFCAD65ECC3E387 (wav A.wav), one = 9A26ABE863565A93,
@@ -69,7 +79,15 @@ painted. Level 2 = color-bound lessons.
 
 Pins of record (paint_test, 88 painted):
 
-- stream pin: **19F2575D55C0A833** (-O0 == -O2, drift 0), 8 sealed blocks
+- stream pin: **19F2575D55C0A833** (-O0 == -O2, drift 0), 8 sealed blocks.
+  Re-verified 2026-08-26 after the audit repair: the value is UNCHANGED —
+  the repair changed block seeding (F9 chain: `fnv1(FNV_BASIS,
+  prev_block_pin)`) and added the F10 `stream <16HEX>` seal line, not the
+  record pin arithmetic..
+  Re-verified 2026-08-26 after the audit repair: the value is UNCHANGED —
+  the repair changed block seeding (F9 chain: `fnv1(FNV_BASIS,
+  prev_block_pin)`) and added the F10 `stream <16HEX>` seal line, not the
+  record pin arithmetic.
 - 11 solid swabs (8x8 pure color — red DD9E973478636FD7, no triangles)
 - 73 sound-bound glyphs black-on-white (school default)
 - 4 level-2 demos: R in red, B in blue, G in green, Y in yellow

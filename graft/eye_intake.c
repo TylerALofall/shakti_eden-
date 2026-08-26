@@ -86,7 +86,7 @@ static uint64_t sight_hash(const char *name, const char *fmt)
 static int load_8x8(FILE *f, char *name, size_t ncap)
 {
     char line[LINE_CAP];
-    int in_header = 1, loaded_chars = 0;
+    int chars = -1, in_header = 1, loaded_chars = 0;
     px_rows = 0; px_cols = 8;
     name[0] = 0;
     while (fgets(line, sizeof line, f)) {
@@ -109,7 +109,8 @@ static int load_8x8(FILE *f, char *name, size_t ncap)
             continue;
         }
     }
-    return name[0] && loaded_chars > 0;
+    chars = loaded_chars;
+    return name[0] && chars > 0;
 }
 
 /* ---- format 2: SHAKTI_GLYPH_64X64_BINARY_V1 ---------------------------- */
@@ -148,15 +149,18 @@ static void sight_record(const char *name, const char *fmt, uint64_t hash,
                          uint64_t ink, const char *wav)
 {
     FILE *f = fopen(SIGHT_PATH, "a");
+    /* F11 (GAP 3): the stage says whether a sound is bound to the sight */
+    const char *stage = (strcmp(wav, "NONE") == 0) ? "NONE" : "BOUND";
     uint64_t pin = FNV_BASIS;
     tseq++;
     pin = fnv1(pin, tseq);
     pin = fnv_str(pin, name);
     pin = fnv1(pin, hash);
+    pin = fnv_str(pin, stage);
     if (f) {
-        fprintf(f, "sight %s fmt %s ink %llu hash %016llX wav %s pin %016llX\n",
+        fprintf(f, "sight %s fmt %s ink %llu hash %016llX wav %s stage %s pin %016llX\n",
                 name, fmt, (unsigned long long)ink,
-                (unsigned long long)hash, wav, (unsigned long long)pin);
+                (unsigned long long)hash, wav, stage, (unsigned long long)pin);
         fclose(f);
     }
     stream_pin = fnv_str(stream_pin, "sight:");
@@ -172,7 +176,8 @@ static void sight_record(const char *name, const char *fmt, uint64_t hash,
                     (unsigned long long)block_pin);
             fclose(f);
         }
-        block_pin = FNV_BASIS;
+        /* F9: the chain — the next block is seeded from this block's pin. */
+        block_pin = fnv1(FNV_BASIS, block_pin);
         block_tickets = 0;
     }
 }
@@ -228,6 +233,17 @@ uint64_t eye_intake_run(void)
     }
     fclose(m);
     return glyph_count;
+}
+
+/* F10: seal the ledger - the stream pin is written INTO SIGHT.ndx as
+ * the final line, so the file carries its own proof. Best-effort. */
+void eye_seal(void)
+{
+    FILE *f = fopen(SIGHT_PATH, "a");
+    if (f) {
+        fprintf(f, "stream %016llX\n", (unsigned long long)stream_pin);
+        fclose(f);
+    }
 }
 
 uint64_t eye_stream_pin(void)  { return stream_pin; }

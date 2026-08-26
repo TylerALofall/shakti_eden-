@@ -20,6 +20,7 @@ uint64_t builder_beat_count(void);
 uint64_t builder_next_seq(void);
 uint64_t builder_blocks(void);
 int      builder_recall(uint64_t block_no, FILE *out);
+void     builder_seal(void);
 
 static void write_curriculum(void)
 {
@@ -53,6 +54,7 @@ int main(void)
     write_curriculum();
     builder_init();
     for (i = 0; i < 400; i++) builder_beat();
+    builder_seal(); /* F10: the stream pin rides into TICKETS.log */
 
     printf("beats      %llu\n", (unsigned long long)builder_beat_count());
     printf("next_seq   %llu\n", (unsigned long long)builder_next_seq());

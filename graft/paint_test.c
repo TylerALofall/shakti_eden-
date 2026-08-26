@@ -18,6 +18,7 @@ int      paint_swab(const char *color, int rows, int cols);
 uint64_t paint_stream_pin(void);
 uint64_t paint_blocks(void);
 uint64_t paint_count_done(void);
+void     paint_seal(void);
 
 int main(void)
 {
@@ -59,6 +60,7 @@ int main(void)
         ok += (uint64_t)paint_glyph(path, "8x8", demos[i].c, "white", wav);
     }
 
+    paint_seal(); /* F10: the stream pin rides into PAINT.ndx */
     printf("painted    %llu of %llu\n",
            (unsigned long long)ok,
            (unsigned long long)(11 + sizeof wav_names / sizeof wav_names[0] + 4));
