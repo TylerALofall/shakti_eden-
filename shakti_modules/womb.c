@@ -34,7 +34,7 @@ int main(void)
     printf("    SAME NUMBER: %s\n\n", n == TET_WOMB ? "YES" : "NO");
 
     printf("=== where it comes from ===\n\n");
-    printf("    second")
+    printf("    seconds in a day        86400 = 2^7 x 3^3 x 5^2\n");
     printf("    gestation days            266 = 2 x 7 x 19\n");
     printf("    86400 x 266             = %lu   %s\n",
            86400UL * 266UL, (86400UL * 266UL == n) ? "= the womb" : "MISMATCH");
