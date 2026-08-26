@@ -76,6 +76,7 @@ typedef struct {
     uint64_t strength;           /* binding strength; built, never given  */
     uint64_t passes;             /* spaced SPELL passes                   */
     uint64_t last_pass_block;    /* spacing: passes must cross blocks     */
+    uint64_t last_pass_tno;      /* spacing: ticket no of last counted pass */
     int      stage;
     size_t   spell_pos;          /* letters produced in current attempt   */
 } word_t;
@@ -88,6 +89,11 @@ static uint64_t tseq;            /* school ticket sequence */
 static uint64_t stream_pin;
 static uint64_t block_pin, block_tickets, block_count;
 static uint64_t known_count, teach_count;
+static size_t   last_ticket_word = WORD_MAX; /* word of the previous ticket      */
+static uint64_t other_tno[WORD_MAX]; /* F8: latest ticket no belonging to any
+                                      * word OTHER than the index; tseq is the
+                                      * global ticket counter that makes the
+                                      * spacing auditable without a clock.   */
 
 /* ---- the outbox: teach_me and known ride the slot-2 line -------------- */
 static void outbox(const char *kind, const char *what)
@@ -112,7 +118,7 @@ static void teach_me_shape(const char *shape)
 }
 
 /* ---- the ledger -------------------------------------------------------- */
-static void ticket(const char *event, const word_t *w, const char *detail)
+static void ticket(const char *event, const word_t *w, size_t widx, const char *detail)
 {
     FILE *f;
     uint64_t pin = FNV_BASIS;
@@ -123,19 +129,33 @@ static void ticket(const char *event, const word_t *w, const char *detail)
     pin = fnv1(pin, beat);
     pin = fnv_str(pin, detail);
 
-    f = fopen(SCHOOL_LOG, "a");
-    if (!f) return;
-    fprintf(f, "sch %llu %s %s stage %d strength %llu passes %llu beat %llu %s pin %016llX\n",
-            (unsigned long long)tseq, event, w->spell, w->stage,
-            (unsigned long long)w->strength, (unsigned long long)w->passes,
-            (unsigned long long)beat, detail, (unsigned long long)pin);
-    fclose(f);
-
+    /* F3: the pin fold and block sealing are a function of the school day
+     * ONLY — they ALWAYS happen, even if the ledger file will not open.
+     * The file write is best-effort; a failed write screams on the outbox. */
     stream_pin = fnv_str(stream_pin, "sch:");
     stream_pin = fnv1(stream_pin, pin);
 
     block_pin = fnv1(block_pin, pin);
     block_tickets++;
+    last_ticket_word = widx;
+    {
+        /* F8: every other word's "someone else was here" mark advances */
+        size_t j;
+        for (j = 0; j < word_count; j++)
+            if (j != widx) other_tno[j] = tseq;
+    }
+
+    f = fopen(SCHOOL_LOG, "a");
+    if (!f) {
+        outbox("teach_me", "ledger");
+    } else {
+        fprintf(f, "sch %llu %s %s stage %d strength %llu passes %llu beat %llu %s pin %016llX\n",
+                (unsigned long long)tseq, event, w->spell, w->stage,
+                (unsigned long long)w->strength, (unsigned long long)w->passes,
+                (unsigned long long)beat, detail, (unsigned long long)pin);
+        fclose(f);
+    }
+
     if (block_tickets == BLOCK_TICKETS) {
         block_count++;
         f = fopen(SCHOOL_LOG, "a");
@@ -145,7 +165,8 @@ static void ticket(const char *event, const word_t *w, const char *detail)
                     (unsigned long long)block_pin);
             fclose(f);
         }
-        block_pin = FNV_BASIS;
+        /* F9: the chain — the next block is seeded from this block's pin. */
+        block_pin = fnv1(FNV_BASIS, block_pin);
         block_tickets = 0;
     }
 }
@@ -186,27 +207,46 @@ static void school_step(word_t *w, size_t idx)
     case ST_EXPOSE:
         /* the binding is shown: her shape, the letters. Strength grows. */
         w->strength++;
-        ticket("expose", w, "binding-shown");
+        ticket("expose", w, idx, "binding-shown");
         if (w->strength >= EXPOSE_NEED) w->stage = ST_RECOGNIZE;
         break;
 
     case ST_RECOGNIZE: {
-        /* given her shape, pick the spelling among 4. Early on she is
-         * WRONG — that is the honest state of a weak binding, and the
+        /* given her shape, pick the spelling among 4. F6: the options are
+         * REAL — all four are folded into the pin and written to the log,
+         * and her choice is deterministic: a strong binding (strength >=
+         * RECOGNIZE_NEED) chooses the correct spelling; a weak one points
+         * at fnv(shape, block) mod 4 (bumped off the correct slot). Early
+         * on she is WRONG — the honest state of a weak binding, and the
          * trigger completes: teach_me, back to EXPOSE. */
-        size_t opts[OPTS], correct;
+        size_t opts[OPTS], correct, chose, k;
+        char odetail[224];
+        const char *oname[OPTS];
         make_options(w, idx, opts, &correct);
+        for (k = 0; k < OPTS; k++) {
+            oname[k] = opts[k] != WORD_MAX ? W[opts[k]].spell : "x";
+            stream_pin = fnv_str(stream_pin, "option:");
+            stream_pin = fnv_str(stream_pin, oname[k]);
+        }
         if (w->strength >= RECOGNIZE_NEED) {
+            chose = correct; /* the binding is strong enough — she sees it */
             w->strength += RECOGNIZE_GAIN;
             w->stage = ST_SPELL;
             w->spell_pos = 0;
-            ticket("recognize-pass", w, "chose-right");
+            snprintf(odetail, sizeof odetail,
+                     "chose-right opts %s,%s,%s,%s chose %s",
+                     oname[0], oname[1], oname[2], oname[3], oname[chose]);
+            ticket("recognize-pass", w, idx, odetail);
         } else {
             /* she points at a distractor, deterministically wrong */
-            size_t wrong = (correct + 1 + (size_t)(fnv_str(FNV_BASIS, w->shape) % (OPTS - 1))) % OPTS;
-            (void)wrong;
+            chose = (size_t)(fnv1(fnv_str(FNV_BASIS, w->shape), block_count) % OPTS);
+            if (chose == correct || opts[chose] == WORD_MAX)
+                chose = (correct + 1) % OPTS;
             w->stage = ST_EXPOSE;
-            ticket("recognize-fail", w, "chose-wrong-back-to-expose");
+            snprintf(odetail, sizeof odetail,
+                     "chose-wrong-back-to-expose opts %s,%s,%s,%s chose %s",
+                     oname[0], oname[1], oname[2], oname[3], oname[chose]);
+            ticket("recognize-fail", w, idx, odetail);
             teach_me_shape(w->shape);
         }
         break;
@@ -226,26 +266,37 @@ static void school_step(word_t *w, size_t idx)
         if (produced != w->spell[w->spell_pos]) {
             w->stage = ST_EXPOSE;
             w->spell_pos = 0;
-            ticket("spell-fail", w, "wrong-letter-back-to-expose");
+            ticket("spell-fail", w, idx, "wrong-letter-back-to-expose");
             teach_me_shape(w->shape);
             break;
         }
         w->spell_pos++;
         if (w->spell_pos == len) {
-            /* whole word spelled from the binding */
+            /* whole word spelled — but see F7: a weak binding's lucky
+             * pseudo-letters bank nothing. */
             w->spell_pos = 0;
-            if (block_count > w->last_pass_block) {
+            if (w->strength < SPELL_NEED) {
+                /* F7: below SPELL_NEED this is luck, not knowledge */
+                ticket("spell-pass", w, idx, "below-need-not-counted");
+            } else if (block_count > w->last_pass_block &&
+                       other_tno[idx] > w->last_pass_tno) {
+                /* F8: spaced = a later block AND at least one OTHER word
+                 * ticketed since this word's last counted pass
+                 * (other_tno[idx] marks the newest ticket that is not hers) */
                 w->passes++;
                 w->last_pass_block = block_count;
-                ticket("spell-pass", w, "spaced-pass-counted");
+                ticket("spell-pass", w, idx, "spaced-pass-counted");
+                w->last_pass_tno = tseq;
+            } else if (block_count <= w->last_pass_block) {
+                ticket("spell-pass", w, idx, "same-block-not-counted");
             } else {
-                ticket("spell-pass", w, "same-block-not-counted");
+                ticket("spell-pass", w, idx, "no-other-word-not-counted");
             }
             if (w->passes >= PASSES_NEED) {
                 FILE *m;
                 w->stage = ST_KNOWN;
                 known_count++;
-                ticket("known", w, "word-is-hers");
+                ticket("known", w, idx, "word-is-hers");
                 outbox("known", w->spell);
                 m = fopen(MASTERY_PATH, "a");
                 if (m) {
@@ -257,7 +308,7 @@ static void school_step(word_t *w, size_t idx)
                 }
             }
         } else {
-            ticket("spell-letter", w, "letter-from-binding");
+            ticket("spell-letter", w, idx, "letter-from-binding");
         }
         break;
     }
@@ -322,6 +373,19 @@ void school_init(void)
     block_count = 0;
     known_count = 0;
     teach_count = 0;
+    last_ticket_word = WORD_MAX;
+    memset(other_tno, 0, sizeof other_tno);
+}
+
+/* F10: seal the ledger — the stream pin is written INTO SCHOOL.log as
+ * the final line, so the file carries its own proof. Best-effort. */
+void school_seal(void)
+{
+    FILE *f = fopen(SCHOOL_LOG, "a");
+    if (f) {
+        fprintf(f, "stream %016llX\n", (unsigned long long)stream_pin);
+        fclose(f);
+    }
 }
 
 uint64_t school_stream_pin(void)  { return stream_pin; }

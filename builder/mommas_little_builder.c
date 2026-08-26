@@ -24,11 +24,6 @@
  * writes the brand — the teacher supplies the epoch, so the organ never
  * reads a clock and the whole stream stays deterministic.
  *
- * The teach-me trigger (Doctor's law 2026-08-26): a refusal is not a
- * success, it is a trigger — and the trigger completes: every refusal
- * path (not-taught, unknown, no-match) writes a teach_me line to
- * MOMMA_OUTBOX.txt. She never guesses and never sits silent: she asks.
- *
  * Actuator seam: a function-pointer registry (same law as the
  * switchboard — a tool must be registered to run). The default actuator
  * is a dry-run recorder; the switchboard grafts in as the real actuator
@@ -193,6 +188,8 @@ static void converge(const char *text)
     B.stream_pin = fnv_str(B.stream_pin, text);
 }
 
+static void teach_me(const char *what, uint64_t seq);
+
 /* ---- the ledger -------------------------------------------------------- */
 static void ticket(uint64_t seq, const char *cmd, uint64_t recv_beat,
                    uint64_t waited, uint64_t delib, const char *result)
@@ -205,21 +202,30 @@ static void ticket(uint64_t seq, const char *cmd, uint64_t recv_beat,
     pin = fnv1(pin, B.beat);
     pin = fnv_str(pin, result);
 
-    f = fopen(TICKETS_PATH, "a");
-    if (!f) return;
-    fprintf(f, "tkt %llu cmd %s recv_beat %llu exec_beat %llu waited %llu delib %llu pin %016llX\n",
-            (unsigned long long)seq, cmd,
-            (unsigned long long)recv_beat, (unsigned long long)B.beat,
-            (unsigned long long)waited, (unsigned long long)delib,
-            (unsigned long long)pin);
-    fclose(f);
-
+    /* F3: the pin fold and block sealing are a function of the curriculum
+     * ONLY — they ALWAYS happen, even if the ledger file will not open.
+     * The file write is best-effort; a failed write screams on the outbox. */
     B.stream_pin = fnv_str(B.stream_pin, "tkt:");
     B.stream_pin = fnv1(B.stream_pin, pin);
 
     /* memory stage 2: seal a block every BLOCK_TICKETS tickets */
     B.block_pin = fnv1(B.block_pin, pin);
     B.block_tickets++;
+
+    f = fopen(TICKETS_PATH, "a");
+    if (!f) {
+        teach_me("ledger", seq);
+    } else {
+        /* F5: the result rides the ticket line — success vs refusal is
+         * readable from TICKETS.log alone, no re-run needed. */
+        fprintf(f, "tkt %llu cmd %s recv_beat %llu exec_beat %llu waited %llu delib %llu result %s pin %016llX\n",
+                (unsigned long long)seq, cmd,
+                (unsigned long long)recv_beat, (unsigned long long)B.beat,
+                (unsigned long long)waited, (unsigned long long)delib,
+                result, (unsigned long long)pin);
+        fclose(f);
+    }
+
     if (B.block_tickets == BLOCK_TICKETS) {
         B.block_count++;
         f = fopen(TICKETS_PATH, "a");
@@ -240,7 +246,9 @@ static void ticket(uint64_t seq, const char *cmd, uint64_t recv_beat,
                 fclose(f);
             }
         }
-        B.block_pin = FNV_BASIS;
+        /* F9: the chain — the next block is seeded from this block's pin,
+         * never a bare basis. A swapped block breaks every later pin. */
+        B.block_pin = fnv1(FNV_BASIS, B.block_pin);
         B.block_tickets = 0;
     }
 }
@@ -374,10 +382,12 @@ static void do_train(const char *arg, uint64_t seq)
     unsigned long long ep = 0;
     if (sscanf(arg, "%47s %llu", tool, &ep) != 2 || ep == 0) {
         ticket(seq, "TRAIN", B.last_exec_beat, 0, 0, "refused:bad-lesson");
+        teach_me("lesson:bad-train", seq); /* F2: no refusal is silent */
         return;
     }
     if (!brand_write(tool, (uint64_t)ep)) {
         ticket(seq, "TRAIN", B.last_exec_beat, 0, 0, "refused:already-trained");
+        teach_me(tool, seq); /* F2: a changed brand is a new lesson — she asks */
         return;
     }
     converge("trained a tool");
@@ -389,7 +399,7 @@ static void do_train(const char *arg, uint64_t seq)
 
 static void do_use(const char *arg, uint64_t seq)
 {
-    /* USE <tool> <args...> — the actuator. No brand, no run: she asks. */
+    /* USE <tool> <args...> — the actuator. No brand, no run. */
     char tool[NAME_CAP] = {0};
     const char *args = "";
     const char *sp = strchr(arg, ' ');
@@ -403,8 +413,7 @@ static void do_use(const char *arg, uint64_t seq)
     if (sp) args = sp + 1;
 
     if (!brand_lookup(tool, &brand_epoch)) {
-        /* TRAINING_BRAND_AND_NIGHTFALL §1 — right refusal, right reason,
-         * and the trigger completes: teach_me rides the slot-2 line. */
+        /* TRAINING_BRAND_AND_NIGHTFALL §1 — right refusal, right reason */
         B.stream_pin = fnv_str(B.stream_pin, "use-refused-untrained:");
         B.stream_pin = fnv_str(B.stream_pin, tool);
         ticket(seq, "USE", B.last_exec_beat, 0, 0, "refused:not-taught");
@@ -416,6 +425,7 @@ static void do_use(const char *arg, uint64_t seq)
     memset(reply, 0, sizeof reply);
     if (!fn(tool, args, reply, sizeof reply)) {
         ticket(seq, "USE", B.last_exec_beat, 0, 0, "refused:actuator");
+        teach_me(tool, seq); /* F2: the tool would not run — she asks */
         return;
     }
     converge(reply);
@@ -497,8 +507,10 @@ static void look_finish(void)
            B.tempo, result);
 }
 
-/* ---- dispatch one curriculum line -------------------------------------- */
-static void consume(const char *line)
+/* ---- dispatch one curriculum line --------------------------------------
+ * Returns 1 if the line was consumed in order, 0 if it arrived out of
+ * order (the caller restores the cursor so the lesson is re-offered). */
+static int consume(const char *line)
 {
     char seqbuf[32], cmd[CMD_CAP];
     unsigned long long seq;
@@ -506,14 +518,24 @@ static void consume(const char *line)
 
     memset(seqbuf, 0, sizeof seqbuf);
     memset(cmd, 0, sizeof cmd);
-    if (sscanf(line, "%31s %127[^\n]", seqbuf, cmd) < 1) return;
+    if (sscanf(line, "%31s %127[^\n]", seqbuf, cmd) < 1) return 1;
     seq = strtoull(seqbuf, NULL, 10);
 
     /* matched ledger: in order or honestly stuck */
     if ((uint64_t)seq != B.next_seq) {
-        ticket(B.next_seq, "STUCK", B.beat, 0, 0, "refused:out-of-order");
+        char why[96];
+        char what[96];
+        /* F4: the ticket records the seq that ARRIVED, not just the one
+         * she expected — both numbers, side by side. */
+        snprintf(why, sizeof why, "refused:out-of-order arrived %llu expected %llu",
+                 seq, (unsigned long long)B.next_seq);
+        ticket(B.next_seq, "STUCK", B.beat, 0, 0, why);
         B.stream_pin = fnv_str(B.stream_pin, "stuck");
-        return; /* she waits for the missing lesson; she never skips */
+        /* F2: the refusal asks — she waits for the missing lesson and
+         * says so on the outbox, naming the seq that arrived. */
+        snprintf(what, sizeof what, "lesson:arrived-%llu", seq);
+        teach_me(what, (uint64_t)seq);
+        return 0; /* she waits for the missing lesson; she never skips */
     }
     B.next_seq++;
     B.last_exec_beat = B.beat;
@@ -536,6 +558,7 @@ static void consume(const char *line)
             teach_me(what[0] ? what : "blank", seq);
         }
     }
+    return 1;
 }
 
 /* ---- the organ: one call per heartbeat --------------------------------- */
@@ -554,11 +577,17 @@ void builder_beat(void)
     B.since_consume++;
     if (B.since_consume < B.tempo) { trickle(); return; }
 
-    if (curriculum_take(line, sizeof line)) {
-        B.since_consume = 0;
-        consume(line);
-    } else {
-        trickle();
+    {
+        /* F1: snapshot the cursor before the read. An out-of-order line
+         * restores it, so the lesson stays in the queue and is re-offered
+         * later, in order — she never burns a lesson she cannot take. */
+        long before = B.cursor;
+        if (curriculum_take(line, sizeof line)) {
+            B.since_consume = 0;
+            if (!consume(line)) B.cursor = before;
+        } else {
+            trickle();
+        }
     }
 }
 
@@ -570,6 +599,18 @@ void builder_init(void)
     B.stream_pin = FNV_BASIS;
     B.block_pin = FNV_BASIS;
     builder_register("dry_run", dry_run_actuator);
+}
+
+/* F10: seal the ledger — the stream pin is written INTO TICKETS.log as
+ * the final line, so the file carries its own proof. Best-effort; the
+ * pin itself never depends on the file. */
+void builder_seal(void)
+{
+    FILE *f = fopen(TICKETS_PATH, "a");
+    if (f) {
+        fprintf(f, "stream %016llX\n", (unsigned long long)B.stream_pin);
+        fclose(f);
+    }
 }
 
 uint64_t builder_stream_pin(void) { return B.stream_pin; }
