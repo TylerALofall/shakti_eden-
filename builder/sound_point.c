@@ -23,7 +23,7 @@
  *   The optional seed chains the stream pin across a batch: pass the
  *   previous file's stream= value; the first file omits it (or 0).
  * Exit:  0 ok; 2 bad args; 3 unreadable; 4 not RIFF/WAVE;
- *        5 not PCM16 mono 16kHz; 6 no data chunk; 7 too long;
+ *        5 not PCM/mono/16k/16-bit; 6 no data chunk; 7 too long;
  *        8 write failure.
  *
  * Build (the gauntlet):
@@ -51,7 +51,7 @@ static const char *g_teach_path = "MOMMA_OUTBOX.txt";
 static uint64_t fnv1a64(const unsigned char *p, size_t n, uint64_t h)
 {
     size_t i;
-    if (h == 0) h = 1469598103934665603ULL;
+    if (h == 0) h = 14695981039346656037ULL; /* 0xCBF29CE484222325 -- body basis (Claude finding 01: dropped digit fixed) */
     for (i = 0; i < n; ++i) {
         h ^= (uint64_t)p[i];
         h *= 1099511628211ULL;
@@ -98,9 +98,9 @@ static int refuse(const char *file, const char *reason, int code)
 
 int main(int argc, char **argv)
 {
-    static unsigned char hdr[4096];
+    static unsigned char hdr[65536];   /* finding 05: metadata blocks may exceed 4K before data (the 32 punctuation WAVs) */
     FILE *f;
-    size_t got, pos, data_off = 0, data_len = 0;
+    size_t got, pos, file_size, data_off = 0, data_len = 0;
     uint32_t frames, out_data_len, out_total;
     uint16_t audio_fmt = 0, channels = 0, bits = 0;
     uint32_t rate = 0;
@@ -146,10 +146,11 @@ int main(int argc, char **argv)
     }
 
     if (!have_fmt) { fclose(f); return refuse(in_path, "no_fmt_chunk", 4); }
-    if (audio_fmt != 1 || channels != 1 || rate != SP_RATE || bits != 16) {
-        fclose(f);
-        return refuse(in_path, "not_pcm16_mono_16k", 5);
-    }
+    /* Claude finding F5: name the field that was WRONG, not the shape wanted */
+    if (audio_fmt != 1) { fclose(f); return refuse(in_path, "not_pcm", 5); }
+    if (channels != 1)  { fclose(f); return refuse(in_path, "not_mono", 5); }
+    if (rate != SP_RATE){ fclose(f); return refuse(in_path, "rate_not_16k", 5); }
+    if (bits != 16)     { fclose(f); return refuse(in_path, "bits_not_16", 5); }
     if (!have_data) { fclose(f); return refuse(in_path, "no_data_chunk", 6); }
     if ((data_len & 1u) != 0) { fclose(f); return refuse(in_path, "odd_data", 6); }
     frames = (uint32_t)(data_len / 2u);
@@ -163,6 +164,7 @@ int main(int argc, char **argv)
     got = fread(g_in, 1, data_len, f);
     fclose(f);
     if (got != data_len) return refuse(in_path, "short_read", 3);
+    (void)file_size;
 
     /* assemble: pad + artifact + pad (g_out is zero-initialized static) */
     memset(g_out, 0, sizeof g_out);
