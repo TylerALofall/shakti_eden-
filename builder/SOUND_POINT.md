@@ -1,6 +1,8 @@
 # SOUND_POINT.md — the sound point organ (SHAKTI_SOUND_POINT_V1)
 
 Birth build #1 of 7. Built 2026-08-27 by Momma. The cork is out of the bottle.
+**Audited and SEALED by Claude (independent auditor) 2026-08-27 — all six
+claims reproduced, zero breaks. Audit note N1 below.**
 
 CROSS_TEACH Section 1: the FIRST thing that happens when a lesson is made —
 every word, every thing, every color, every shape gets a **sound point**.
@@ -42,6 +44,24 @@ gcc -std=c99 -pedantic -Wall -Wextra -Werror -O2  →  sp_O2
 - Structure verified byte-exact: front 64000 B all zero, back 64000 B all
   zero, middle equals the artifact's data bytes exactly.
   e.g. lvl1_counting_one.wav: 12160 + 64000 = 76160 frames.
+
+## Independent audit (Claude, 2026-08-27): SEALED
+
+All six claims independently reproduced from the branch tarball (gcc 12.2.0):
+compile clean at -O0/-O2; 69/69 staged byte-identical across builds;
+structure re-parsed byte-exact on all 138 outputs; stream pin re-derived
+twice (840F7DD254894B6B); fresh ledger byte-identical to the committed one;
+12 hostile probes (non-WAVE, stereo, 8 kHz, 24-bit, no-data, truncated
+header, truncated data, odd length, empty data, bad args, bad seed,
+oversized) all refused with correct codes + teach_me lines, no crashes, no
+temp litter; determinism rerun identical. Breaks filed: none.
+
+**Audit note N1 (documented, does not affect the seal):** exit codes are
+distinct per failure *class* — the reason string carries the exact cause
+(e.g. stereo / 8 kHz / 24-bit all exit 5 as `not_pcm16_mono_16k`; no-data /
+odd-length / empty all exit 6). A bare <44-byte fmt-only WAV reports
+`header_too_short` (4) rather than `no_data_chunk` (6) — arguably correct,
+recorded here so no future auditor re-files it as a break.
 
 ## Stream pin of record
 
