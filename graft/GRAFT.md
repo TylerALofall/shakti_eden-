@@ -1,4 +1,4 @@
-# THE GRAFT — eye intake v1 (2026-08-26)
+# THE GRAFT — eye intake v1 + paint level 1 (2026-08-26)
 
 "Go momma make her whoa." The room's pixels now flow through her eyes
 into her ledger. bridge/HER_EYES_PURIFY.md made flesh.
@@ -54,3 +54,23 @@ SIGHT.ndx is the binding table the word school eats: glyph sight-hash
 -> spelling -> wav. Letters now enter as SIGHT bound to SOUND (the
 Doctor's own locked rule: "No text solo"). The 33 punctuation glyphs
 sit honest at wav NONE until the Doctor records them.
+
+## glyph_paint.c — level 1 (2026-08-26, "I'll slip it in")
+
+Doctor's law: the binary grid is the vector — ink=1, ground=0, pour any
+two named palette colors into the shape. Level 0 = raw binary. Level 1 =
+painted. Level 2 = color-bound lessons.
+
+- colors are folded INTO the sight hash: the red A (9C8C34528B5FB47A)
+  and the black A are different cards — as they should be
+- output: SHAKTI_PAINTED_GRID_V1 files (pixels + named palette hex,
+  no W3C) + PAINT.ndx ledger, sealed in blocks of 10
+- palette fixed per CURRICULUM_FORMAT §3 (11 named colors, fixed hex)
+
+Pins of record (paint_test, 88 painted):
+
+- stream pin: **19F2575D55C0A833** (-O0 == -O2, drift 0), 8 sealed blocks
+- 11 solid swabs (8x8 pure color — red DD9E973478636FD7, no triangles)
+- 73 sound-bound glyphs black-on-white (school default)
+- 4 level-2 demos: R in red, B in blue, G in green, Y in yellow
+  (the letter wearing the color it will teach)
