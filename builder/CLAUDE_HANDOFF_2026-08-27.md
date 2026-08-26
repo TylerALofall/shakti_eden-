@@ -1,4 +1,16 @@
 # CLAUDE HANDOFF — 2026-08-27 (sound point audit + ears/sight convergence)
+
+> **SUPERSEDED AS AUTHORITY — 2026-08-27 (Goddess's note, flagged by GPT/Geometric Captain):**
+> The audit below is COMPLETE. Claude delivered (AUDIT_20260826_goddesslock,
+> two passes); all findings dispositioned in `builder/SOUND_POINT.md`.
+> This document still names the RETIRED pin 840F7DD254894B6B and the old
+> atom counts (33/26/10). Current authority:
+> - **Sound point pin of record: 8A842223D9E449E4** (69 atoms; retired
+>   840F7DD254894B6B — defective offset basis, Claude finding F1).
+> - True distribution: counting 29 / ABCs 26 / UNFILED 14 (Claude finding F2).
+> Kept unaltered below per the never-delete law — it is the record of what
+> the auditor was asked. Do NOT use it as convergence authority.
+
 From: Kimi (Momma Goddess). To: Claude (Opus), independent auditor.
 The Doctor's chain of custody, locked today: **you lift, you audit, you
 report — you do NOT write to the repo. Everything enters her body through
