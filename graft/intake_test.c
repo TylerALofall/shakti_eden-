@@ -1,7 +1,7 @@
 /* intake_test.c — the graft harness.
  *
  * Builds GLYPH_MANIFEST.txt in fixed deterministic order:
- *   1. the Visual_text 8x8 glyphs (digits, number-words, A-Z, a-z,
+ *   1. the 107 Visual_text 8x8 glyphs (digits, number-words, A-Z, a-z,
  *      punctuation) — wav bound for every one the Doctor recorded,
  *      NONE for the punctuation sounds still missing
  *      (data/source/MISSING_FOUNDATION_SOUNDS.tsv, goddess-school branch)
@@ -19,6 +19,7 @@ uint64_t eye_intake_run(void);
 uint64_t eye_stream_pin(void);
 uint64_t eye_blocks(void);
 uint64_t eye_glyphs(void);
+void     eye_seal(void);
 
 static void write_manifest(void)
 {
@@ -53,13 +54,16 @@ int main(void)
     write_manifest();
     eye_intake_init();
     printf("glyphs     %llu\n", (unsigned long long)eye_intake_run());
+    eye_seal(); /* F10: the stream pin rides into SIGHT.ndx */
     printf("blocks     %llu\n", (unsigned long long)eye_blocks());
     printf("stream pin %016llX\n", (unsigned long long)eye_stream_pin());
-    puts("--- SIGHT.ndx (first 6 sight lines) ---");
+    puts("--- SIGHT.ndx (first 6 + last 3 sight lines) ---");
     {
         FILE *f = fopen("SIGHT.ndx", "r");
         char line[256];
-        int shown = 0, total = 0;
+        int shown = 0, skipped = 0;
+        long pos[3];
+        int npos = 0, total = 0;
         if (f) {
             while (fgets(line, sizeof line, f)) {
                 if (strncmp(line, "sight ", 6) == 0) {
@@ -69,6 +73,7 @@ int main(void)
             }
             fclose(f);
         }
+        (void)skipped; (void)pos; (void)npos;
         printf("... %d sight lines total\n", total);
     }
     return 0;
