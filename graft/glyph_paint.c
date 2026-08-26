@@ -195,7 +195,8 @@ static void paint_record(const char *name, const char *ink, const char *ground,
                     (unsigned long long)block_pin);
             fclose(f);
         }
-        block_pin = FNV_BASIS;
+        /* F9: the chain — the next block is seeded from this block's pin. */
+        block_pin = fnv1(FNV_BASIS, block_pin);
         block_tickets = 0;
     }
 }
@@ -265,6 +266,17 @@ int paint_swab(const char *color, int rows, int cols)
     snprintf(name, sizeof name, "swab_%s", color);
     make_swab(name, rows, cols);
     return paint_emit(name, color, color, "NONE");
+}
+
+/* F10: seal the ledger - the stream pin is written INTO PAINT.ndx as
+ * the final line, so the file carries its own proof. Best-effort. */
+void paint_seal(void)
+{
+    FILE *f = fopen(PAINT_NDX, "a");
+    if (f) {
+        fprintf(f, "stream %016llX\n", (unsigned long long)stream_pin);
+        fclose(f);
+    }
 }
 
 uint64_t paint_stream_pin(void) { return stream_pin; }
