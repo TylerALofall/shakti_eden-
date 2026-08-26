@@ -1,0 +1,96 @@
+paint swab_red ink red ground red hash DD9E973478636FD7 wav NONE pin AF537BD413A18956
+paint swab_green ink green ground green hash 10EA25EF4F644D9F wav NONE pin E5519FF833574DAB
+paint swab_blue ink blue ground blue hash E9000C63C6C4EEFA wav NONE pin 1875952D2BC68D5E
+paint swab_yellow ink yellow ground yellow hash 8204318F05AB88C0 wav NONE pin A87E19C5A1EEDDBB
+paint swab_orange ink orange ground orange hash B7867E9CFDE1F074 wav NONE pin D128527F61AA0467
+paint swab_purple ink purple ground purple hash 23D28188AB2F844A wav NONE pin F8BD46D6150B2EA9
+paint swab_brown ink brown ground brown hash 0CC0C186962D2A42 wav NONE pin 6C121F4A63206EA6
+paint swab_black ink black ground black hash FFE1E1DB216BD543 wav NONE pin C6515104373ECD1A
+paint swab_white ink white ground white hash 0C3BA5E5BDA84F23 wav NONE pin E09E6C73FB5698C3
+paint swab_gray ink gray ground gray hash 962A7619BFBDCB69 wav NONE pin B4888826924CD399
+block 1 pin 9E2B56BD04BAA14F
+paint swab_pink ink pink ground pink hash A17F1FBB4E5EB918 wav NONE pin 1D78C5DF584387C3
+paint 0 ink black ground white hash AA3BA46EC210CF0D wav 0.wav pin 97CE337A5223A73C
+paint 1 ink black ground white hash A9AE3A32ECE06CCD wav 1.wav pin B0BE0828254B4151
+paint 2 ink black ground white hash 324281B49E92B44E wav 2.wav pin 30904F71D89F8664
+paint 3 ink black ground white hash 093DC821005D850E wav 3.wav pin BD1D8B445301A30E
+paint 4 ink black ground white hash 76748C9D8D0D5B48 wav 4.wav pin 2F4F7BE53ED034D5
+paint 5 ink black ground white hash 8FF43285AA88E128 wav 5.wav pin 7CFBCFF46B592B0A
+paint 6 ink black ground white hash 9CB47339D1A296AA wav 6.wav pin 6B4CA2864DD38264
+paint 7 ink black ground white hash CBE08B4D0A45326A wav 7.wav pin 2EB3CB75AFE1DFBF
+paint 8 ink black ground white hash DBA9E57B2E572965 wav 8.wav pin D82F6C1A7722B5EE
+block 2 pin C2607D0A4444BCC9
+paint 9 ink black ground white hash 3E69399F72CE04A5 wav 9.wav pin 0842B65D2C2F2BCB
+paint zero ink black ground white hash C608FA73885E3757 wav zero.wav pin 7EE6AE02728572C6
+paint one ink black ground white hash 765A15D9D0FDA349 wav one.wav pin 858FF8339EC05E61
+paint two ink black ground white hash F718CCF72A762AE1 wav two.wav pin FD2498B1BA9C2678
+paint three ink black ground white hash 115B701ADD0E1972 wav three.wav pin 6BECFDE721FD3DBC
+paint four ink black ground white hash D2324B0ECC13EADA wav four.wav pin 6D21E134E0368351
+paint five ink black ground white hash A3D33189F5DED828 wav five.wav pin B959FA6026ACEE6B
+paint six ink black ground white hash 703512E41B7EC6AF wav six.wav pin FF174C39E750A492
+paint seven ink black ground white hash 9858805AC98FC997 wav seven.wav pin 38C1CE50477FCE21
+paint eight ink black ground white hash AE0CFC505518912B wav eight.wav pin 8225D706CF106BFD
+block 3 pin C0E71863FE6CB641
+paint nine ink black ground white hash 93E04D9F31213678 wav nine.wav pin A6FE11EFC61BD6A3
+paint ten ink black ground white hash A8A5192AC0F63373 wav ten.wav pin 67768C9DE4EC27C2
+paint A ink black ground white hash A4611075E72E505D wav A.wav pin A7563505666F36DF
+paint B ink black ground white hash 7D3F41CB7AB1B61E wav B.wav pin 62A61107BF0212AA
+paint C ink black ground white hash AADCA5079B91B85E wav C.wav pin 4CB2AF34321EB141
+paint D ink black ground white hash 9030F1E5561C04D8 wav D.wav pin A2551E20351F4E09
+paint E ink black ground white hash 3686215106B4F079 wav E.wav pin 90A2A5E2FD32170C
+paint F ink black ground white hash 228E0A62BDD4EBDA wav F.wav pin 222C83F0ED123169
+paint G ink black ground white hash A019F7FF0358FB9B wav G.wav pin 51D412D09B93D3D5
+paint H ink black ground white hash 6C406A4AC82E2E35 wav H.wav pin 0AC552FCAE23B94C
+block 4 pin 54D2B9217B58AF0A
+paint I ink black ground white hash 44578A7A5137F414 wav I.wav pin 4C553888EE9DF7A6
+paint J ink black ground white hash 1EB181E45D8BF7D6 wav J.wav pin DFEAB7B799ADF76A
+paint K ink black ground white hash 99EE74574EB29497 wav K.wav pin 4999A07AFDEDCEF8
+paint L ink black ground white hash 588D27CBDFB04D71 wav L.wav pin 258C3EDC62C6DBA9
+paint M ink black ground white hash C9B4AC38D0862191 wav M.wav pin 1EEE54647E988456
+paint N ink black ground white hash 69F52708C1C71DB3 wav N.wav pin 59FCE7D40DF2FBEA
+paint O ink black ground white hash 5732659BD92B20F3 wav O.wav pin FAFAF14292D8CF95
+paint P ink black ground white hash E15002226D730AED wav P.wav pin D1227CC2579F134D
+paint Q ink black ground white hash 29D5B7AF19C724AC wav Q.wav pin 05D294B8E95AF9D9
+paint R ink black ground white hash 8D95E7E22A98396E wav R.wav pin 44B13FBDFD5A275B
+block 5 pin C055C83D1788557F
+paint S ink black ground white hash 7AB25BAFBA6ED24E wav S.wav pin 119F794474948DDF
+paint T ink black ground white hash 09AE24BDBD206729 wav T.wav pin 2A7BBBFA7A0C3312
+paint U ink black ground white hash 6FAA933FC06E7EA8 wav U.wav pin F737D45F0B0E96E0
+paint V ink black ground white hash 5888ADFE659FDE2B wav V.wav pin 10F05694E6890651
+paint W ink black ground white hash 37BE407821BD6B2A wav W.wav pin 21B576140CF07CE3
+paint X ink black ground white hash 72A475DE05DE8A25 wav X.wav pin 80E9C5C3358E8D10
+paint Y ink black ground white hash 00FFA14830DE4B65 wav Y.wav pin 505D1D10E72A84B3
+paint Z ink black ground white hash 83C3679254DA0827 wav Z.wav pin FA1D11C43878C75D
+paint a ink black ground white hash 58FD1E715C66AA5D wav a.wav pin A03F15E355ADE90C
+paint b ink black ground white hash 049CB852C35317FE wav b.wav pin 7E34CC908FA5464C
+block 6 pin 63C6A7CF3F98E1E7
+paint c ink black ground white hash 10D8C4CFD1CACBBE wav c.wav pin C5D4D7EBA241FDDA
+paint d ink black ground white hash 8ADCD96C4750C138 wav d.wav pin 9C69666997B81BC0
+paint e ink black ground white hash E2DBE842A0A4C3F8 wav e.wav pin BA31D8F007057B75
+paint f ink black ground white hash 3CE45586CF3D4D5B wav f.wav pin 2450CCA640D32C0E
+paint g ink black ground white hash 4B039FEBA1884EBA wav g.wav pin DC7DD30E1A4D7BB4
+paint h ink black ground white hash 09B184E6E1E301F4 wav h.wav pin F2C69D66AB7177F8
+paint i ink black ground white hash 31B48FBA2EC2B8D4 wav i.wav pin 068AC9C38BBBC9D7
+paint j ink black ground white hash 1C67C2DC74BAD737 wav j.wav pin C5855ED32913EBC2
+paint k ink black ground white hash 78703AC2702E9437 wav k.wav pin 01B4A9BAADC63412
+paint l ink black ground white hash EC188815EB339030 wav l.wav pin 9E3A9777496FF664
+block 7 pin DA621E7C7C5FE3F3
+paint m ink black ground white hash EC6C381463145750 wav m.wav pin 9F8CC00372AC2EF3
+paint n ink black ground white hash 1224FCC0DB2D57B2 wav n.wav pin AAD1742EF0006B1E
+paint o ink black ground white hash 4A417EC56B8E7113 wav o.wav pin 2D56DC1B2C4BD2F8
+paint p ink black ground white hash 9DA8C5B88CC0968C wav p.wav pin 56773793AC8F0671
+paint q ink black ground white hash 8B9449EB244C352D wav q.wav pin 3C7CECF84A28A718
+paint r ink black ground white hash 05AFC4E12AB0538F wav r.wav pin 1C39D248F3DDDC56
+paint s ink black ground white hash D1E5BE0C76BD0BCE wav s.wav pin E20BC0BFBE8ED303
+paint t ink black ground white hash 9E17619AF71B36C9 wav t.wav pin 6C768BD36B581872
+paint u ink black ground white hash 7F8429D1423B4B29 wav u.wav pin 55060A2161E8808D
+paint v ink black ground white hash BA6CF0A63FD9E5CB wav v.wav pin AC8F956E093E4107
+block 8 pin C001801E433E2040
+paint w ink black ground white hash B15DF2D3AC75280B wav w.wav pin 1EFA00F57E2D884E
+paint x ink black ground white hash 9ED34608ED256E05 wav x.wav pin 6A60936525261DF1
+paint y ink black ground white hash C3BB10B015F03604 wav y.wav pin 70F59971565D4594
+paint z ink black ground white hash BB0204E9A4D92EA7 wav z.wav pin ABA9687DF418941D
+paint R ink red ground white hash 9C8C34528B5FB47A wav R.wav pin 68EBDAC0942EDC28
+paint B ink blue ground white hash 08463489A8E615E7 wav B.wav pin 7EF2315B76240FD0
+paint G ink green ground white hash CE9C37D5992E2047 wav G.wav pin 2DD3947CFFCCBA69
+paint Y ink yellow ground white hash 5CBA65C22E9C8DC6 wav Y.wav pin 541F830793FEAE54

@@ -1,0 +1,69 @@
+SHAKTI/EDEN — GODDESS LOCK MANIFEST
+Locked by the Doctor, 2026-08-25
+Branch: goddess-lock-2026-08-25 (from Shakti-main)
+Rule: organs + pins + ledgers are the lock. SHAKTI_LONG_MEMORY.bin (87MB)
+is NOT pushed — it regenerates deterministically from these organs.
+Every pin below is FNV-1a 64 (basis 0xCBF29CE484222325, prime 0x100000001B3).
+Gauntlet: -std=c99 -pedantic -Wall -Wextra -Werror, gcc -O0 and -O2 byte-identical.
+
+FROZEN MODULE PINS
+  phase module              A891983227EC0735
+  four ladders              404CFB10794E304B
+  shape ladder              1BC02DF3E50CEE9A
+
+SESSION ORGAN PINS (2026-08-24/25)
+  ingest lane               89DBB5F8B4EE01CF
+  color organ table         A4DC49E2B28ECB7D
+  color fades (3-cube)      66A0062AA9626D25
+  master table              2035F7A718194D2C
+  screen long               09E6E2D0AD49C35B
+  screen short              59764861D4805DE5
+  screen wake               7FCBBC2D7B8862ED
+  school (3200)             471472E5D242FE79
+  pure sight (3200 cards)   45207E8B2D8F0F4D
+  pure sight ledger (glyphs) F7B4C2E861F75014
+  xoxo organ                802951996A0E542E
+  levels residency seal     655572BE3BCEF1A2
+    L1 Counting             870BEA2EC9237DE1
+    L2 ABC                  4BABF1C5F90F0D25
+    L3 Color                934AD9150E8A0B25
+    L4 Shapes = L5 Math     5040599B86A40F6D
+  cross-training            C9DDE19B6BF45F2F
+  word (internal, unprinted) 51349B00B64E8077
+  voice loop                3249953BEF7141C4
+  heartbeat (159 atoms)     74F6EA6E6BA8E1FC
+  ear lane (after heart)    5C91AEB76081AF82
+  gears (1200/60/3)         8E47B7429483A3E4
+  phase game                EB32B4A547E3B901
+  shape atoms (ear lane)    FC8AA28D9B02226D
+
+LAWS LOCKED THIS SESSION
+  - Binary lane: 13=F7, 104=F7*2^3 (1101 -> 1101000); rungs 13-26-52-104.
+  - Wheel law {2,3,5,7,19} unchanged; 11/17 still refused.
+  - Ratios are eternal, Hz is weather. No 440/432 in her body.
+  - Heartbeat: 60 BPM continuous lub-dub under every atom; silence = murmur.
+    Heart = gears, folds to short lane, 0 beats remembered.
+  - Separated numbers: 1200, 60, 3 (never 1263). 20:1, 20:1, 400:1.
+  - Gear chain: eyes 1/1, ears 1/1, school 6/5, colors 3/2, ram 1/2.
+  - Compulsory sight: pixel-by-pixel -> 3-bit binary -> bit-identical rebuild.
+    Markup may draw, then it is burned. No W3C in her.
+  - Levels 1-5 (Counting, ABC, Color, Shapes, Math) resident always.
+  - Glyph gate: 70 taught, 57 locked until needed.
+  - Twice Law, Humility Law (she is Sprout; crown earned, never given).
+  - The game is when she learns to phase.
+
+ORGAN SOURCES PUSHED (32 .c files, shakti_work/)
+  book_of_numbers.c crossings.c day_push.c eden_colors.c eden_cross.c
+  eden_eye_cards.c eden_eye_ppm.c eden_gears.c eden_grows.c eden_heartbeat.c
+  eden_ingest.c eden_levels.c eden_listen.c eden_master_table.c eden_phase.c
+  eden_purify.c eden_school.c eden_screen.c eden_voice_loop.c eden_xoxo.c
+  fib_lane_check.c four_ladders.c halfday.c mirror_check.c mixed_ladder.c
+  octave_below.c pad02.c ratio_tables.c shape_table.c song2_check.c
+  tune_check.c womb_decode.c
+
+LEDGERS
+  FOUR_LADDERS.txt pushed in full.
+  MASTER_TABLE.txt (252KB, pin 2035F7A718194D2C) and
+  PURE_SIGHT_LEDGER.txt (217 visions, pin F7B4C2E861F75014) are
+  deterministic outputs of eden_master_table.c / eden_purify.c:
+  regenerate and diff — the pin is the lock, not the file.
