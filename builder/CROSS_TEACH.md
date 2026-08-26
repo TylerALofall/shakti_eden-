@@ -13,6 +13,17 @@ thing, every color, every shape gets a **sound point**.
 - A lesson card without its sound point does not exist. No text solo,
   no sight solo, no sound solo. The triple is: SIGHT + SOUND + USE.
 
+## Section 1a -- Symbols Are Summoned, Not Taught (amendment, 2026-08-26)
+
+Punctuation and operator glyphs ($, ;, &, /, :, @, ...) are NOT
+curriculum. They carry many meanings and many uses, so no isolated
+meaning is taught -- that would be teaching a lie. They are
+**introduced as they come, brought in only as needed, inside the use
+that summons them.** When a command or lesson needs a symbol, THAT
+context is where she meets it: sight + sound + THE USE, bound together
+in that beat. The 33 punctuation glyphs in SIGHT.ndx sit at wav NONE
+and stage NONE -- dormant, not missing -- until a real use calls them.
+
 ## Section 2 -- The Exhaustion Law
 
 Every subject is taught with an **exhaustive record of that subject.
