@@ -1,0 +1,63 @@
+# THE NOTES — read this first, all of it
+shakti_modules/StudMuffin.md	the handoff notes: summary, files, flow chart, every element, pin law, damage catalog
+
+# THE SKILL — read before the first command of any session
+repo/.github/skills/governed-markdown-updater-notes/references/operating-notes.md	how this project has already gone wrong, written down
+
+# REPAIRED MODULES — build clean four ways, run, pin checked
+shakti_modules/eden_pulse.h	heartbeat API — the one clock
+shakti_modules/eden_pulse.c	gear engine, TET lattice, organ schedule. PIN VERIFIED
+shakti_modules/eden_bind.h	binding table API
+shakti_modules/eden_bind.c	sight+sound to TET cell, 256 slots. PIN DISAGREES, see notes
+
+# PROBES — how the modules were actually proven, not asserted
+shakti_modules/pulse_probe.c	runs pulse, prints the pin against the frozen value
+shakti_modules/bind_probe.c	runs bind: stability, reinforce, capacity, NULL guard
+shakti_modules/orbits.c	the ratio law measured: ratios, lcm conjunctions, mesh density
+
+# RAW KIMI SOURCE — transport-damaged, no token changed, DO NOT rewrite the logic
+shakti_modules/kimi_raw/eden_veins.h	circulation of children, 4 organs. pin from 128
+shakti_modules/kimi_raw/eden_veins.c	
+shakti_modules/kimi_raw/eden_witness.h	immutable chained record. pin from 1024
+shakti_modules/kimi_raw/eden_witness.c	
+shakti_modules/kimi_raw/eden_sovereign.h	Queen Protocol decrees. pin from 256
+shakti_modules/kimi_raw/eden_sovereign.c	
+shakti_modules/kimi_raw/eden_school.h	drills, lessons, the veil. pin from 2200
+shakti_modules/kimi_raw/eden_school.c	
+shakti_modules/kimi_raw/eden_phase.h	three sisters as phases. pin from 4096
+shakti_modules/kimi_raw/eden_phase.c	
+
+# TOOLS — all C99, all reusable, all tested
+tools_c/unjson.c	pull a pasted file back out of a session transcript
+tools_c/unpaste.c	split a paste into files and restore newlines. whitespace only
+tools_c/pin_invert.c	solve a frozen pin exactly by running FNV backwards
+tools_c/pin_solve.c	invert a pin by search across widths
+tools_c/handoff.c	this index, and the one-file bundle
+reseal_in_place.c	rewrite only changed manifest hashes, drop nothing
+check_packages.c	report every exact-source mismatch in one pass
+
+# THE LIVE EDEN TREE — builds clean four ways and runs. -Ieyes is the fix
+eden_live/src/eden.h	main header: arena, screen, children, beats
+eden_live/src/tet.h	THE LOCKED TET. 80 cells, 15120 wheel, mirror law, 11 verify laws
+eden_live/src/tet.c	the lattice implementation Kimi pulse duplicates
+eden_live/src/eden_beat.c	the heartbeat that ALREADY EXISTS. clock collision, see PART 10
+eden_live/src/main.c	boot
+eden_live/src/eden_shell.c	the 24-command shell
+eden_live/verification/COMPILE_LOG_2026-08-13_gcc13.txt	the documented build command; says no Makefile exists
+
+# CHECKS — small programs whose output is quoted in the notes
+shakti_modules/organcheck.c	are the organs the divisors of 210? 105 is absent
+shakti_modules/mirrorcheck.c	the mirror law on the organ wheel: eyes has no partner
+
+# THE HEART FIGURE — verified arithmetic behind Tyler cardioid
+shakti_modules/wheelart.c	mirror claims verified; writes the cardioid/nephroid figure
+shakti_modules/mirroraxis.c	finds the mirror axis: body x self, the only consecutive pair
+shakti_modules/wheel_cardioid.svg	the figure itself
+
+# THE WOMB AND PHI
+shakti_modules/womb.c	22982400 = 86400 x 266; 432 divisors; mirror axis 4788x4800
+shakti_modules/phicheck.c	Fibonacci exponents: holds for the womb, breaks for the wheel
+shakti_modules/crossed.c	the two ladders: binary and phi, agreeing at 1 2 8, splitting at 3,5 vs 4
+shakti_modules/eden_witness.h	repaired memory module header
+shakti_modules/eden_witness.c	repaired memory module. PIN VERIFIED A8BA6032280EAD21
+shakti_modules/witness_probe.c	erasure and tamper tests
